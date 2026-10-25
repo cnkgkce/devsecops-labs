@@ -225,6 +225,15 @@ def main():
     if rc != 0 or not original_branch:
         original_branch = "main"
 
+    # Ensure git identity & safe directory are configured
+    run_cmd("git config --global --add safe.directory '*'")
+    rc_e, em, _ = run_cmd("git config user.email")
+    if rc_e != 0 or not em:
+        run_cmd('git config --global user.email "devsecops-bot@example.com"')
+    rc_n, nm, _ = run_cmd("git config user.name")
+    if rc_n != 0 or not nm:
+        run_cmd('git config --global user.name "DevSecOps Auto-Remediation Bot"')
+
     run_cmd(f"git checkout -B {fix_branch}")
 
     # Write SCA changes
@@ -266,7 +275,17 @@ def main():
     for sf in staged_files:
         run_cmd(f"git add {sf}")
 
-    run_cmd(f'git commit -m "{commit_msg}"')
+    rc_commit, out_commit, err_commit = run_cmd(f'git commit -m "{commit_msg}"')
+    if rc_commit != 0:
+        print(f"[!] Warning git commit failed: {err_commit}. Retrying with explicit author...")
+        rc_commit, out_commit, err_commit = run_cmd(f'git commit --author="DevSecOps Bot <devsecops-bot@example.com>" -m "{commit_msg}"')
+
+    # Verify commit against base branch
+    rc_diff, out_diff, _ = run_cmd(f"git diff {args.base_branch}..{fix_branch}")
+    if not out_diff:
+        print(f"[!] Warning: No changes detected between {args.base_branch} and {fix_branch}!")
+    else:
+        print(f"[+] Verified changes ready to push ({len(out_diff.splitlines())} diff lines).")
 
     # Push branch to GitHub origin
     print(f"[*] Pushing {fix_branch} to GitHub origin...")
