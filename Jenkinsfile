@@ -91,16 +91,22 @@ pipeline {
                     cd "${TARGET_DIR}"
                     echo "Starting temporary smoke test container to verify runtime stability..."
                     docker rm -f smoke-test-app || true
-                    docker run -d --name smoke-test-app -p 3998:3000 vulnerable-node-app:latest
+                    
+                    # Docker-in-Docker network tespiti (devsecops-labs_default köprüsü)
+                    NET_ARG=""
+                    if docker network ls --filter name=devsecops-labs_default -q | grep -q .; then
+                        NET_ARG="--network devsecops-labs_default"
+                    fi
+                    
+                    docker run -d --name smoke-test-app \${NET_ARG} -p 3998:3000 vulnerable-node-app:latest
                     
                     echo "Waiting for Node.js server initialization..."
                     sleep 3
                     
-                    # Test HTTP status
-                    HTTP_STATUS=\$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3998/ || echo "000")
+                    # Test HTTP status (önce container network adı, sonra localhost denenir)
+                    HTTP_STATUS=\$(curl -s -o /dev/null -w "%{http_code}" http://smoke-test-app:3000/ || curl -s -o /dev/null -w "%{http_code}" http://localhost:3998/ || true)
                     echo ">> [Smoke Test] Healthcheck HTTP Status: \${HTTP_STATUS}"
                     
-                    # Clean up temporary container
                     docker logs smoke-test-app || true
                     docker rm -f smoke-test-app || true
                     
