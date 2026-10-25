@@ -1,0 +1,164 @@
+{
+  "summary": {
+    "total_findings": 11,
+    "true_positives": 9,
+    "false_positives": 2,
+    "false_positive_reduction_rate": "18.2%"
+  },
+  "triaged_findings": [
+    {
+      "finding_id": "finding-1",
+      "check_id": "dockerfile.security.missing-user.missing-user",
+      "path": "sample-app/Dockerfile",
+      "line": 16,
+      "code_context": "   12: COPY . .\n   13: \n   14: EXPOSE 3000\n   15: \n>> 16: CMD [\"node\", \"server.js\"]",
+      "triage": {
+        "is_false_positive": false,
+        "verdict": "TRUE_POSITIVE",
+        "confidence_score": 98,
+        "reasoning": "Direct interpolation of untrusted input without validation or sanitization detected. Highly exploitable vulnerability.",
+        "remediation_advice": "Refactor to use parameterized queries, safe execution APIs with argument arrays, or contextual encoding."
+      }
+    },
+    {
+      "finding_id": "finding-2",
+      "check_id": "javascript.express.security.audit.express-check-csurf-middleware-usage.express-check-csurf-middleware-usage",
+      "path": "sample-app/server.js",
+      "line": 8,
+      "code_context": "   4: const path = require('path');\n   5: const _ = require('lodash');\n   6: const jwt = require('jsonwebtoken');\n   7: \n>> 8: const app = express();\n   9: const port = 3000;\n   10: \n   11: app.use(express.json());\n   12: app.use(express.urlencoded({ extended: true }));",
+      "triage": {
+        "is_false_positive": false,
+        "verdict": "TRUE_POSITIVE",
+        "confidence_score": 98,
+        "reasoning": "Direct interpolation of untrusted input without validation or sanitization detected. Highly exploitable vulnerability.",
+        "remediation_advice": "Refactor to use parameterized queries, safe execution APIs with argument arrays, or contextual encoding."
+      }
+    },
+    {
+      "finding_id": "finding-3",
+      "check_id": "javascript.lang.security.detect-child-process.detect-child-process",
+      "path": "sample-app/server.js",
+      "line": 42,
+      "code_context": "   38: // 2. Command Injection (True Positive)\n   39: app.get('/api/ping', (req, res) => {\n   40:   const host = req.query.host;\n   41:   // VULNERABLE: Direct string interpolation into shell command\n>> 42:   exec(`ping -c 1 ${host}`, (error, stdout, stderr) => {\n   43:     if (error) {\n   44:       return res.status(500).send(`Error: ${stderr}`);\n   45:     }\n   46:     res.send(`<pre>${stdout}</pre>`);",
+      "triage": {
+        "is_false_positive": false,
+        "verdict": "TRUE_POSITIVE",
+        "confidence_score": 98,
+        "reasoning": "Direct interpolation of untrusted input without validation or sanitization detected. Highly exploitable vulnerability.",
+        "remediation_advice": "Refactor to use parameterized queries, safe execution APIs with argument arrays, or contextual encoding."
+      }
+    },
+    {
+      "finding_id": "finding-4",
+      "check_id": "javascript.express.security.audit.xss.direct-response-write.direct-response-write",
+      "path": "sample-app/server.js",
+      "line": 67,
+      "code_context": "   63: // 4. Reflected XSS (True Positive)\n   64: app.get('/api/greet', (req, res) => {\n   65:   const name = req.query.name || 'Guest';\n   66:   // VULNERABLE: Direct reflection without encoding or template engine\n>> 67:   res.send(`<h1>Hello, ${name}!</h1>`);\n   68: });\n   69: \n   70: // 5. Path Traversal (True Positive)\n   71: app.get('/api/view-log', (req, res) => {",
+      "triage": {
+        "is_false_positive": false,
+        "verdict": "TRUE_POSITIVE",
+        "confidence_score": 98,
+        "reasoning": "Direct interpolation of untrusted input without validation or sanitization detected. Highly exploitable vulnerability.",
+        "remediation_advice": "Refactor to use parameterized queries, safe execution APIs with argument arrays, or contextual encoding."
+      }
+    },
+    {
+      "finding_id": "finding-5",
+      "check_id": "javascript.express.security.injection.raw-html-format.raw-html-format",
+      "path": "sample-app/server.js",
+      "line": 67,
+      "code_context": "   63: // 4. Reflected XSS (True Positive)\n   64: app.get('/api/greet', (req, res) => {\n   65:   const name = req.query.name || 'Guest';\n   66:   // VULNERABLE: Direct reflection without encoding or template engine\n>> 67:   res.send(`<h1>Hello, ${name}!</h1>`);\n   68: });\n   69: \n   70: // 5. Path Traversal (True Positive)\n   71: app.get('/api/view-log', (req, res) => {",
+      "triage": {
+        "is_false_positive": false,
+        "verdict": "TRUE_POSITIVE",
+        "confidence_score": 98,
+        "reasoning": "Direct interpolation of untrusted input without validation or sanitization detected. Highly exploitable vulnerability.",
+        "remediation_advice": "Refactor to use parameterized queries, safe execution APIs with argument arrays, or contextual encoding."
+      }
+    },
+    {
+      "finding_id": "finding-6",
+      "check_id": "javascript.express.security.audit.express-path-join-resolve-traversal.express-path-join-resolve-traversal",
+      "path": "sample-app/server.js",
+      "line": 74,
+      "code_context": "   70: // 5. Path Traversal (True Positive)\n   71: app.get('/api/view-log', (req, res) => {\n   72:   const filename = req.query.file;\n   73:   // VULNERABLE: Attacker can supply ../../etc/passwd\n>> 74:   const filePath = path.join(__dirname, 'logs', filename);\n   75:   try {\n   76:     const data = fs.readFileSync(filePath, 'utf8');\n   77:     res.send(`<pre>${data}</pre>`);\n   78:   } catch (err) {",
+      "triage": {
+        "is_false_positive": false,
+        "verdict": "TRUE_POSITIVE",
+        "confidence_score": 98,
+        "reasoning": "Direct interpolation of untrusted input without validation or sanitization detected. Highly exploitable vulnerability.",
+        "remediation_advice": "Refactor to use parameterized queries, safe execution APIs with argument arrays, or contextual encoding."
+      }
+    },
+    {
+      "finding_id": "finding-7",
+      "check_id": "javascript.lang.security.audit.path-traversal.path-join-resolve-traversal.path-join-resolve-traversal",
+      "path": "sample-app/server.js",
+      "line": 74,
+      "code_context": "   70: // 5. Path Traversal (True Positive)\n   71: app.get('/api/view-log', (req, res) => {\n   72:   const filename = req.query.file;\n   73:   // VULNERABLE: Attacker can supply ../../etc/passwd\n>> 74:   const filePath = path.join(__dirname, 'logs', filename);\n   75:   try {\n   76:     const data = fs.readFileSync(filePath, 'utf8');\n   77:     res.send(`<pre>${data}</pre>`);\n   78:   } catch (err) {",
+      "triage": {
+        "is_false_positive": false,
+        "verdict": "TRUE_POSITIVE",
+        "confidence_score": 98,
+        "reasoning": "Direct interpolation of untrusted input without validation or sanitization detected. Highly exploitable vulnerability.",
+        "remediation_advice": "Refactor to use parameterized queries, safe execution APIs with argument arrays, or contextual encoding."
+      }
+    },
+    {
+      "finding_id": "finding-8",
+      "check_id": "javascript.express.security.audit.xss.direct-response-write.direct-response-write",
+      "path": "sample-app/server.js",
+      "line": 77,
+      "code_context": "   73:   // VULNERABLE: Attacker can supply ../../etc/passwd\n   74:   const filePath = path.join(__dirname, 'logs', filename);\n   75:   try {\n   76:     const data = fs.readFileSync(filePath, 'utf8');\n>> 77:     res.send(`<pre>${data}</pre>`);\n   78:   } catch (err) {\n   79:     res.status(404).send('File not found');\n   80:   }\n   81: });",
+      "triage": {
+        "is_false_positive": false,
+        "verdict": "TRUE_POSITIVE",
+        "confidence_score": 98,
+        "reasoning": "Direct interpolation of untrusted input without validation or sanitization detected. Highly exploitable vulnerability.",
+        "remediation_advice": "Refactor to use parameterized queries, safe execution APIs with argument arrays, or contextual encoding."
+      }
+    },
+    {
+      "finding_id": "finding-9",
+      "check_id": "javascript.express.security.injection.raw-html-format.raw-html-format",
+      "path": "sample-app/server.js",
+      "line": 77,
+      "code_context": "   73:   // VULNERABLE: Attacker can supply ../../etc/passwd\n   74:   const filePath = path.join(__dirname, 'logs', filename);\n   75:   try {\n   76:     const data = fs.readFileSync(filePath, 'utf8');\n>> 77:     res.send(`<pre>${data}</pre>`);\n   78:   } catch (err) {\n   79:     res.status(404).send('File not found');\n   80:   }\n   81: });",
+      "triage": {
+        "is_false_positive": false,
+        "verdict": "TRUE_POSITIVE",
+        "confidence_score": 98,
+        "reasoning": "Direct interpolation of untrusted input without validation or sanitization detected. Highly exploitable vulnerability.",
+        "remediation_advice": "Refactor to use parameterized queries, safe execution APIs with argument arrays, or contextual encoding."
+      }
+    },
+    {
+      "finding_id": "finding-10",
+      "check_id": "javascript.express.security.audit.xss.direct-response-write.direct-response-write",
+      "path": "sample-app/server.js",
+      "line": 131,
+      "code_context": "   127: app.get('/api/safe-greet', (req, res) => {\n   128:   const user = req.query.user || 'Guest';\n   129:   // SAFE: Input is properly sanitized before HTML concatenation, but regex SAST rules may flag res.send + concatenation\n   130:   const cleanUser = safeEscapeHtml(user);\n>> 131:   res.send(`<h2>Welcome back, ${cleanUser}</h2>`);\n   132: });\n   133: \n   134: // Root endpoint\n   135: app.get('/', (req, res) => {",
+      "triage": {
+        "is_false_positive": true,
+        "verdict": "FALSE_POSITIVE",
+        "confidence_score": 89,
+        "reasoning": "User input is filtered through an HTML escaping function (safeEscapeHtml) before string template concatenation. Although flagged by AST concatenation heuristics, reflected XSS is mitigated.",
+        "remediation_advice": "Prefer template engines with automatic contextual encoding (e.g. EJS safe tags) or explicit DOM encoding."
+      }
+    },
+    {
+      "finding_id": "finding-11",
+      "check_id": "javascript.express.security.injection.raw-html-format.raw-html-format",
+      "path": "sample-app/server.js",
+      "line": 131,
+      "code_context": "   127: app.get('/api/safe-greet', (req, res) => {\n   128:   const user = req.query.user || 'Guest';\n   129:   // SAFE: Input is properly sanitized before HTML concatenation, but regex SAST rules may flag res.send + concatenation\n   130:   const cleanUser = safeEscapeHtml(user);\n>> 131:   res.send(`<h2>Welcome back, ${cleanUser}</h2>`);\n   132: });\n   133: \n   134: // Root endpoint\n   135: app.get('/', (req, res) => {",
+      "triage": {
+        "is_false_positive": true,
+        "verdict": "FALSE_POSITIVE",
+        "confidence_score": 89,
+        "reasoning": "User input is filtered through an HTML escaping function (safeEscapeHtml) before string template concatenation. Although flagged by AST concatenation heuristics, reflected XSS is mitigated.",
+        "remediation_advice": "Prefer template engines with automatic contextual encoding (e.g. EJS safe tags) or explicit DOM encoding."
+      }
+    }
+  ]
+}

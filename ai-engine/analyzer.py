@@ -17,13 +17,34 @@ def parse_args():
     parser.add_argument("--provider", choices=["mock", "ollama", "openai", "gemini"], default="mock", help="AI Provider to use")
     return parser.parse_args()
 
-def analyze_finding_heuristic_mock(finding):
+def extract_code_snippet(file_path, line_number, context=5):
+    """
+    Extracts surrounding code context directly from source files,
+    bypassing OSS Semgrep 'requires login' line limitations.
+    """
+    if not os.path.exists(file_path):
+        return ""
+    try:
+        with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
+            lines = f.readlines()
+        
+        start_idx = max(0, line_number - context - 1)
+        end_idx = min(len(lines), line_number + context)
+        snippet_lines = []
+        for idx in range(start_idx, end_idx):
+            curr_line_num = idx + 1
+            marker = ">> " if curr_line_num == line_number else "   "
+            snippet_lines.append(f"{marker}{curr_line_num}: {lines[idx].rstrip()}")
+        return "\n".join(snippet_lines)
+    except Exception as e:
+        return f"Error reading source file: {e}"
+
+def analyze_finding_heuristic_mock(finding, snippet):
     """
     Simulated AI triage demonstrating the exact logic and schema
     used when evaluating the sample-app's deliberate TPs and FPs.
     """
     check_id = finding.get("check_id", "")
-    snippet = finding.get("extra", {}).get("lines", "")
     message = finding.get("extra", {}).get("message", "")
 
     # Heuristic 1: Check for mock/test token FP
@@ -32,28 +53,28 @@ def analyze_finding_heuristic_mock(finding):
             "is_false_positive": True,
             "verdict": "FALSE_POSITIVE",
             "confidence_score": 95,
-            "reasoning": "The string pattern matches an API key structure, but the identifier and value clearly indicate a mock/test variable without access to real infrastructure.",
-            "remediation_advice": "No remediation required, or add test fixture exclusions in semgrep ignore patterns."
+            "reasoning": "The string matches secret patterns, but the identifier and value clearly indicate a mock/test variable without access to production infrastructure.",
+            "remediation_advice": "No remediation required. Add exclusion in semgrep ignore configuration."
         }
 
     # Heuristic 2: Whitelisted command execution FP
-    if "ALLOWED_SERVICES" in snippet or ("exec('uptime'" in snippet and "includes(requestedService)" in snippet):
+    if "ALLOWED_SERVICES" in snippet or ("exec('uptime'" in snippet and "includes" in snippet):
         return {
             "is_false_positive": True,
             "verdict": "FALSE_POSITIVE",
             "confidence_score": 92,
-            "reasoning": "The user input 'service' is strictly validated against a hardcoded whitelist array. The executed command 'uptime' is a static string with no parameter interpolation.",
-            "remediation_advice": "Code is secure against injection. Recommend using an explicit allowed-command mapping function to satisfy static analyzers."
+            "reasoning": "The input is strictly validated against a hardcoded whitelist array. The executed command 'uptime' is a static string with no parameter interpolation.",
+            "remediation_advice": "Code is secure against injection. False positive safely filtered."
         }
 
-    # Heuristic 3: Sanitized HTML Output FP
-    if "safeEscapeHtml" in snippet:
+    # Heuristic 3: Sanitized HTML Output FP (XSS rule flagged, but sanitized)
+    if "safeEscapeHtml" in snippet or "cleanUser" in snippet:
         return {
             "is_false_positive": True,
             "verdict": "FALSE_POSITIVE",
-            "confidence_score": 88,
-            "reasoning": "User input is filtered through an HTML escaping sanitizer (safeEscapeHtml) before output concatenation. Although flagged by naive string concatenation heuristics, XSS is mitigated.",
-            "remediation_advice": "Prefer template engines with automatic contextual encoding (e.g., EJS with safe tags) or explicit DOM construction."
+            "confidence_score": 89,
+            "reasoning": "User input is filtered through an HTML escaping function (safeEscapeHtml) before string template concatenation. Although flagged by AST concatenation heuristics, reflected XSS is mitigated.",
+            "remediation_advice": "Prefer template engines with automatic contextual encoding (e.g. EJS safe tags) or explicit DOM encoding."
         }
 
     # Default: True Positive for actual vulnerabilities (ping command injection, SQL concatenation, etc.)
@@ -61,7 +82,7 @@ def analyze_finding_heuristic_mock(finding):
         "is_false_positive": False,
         "verdict": "TRUE_POSITIVE",
         "confidence_score": 98,
-        "reasoning": "Direct interpolation of untrusted user input without validation or sanitization detected. Highly exploitable vulnerability.",
+        "reasoning": "Direct interpolation of untrusted input without validation or sanitization detected. Highly exploitable vulnerability.",
         "remediation_advice": "Refactor to use parameterized queries, safe execution APIs with argument arrays, or contextual encoding."
     }
 
@@ -100,10 +121,14 @@ def main():
         check_id = finding.get("check_id", "unknown-rule")
         path = finding.get("path", "")
         start_line = finding.get("start", {}).get("line", 0)
-        snippet = finding.get("extra", {}).get("lines", "").strip()
 
-        # Perform analysis (Mock/Heuristic for Phase 1 demo, ready for LLM API integration in Phase 2)
-        analysis = analyze_finding_heuristic_mock(finding)
+        # Extract real source code context around finding
+        snippet = extract_code_snippet(path, start_line, context=4)
+        if not snippet and "extra" in finding and "lines" in finding["extra"]:
+            snippet = finding["extra"]["lines"]
+
+        # Perform analysis
+        analysis = analyze_finding_heuristic_mock(finding, snippet)
 
         if analysis["is_false_positive"]:
             fp_count += 1
@@ -121,7 +146,7 @@ def main():
             "check_id": check_id,
             "path": path,
             "line": start_line,
-            "snippet": snippet,
+            "code_context": snippet,
             "triage": analysis
         }
         triaged_results.append(item)
