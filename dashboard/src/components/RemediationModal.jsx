@@ -330,6 +330,14 @@ export default function RemediationModal({ isOpen, onClose, initialMode = 'all',
                   <span style={{ color: '#94a3b8' }}>Kapatılan Zafiyet Sayısı:</span>
                   <strong style={{ color: '#10b981' }}>{result.total_cves_resolved || 0} CVE</strong>
                 </div>
+                {result.smoke_test && (
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '13px' }}>
+                    <span style={{ color: '#94a3b8' }}>Build & Runtime Testi:</span>
+                    <span style={{ color: result.smoke_test.passed ? '#10b981' : '#ef4444', fontWeight: 600 }}>
+                      {result.smoke_test.passed ? '✅ Docker Build & Health Check PASSED' : '❌ Test Başarısız'}
+                    </span>
+                  </div>
+                )}
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
                   <span style={{ color: '#94a3b8' }}>Durum:</span>
                   <span style={{ color: '#6366f1', fontWeight: 600 }}>{result.status || 'PR_READY'}</span>

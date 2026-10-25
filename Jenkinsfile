@@ -84,6 +84,35 @@ pipeline {
             }
         }
 
+        stage('3.1 Smoke Test - Runtime Health Check') {
+            steps {
+                echo '==== [Smoke Test] Derlenen Container İmajının Canlılık & Runtime Doğrulaması ===='
+                sh """
+                    cd "${TARGET_DIR}"
+                    echo "Starting temporary smoke test container to verify runtime stability..."
+                    docker rm -f smoke-test-app || true
+                    docker run -d --name smoke-test-app -p 3998:3000 vulnerable-node-app:latest
+                    
+                    echo "Waiting for Node.js server initialization..."
+                    sleep 3
+                    
+                    # Test HTTP status
+                    HTTP_STATUS=\$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3998/ || echo "000")
+                    echo ">> [Smoke Test] Healthcheck HTTP Status: \${HTTP_STATUS}"
+                    
+                    # Clean up temporary container
+                    docker logs smoke-test-app || true
+                    docker rm -f smoke-test-app || true
+                    
+                    if [ "\${HTTP_STATUS}" != "200" ]; then
+                        echo "❌ [ERROR] Smoke test FAILED! Container crashed or failed to respond with HTTP 200."
+                        exit 1
+                    fi
+                    echo "✅ [SUCCESS] Smoke test PASSED: Application is running and responding to requests!"
+                """
+            }
+        }
+
         stage('4. Container Security - Trivy Image Scan (OS Only)') {
             steps {
                 echo '==== [Container Security] Trivy ile İşletim Sistemi Zafiyet Taraması Başlatılıyor ===='
