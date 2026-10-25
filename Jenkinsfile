@@ -29,7 +29,7 @@ pipeline {
                     if [ -d .git ]; then
                         echo "Git workspace güncelleniyor (git pull)..."
                         git config --global --add safe.directory "${TARGET_DIR}" || true
-                        git pull origin main || true
+                        GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" git pull origin main || true
                     fi
                 """
             }

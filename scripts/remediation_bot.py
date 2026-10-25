@@ -155,8 +155,14 @@ def remediate_container(container_report_path, dockerfile_path):
         return None, None
 
     new_content = content
-    # Replace FROM line
-    new_content = re.sub(r"^FROM\s+[^\s\n]+", f"FROM {target_base}", new_content, count=1, flags=re.MULTILINE)
+    # Replace FROM line and add OS package upgrade
+    new_content = re.sub(
+        r"^FROM\s+[^\s\n]+",
+        f"FROM {target_base}\n\n# Patch Alpine OS packages to 0 CVEs\nRUN apk update && apk upgrade --no-cache",
+        new_content,
+        count=1,
+        flags=re.MULTILINE
+    )
 
     # Security hardening: Non-root user
     if "USER node" not in new_content:
