@@ -2,7 +2,6 @@ const express = require('express');
 const { exec } = require('child_process');
 const fs = require('fs');
 const path = require('path');
-const sqlite3 = require('sqlite3').verbose();
 const _ = require('lodash');
 const jwt = require('jsonwebtoken');
 
@@ -12,13 +11,21 @@ const port = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// In-memory SQLite DB for testing
-const db = new sqlite3.Database(':memory:');
-db.serialize(() => {
-  db.run("CREATE TABLE users (id INT, username TEXT, role TEXT)");
-  db.run("INSERT INTO users VALUES (1, 'admin', 'administrator')");
-  db.run("INSERT INTO users VALUES (2, 'john_doe', 'user')");
-});
+// In-memory mock database for testing
+const mockDatabase = {
+  users: [
+    { id: 1, username: 'admin', role: 'administrator' },
+    { id: 2, username: 'john_doe', role: 'user' }
+  ],
+  // Raw SQL query executor simulator
+  query: function(rawSql, callback) {
+    console.log(`[DB EXECUTING SQL]: ${rawSql}`);
+    // Simulate query execution
+    setTimeout(() => {
+      callback(null, this.users);
+    }, 10);
+  }
+};
 
 // ==========================================
 // [SAST TRUE POSITIVES - Real Vulnerabilities]
@@ -44,12 +51,12 @@ app.get('/api/ping', (req, res) => {
 app.get('/api/users', (req, res) => {
   const username = req.query.username;
   // VULNERABLE: Unsanitized SQL concatenation
-  const query = `SELECT * FROM users WHERE username = '${username}'`;
-  db.all(query, [], (err, rows) => {
+  const sql = "SELECT * FROM users WHERE username = '" + username + "'";
+  mockDatabase.query(sql, (err, rows) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
-    res.json(rows);
+    res.json({ executed_sql: sql, results: rows });
   });
 });
 
