@@ -1,0 +1,9 @@
+workflow-aggregator:latest
+git:latest
+pipeline-stage-view:latest
+ansicolor:latest
+htmlpublisher:latest
+credentials-binding:latest
+timestamper:latest
+configuration-as-code:latest
+job-dsl:latest
