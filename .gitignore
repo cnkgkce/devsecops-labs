@@ -1,0 +1,21 @@
+# OS & Editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Node dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dashboard build artifacts
+dashboard/dist/
+dist/
+
+# Scratch & temp files
+tmp/
+temp/

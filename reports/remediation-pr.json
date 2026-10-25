@@ -1,33 +1,5 @@
 {
-  "status": "SUCCESS",
-  "branch": "fix/container-security-remediation",
-  "base": "main",
-  "repo": "cnkgkce/devsecops-labs",
-  "pr_url": "https://github.com/cnkgkce/devsecops-labs/compare/main...fix/container-security-remediation?expand=1",
-  "pr_number": null,
-  "total_cves_resolved": 13,
-  "sca_changes": [],
-  "container_change": {
-    "file": "sample-app/Dockerfile",
-    "old_base": "node:16.14.0-alpine",
-    "new_base": "node:20-alpine",
-    "hardened": "Non-root (USER node) configured",
-    "cve_count": 13,
-    "cves": [
-      "CVE-2022-28391",
-      "CVE-2022-4450",
-      "CVE-2023-0215",
-      "CVE-2023-0286",
-      "CVE-2023-0464",
-      "CVE-2022-0778",
-      "CVE-2022-4450",
-      "CVE-2023-0215",
-      "CVE-2023-0286",
-      "CVE-2023-0464",
-      "CVE-2022-28391",
-      "CVE-2022-37434",
-      "CVE-2018-25032"
-    ]
-  },
-  "title": "\ud83d\udee1\ufe0f [DevSecOps Auto-Remediation] Fix 13 Vulnerabilities (SCA & Container)"
+  "status": "NO_CHANGES_NEEDED",
+  "message": "All dependencies and container base images are already up to date.",
+  "total_cves_resolved": 0
 }

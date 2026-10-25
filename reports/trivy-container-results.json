@@ -3,104 +3,122 @@
   "Trivy": {
     "Version": "0.76.1"
   },
-  "ReportID": "01a17310-dc95-7316-a70c-95c62612f34f",
-  "CreatedAt": "2026-10-25T12:37:27.317202972Z",
-  "ArtifactID": "sha256:1e6c44cefda5f7a82af1a04e3910be08cb56a7221b0a16a3771c4fef9e7abd63",
+  "ReportID": "01a17388-183e-7498-961e-50acf1f49cc1",
+  "CreatedAt": "2026-10-25T14:47:41.374301792Z",
+  "ArtifactID": "sha256:b8807d0f5292ca83dc44e316107f8ff44b7c777b61cad034ed0d9e5b8fc028f8",
   "ArtifactName": "vulnerable-node-app:latest",
   "ArtifactType": "container_image",
   "Metadata": {
-    "Size": 133210624,
+    "Size": 166726656,
     "OS": {
       "Family": "alpine",
-      "Name": "3.15.1",
-      "EOSL": true
+      "Name": "3.23.4"
     },
-    "ImageID": "sha256:573c5bd71872ec8e7ec7a489e3b4abee2159b1689c5b4759ac560462fc0c2cfb",
+    "ImageID": "sha256:b1697cf49f60fc859abfedeb7737c8a8b42474da2f171f15a029e60d8b3ed869",
     "DiffIDs": [
-      "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c",
-      "sha256:7553c970c64624c39603b0f9f964831ed643b660c02e86e30f7c2caa6c8f7c63",
-      "sha256:11be9c53c91d8653d3ec7d2470e06ed8c98c75b2fef65cc08c55ec369afab366",
-      "sha256:ac7ff3617ec4d792d9405c4fd207eb42fb55b1f3d814afb780d20b01475806eb",
-      "sha256:8e3f11e056d1e6fb217000ba1cb52d78fce761b7c4e615d57051d179168699e7",
-      "sha256:64fe4543acbe8ee27bb935f06b9a3ce68664447a37fd5bcebba76ee0e2b0a21d",
-      "sha256:0010304ee68fee8297cdc61f2bf182e2e7df21b074cb323eeb46d70cd72a3875",
-      "sha256:a35beabaebe07e4edebe4d7071241eef3490bdb7837ca5250ccb984ded8eb2ed"
+      "sha256:a8d26d037006414043b277ecb95287692d0960219289d9e27b0bcea0ce233b02",
+      "sha256:21e4f00ae03f714ca184b962b542ebb67dc73b5c2f7200659becdef9bdfe320e",
+      "sha256:d71b9385f08ff45e2ffd832dfd8ce8edb39dbe4e0775cf14d142aeecf3350a2d",
+      "sha256:624111e2a83c228bf01f932df89fcff9f9a2b04284fe99114345b3715118740e",
+      "sha256:4efcc450041175183ff8fba3ce5f5daafb5a33e651285fca5c6ccbde109ee42c",
+      "sha256:b47ba7d5144b96180fa69b05f5d4104c88b86af2cee3582763507900b259ac72",
+      "sha256:fec7a40f5dfae7c0faed24487a995b930ca2942ee60d345655f43ef8531507cd",
+      "sha256:9696fb3faaa740f0cef971fa0dcf3a810d545398a77a40a7f84cad8eee919ad7",
+      "sha256:9d9f673978bbe2877d12ca75848ced24d56b66df735838a43919f89c0f408b4b"
     ],
     "RepoTags": [
       "vulnerable-node-app:latest"
     ],
     "RepoDigests": [
-      "vulnerable-node-app@sha256:573c5bd71872ec8e7ec7a489e3b4abee2159b1689c5b4759ac560462fc0c2cfb"
+      "vulnerable-node-app@sha256:b1697cf49f60fc859abfedeb7737c8a8b42474da2f171f15a029e60d8b3ed869"
     ],
     "Reference": "vulnerable-node-app:latest",
     "ImageConfig": {
       "architecture": "arm64",
-      "created": "2026-10-25T12:37:26.208424471Z",
+      "created": "2026-10-25T14:26:43.874237377Z",
       "history": [
         {
-          "created": "2022-03-17T03:19:52Z",
-          "created_by": "/bin/sh -c #(nop) ADD file:cd7d91362950471ca4678cf3833dc47119ab519dea51424c847bbbb21e1649d4 in / "
+          "created": "2026-04-15T20:01:25Z",
+          "created_by": "ADD alpine-minirootfs-3.23.4-aarch64.tar.gz / # buildkit",
+          "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2022-03-17T03:19:52Z",
-          "created_by": "/bin/sh -c #(nop)  CMD [\"/bin/sh\"]",
+          "created": "2026-04-15T20:01:25Z",
+          "created_by": "CMD [\"/bin/sh\"]",
+          "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2022-03-17T12:24:08Z",
-          "created_by": "/bin/sh -c #(nop)  ENV NODE_VERSION=16.14.0",
+          "created": "2026-04-15T21:07:29Z",
+          "created_by": "ENV NODE_VERSION=20.20.2",
+          "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2022-03-17T12:55:46Z",
-          "created_by": "/bin/sh -c addgroup -g 1000 node     \u0026\u0026 adduser -u 1000 -G node -s /bin/sh -D node     \u0026\u0026 apk add --no-cache         libstdc++     \u0026\u0026 apk add --no-cache --virtual .build-deps         curl     \u0026\u0026 ARCH= \u0026\u0026 alpineArch=\"$(apk --print-arch)\"       \u0026\u0026 case \"${alpineArch##*-}\" in         x86_64)           ARCH='x64'           CHECKSUM=\"36708b3daa37f9eda5f732cec40690d1338c3c376c0f0ec3c9cb46c6cdf52f1b\"           ;;         *) ;;       esac   \u0026\u0026 if [ -n \"${CHECKSUM}\" ]; then     set -eu;     curl -fsSLO --compressed \"https://unofficial-builds.nodejs.org/download/release/v$NODE_VERSION/node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz\";     echo \"$CHECKSUM  node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz\" | sha256sum -c -       \u0026\u0026 tar -xJf \"node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz\" -C /usr/local --strip-components=1 --no-same-owner       \u0026\u0026 ln -s /usr/local/bin/node /usr/local/bin/nodejs;   else     echo \"Building from source\"     \u0026\u0026 apk add --no-cache --virtual .build-deps-full         binutils-gold         g++         gcc         gnupg         libgcc         linux-headers         make         python3     \u0026\u0026 for key in       4ED778F539E3634C779C87C6D7062848A1AB005C       94AE36675C464D64BAFA68DD7434390BDBE9B9C5       74F12602B6F1C4E913FAA37AD3A89613643B6201       71DCFD284A79C3B38668286BC97EC7A07EDE3FC1       8FCCA13FEF1D0C2E91008E09770F7A9A5AE15600       C4F0DFFF4E8C1A8236409D08E73BC641CC11F4C8       C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C       DD8F2338BAE7501E3DD5AC78C273792F7D83545D       A48C2BEE680E841632CD4E44F07496B3EB3C1762       108F52B48DB57BB0CC439B2997B01419BD92F80A       B9E2F5981AA6E0CD28160D9FF13993A75599653C     ; do       gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys \"$key\" ||       gpg --batch --keyserver keyserver.ubuntu.com --recv-keys \"$key\" ;     done     \u0026\u0026 curl -fsSLO --compressed \"https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION.tar.xz\"     \u0026\u0026 curl -fsSLO --compressed \"https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc\"     \u0026\u0026 gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc     \u0026\u0026 grep \" node-v$NODE_VERSION.tar.xz\\$\" SHASUMS256.txt | sha256sum -c -     \u0026\u0026 tar -xf \"node-v$NODE_VERSION.tar.xz\"     \u0026\u0026 cd \"node-v$NODE_VERSION\"     \u0026\u0026 ./configure     \u0026\u0026 make -j$(getconf _NPROCESSORS_ONLN) V=     \u0026\u0026 make install     \u0026\u0026 apk del .build-deps-full     \u0026\u0026 cd ..     \u0026\u0026 rm -Rf \"node-v$NODE_VERSION\"     \u0026\u0026 rm \"node-v$NODE_VERSION.tar.xz\" SHASUMS256.txt.asc SHASUMS256.txt;   fi   \u0026\u0026 rm -f \"node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz\"   \u0026\u0026 apk del .build-deps   \u0026\u0026 node --version   \u0026\u0026 npm --version"
+          "created": "2026-04-15T21:07:29Z",
+          "created_by": "RUN /bin/sh -c addgroup -g 1000 node     \u0026\u0026 adduser -u 1000 -G node -s /bin/sh -D node     \u0026\u0026 apk add --no-cache         libstdc++     \u0026\u0026 apk add --no-cache --virtual .build-deps         curl     \u0026\u0026 ARCH= OPENSSL_ARCH='linux*' \u0026\u0026 alpineArch=\"$(apk --print-arch)\"       \u0026\u0026 case \"${alpineArch##*-}\" in         x86_64) ARCH='x64' CHECKSUM=\"2b51a5388f6aaf8e2af65fe3bad6114db0ebd81a1ae1250b1de0cbf034b10c5d\" OPENSSL_ARCH=linux-x86_64;;         x86) OPENSSL_ARCH=linux-elf;;         aarch64) OPENSSL_ARCH=linux-aarch64;;         arm*) OPENSSL_ARCH=linux-armv4;;         ppc64le) OPENSSL_ARCH=linux-ppc64le;;         s390x) OPENSSL_ARCH=linux-s390x;;         *) ;;       esac   \u0026\u0026 if [ -n \"${CHECKSUM}\" ]; then     set -eu;     curl -fsSLO --compressed \"https://unofficial-builds.nodejs.org/download/release/v$NODE_VERSION/node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz\";     echo \"$CHECKSUM  node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz\" | sha256sum -c -       \u0026\u0026 tar -xJf \"node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz\" -C /usr/local --strip-components=1 --no-same-owner       \u0026\u0026 ln -s /usr/local/bin/node /usr/local/bin/nodejs;   else     echo \"Building from source\"     \u0026\u0026 apk add --no-cache --virtual .build-deps-full         binutils-gold         g++         gcc         gnupg         libgcc         linux-headers         make         python3         py-setuptools     \u0026\u0026 export GNUPGHOME=\"$(mktemp -d)\"     \u0026\u0026 for key in       5BE8A3F6C8A5C01D106C0AD820B1A390B168D356       DD792F5973C6DE52C432CBDAC77ABFA00DDBF2B7       CC68F5A3106FF448322E48ED27F5E38D5B0A215F       8FCCA13FEF1D0C2E91008E09770F7A9A5AE15600       890C08DB8579162FEE0DF9DB8BEAB4DFCF555EF4       C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C       108F52B48DB57BB0CC439B2997B01419BD92F80A       A363A499291CBBC940DD62E41F10027AF002F8B0     ; do       { gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys \"$key\" \u0026\u0026 gpg --batch --fingerprint \"$key\"; } ||       { gpg --batch --keyserver keyserver.ubuntu.com --recv-keys \"$key\" \u0026\u0026 gpg --batch --fingerprint \"$key\"; } ;     done     \u0026\u0026 curl -fsSLO --compressed \"https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION.tar.xz\"     \u0026\u0026 curl -fsSLO --compressed \"https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc\"     \u0026\u0026 gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc     \u0026\u0026 gpgconf --kill all     \u0026\u0026 rm -rf \"$GNUPGHOME\"     \u0026\u0026 grep \" node-v$NODE_VERSION.tar.xz\\$\" SHASUMS256.txt | sha256sum -c -     \u0026\u0026 tar -xf \"node-v$NODE_VERSION.tar.xz\"     \u0026\u0026 cd \"node-v$NODE_VERSION\"     \u0026\u0026 ./configure     \u0026\u0026 make -j$(getconf _NPROCESSORS_ONLN) V=     \u0026\u0026 make install     \u0026\u0026 apk del .build-deps-full     \u0026\u0026 cd ..     \u0026\u0026 rm -Rf \"node-v$NODE_VERSION\"     \u0026\u0026 rm \"node-v$NODE_VERSION.tar.xz\" SHASUMS256.txt.asc SHASUMS256.txt;   fi   \u0026\u0026 rm -f \"node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz\"   \u0026\u0026 find /usr/local/include/node/openssl/archs -mindepth 1 -maxdepth 1 ! -name \"$OPENSSL_ARCH\" -exec rm -rf {} \\;   \u0026\u0026 apk del .build-deps   \u0026\u0026 node --version   \u0026\u0026 npm --version   \u0026\u0026 rm -rf /tmp/* # buildkit",
+          "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2022-03-17T12:55:46Z",
-          "created_by": "/bin/sh -c #(nop)  ENV YARN_VERSION=1.22.17",
+          "created": "2026-04-15T21:07:29Z",
+          "created_by": "ENV YARN_VERSION=1.22.22",
+          "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2022-03-17T12:55:52Z",
-          "created_by": "/bin/sh -c apk add --no-cache --virtual .build-deps-yarn curl gnupg tar   \u0026\u0026 for key in     6A010C5166006599AA17F08146C2130DFD2497F5   ; do     gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys \"$key\" ||     gpg --batch --keyserver keyserver.ubuntu.com --recv-keys \"$key\" ;   done   \u0026\u0026 curl -fsSLO --compressed \"https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz\"   \u0026\u0026 curl -fsSLO --compressed \"https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz.asc\"   \u0026\u0026 gpg --batch --verify yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz   \u0026\u0026 mkdir -p /opt   \u0026\u0026 tar -xzf yarn-v$YARN_VERSION.tar.gz -C /opt/   \u0026\u0026 ln -s /opt/yarn-v$YARN_VERSION/bin/yarn /usr/local/bin/yarn   \u0026\u0026 ln -s /opt/yarn-v$YARN_VERSION/bin/yarnpkg /usr/local/bin/yarnpkg   \u0026\u0026 rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz   \u0026\u0026 apk del .build-deps-yarn   \u0026\u0026 yarn --version"
+          "created": "2026-04-15T21:07:33Z",
+          "created_by": "RUN /bin/sh -c apk add --no-cache --virtual .build-deps-yarn curl gnupg tar   \u0026\u0026 export GNUPGHOME=\"$(mktemp -d)\"   \u0026\u0026 for key in     6A010C5166006599AA17F08146C2130DFD2497F5   ; do     { gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys \"$key\" \u0026\u0026 gpg --batch --fingerprint \"$key\"; } ||     { gpg --batch --keyserver keyserver.ubuntu.com --recv-keys \"$key\" \u0026\u0026 gpg --batch --fingerprint \"$key\"; } ;   done   \u0026\u0026 curl -fsSLO --compressed \"https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz\"   \u0026\u0026 curl -fsSLO --compressed \"https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz.asc\"   \u0026\u0026 gpg --batch --verify yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz   \u0026\u0026 gpgconf --kill all   \u0026\u0026 rm -rf \"$GNUPGHOME\"   \u0026\u0026 mkdir -p /opt   \u0026\u0026 tar -xzf yarn-v$YARN_VERSION.tar.gz -C /opt/   \u0026\u0026 ln -s /opt/yarn-v$YARN_VERSION/bin/yarn /usr/local/bin/yarn   \u0026\u0026 ln -s /opt/yarn-v$YARN_VERSION/bin/yarnpkg /usr/local/bin/yarnpkg   \u0026\u0026 rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz   \u0026\u0026 apk del .build-deps-yarn   \u0026\u0026 yarn --version   \u0026\u0026 rm -rf /tmp/* # buildkit",
+          "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2022-03-17T12:55:53Z",
-          "created_by": "/bin/sh -c #(nop) COPY file:4d192565a7220e135cab6c77fbc1c73211b69f3d9fb37e62857b2c6eb9363d51 in /usr/local/bin/ "
+          "created": "2026-04-15T21:07:33Z",
+          "created_by": "COPY docker-entrypoint.sh /usr/local/bin/ # buildkit",
+          "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2022-03-17T12:55:53Z",
-          "created_by": "/bin/sh -c #(nop)  ENTRYPOINT [\"docker-entrypoint.sh\"]",
+          "created": "2026-04-15T21:07:33Z",
+          "created_by": "ENTRYPOINT [\"docker-entrypoint.sh\"]",
+          "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2022-03-17T12:55:54Z",
-          "created_by": "/bin/sh -c #(nop)  CMD [\"node\"]",
+          "created": "2026-04-15T21:07:33Z",
+          "created_by": "CMD [\"node\"]",
+          "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-10-25T10:15:59Z",
+          "created": "2026-10-25T14:26:41Z",
+          "created_by": "/bin/sh -c apk update \u0026\u0026 apk upgrade --no-cache"
+        },
+        {
+          "created": "2026-10-25T14:26:41Z",
           "created_by": "/bin/sh -c #(nop) WORKDIR /usr/src/app"
         },
         {
-          "created": "2026-10-25T12:37:22Z",
+          "created": "2026-10-25T14:26:41Z",
           "created_by": "/bin/sh -c #(nop) COPY multi:cbcba7a9177d56ce056e47256a4937fbb67381cfeb454aff3088e2af3aafb22c in ./ "
         },
         {
-          "created": "2026-10-25T12:37:25Z",
+          "created": "2026-10-25T14:26:42Z",
           "created_by": "/bin/sh -c npm install --only=production"
         },
         {
-          "created": "2026-10-25T12:37:25Z",
-          "created_by": "/bin/sh -c #(nop) COPY dir:5aafa878debd9d9a3373b3d79fc72de8236b41c4c9aa13cc400beeab43826efb in . "
+          "created": "2026-10-25T14:26:43Z",
+          "created_by": "/bin/sh -c #(nop) COPY dir:d70ae3a4d0584666d28ddd53b4313dc6d560071f7181ded25c228660210b71e5 in . "
         },
         {
-          "created": "2026-10-25T12:37:26Z",
+          "created": "2026-10-25T14:26:43Z",
           "created_by": "/bin/sh -c #(nop)  EXPOSE 3000",
           "empty_layer": true
         },
         {
-          "created": "2026-10-25T12:37:26Z",
+          "created": "2026-10-25T14:26:43Z",
+          "created_by": "/bin/sh -c #(nop)  USER node",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-25T14:26:43Z",
           "created_by": "/bin/sh -c #(nop)  CMD [\"node\" \"server.js\"]",
           "empty_layer": true
         }
@@ -109,14 +127,15 @@
       "rootfs": {
         "type": "layers",
         "diff_ids": [
-          "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c",
-          "sha256:7553c970c64624c39603b0f9f964831ed643b660c02e86e30f7c2caa6c8f7c63",
-          "sha256:11be9c53c91d8653d3ec7d2470e06ed8c98c75b2fef65cc08c55ec369afab366",
-          "sha256:ac7ff3617ec4d792d9405c4fd207eb42fb55b1f3d814afb780d20b01475806eb",
-          "sha256:8e3f11e056d1e6fb217000ba1cb52d78fce761b7c4e615d57051d179168699e7",
-          "sha256:64fe4543acbe8ee27bb935f06b9a3ce68664447a37fd5bcebba76ee0e2b0a21d",
-          "sha256:0010304ee68fee8297cdc61f2bf182e2e7df21b074cb323eeb46d70cd72a3875",
-          "sha256:a35beabaebe07e4edebe4d7071241eef3490bdb7837ca5250ccb984ded8eb2ed"
+          "sha256:a8d26d037006414043b277ecb95287692d0960219289d9e27b0bcea0ce233b02",
+          "sha256:21e4f00ae03f714ca184b962b542ebb67dc73b5c2f7200659becdef9bdfe320e",
+          "sha256:d71b9385f08ff45e2ffd832dfd8ce8edb39dbe4e0775cf14d142aeecf3350a2d",
+          "sha256:624111e2a83c228bf01f932df89fcff9f9a2b04284fe99114345b3715118740e",
+          "sha256:4efcc450041175183ff8fba3ce5f5daafb5a33e651285fca5c6ccbde109ee42c",
+          "sha256:b47ba7d5144b96180fa69b05f5d4104c88b86af2cee3582763507900b259ac72",
+          "sha256:fec7a40f5dfae7c0faed24487a995b930ca2942ee60d345655f43ef8531507cd",
+          "sha256:9696fb3faaa740f0cef971fa0dcf3a810d545398a77a40a7f84cad8eee919ad7",
+          "sha256:9d9f673978bbe2877d12ca75848ced24d56b66df735838a43919f89c0f408b4b"
         ]
       },
       "config": {
@@ -129,9 +148,10 @@
         ],
         "Env": [
           "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
-          "NODE_VERSION=16.14.0",
-          "YARN_VERSION=1.22.17"
+          "NODE_VERSION=20.20.2",
+          "YARN_VERSION=1.22.22"
         ],
+        "User": "node",
         "WorkingDir": "/usr/src/app",
         "ExposedPorts": {
           "3000/tcp": {}
@@ -140,103 +160,93 @@
     },
     "Layers": [
       {
-        "Size": 5600768,
-        "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-        "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
+        "Size": 8977920,
+        "Digest": "sha256:d17f077ada118cc762df373ff803592abf2dfa3ddafaa7381e364dd27a88fca7",
+        "DiffID": "sha256:a8d26d037006414043b277ecb95287692d0960219289d9e27b0bcea0ce233b02"
       },
       {
-        "Size": 99083776,
-        "Digest": "sha256:aee169c59a2118de8a9f583e3c128b2a3738250dd0d16f88d8f91d783024e6b6",
-        "DiffID": "sha256:7553c970c64624c39603b0f9f964831ed643b660c02e86e30f7c2caa6c8f7c63"
+        "Size": 123688448,
+        "Digest": "sha256:bda5d7ef971f8ede8ea80002d2ac886ef6807fe32cfe46c38704a7ba0429475d",
+        "DiffID": "sha256:21e4f00ae03f714ca184b962b542ebb67dc73b5c2f7200659becdef9bdfe320e"
       },
       {
-        "Size": 7865856,
-        "Digest": "sha256:fdf5e2f870cf4989645f5160d379f462df9942fc69fe3846bf7b1f02058bd171",
-        "DiffID": "sha256:11be9c53c91d8653d3ec7d2470e06ed8c98c75b2fef65cc08c55ec369afab366"
+        "Size": 5394432,
+        "Digest": "sha256:13e45b12880fbbfe3554ecf6b70131ace701d0c2fd3e2fb9abb842ba2494cd40",
+        "DiffID": "sha256:d71b9385f08ff45e2ffd832dfd8ce8edb39dbe4e0775cf14d142aeecf3350a2d"
       },
       {
         "Size": 3584,
-        "Digest": "sha256:730af2774fddc7af31a2cea7de259aee3ce2988178ba008ae7a550916bf2e1f8",
-        "DiffID": "sha256:ac7ff3617ec4d792d9405c4fd207eb42fb55b1f3d814afb780d20b01475806eb"
+        "Digest": "sha256:cd322d0ddd02673e6c24a2158d1f12f6ec7c6fd9c0dc67123244d0f0eb0f8806",
+        "DiffID": "sha256:624111e2a83c228bf01f932df89fcff9f9a2b04284fe99114345b3715118740e"
+      },
+      {
+        "Size": 10491392,
+        "Digest": "sha256:e7c7a29f59c56fd2832e76767de4cef377ccf6f69b655e400414bc911e0300e7",
+        "DiffID": "sha256:4efcc450041175183ff8fba3ce5f5daafb5a33e651285fca5c6ccbde109ee42c"
       },
       {
         "Size": 2560,
-        "Digest": "sha256:f09bd4a4732f64d7164ead01437e31804f233a5346f972f90a47d1e542bef235",
-        "DiffID": "sha256:8e3f11e056d1e6fb217000ba1cb52d78fce761b7c4e615d57051d179168699e7"
+        "Digest": "sha256:e2017715982ba66269704950779502d01dd6b0734e1a3071954e197fe88e8171",
+        "DiffID": "sha256:b47ba7d5144b96180fa69b05f5d4104c88b86af2cee3582763507900b259ac72"
       },
       {
         "Size": 82432,
-        "Digest": "sha256:237d97085bb0b0d6e0dd14c93a463528b8bf8cf5f5c738286d77b6713682f9f8",
-        "DiffID": "sha256:64fe4543acbe8ee27bb935f06b9a3ce68664447a37fd5bcebba76ee0e2b0a21d"
+        "Digest": "sha256:7694c3d1d7db9ba333530541f1202973f1ef6ca53248daf6c9fac5fcd8c75af8",
+        "DiffID": "sha256:fec7a40f5dfae7c0faed24487a995b930ca2942ee60d345655f43ef8531507cd"
       },
       {
-        "Size": 20481024,
-        "Digest": "sha256:95584af04795a582083915629df1cbe2a4626b4c93ab36aea5a031b5b468827f",
-        "DiffID": "sha256:0010304ee68fee8297cdc61f2bf182e2e7df21b074cb323eeb46d70cd72a3875"
+        "Size": 17995264,
+        "Digest": "sha256:80fb9d312361d7ee7e49342feb8f64f8636a88af7e642ba37f4ef9979fa420a8",
+        "DiffID": "sha256:9696fb3faaa740f0cef971fa0dcf3a810d545398a77a40a7f84cad8eee919ad7"
       },
       {
         "Size": 90624,
-        "Digest": "sha256:d3859b5fc22fc5fd069fa572a3d70dc2daaa53c52ed61a9be02dc87f7d0807d3",
-        "DiffID": "sha256:a35beabaebe07e4edebe4d7071241eef3490bdb7837ca5250ccb984ded8eb2ed"
+        "Digest": "sha256:727b2c2525d8272656165e4ab6048676ef9f49d7b65e2075563dae3a66f91721",
+        "DiffID": "sha256:9d9f673978bbe2877d12ca75848ced24d56b66df735838a43919f89c0f408b4b"
       }
     ]
   },
   "Results": [
     {
-      "Target": "vulnerable-node-app:latest (alpine 3.15.1)",
+      "Target": "vulnerable-node-app:latest (alpine 3.23.4)",
       "Class": "os-pkgs",
       "Type": "alpine",
       "Packages": [
         {
-          "ID": "alpine-baselayout@3.2.0-r18",
+          "ID": "alpine-baselayout@3.7.2-r0",
           "Name": "alpine-baselayout",
           "Identifier": {
-            "PURL": "pkg:apk/alpine/alpine-baselayout@3.2.0-r18?arch=aarch64\u0026distro=3.15.1",
-            "UID": "6a8c4428aec2f645"
+            "PURL": "pkg:apk/alpine/alpine-baselayout@3.7.2-r0?arch=aarch64\u0026distro=3.23.4",
+            "UID": "3e836d04bd2aec3c"
           },
-          "Version": "3.2.0-r18",
+          "Version": "3.7.2-r0",
           "Arch": "aarch64",
           "SrcName": "alpine-baselayout",
-          "SrcVersion": "3.2.0-r18",
+          "SrcVersion": "3.7.2-r0",
           "Licenses": [
             "GPL-2.0-only"
           ],
           "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
           "DependsOn": [
-            "busybox@1.34.1-r4",
-            "musl@1.2.2-r7"
+            "alpine-baselayout-data@3.7.2-r0",
+            "busybox-binsh@1.37.0-r30"
           ],
           "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
+            "Digest": "sha256:d17f077ada118cc762df373ff803592abf2dfa3ddafaa7381e364dd27a88fca7",
+            "DiffID": "sha256:a8d26d037006414043b277ecb95287692d0960219289d9e27b0bcea0ce233b02"
           },
-          "Digest": "sha1:26fdbcd2c9a31c2656ae812bd21fbc2394a5f435",
+          "Digest": "sha1:42450e283eaeed1d8d3c7d213592c8a0b0aac462",
           "InstalledFiles": [
-            "etc/fstab",
-            "etc/group",
-            "etc/hostname",
-            "etc/hosts",
-            "etc/inittab",
-            "etc/modules",
             "etc/motd",
-            "etc/mtab",
-            "etc/passwd",
-            "etc/profile",
-            "etc/protocols",
-            "etc/services",
-            "etc/shadow",
-            "etc/shells",
-            "etc/sysctl.conf",
             "etc/crontabs/root",
             "etc/modprobe.d/aliases.conf",
             "etc/modprobe.d/blacklist.conf",
             "etc/modprobe.d/i386.conf",
-            "etc/modprobe.d/kms.conf",
+            "etc/profile.d/20locale.sh",
             "etc/profile.d/README",
             "etc/profile.d/color_prompt.sh.disabled",
-            "etc/profile.d/locale.sh",
-            "lib/sysctl.d/00-alpine.conf",
-            "sbin/mkmntdirs",
+            "usr/lib/sysctl.d/00-alpine.conf",
+            "var/lock",
             "var/run",
             "var/spool/mail",
             "var/spool/cron/crontabs"
@@ -244,30 +254,66 @@
           "AnalyzedBy": "apk"
         },
         {
-          "ID": "alpine-keys@2.4-r1",
+          "ID": "alpine-baselayout-data@3.7.2-r0",
+          "Name": "alpine-baselayout-data",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/alpine-baselayout-data@3.7.2-r0?arch=aarch64\u0026distro=3.23.4",
+            "UID": "45030c6120d17023"
+          },
+          "Version": "3.7.2-r0",
+          "Arch": "aarch64",
+          "SrcName": "alpine-baselayout",
+          "SrcVersion": "3.7.2-r0",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "Layer": {
+            "Digest": "sha256:d17f077ada118cc762df373ff803592abf2dfa3ddafaa7381e364dd27a88fca7",
+            "DiffID": "sha256:a8d26d037006414043b277ecb95287692d0960219289d9e27b0bcea0ce233b02"
+          },
+          "Digest": "sha1:4fb25f406e33dcd836e41e74f1cbfacc466d8e68",
+          "InstalledFiles": [
+            "etc/fstab",
+            "etc/group",
+            "etc/hostname",
+            "etc/hosts",
+            "etc/inittab",
+            "etc/modules",
+            "etc/mtab",
+            "etc/nsswitch.conf",
+            "etc/passwd",
+            "etc/profile",
+            "etc/protocols",
+            "etc/services",
+            "etc/shadow",
+            "etc/shells",
+            "etc/sysctl.conf"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "alpine-keys@2.6-r0",
           "Name": "alpine-keys",
           "Identifier": {
-            "PURL": "pkg:apk/alpine/alpine-keys@2.4-r1?arch=aarch64\u0026distro=3.15.1",
-            "UID": "874bab84dd9c6b"
+            "PURL": "pkg:apk/alpine/alpine-keys@2.6-r0?arch=aarch64\u0026distro=3.23.4",
+            "UID": "eef5bbd499c35822"
           },
-          "Version": "2.4-r1",
+          "Version": "2.6-r0",
           "Arch": "aarch64",
           "SrcName": "alpine-keys",
-          "SrcVersion": "2.4-r1",
+          "SrcVersion": "2.6-r0",
           "Licenses": [
             "MIT"
           ],
           "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
           "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
+            "Digest": "sha256:d17f077ada118cc762df373ff803592abf2dfa3ddafaa7381e364dd27a88fca7",
+            "DiffID": "sha256:a8d26d037006414043b277ecb95287692d0960219289d9e27b0bcea0ce233b02"
           },
-          "Digest": "sha1:a5539ab22d5a7aef40b531cf7c079264d8020867",
+          "Digest": "sha1:b6da24d59a2dd0e38032057e116957e48e72f434",
           "InstalledFiles": [
-            "etc/apk/keys/alpine-devel@lists.alpinelinux.org-524d27bb.rsa.pub",
             "etc/apk/keys/alpine-devel@lists.alpinelinux.org-58199dcc.rsa.pub",
-            "etc/apk/keys/alpine-devel@lists.alpinelinux.org-616a9724.rsa.pub",
-            "etc/apk/keys/alpine-devel@lists.alpinelinux.org-616adfeb.rsa.pub",
             "etc/apk/keys/alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub",
             "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-4a6a0840.rsa.pub",
             "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-5243ef4b.rsa.pub",
@@ -286,12 +332,14 @@
             "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616adfeb.rsa.pub",
             "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub",
             "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616db30d.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-66ba20fe.rsa.pub",
             "usr/share/apk/keys/aarch64/alpine-devel@lists.alpinelinux.org-58199dcc.rsa.pub",
             "usr/share/apk/keys/aarch64/alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub",
             "usr/share/apk/keys/armhf/alpine-devel@lists.alpinelinux.org-524d27bb.rsa.pub",
             "usr/share/apk/keys/armhf/alpine-devel@lists.alpinelinux.org-616a9724.rsa.pub",
             "usr/share/apk/keys/armv7/alpine-devel@lists.alpinelinux.org-524d27bb.rsa.pub",
             "usr/share/apk/keys/armv7/alpine-devel@lists.alpinelinux.org-616adfeb.rsa.pub",
+            "usr/share/apk/keys/loongarch64/alpine-devel@lists.alpinelinux.org-66ba20fe.rsa.pub",
             "usr/share/apk/keys/mips64/alpine-devel@lists.alpinelinux.org-5e69ca50.rsa.pub",
             "usr/share/apk/keys/ppc64le/alpine-devel@lists.alpinelinux.org-58cbb476.rsa.pub",
             "usr/share/apk/keys/ppc64le/alpine-devel@lists.alpinelinux.org-616abc23.rsa.pub",
@@ -309,307 +357,337 @@
           "AnalyzedBy": "apk"
         },
         {
-          "ID": "apk-tools@2.12.7-r3",
+          "ID": "alpine-release@3.23.7-r0",
+          "Name": "alpine-release",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/alpine-release@3.23.7-r0?arch=aarch64\u0026distro=3.23.4",
+            "UID": "b4a90974ec60e87e"
+          },
+          "Version": "3.23.7-r0",
+          "Arch": "aarch64",
+          "SrcName": "alpine-base",
+          "SrcVersion": "3.23.7-r0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "alpine-keys@2.6-r0"
+          ],
+          "Layer": {
+            "Digest": "sha256:e7c7a29f59c56fd2832e76767de4cef377ccf6f69b655e400414bc911e0300e7",
+            "DiffID": "sha256:4efcc450041175183ff8fba3ce5f5daafb5a33e651285fca5c6ccbde109ee42c"
+          },
+          "Digest": "sha1:0bac108e09a4bcec4a14409fd99ad9e543663652",
+          "InstalledFiles": [
+            "etc/alpine-release",
+            "etc/issue",
+            "etc/os-release",
+            "etc/secfixes.d/alpine",
+            "usr/lib/os-release"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "apk-tools@3.0.8-r0",
           "Name": "apk-tools",
           "Identifier": {
-            "PURL": "pkg:apk/alpine/apk-tools@2.12.7-r3?arch=aarch64\u0026distro=3.15.1",
-            "UID": "aba83021610f0625"
+            "PURL": "pkg:apk/alpine/apk-tools@3.0.8-r0?arch=aarch64\u0026distro=3.23.4",
+            "UID": "6a95793482622945"
           },
-          "Version": "2.12.7-r3",
+          "Version": "3.0.8-r0",
           "Arch": "aarch64",
           "SrcName": "apk-tools",
-          "SrcVersion": "2.12.7-r3",
+          "SrcVersion": "3.0.8-r0",
           "Licenses": [
             "GPL-2.0-only"
           ],
           "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
           "DependsOn": [
-            "ca-certificates-bundle@20211220-r0",
-            "libcrypto1.1@1.1.1n-r0",
-            "libssl1.1@1.1.1n-r0",
-            "musl@1.2.2-r7",
-            "zlib@1.2.11-r3"
+            "ca-certificates-bundle@20261020-r0",
+            "libapk@3.0.8-r0",
+            "libcrypto3@3.5.9-r0",
+            "musl@1.2.5-r24",
+            "zlib@1.3.2-r1"
           ],
           "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
+            "Digest": "sha256:e7c7a29f59c56fd2832e76767de4cef377ccf6f69b655e400414bc911e0300e7",
+            "DiffID": "sha256:4efcc450041175183ff8fba3ce5f5daafb5a33e651285fca5c6ccbde109ee42c"
           },
-          "Digest": "sha1:fa0ba1daa1e54a0a1795196bff095574bfca2557",
+          "Digest": "sha1:5a235060e75b3136d4914e85034513d71595b29e",
           "InstalledFiles": [
-            "lib/libapk.so.3.12.0",
             "sbin/apk"
           ],
           "AnalyzedBy": "apk"
         },
         {
-          "ID": "busybox@1.34.1-r4",
+          "ID": "busybox@1.37.0-r30",
           "Name": "busybox",
           "Identifier": {
-            "PURL": "pkg:apk/alpine/busybox@1.34.1-r4?arch=aarch64\u0026distro=3.15.1",
-            "UID": "550d5640d9c908b"
+            "PURL": "pkg:apk/alpine/busybox@1.37.0-r30?arch=aarch64\u0026distro=3.23.4",
+            "UID": "73e1edcbbfb61f5b"
           },
-          "Version": "1.34.1-r4",
+          "Version": "1.37.0-r30",
           "Arch": "aarch64",
           "SrcName": "busybox",
-          "SrcVersion": "1.34.1-r4",
+          "SrcVersion": "1.37.0-r30",
           "Licenses": [
             "GPL-2.0-only"
           ],
-          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "Maintainer": "Sören Tempel \u003csoeren+alpine@soeren-tempel.net\u003e",
           "DependsOn": [
-            "musl@1.2.2-r7"
+            "musl@1.2.5-r24"
           ],
           "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
+            "Digest": "sha256:d17f077ada118cc762df373ff803592abf2dfa3ddafaa7381e364dd27a88fca7",
+            "DiffID": "sha256:a8d26d037006414043b277ecb95287692d0960219289d9e27b0bcea0ce233b02"
           },
-          "Digest": "sha1:c6614563c644d25ca11d1cfe6527392b696d47c8",
+          "Digest": "sha1:8a4aa5c075508816c7c9de58e51e933257f8a4df",
           "InstalledFiles": [
             "bin/busybox",
-            "bin/sh",
             "etc/securetty",
-            "etc/udhcpd.conf",
+            "etc/busybox-paths.d/busybox",
             "etc/logrotate.d/acpid",
             "etc/network/if-up.d/dad",
+            "etc/udhcpc/udhcpc.conf",
             "usr/share/udhcpc/default.script"
           ],
           "AnalyzedBy": "apk"
         },
         {
-          "ID": "ca-certificates-bundle@20211220-r0",
+          "ID": "busybox-binsh@1.37.0-r30",
+          "Name": "busybox-binsh",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/busybox-binsh@1.37.0-r30?arch=aarch64\u0026distro=3.23.4",
+            "UID": "cc5cd489c4f06e08"
+          },
+          "Version": "1.37.0-r30",
+          "Arch": "aarch64",
+          "SrcName": "busybox",
+          "SrcVersion": "1.37.0-r30",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Sören Tempel \u003csoeren+alpine@soeren-tempel.net\u003e",
+          "DependsOn": [
+            "busybox@1.37.0-r30"
+          ],
+          "Layer": {
+            "Digest": "sha256:d17f077ada118cc762df373ff803592abf2dfa3ddafaa7381e364dd27a88fca7",
+            "DiffID": "sha256:a8d26d037006414043b277ecb95287692d0960219289d9e27b0bcea0ce233b02"
+          },
+          "Digest": "sha1:fd8162c989485decebe15295e5bf8beec0a3775a",
+          "InstalledFiles": [
+            "bin/sh"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "ca-certificates-bundle@20261020-r0",
           "Name": "ca-certificates-bundle",
           "Identifier": {
-            "PURL": "pkg:apk/alpine/ca-certificates-bundle@20211220-r0?arch=aarch64\u0026distro=3.15.1",
-            "UID": "d51e54506640a20a"
+            "PURL": "pkg:apk/alpine/ca-certificates-bundle@20261020-r0?arch=aarch64\u0026distro=3.23.4",
+            "UID": "eb06a9a2f0a512e5"
           },
-          "Version": "20211220-r0",
+          "Version": "20261020-r0",
           "Arch": "aarch64",
           "SrcName": "ca-certificates",
-          "SrcVersion": "20211220-r0",
+          "SrcVersion": "20261020-r0",
           "Licenses": [
             "MPL-2.0",
             "MIT"
           ],
           "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
           "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
+            "Digest": "sha256:e7c7a29f59c56fd2832e76767de4cef377ccf6f69b655e400414bc911e0300e7",
+            "DiffID": "sha256:4efcc450041175183ff8fba3ce5f5daafb5a33e651285fca5c6ccbde109ee42c"
           },
-          "Digest": "sha1:062d085bc3e0b2a5691170b04cd27abcf6de8c80",
+          "Digest": "sha1:a48576d0d75bef34674676aaa33b1e2e3ce299dd",
           "InstalledFiles": [
             "etc/ssl/cert.pem",
-            "etc/ssl/certs/ca-certificates.crt"
+            "etc/ssl/certs/ca-certificates.crt",
+            "etc/ssl1.1/cert.pem",
+            "etc/ssl1.1/certs"
           ],
           "AnalyzedBy": "apk"
         },
         {
-          "ID": "libc-utils@0.7.2-r3",
-          "Name": "libc-utils",
+          "ID": "libapk@3.0.8-r0",
+          "Name": "libapk",
           "Identifier": {
-            "PURL": "pkg:apk/alpine/libc-utils@0.7.2-r3?arch=aarch64\u0026distro=3.15.1",
-            "UID": "a24b28fcc7525394"
+            "PURL": "pkg:apk/alpine/libapk@3.0.8-r0?arch=aarch64\u0026distro=3.23.4",
+            "UID": "1bd24242438a18cd"
           },
-          "Version": "0.7.2-r3",
+          "Version": "3.0.8-r0",
           "Arch": "aarch64",
-          "SrcName": "libc-dev",
-          "SrcVersion": "0.7.2-r3",
+          "SrcName": "apk-tools",
+          "SrcVersion": "3.0.8-r0",
           "Licenses": [
-            "BSD-2-Clause",
-            "BSD-3-Clause"
+            "GPL-2.0-only"
           ],
           "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
           "DependsOn": [
-            "musl-utils@1.2.2-r7"
+            "libcrypto3@3.5.9-r0",
+            "libssl3@3.5.9-r0",
+            "musl@1.2.5-r24",
+            "zlib@1.3.2-r1"
           ],
           "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
+            "Digest": "sha256:e7c7a29f59c56fd2832e76767de4cef377ccf6f69b655e400414bc911e0300e7",
+            "DiffID": "sha256:4efcc450041175183ff8fba3ce5f5daafb5a33e651285fca5c6ccbde109ee42c"
           },
-          "Digest": "sha1:77b58fe1deb8d4a58880dfea2d440c82ee352da7",
+          "Digest": "sha1:b30766625ccc0e019dbe3d70d19c3300c5f6e11a",
+          "InstalledFiles": [
+            "usr/lib/libapk.so.3.0.0"
+          ],
           "AnalyzedBy": "apk"
         },
         {
-          "ID": "libcrypto1.1@1.1.1n-r0",
-          "Name": "libcrypto1.1",
+          "ID": "libcrypto3@3.5.9-r0",
+          "Name": "libcrypto3",
           "Identifier": {
-            "PURL": "pkg:apk/alpine/libcrypto1.1@1.1.1n-r0?arch=aarch64\u0026distro=3.15.1",
-            "UID": "d12f6b81faa1e7ba"
+            "PURL": "pkg:apk/alpine/libcrypto3@3.5.9-r0?arch=aarch64\u0026distro=3.23.4",
+            "UID": "ac5c61ec7029b8ec"
           },
-          "Version": "1.1.1n-r0",
+          "Version": "3.5.9-r0",
           "Arch": "aarch64",
           "SrcName": "openssl",
-          "SrcVersion": "1.1.1n-r0",
+          "SrcVersion": "3.5.9-r0",
           "Licenses": [
-            "OpenSSL"
+            "Apache-2.0"
           ],
-          "Maintainer": "Timo Teras \u003ctimo.teras@iki.fi\u003e",
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
           "DependsOn": [
-            "musl@1.2.2-r7"
+            "musl@1.2.5-r24"
           ],
           "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
+            "Digest": "sha256:e7c7a29f59c56fd2832e76767de4cef377ccf6f69b655e400414bc911e0300e7",
+            "DiffID": "sha256:4efcc450041175183ff8fba3ce5f5daafb5a33e651285fca5c6ccbde109ee42c"
           },
-          "Digest": "sha1:9e3976e804f2b7015466b9928909093c29a4c6a6",
+          "Digest": "sha1:5a9968e1c05be4514887ceec04f75769f486930e",
           "InstalledFiles": [
-            "etc/ssl1.1/cert.pem",
-            "etc/ssl1.1/certs",
-            "etc/ssl1.1/ct_log_list.cnf",
-            "etc/ssl1.1/ct_log_list.cnf.dist",
-            "etc/ssl1.1/openssl.cnf",
-            "etc/ssl1.1/openssl.cnf.dist",
-            "lib/libcrypto.so.1.1",
-            "usr/lib/libcrypto.so.1.1",
-            "usr/lib/engines-1.1/afalg.so",
-            "usr/lib/engines-1.1/capi.so",
-            "usr/lib/engines-1.1/padlock.so"
+            "etc/ssl/ct_log_list.cnf",
+            "etc/ssl/ct_log_list.cnf.dist",
+            "etc/ssl/openssl.cnf",
+            "etc/ssl/openssl.cnf.dist",
+            "usr/lib/libcrypto.so.3",
+            "usr/lib/engines-3/afalg.so",
+            "usr/lib/engines-3/capi.so",
+            "usr/lib/engines-3/loader_attic.so",
+            "usr/lib/engines-3/padlock.so",
+            "usr/lib/ossl-modules/legacy.so"
           ],
           "AnalyzedBy": "apk"
         },
         {
-          "ID": "libgcc@10.3.1_git20211027-r0",
+          "ID": "libgcc@15.2.0-r2",
           "Name": "libgcc",
           "Identifier": {
-            "PURL": "pkg:apk/alpine/libgcc@10.3.1_git20211027-r0?arch=aarch64\u0026distro=3.15.1",
-            "UID": "c82ebf9cc5e07842"
+            "PURL": "pkg:apk/alpine/libgcc@15.2.0-r2?arch=aarch64\u0026distro=3.23.4",
+            "UID": "63c609989c35eb7"
           },
-          "Version": "10.3.1_git20211027-r0",
+          "Version": "15.2.0-r2",
           "Arch": "aarch64",
           "SrcName": "gcc",
-          "SrcVersion": "10.3.1_git20211027-r0",
+          "SrcVersion": "15.2.0-r2",
           "Licenses": [
             "GPL-2.0-or-later",
             "LGPL-2.1-or-later"
           ],
           "Maintainer": "Ariadne Conill \u003cariadne@dereferenced.org\u003e",
           "DependsOn": [
-            "musl@1.2.2-r7"
+            "musl@1.2.5-r24"
           ],
           "Layer": {
-            "Digest": "sha256:aee169c59a2118de8a9f583e3c128b2a3738250dd0d16f88d8f91d783024e6b6",
-            "DiffID": "sha256:7553c970c64624c39603b0f9f964831ed643b660c02e86e30f7c2caa6c8f7c63"
+            "Digest": "sha256:bda5d7ef971f8ede8ea80002d2ac886ef6807fe32cfe46c38704a7ba0429475d",
+            "DiffID": "sha256:21e4f00ae03f714ca184b962b542ebb67dc73b5c2f7200659becdef9bdfe320e"
           },
-          "Digest": "sha1:09f63b7dfdbea06da0e7f1a2ceb32f196c425824",
+          "Digest": "sha1:39a14df44f7d31dfc2ff1c75ccbe923f4125c50f",
           "InstalledFiles": [
             "usr/lib/libgcc_s.so.1"
           ],
           "AnalyzedBy": "apk"
         },
         {
-          "ID": "libretls@3.3.4-r2",
-          "Name": "libretls",
+          "ID": "libssl3@3.5.9-r0",
+          "Name": "libssl3",
           "Identifier": {
-            "PURL": "pkg:apk/alpine/libretls@3.3.4-r2?arch=aarch64\u0026distro=3.15.1",
-            "UID": "3d1b0866ec7d41cf"
+            "PURL": "pkg:apk/alpine/libssl3@3.5.9-r0?arch=aarch64\u0026distro=3.23.4",
+            "UID": "bac32d0b89c1e60e"
           },
-          "Version": "3.3.4-r2",
-          "Arch": "aarch64",
-          "SrcName": "libretls",
-          "SrcVersion": "3.3.4-r2",
-          "Licenses": [
-            "ISC",
-            "BSD-3-Clause",
-            "MIT"
-          ],
-          "Maintainer": "Ariadne Conill \u003cariadne@dereferenced.org\u003e",
-          "DependsOn": [
-            "ca-certificates-bundle@20211220-r0",
-            "libcrypto1.1@1.1.1n-r0",
-            "libssl1.1@1.1.1n-r0",
-            "musl@1.2.2-r7"
-          ],
-          "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
-          },
-          "Digest": "sha1:8d22379ae46bdddd79a8085309f70a6690c64b47",
-          "InstalledFiles": [
-            "usr/lib/libtls.so.2",
-            "usr/lib/libtls.so.2.0.3"
-          ],
-          "AnalyzedBy": "apk"
-        },
-        {
-          "ID": "libssl1.1@1.1.1n-r0",
-          "Name": "libssl1.1",
-          "Identifier": {
-            "PURL": "pkg:apk/alpine/libssl1.1@1.1.1n-r0?arch=aarch64\u0026distro=3.15.1",
-            "UID": "a651db48932d8e47"
-          },
-          "Version": "1.1.1n-r0",
+          "Version": "3.5.9-r0",
           "Arch": "aarch64",
           "SrcName": "openssl",
-          "SrcVersion": "1.1.1n-r0",
+          "SrcVersion": "3.5.9-r0",
           "Licenses": [
-            "OpenSSL"
+            "Apache-2.0"
           ],
-          "Maintainer": "Timo Teras \u003ctimo.teras@iki.fi\u003e",
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
           "DependsOn": [
-            "libcrypto1.1@1.1.1n-r0",
-            "musl@1.2.2-r7"
+            "libcrypto3@3.5.9-r0",
+            "musl@1.2.5-r24"
           ],
           "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
+            "Digest": "sha256:e7c7a29f59c56fd2832e76767de4cef377ccf6f69b655e400414bc911e0300e7",
+            "DiffID": "sha256:4efcc450041175183ff8fba3ce5f5daafb5a33e651285fca5c6ccbde109ee42c"
           },
-          "Digest": "sha1:b52928b43bdd925eb7f55fa98f9b85631dc01884",
+          "Digest": "sha1:cf979fe4ff20104c7259fb9c0abfe2e5b207641a",
           "InstalledFiles": [
-            "lib/libssl.so.1.1",
-            "usr/lib/libssl.so.1.1"
+            "usr/lib/libssl.so.3"
           ],
           "AnalyzedBy": "apk"
         },
         {
-          "ID": "libstdc++@10.3.1_git20211027-r0",
+          "ID": "libstdc++@15.2.0-r2",
           "Name": "libstdc++",
           "Identifier": {
-            "PURL": "pkg:apk/alpine/libstdc%2B%2B@10.3.1_git20211027-r0?arch=aarch64\u0026distro=3.15.1",
-            "UID": "44a3305cde18d764"
+            "PURL": "pkg:apk/alpine/libstdc%2B%2B@15.2.0-r2?arch=aarch64\u0026distro=3.23.4",
+            "UID": "515f45fe3e2f7155"
           },
-          "Version": "10.3.1_git20211027-r0",
+          "Version": "15.2.0-r2",
           "Arch": "aarch64",
           "SrcName": "gcc",
-          "SrcVersion": "10.3.1_git20211027-r0",
+          "SrcVersion": "15.2.0-r2",
           "Licenses": [
             "GPL-2.0-or-later",
             "LGPL-2.1-or-later"
           ],
           "Maintainer": "Ariadne Conill \u003cariadne@dereferenced.org\u003e",
           "DependsOn": [
-            "libgcc@10.3.1_git20211027-r0",
-            "musl@1.2.2-r7"
+            "libgcc@15.2.0-r2",
+            "musl@1.2.5-r24"
           ],
           "Layer": {
-            "Digest": "sha256:aee169c59a2118de8a9f583e3c128b2a3738250dd0d16f88d8f91d783024e6b6",
-            "DiffID": "sha256:7553c970c64624c39603b0f9f964831ed643b660c02e86e30f7c2caa6c8f7c63"
+            "Digest": "sha256:bda5d7ef971f8ede8ea80002d2ac886ef6807fe32cfe46c38704a7ba0429475d",
+            "DiffID": "sha256:21e4f00ae03f714ca184b962b542ebb67dc73b5c2f7200659becdef9bdfe320e"
           },
-          "Digest": "sha1:b63a15e66347764c03da46a14dacc64f5af72d1e",
+          "Digest": "sha1:0a2c211228e03c804f2066b3aafb1ec9359b60c3",
           "InstalledFiles": [
             "usr/lib/libstdc++.so.6",
-            "usr/lib/libstdc++.so.6.0.28"
+            "usr/lib/libstdc++.so.6.0.34"
           ],
           "AnalyzedBy": "apk"
         },
         {
-          "ID": "musl@1.2.2-r7",
+          "ID": "musl@1.2.5-r24",
           "Name": "musl",
           "Identifier": {
-            "PURL": "pkg:apk/alpine/musl@1.2.2-r7?arch=aarch64\u0026distro=3.15.1",
-            "UID": "e13a7eaff0f0fbde"
+            "PURL": "pkg:apk/alpine/musl@1.2.5-r24?arch=aarch64\u0026distro=3.23.4",
+            "UID": "586eac3595d99aea"
           },
-          "Version": "1.2.2-r7",
+          "Version": "1.2.5-r24",
           "Arch": "aarch64",
           "SrcName": "musl",
-          "SrcVersion": "1.2.2-r7",
+          "SrcVersion": "1.2.5-r24",
           "Licenses": [
             "MIT"
           ],
-          "Maintainer": "Timo Teräs \u003ctimo.teras@iki.fi\u003e",
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
           "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
+            "Digest": "sha256:e7c7a29f59c56fd2832e76767de4cef377ccf6f69b655e400414bc911e0300e7",
+            "DiffID": "sha256:4efcc450041175183ff8fba3ce5f5daafb5a33e651285fca5c6ccbde109ee42c"
           },
-          "Digest": "sha1:17bc85c615a890e7c4dec8e71458b349afcab5d9",
+          "Digest": "sha1:1a99aff383f640ceeace6af100cebc87776f5554",
           "InstalledFiles": [
             "lib/ld-musl-aarch64.so.1",
             "lib/libc.musl-aarch64.so.1"
@@ -617,31 +695,31 @@
           "AnalyzedBy": "apk"
         },
         {
-          "ID": "musl-utils@1.2.2-r7",
+          "ID": "musl-utils@1.2.5-r24",
           "Name": "musl-utils",
           "Identifier": {
-            "PURL": "pkg:apk/alpine/musl-utils@1.2.2-r7?arch=aarch64\u0026distro=3.15.1",
-            "UID": "8323c1a68f4817dc"
+            "PURL": "pkg:apk/alpine/musl-utils@1.2.5-r24?arch=aarch64\u0026distro=3.23.4",
+            "UID": "45fa8363efb8c1c3"
           },
-          "Version": "1.2.2-r7",
+          "Version": "1.2.5-r24",
           "Arch": "aarch64",
           "SrcName": "musl",
-          "SrcVersion": "1.2.2-r7",
+          "SrcVersion": "1.2.5-r24",
           "Licenses": [
             "MIT",
-            "BSD-3-Clause",
+            "BSD-2-Clause",
             "GPL-2.0-or-later"
           ],
-          "Maintainer": "Timo Teräs \u003ctimo.teras@iki.fi\u003e",
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
           "DependsOn": [
-            "musl@1.2.2-r7",
-            "scanelf@1.3.3-r0"
+            "musl@1.2.5-r24",
+            "scanelf@1.3.8-r2"
           ],
           "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
+            "Digest": "sha256:e7c7a29f59c56fd2832e76767de4cef377ccf6f69b655e400414bc911e0300e7",
+            "DiffID": "sha256:4efcc450041175183ff8fba3ce5f5daafb5a33e651285fca5c6ccbde109ee42c"
           },
-          "Digest": "sha1:cd5a4ebeabac668b31bb0e3f52d3bd02299c4276",
+          "Digest": "sha1:f566f9d3f8e2396e18dc44d6fca7b529cc881e09",
           "InstalledFiles": [
             "sbin/ldconfig",
             "usr/bin/getconf",
@@ -652,1594 +730,91 @@
           "AnalyzedBy": "apk"
         },
         {
-          "ID": "scanelf@1.3.3-r0",
+          "ID": "scanelf@1.3.8-r2",
           "Name": "scanelf",
           "Identifier": {
-            "PURL": "pkg:apk/alpine/scanelf@1.3.3-r0?arch=aarch64\u0026distro=3.15.1",
-            "UID": "f21837ec9951872c"
+            "PURL": "pkg:apk/alpine/scanelf@1.3.8-r2?arch=aarch64\u0026distro=3.23.4",
+            "UID": "45a583f8138cded9"
           },
-          "Version": "1.3.3-r0",
+          "Version": "1.3.8-r2",
           "Arch": "aarch64",
           "SrcName": "pax-utils",
-          "SrcVersion": "1.3.3-r0",
+          "SrcVersion": "1.3.8-r2",
           "Licenses": [
             "GPL-2.0-only"
           ],
           "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
           "DependsOn": [
-            "musl@1.2.2-r7"
+            "musl@1.2.5-r24"
           ],
           "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
+            "Digest": "sha256:d17f077ada118cc762df373ff803592abf2dfa3ddafaa7381e364dd27a88fca7",
+            "DiffID": "sha256:a8d26d037006414043b277ecb95287692d0960219289d9e27b0bcea0ce233b02"
           },
-          "Digest": "sha1:75456fc6a9b662ae577dcca107b63fa963ad4f41",
+          "Digest": "sha1:9fceb896b185731e010cb437b1f1d5a25ee136ac",
           "InstalledFiles": [
             "usr/bin/scanelf"
           ],
           "AnalyzedBy": "apk"
         },
         {
-          "ID": "ssl_client@1.34.1-r4",
+          "ID": "ssl_client@1.37.0-r30",
           "Name": "ssl_client",
           "Identifier": {
-            "PURL": "pkg:apk/alpine/ssl_client@1.34.1-r4?arch=aarch64\u0026distro=3.15.1",
-            "UID": "abed43f07a926b34"
+            "PURL": "pkg:apk/alpine/ssl_client@1.37.0-r30?arch=aarch64\u0026distro=3.23.4",
+            "UID": "bc2abeb54a957b66"
           },
-          "Version": "1.34.1-r4",
+          "Version": "1.37.0-r30",
           "Arch": "aarch64",
           "SrcName": "busybox",
-          "SrcVersion": "1.34.1-r4",
+          "SrcVersion": "1.37.0-r30",
           "Licenses": [
             "GPL-2.0-only"
           ],
-          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "Maintainer": "Sören Tempel \u003csoeren+alpine@soeren-tempel.net\u003e",
           "DependsOn": [
-            "libretls@3.3.4-r2",
-            "musl@1.2.2-r7"
+            "libcrypto3@3.5.9-r0",
+            "libssl3@3.5.9-r0",
+            "musl@1.2.5-r24"
           ],
           "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
+            "Digest": "sha256:d17f077ada118cc762df373ff803592abf2dfa3ddafaa7381e364dd27a88fca7",
+            "DiffID": "sha256:a8d26d037006414043b277ecb95287692d0960219289d9e27b0bcea0ce233b02"
           },
-          "Digest": "sha1:a733552060223ff083c9dd7a5fcfaaa649728049",
+          "Digest": "sha1:832f6a59871bbf161357731646a0b36397d51deb",
           "InstalledFiles": [
             "usr/bin/ssl_client"
           ],
           "AnalyzedBy": "apk"
         },
         {
-          "ID": "zlib@1.2.11-r3",
+          "ID": "zlib@1.3.2-r1",
           "Name": "zlib",
           "Identifier": {
-            "PURL": "pkg:apk/alpine/zlib@1.2.11-r3?arch=aarch64\u0026distro=3.15.1",
-            "UID": "8f1c293638451a5b"
+            "PURL": "pkg:apk/alpine/zlib@1.3.2-r1?arch=aarch64\u0026distro=3.23.4",
+            "UID": "fed962382b9e8ba7"
           },
-          "Version": "1.2.11-r3",
+          "Version": "1.3.2-r1",
           "Arch": "aarch64",
           "SrcName": "zlib",
-          "SrcVersion": "1.2.11-r3",
+          "SrcVersion": "1.3.2-r1",
           "Licenses": [
             "Zlib"
           ],
           "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
           "DependsOn": [
-            "musl@1.2.2-r7"
+            "musl@1.2.5-r24"
           ],
           "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
+            "Digest": "sha256:e7c7a29f59c56fd2832e76767de4cef377ccf6f69b655e400414bc911e0300e7",
+            "DiffID": "sha256:4efcc450041175183ff8fba3ce5f5daafb5a33e651285fca5c6ccbde109ee42c"
           },
-          "Digest": "sha1:95ea294484bdd9ec886653e9194941f7ae19caa1",
+          "Digest": "sha1:f77dbf317516b1452c0768f9f62f1606c806dd2d",
           "InstalledFiles": [
-            "lib/libz.so.1",
-            "lib/libz.so.1.2.11"
+            "usr/lib/libz.so.1",
+            "usr/lib/libz.so.1.3.2"
           ],
           "AnalyzedBy": "apk"
-        }
-      ],
-      "Vulnerabilities": [
-        {
-          "VulnerabilityID": "CVE-2022-28391",
-          "PkgID": "busybox@1.34.1-r4",
-          "PkgName": "busybox",
-          "PkgIdentifier": {
-            "PURL": "pkg:apk/alpine/busybox@1.34.1-r4?arch=aarch64\u0026distro=3.15.1",
-            "UID": "550d5640d9c908b"
-          },
-          "InstalledVersion": "1.34.1-r4",
-          "FixedVersion": "1.34.1-r5",
-          "Status": "fixed",
-          "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
-          },
-          "SeveritySource": "nvd",
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-28391",
-          "DataSource": {
-            "ID": "alpine",
-            "Name": "Alpine Secdb",
-            "URL": "https://secdb.alpinelinux.org/"
-          },
-          "Fingerprint": "sha256:040b170d50ac515db87f89720bed5f932321fdd97ff50b6a0cc0da27930a0d73",
-          "Title": "busybox: remote attackers may execute arbitrary code if netstat is used",
-          "Description": "BusyBox through 1.35.0 allows remote attackers to execute arbitrary code if netstat is used to print a DNS PTR record's value to a VT compatible terminal. Alternatively, the attacker could choose to change the terminal's colors.",
-          "Severity": "HIGH",
-          "CweIDs": [
-            "CWE-88"
-          ],
-          "VendorSeverity": {
-            "amazon": 2,
-            "azure": 3,
-            "cbl-mariner": 3,
-            "nvd": 3,
-            "redhat": 2
-          },
-          "CVSS": {
-            "nvd": {
-              "V2Vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P",
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-              "V2Score": 6.8,
-              "V3Score": 8.8
-            },
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N",
-              "V3Score": 6.5
-            }
-          },
-          "References": [
-            "https://access.redhat.com/security/cve/CVE-2022-28391",
-            "https://git.alpinelinux.org/aports/plain/main/busybox/0001-libbb-sockaddr2str-ensure-only-printable-characters-.patch",
-            "https://git.alpinelinux.org/aports/plain/main/busybox/0002-nslookup-sanitize-all-printed-strings-with-printable.patch",
-            "https://gitlab.alpinelinux.org/alpine/aports/-/issues/13661",
-            "https://nvd.nist.gov/vuln/detail/CVE-2022-28391",
-            "https://www.cve.org/CVERecord?id=CVE-2022-28391"
-          ],
-          "PublishedDate": "2022-04-03T21:15:08.207Z",
-          "LastModifiedDate": "2026-06-17T04:38:29.55Z"
-        },
-        {
-          "VulnerabilityID": "CVE-2022-4450",
-          "PkgID": "libcrypto1.1@1.1.1n-r0",
-          "PkgName": "libcrypto1.1",
-          "PkgIdentifier": {
-            "PURL": "pkg:apk/alpine/libcrypto1.1@1.1.1n-r0?arch=aarch64\u0026distro=3.15.1",
-            "UID": "d12f6b81faa1e7ba"
-          },
-          "InstalledVersion": "1.1.1n-r0",
-          "FixedVersion": "1.1.1t-r0",
-          "Status": "fixed",
-          "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
-          },
-          "SeveritySource": "nvd",
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-4450",
-          "DataSource": {
-            "ID": "alpine",
-            "Name": "Alpine Secdb",
-            "URL": "https://secdb.alpinelinux.org/"
-          },
-          "Fingerprint": "sha256:91279113eb8befedafd05ac83446db22eda90a0ad45bf436ad0f85cdcd5db55d",
-          "Title": "openssl: double free after calling PEM_read_bio_ex",
-          "Description": "The function PEM_read_bio_ex() reads a PEM file from a BIO and parses and\ndecodes the \"name\" (e.g. \"CERTIFICATE\"), any header data and the payload data.\nIf the function succeeds then the \"name_out\", \"header\" and \"data\" arguments are\npopulated with pointers to buffers containing the relevant decoded data. The\ncaller is responsible for freeing those buffers. It is possible to construct a\nPEM file that results in 0 bytes of payload data. In this case PEM_read_bio_ex()\nwill return a failure code but will populate the header argument with a pointer\nto a buffer that has already been freed. If the caller also frees this buffer\nthen a double free will occur. This will most likely lead to a crash. This\ncould be exploited by an attacker who has the ability to supply malicious PEM\nfiles for parsing to achieve a denial of service attack.\n\nThe functions PEM_read_bio() and PEM_read() are simple wrappers around\nPEM_read_bio_ex() and therefore these functions are also directly affected.\n\nThese functions are also called indirectly by a number of other OpenSSL\nfunctions including PEM_X509_INFO_read_bio_ex() and\nSSL_CTX_use_serverinfo_file() which are also vulnerable. Some OpenSSL internal\nuses of these functions are not vulnerable because the caller does not free the\nheader argument if PEM_read_bio_ex() returns a failure code. These locations\ninclude the PEM_read_bio_TYPE() functions as well as the decoders introduced in\nOpenSSL 3.0.\n\nThe OpenSSL asn1parse command line application is also impacted by this issue.",
-          "Severity": "HIGH",
-          "CweIDs": [
-            "CWE-415"
-          ],
-          "VendorSeverity": {
-            "alma": 3,
-            "amazon": 3,
-            "azure": 3,
-            "cbl-mariner": 3,
-            "ghsa": 3,
-            "julia": 3,
-            "nvd": 3,
-            "oracle-oval": 3,
-            "photon": 3,
-            "redhat": 2,
-            "rocky": 3,
-            "ubuntu": 2
-          },
-          "CVSS": {
-            "ghsa": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            },
-            "julia": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            },
-            "nvd": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            },
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            }
-          },
-          "References": [
-            "https://access.redhat.com/errata/RHSA-2023:0946",
-            "https://access.redhat.com/errata/RHSA-2023:2165",
-            "https://access.redhat.com/security/cve/CVE-2022-4450",
-            "https://bugzilla.redhat.com/1960321",
-            "https://bugzilla.redhat.com/2164440",
-            "https://bugzilla.redhat.com/2164487",
-            "https://bugzilla.redhat.com/2164492",
-            "https://bugzilla.redhat.com/2164494",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144000",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144003",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144006",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144008",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144010",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144012",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144015",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144017",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144019",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2145170",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2158412",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164440",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164487",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164488",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164492",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164494",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164497",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164499",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164500",
-            "https://cert-portal.siemens.com/productcert/html/ssa-203374.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-337522.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-398330.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-556635.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-561322.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-625862.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-699386.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-769027.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-794697.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-879734.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-943925.html",
-            "https://creativecommons.org/licenses/by/4.0/",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401",
-            "https://errata.almalinux.org/9/ALSA-2023-2165.html",
-            "https://errata.rockylinux.org/RLSA-2023:0946",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=63bcf189be73a9cc1264059bed6f57974be74a83",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=bbcf509bd046b34cca19c766bbddc31683d0858b",
-            "https://github.com/advisories/GHSA-v5w6-wcm8-jm4q",
-            "https://linux.oracle.com/cve/CVE-2022-4450.html",
-            "https://linux.oracle.com/errata/ELSA-2023-32791.html",
-            "https://nvd.nist.gov/vuln/detail/CVE-2022-4450",
-            "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2023-0003",
-            "https://rustsec.org/advisories/RUSTSEC-2023-0010.html",
-            "https://security.gentoo.org/glsa/202402-08",
-            "https://ubuntu.com/security/notices/USN-5844-1",
-            "https://ubuntu.com/security/notices/USN-6564-1",
-            "https://ubuntu.com/security/notices/USN-7894-1",
-            "https://www.cve.org/CVERecord?id=CVE-2022-4450",
-            "https://www.openssl.org/news/secadv/20230207.txt"
-          ],
-          "PublishedDate": "2023-02-08T20:15:23.973Z",
-          "LastModifiedDate": "2026-10-14T15:17:00.197Z"
-        },
-        {
-          "VulnerabilityID": "CVE-2023-0215",
-          "PkgID": "libcrypto1.1@1.1.1n-r0",
-          "PkgName": "libcrypto1.1",
-          "PkgIdentifier": {
-            "PURL": "pkg:apk/alpine/libcrypto1.1@1.1.1n-r0?arch=aarch64\u0026distro=3.15.1",
-            "UID": "d12f6b81faa1e7ba"
-          },
-          "InstalledVersion": "1.1.1n-r0",
-          "FixedVersion": "1.1.1t-r0",
-          "Status": "fixed",
-          "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
-          },
-          "SeveritySource": "nvd",
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-0215",
-          "DataSource": {
-            "ID": "alpine",
-            "Name": "Alpine Secdb",
-            "URL": "https://secdb.alpinelinux.org/"
-          },
-          "Fingerprint": "sha256:4043d03715e1ed9e5c8fbecaa9cee60dfaaf59c88b9fb1f30fc425277f6aec3c",
-          "Title": "openssl: use-after-free following BIO_new_NDEF",
-          "Description": "The public API function BIO_new_NDEF is a helper function used for streaming\nASN.1 data via a BIO. It is primarily used internally to OpenSSL to support the\nSMIME, CMS and PKCS7 streaming capabilities, but may also be called directly by\nend user applications.\n\nThe function receives a BIO from the caller, prepends a new BIO_f_asn1 filter\nBIO onto the front of it to form a BIO chain, and then returns the new head of\nthe BIO chain to the caller. Under certain conditions, for example if a CMS\nrecipient public key is invalid, the new filter BIO is freed and the function\nreturns a NULL result indicating a failure. However, in this case, the BIO chain\nis not properly cleaned up and the BIO passed by the caller still retains\ninternal pointers to the previously freed filter BIO. If the caller then goes on\nto call BIO_pop() on the BIO then a use-after-free will occur. This will most\nlikely result in a crash.\n\n\n\nThis scenario occurs directly in the internal function B64_write_ASN1() which\nmay cause BIO_new_NDEF() to be called and will subsequently call BIO_pop() on\nthe BIO. This internal function is in turn called by the public API functions\nPEM_write_bio_ASN1_stream, PEM_write_bio_CMS_stream, PEM_write_bio_PKCS7_stream,\nSMIME_write_ASN1, SMIME_write_CMS and SMIME_write_PKCS7.\n\nOther public API functions that may be impacted by this include\ni2d_ASN1_bio_stream, BIO_new_CMS, BIO_new_PKCS7, i2d_CMS_bio_stream and\ni2d_PKCS7_bio_stream.\n\nThe OpenSSL cms and smime command line applications are similarly affected.",
-          "Severity": "HIGH",
-          "CweIDs": [
-            "CWE-416"
-          ],
-          "VendorSeverity": {
-            "alma": 3,
-            "amazon": 3,
-            "azure": 3,
-            "cbl-mariner": 3,
-            "ghsa": 3,
-            "julia": 3,
-            "nvd": 3,
-            "oracle-oval": 3,
-            "photon": 3,
-            "redhat": 2,
-            "rocky": 3,
-            "ubuntu": 2
-          },
-          "CVSS": {
-            "ghsa": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            },
-            "julia": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            },
-            "nvd": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            },
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            }
-          },
-          "References": [
-            "https://access.redhat.com/errata/RHSA-2023:0946",
-            "https://access.redhat.com/errata/RHSA-2023:2165",
-            "https://access.redhat.com/security/cve/CVE-2023-0215",
-            "https://bugzilla.redhat.com/1960321",
-            "https://bugzilla.redhat.com/2164440",
-            "https://bugzilla.redhat.com/2164487",
-            "https://bugzilla.redhat.com/2164492",
-            "https://bugzilla.redhat.com/2164494",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144000",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144003",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144006",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144008",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144010",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144012",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144015",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144017",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144019",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2145170",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2158412",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164440",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164487",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164488",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164492",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164494",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164497",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164499",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164500",
-            "https://cert-portal.siemens.com/productcert/html/ssa-203374.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-337522.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-398330.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-556635.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-561322.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-625862.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-769027.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-794697.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-879734.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-943925.html",
-            "https://creativecommons.org/licenses/by/4.0/",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401",
-            "https://errata.almalinux.org/9/ALSA-2023-2165.html",
-            "https://errata.rockylinux.org/RLSA-2023:0946",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=8818064ce3c3c0f1b740a5aaba2a987e75bfbafd",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=9816136fe31d92ace4037d5da5257f763aeeb4eb",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=c3829dd8825c654652201e16f8a0a0c46ee3f344",
-            "https://github.com/advisories/GHSA-r7jw-wp68-3xch",
-            "https://linux.oracle.com/cve/CVE-2023-0215.html",
-            "https://linux.oracle.com/errata/ELSA-2023-32791.html",
-            "https://nvd.nist.gov/vuln/detail/CVE-2023-0215",
-            "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2023-0003",
-            "https://rustsec.org/advisories/RUSTSEC-2023-0009.html",
-            "https://security.gentoo.org/glsa/202402-08",
-            "https://security.netapp.com/advisory/ntap-20230427-0007",
-            "https://security.netapp.com/advisory/ntap-20230427-0007/",
-            "https://security.netapp.com/advisory/ntap-20230427-0009",
-            "https://security.netapp.com/advisory/ntap-20230427-0009/",
-            "https://security.netapp.com/advisory/ntap-20240621-0006",
-            "https://security.netapp.com/advisory/ntap-20240621-0006/",
-            "https://ubuntu.com/security/notices/USN-5844-1",
-            "https://ubuntu.com/security/notices/USN-5845-1",
-            "https://ubuntu.com/security/notices/USN-5845-2",
-            "https://ubuntu.com/security/notices/USN-6564-1",
-            "https://ubuntu.com/security/notices/USN-7894-1",
-            "https://www.cve.org/CVERecord?id=CVE-2023-0215",
-            "https://www.openssl.org/news/secadv/20230207.txt"
-          ],
-          "PublishedDate": "2023-02-08T20:15:24.107Z",
-          "LastModifiedDate": "2026-10-14T19:16:57.987Z"
-        },
-        {
-          "VulnerabilityID": "CVE-2023-0286",
-          "PkgID": "libcrypto1.1@1.1.1n-r0",
-          "PkgName": "libcrypto1.1",
-          "PkgIdentifier": {
-            "PURL": "pkg:apk/alpine/libcrypto1.1@1.1.1n-r0?arch=aarch64\u0026distro=3.15.1",
-            "UID": "d12f6b81faa1e7ba"
-          },
-          "InstalledVersion": "1.1.1n-r0",
-          "FixedVersion": "1.1.1t-r0",
-          "Status": "fixed",
-          "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
-          },
-          "SeveritySource": "nvd",
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-0286",
-          "DataSource": {
-            "ID": "alpine",
-            "Name": "Alpine Secdb",
-            "URL": "https://secdb.alpinelinux.org/"
-          },
-          "Fingerprint": "sha256:4ad8045cf97df7457649e94948c553852c687409ca181c66029ee28d53805bbf",
-          "Title": "openssl: X.400 address type confusion in X.509 GeneralName",
-          "Description": "There is a type confusion vulnerability relating to X.400 address processing\ninside an X.509 GeneralName. X.400 addresses were parsed as an ASN1_STRING but\nthe public structure definition for GENERAL_NAME incorrectly specified the type\nof the x400Address field as ASN1_TYPE. This field is subsequently interpreted by\nthe OpenSSL function GENERAL_NAME_cmp as an ASN1_TYPE rather than an\nASN1_STRING.\n\nWhen CRL checking is enabled (i.e. the application sets the\nX509_V_FLAG_CRL_CHECK flag), this vulnerability may allow an attacker to pass\narbitrary pointers to a memcmp call, enabling them to read memory contents or\nenact a denial of service. In most cases, the attack requires the attacker to\nprovide both the certificate chain and CRL, neither of which need to have a\nvalid signature. If the attacker only controls one of these inputs, the other\ninput must already contain an X.400 address as a CRL distribution point, which\nis uncommon. As such, this vulnerability is most likely to only affect\napplications which have implemented their own functionality for retrieving CRLs\nover a network.",
-          "Severity": "HIGH",
-          "CweIDs": [
-            "CWE-843"
-          ],
-          "VendorSeverity": {
-            "alma": 3,
-            "amazon": 3,
-            "azure": 3,
-            "cbl-mariner": 3,
-            "ghsa": 3,
-            "julia": 3,
-            "nvd": 3,
-            "oracle-oval": 3,
-            "photon": 3,
-            "redhat": 3,
-            "rocky": 3,
-            "ubuntu": 3
-          },
-          "CVSS": {
-            "ghsa": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:H",
-              "V3Score": 7.4
-            },
-            "julia": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:H",
-              "V3Score": 7.4
-            },
-            "nvd": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:H",
-              "V3Score": 7.4
-            },
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:H",
-              "V3Score": 7.4
-            }
-          },
-          "References": [
-            "https://access.redhat.com/errata/RHSA-2023:0946",
-            "https://access.redhat.com/errata/RHSA-2025:7937",
-            "https://access.redhat.com/security/cve/CVE-2023-0286",
-            "https://access.redhat.com/security/cve/cve-2023-0286",
-            "https://bugzilla.redhat.com/2164440",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144000",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144003",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144006",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144008",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144010",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144012",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144015",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144017",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144019",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2145170",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2158412",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164440",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164487",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164488",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164492",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164494",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164497",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164499",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164500",
-            "https://cert-portal.siemens.com/productcert/html/ssa-028723.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-203374.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-264815.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-337522.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-398330.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-455250.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-556635.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-561322.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-625862.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-769027.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-794697.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-879734.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-943925.html",
-            "https://creativecommons.org/licenses/by/4.0/",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401",
-            "https://errata.almalinux.org/9/ALSA-2025-7937.html",
-            "https://errata.rockylinux.org/RLSA-2023:0946",
-            "https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.6.2-relnotes.txt",
-            "https://ftp.openbsd.org/pub/OpenBSD/patches/7.2/common/018_x509.patch.sig",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2c6c9d439b484e1ba9830d8454a34fa4f80fdfe9",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2f7530077e0ef79d98718138716bc51ca0cad658",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=fd2af07dc083a350c959147097003a14a5e8ac4d",
-            "https://github.com/advisories/GHSA-x4qr-2fvf-3mr5",
-            "https://github.com/pyca/cryptography",
-            "https://github.com/pyca/cryptography/security/advisories/GHSA-x4qr-2fvf-3mr5",
-            "https://linux.oracle.com/cve/CVE-2023-0286.html",
-            "https://linux.oracle.com/errata/ELSA-2025-7937.html",
-            "https://nvd.nist.gov/vuln/detail/CVE-2023-0286",
-            "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2023-0003",
-            "https://rustsec.org/advisories/RUSTSEC-2023-0006.html",
-            "https://security.gentoo.org/glsa/202402-08",
-            "https://ubuntu.com/security/notices/USN-5844-1",
-            "https://ubuntu.com/security/notices/USN-5845-1",
-            "https://ubuntu.com/security/notices/USN-5845-2",
-            "https://ubuntu.com/security/notices/USN-6564-1",
-            "https://ubuntu.com/security/notices/USN-7894-1",
-            "https://www.cve.org/CVERecord?id=CVE-2023-0286",
-            "https://www.openssl.org/news/secadv/20230207.txt"
-          ],
-          "PublishedDate": "2023-02-08T20:15:24.267Z",
-          "LastModifiedDate": "2026-10-14T20:17:22.45Z"
-        },
-        {
-          "VulnerabilityID": "CVE-2023-0464",
-          "PkgID": "libcrypto1.1@1.1.1n-r0",
-          "PkgName": "libcrypto1.1",
-          "PkgIdentifier": {
-            "PURL": "pkg:apk/alpine/libcrypto1.1@1.1.1n-r0?arch=aarch64\u0026distro=3.15.1",
-            "UID": "d12f6b81faa1e7ba"
-          },
-          "InstalledVersion": "1.1.1n-r0",
-          "FixedVersion": "1.1.1t-r2",
-          "Status": "fixed",
-          "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
-          },
-          "SeveritySource": "nvd",
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-0464",
-          "DataSource": {
-            "ID": "alpine",
-            "Name": "Alpine Secdb",
-            "URL": "https://secdb.alpinelinux.org/"
-          },
-          "Fingerprint": "sha256:784150c085d81a64217ec90ef039ec4aae16e2316abb31e7fa407e794b6a7323",
-          "Title": "openssl: Denial of service by excessive resource usage in verifying X509 policy constraints",
-          "Description": "A security vulnerability has been identified in all supported versions\n\nof OpenSSL related to the verification of X.509 certificate chains\nthat include policy constraints.  Attackers may be able to exploit this\nvulnerability by creating a malicious certificate chain that triggers\nexponential use of computational resources, leading to a denial-of-service\n(DoS) attack on affected systems.\n\nPolicy processing is disabled by default but can be enabled by passing\nthe `-policy' argument to the command line utilities or by calling the\n`X509_VERIFY_PARAM_set1_policies()' function.",
-          "Severity": "HIGH",
-          "CweIDs": [
-            "CWE-295"
-          ],
-          "VendorSeverity": {
-            "alma": 2,
-            "amazon": 2,
-            "azure": 3,
-            "cbl-mariner": 3,
-            "julia": 3,
-            "nvd": 3,
-            "oracle-oval": 2,
-            "photon": 3,
-            "redhat": 1,
-            "ubuntu": 1
-          },
-          "CVSS": {
-            "julia": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            },
-            "nvd": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            },
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 5.9
-            }
-          },
-          "References": [
-            "https://access.redhat.com/errata/RHSA-2023:3722",
-            "https://access.redhat.com/security/cve/CVE-2023-0464",
-            "https://bugzilla.redhat.com/2181082",
-            "https://bugzilla.redhat.com/2182561",
-            "https://bugzilla.redhat.com/2182565",
-            "https://bugzilla.redhat.com/2188461",
-            "https://bugzilla.redhat.com/2207947",
-            "https://cert-portal.siemens.com/productcert/html/ssa-028723.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-077170.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-337522.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-341067.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-398330.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-556635.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-625862.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-769027.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-794697.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-879734.html",
-            "https://errata.almalinux.org/9/ALSA-2023-3722.html",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2017771e2db3e2b96f89bbe8766c3209f6a99545",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2dcd4f1e3115f38cefa43e3efbe9b801c27e642e",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=879f7080d7e141f415c79eaa3a8ac4a3dad0348b",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=959c59c7a0164117e7f8366466a32bb1f8d77ff1",
-            "https://github.com/advisories/GHSA-w2w6-xp88-5cvw",
-            "https://linux.oracle.com/cve/CVE-2023-0464.html",
-            "https://linux.oracle.com/errata/ELSA-2023-3722.html",
-            "https://lists.debian.org/debian-lts-announce/2023/06/msg00011.html",
-            "https://nvd.nist.gov/vuln/detail/CVE-2023-0464",
-            "https://security.gentoo.org/glsa/202402-08",
-            "https://security.netapp.com/advisory/ntap-20230406-0006",
-            "https://security.netapp.com/advisory/ntap-20230406-0006/",
-            "https://security.netapp.com/advisory/ntap-20240621-0006",
-            "https://security.netapp.com/advisory/ntap-20240621-0006/",
-            "https://ubuntu.com/security/notices/USN-6039-1",
-            "https://ubuntu.com/security/notices/USN-7894-1",
-            "https://www.couchbase.com/alerts",
-            "https://www.couchbase.com/alerts/",
-            "https://www.cve.org/CVERecord?id=CVE-2023-0464",
-            "https://www.debian.org/security/2023/dsa-5417",
-            "https://www.openssl.org/news/secadv/20230322.txt"
-          ],
-          "PublishedDate": "2023-03-22T17:15:13.13Z",
-          "LastModifiedDate": "2026-10-14T20:17:23.47Z"
-        },
-        {
-          "VulnerabilityID": "CVE-2022-0778",
-          "PkgID": "libretls@3.3.4-r2",
-          "PkgName": "libretls",
-          "PkgIdentifier": {
-            "PURL": "pkg:apk/alpine/libretls@3.3.4-r2?arch=aarch64\u0026distro=3.15.1",
-            "UID": "3d1b0866ec7d41cf"
-          },
-          "InstalledVersion": "3.3.4-r2",
-          "FixedVersion": "3.3.4-r3",
-          "Status": "fixed",
-          "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
-          },
-          "SeveritySource": "nvd",
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-0778",
-          "DataSource": {
-            "ID": "alpine",
-            "Name": "Alpine Secdb",
-            "URL": "https://secdb.alpinelinux.org/"
-          },
-          "Fingerprint": "sha256:3144e9f3adad1e2d2c4538c50d121e646cbf27a16a51e00b5648524dccbb4503",
-          "Title": "openssl: Infinite loop in BN_mod_sqrt() reachable when parsing certificates",
-          "Description": "The BN_mod_sqrt() function, which computes a modular square root, contains a bug that can cause it to loop forever for non-prime moduli. Internally this function is used when parsing certificates that contain elliptic curve public keys in compressed form or explicit elliptic curve parameters with a base point encoded in compressed form. It is possible to trigger the infinite loop by crafting a certificate that has invalid explicit curve parameters. Since certificate parsing happens prior to verification of the certificate signature, any process that parses an externally supplied certificate may thus be subject to a denial of service attack. The infinite loop can also be reached when parsing crafted private keys as they can contain explicit elliptic curve parameters. Thus vulnerable situations include: - TLS clients consuming server certificates - TLS servers consuming client certificates - Hosting providers taking certificates or private keys from customers - Certificate authorities parsing certification requests from subscribers - Anything else which parses ASN.1 elliptic curve parameters Also any other applications that use the BN_mod_sqrt() where the attacker can control the parameter values are vulnerable to this DoS issue. In the OpenSSL 1.0.2 version the public key is not parsed during initial parsing of the certificate which makes it slightly harder to trigger the infinite loop. However any operation which requires the public key from the certificate will trigger the infinite loop. In particular the attacker can use a self-signed certificate to trigger the loop during verification of the certificate signature. This issue affects OpenSSL versions 1.0.2, 1.1.1 and 3.0. It was addressed in the releases of 1.1.1n and 3.0.2 on the 15th March 2022. Fixed in OpenSSL 3.0.2 (Affected 3.0.0,3.0.1). Fixed in OpenSSL 1.1.1n (Affected 1.1.1-1.1.1m). Fixed in OpenSSL 1.0.2zd (Affected 1.0.2-1.0.2zc).",
-          "Severity": "HIGH",
-          "CweIDs": [
-            "CWE-835"
-          ],
-          "VendorSeverity": {
-            "alma": 1,
-            "amazon": 3,
-            "azure": 3,
-            "bitnami": 3,
-            "cbl-mariner": 3,
-            "ghsa": 3,
-            "julia": 3,
-            "nvd": 3,
-            "oracle-oval": 3,
-            "photon": 3,
-            "redhat": 3,
-            "rocky": 3,
-            "ubuntu": 3
-          },
-          "CVSS": {
-            "bitnami": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            },
-            "ghsa": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            },
-            "julia": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            },
-            "nvd": {
-              "V2Vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P",
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V2Score": 5,
-              "V3Score": 7.5
-            },
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            }
-          },
-          "References": [
-            "http://packetstormsecurity.com/files/167344/OpenSSL-1.0.2-1.1.1-3.0-BN_mod_sqrt-Infinite-Loop.html",
-            "http://seclists.org/fulldisclosure/2022/May/33",
-            "http://seclists.org/fulldisclosure/2022/May/35",
-            "http://seclists.org/fulldisclosure/2022/May/38",
-            "https://access.redhat.com/errata/RHSA-2022:4899",
-            "https://access.redhat.com/errata/RHSA-2022:5326",
-            "https://access.redhat.com/security/cve/CVE-2022-0778",
-            "https://bugzilla.redhat.com/2062202",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2062202",
-            "https://cert-portal.siemens.com/productcert/html/ssa-019200.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-028723.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-108696.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-398330.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-712929.html",
-            "https://cert-portal.siemens.com/productcert/pdf/ssa-712929.pdf",
-            "https://creativecommons.org/licenses/by/4.0/",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-0778",
-            "https://errata.almalinux.org/8/ALSA-2022-5326.html",
-            "https://errata.rockylinux.org/RLSA-2022:4899",
-            "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=3118eb64934499d93db3230748a452351d1d9a65",
-            "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=380085481c64de749a6dd25cdf0bcf4360b30f83",
-            "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=a466912611aa6cbdf550cd10601390e587451246",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=3118eb64934499d93db3230748a452351d1d9a65",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=380085481c64de749a6dd25cdf0bcf4360b30f83",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=a466912611aa6cbdf550cd10601390e587451246",
-            "https://github.com/advisories/GHSA-x3mh-jvjw-3xwx",
-            "https://linux.oracle.com/cve/CVE-2022-0778.html",
-            "https://linux.oracle.com/errata/ELSA-2022-9272.html",
-            "https://lists.debian.org/debian-lts-announce/2022/03/msg00023.html",
-            "https://lists.debian.org/debian-lts-announce/2022/03/msg00024.html",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/323SNN6ZX7PRJJWP2BUAFLPUAE42XWLZ",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/323SNN6ZX7PRJJWP2BUAFLPUAE42XWLZ/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/GDB3GQVJPXJE7X5C5JN6JAA4XUDWD6E6",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/GDB3GQVJPXJE7X5C5JN6JAA4XUDWD6E6/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/W6K3PR542DXWLEFFMFIDMME4CWMHJRMG",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/W6K3PR542DXWLEFFMFIDMME4CWMHJRMG/",
-            "https://nvd.nist.gov/vuln/detail/CVE-2022-0778",
-            "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2022-0002",
-            "https://rustsec.org/advisories/RUSTSEC-2022-0014.html",
-            "https://security.gentoo.org/glsa/202210-02",
-            "https://security.netapp.com/advisory/ntap-20220321-0002",
-            "https://security.netapp.com/advisory/ntap-20220321-0002/",
-            "https://security.netapp.com/advisory/ntap-20220429-0005",
-            "https://security.netapp.com/advisory/ntap-20220429-0005/",
-            "https://security.netapp.com/advisory/ntap-20240621-0006",
-            "https://security.netapp.com/advisory/ntap-20240621-0006/",
-            "https://support.apple.com/kb/HT213255",
-            "https://support.apple.com/kb/HT213256",
-            "https://support.apple.com/kb/HT213257",
-            "https://ubuntu.com/security/notices/USN-5328-1",
-            "https://ubuntu.com/security/notices/USN-5328-2",
-            "https://ubuntu.com/security/notices/USN-6457-1",
-            "https://ubuntu.com/security/notices/USN-7894-1",
-            "https://www.cve.org/CVERecord?id=CVE-2022-0778",
-            "https://www.debian.org/security/2022/dsa-5103",
-            "https://www.openssl.org/news/secadv/20220315.txt",
-            "https://www.oracle.com/security-alerts/cpuapr2022.html",
-            "https://www.oracle.com/security-alerts/cpujul2022.html",
-            "https://www.tenable.com/security/tns-2022-06",
-            "https://www.tenable.com/security/tns-2022-07",
-            "https://www.tenable.com/security/tns-2022-08",
-            "https://www.tenable.com/security/tns-2022-09"
-          ],
-          "PublishedDate": "2022-03-15T17:15:08.513Z",
-          "LastModifiedDate": "2026-10-14T13:17:14.377Z"
-        },
-        {
-          "VulnerabilityID": "CVE-2022-4450",
-          "PkgID": "libssl1.1@1.1.1n-r0",
-          "PkgName": "libssl1.1",
-          "PkgIdentifier": {
-            "PURL": "pkg:apk/alpine/libssl1.1@1.1.1n-r0?arch=aarch64\u0026distro=3.15.1",
-            "UID": "a651db48932d8e47"
-          },
-          "InstalledVersion": "1.1.1n-r0",
-          "FixedVersion": "1.1.1t-r0",
-          "Status": "fixed",
-          "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
-          },
-          "SeveritySource": "nvd",
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-4450",
-          "DataSource": {
-            "ID": "alpine",
-            "Name": "Alpine Secdb",
-            "URL": "https://secdb.alpinelinux.org/"
-          },
-          "Fingerprint": "sha256:ccdef5f378d94904ab8d64f606a8b37b66df9359955c6b2138f4b35a4e81f435",
-          "Title": "openssl: double free after calling PEM_read_bio_ex",
-          "Description": "The function PEM_read_bio_ex() reads a PEM file from a BIO and parses and\ndecodes the \"name\" (e.g. \"CERTIFICATE\"), any header data and the payload data.\nIf the function succeeds then the \"name_out\", \"header\" and \"data\" arguments are\npopulated with pointers to buffers containing the relevant decoded data. The\ncaller is responsible for freeing those buffers. It is possible to construct a\nPEM file that results in 0 bytes of payload data. In this case PEM_read_bio_ex()\nwill return a failure code but will populate the header argument with a pointer\nto a buffer that has already been freed. If the caller also frees this buffer\nthen a double free will occur. This will most likely lead to a crash. This\ncould be exploited by an attacker who has the ability to supply malicious PEM\nfiles for parsing to achieve a denial of service attack.\n\nThe functions PEM_read_bio() and PEM_read() are simple wrappers around\nPEM_read_bio_ex() and therefore these functions are also directly affected.\n\nThese functions are also called indirectly by a number of other OpenSSL\nfunctions including PEM_X509_INFO_read_bio_ex() and\nSSL_CTX_use_serverinfo_file() which are also vulnerable. Some OpenSSL internal\nuses of these functions are not vulnerable because the caller does not free the\nheader argument if PEM_read_bio_ex() returns a failure code. These locations\ninclude the PEM_read_bio_TYPE() functions as well as the decoders introduced in\nOpenSSL 3.0.\n\nThe OpenSSL asn1parse command line application is also impacted by this issue.",
-          "Severity": "HIGH",
-          "CweIDs": [
-            "CWE-415"
-          ],
-          "VendorSeverity": {
-            "alma": 3,
-            "amazon": 3,
-            "azure": 3,
-            "cbl-mariner": 3,
-            "ghsa": 3,
-            "julia": 3,
-            "nvd": 3,
-            "oracle-oval": 3,
-            "photon": 3,
-            "redhat": 2,
-            "rocky": 3,
-            "ubuntu": 2
-          },
-          "CVSS": {
-            "ghsa": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            },
-            "julia": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            },
-            "nvd": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            },
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            }
-          },
-          "References": [
-            "https://access.redhat.com/errata/RHSA-2023:0946",
-            "https://access.redhat.com/errata/RHSA-2023:2165",
-            "https://access.redhat.com/security/cve/CVE-2022-4450",
-            "https://bugzilla.redhat.com/1960321",
-            "https://bugzilla.redhat.com/2164440",
-            "https://bugzilla.redhat.com/2164487",
-            "https://bugzilla.redhat.com/2164492",
-            "https://bugzilla.redhat.com/2164494",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144000",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144003",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144006",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144008",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144010",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144012",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144015",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144017",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144019",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2145170",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2158412",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164440",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164487",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164488",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164492",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164494",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164497",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164499",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164500",
-            "https://cert-portal.siemens.com/productcert/html/ssa-203374.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-337522.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-398330.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-556635.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-561322.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-625862.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-699386.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-769027.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-794697.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-879734.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-943925.html",
-            "https://creativecommons.org/licenses/by/4.0/",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401",
-            "https://errata.almalinux.org/9/ALSA-2023-2165.html",
-            "https://errata.rockylinux.org/RLSA-2023:0946",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=63bcf189be73a9cc1264059bed6f57974be74a83",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=bbcf509bd046b34cca19c766bbddc31683d0858b",
-            "https://github.com/advisories/GHSA-v5w6-wcm8-jm4q",
-            "https://linux.oracle.com/cve/CVE-2022-4450.html",
-            "https://linux.oracle.com/errata/ELSA-2023-32791.html",
-            "https://nvd.nist.gov/vuln/detail/CVE-2022-4450",
-            "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2023-0003",
-            "https://rustsec.org/advisories/RUSTSEC-2023-0010.html",
-            "https://security.gentoo.org/glsa/202402-08",
-            "https://ubuntu.com/security/notices/USN-5844-1",
-            "https://ubuntu.com/security/notices/USN-6564-1",
-            "https://ubuntu.com/security/notices/USN-7894-1",
-            "https://www.cve.org/CVERecord?id=CVE-2022-4450",
-            "https://www.openssl.org/news/secadv/20230207.txt"
-          ],
-          "PublishedDate": "2023-02-08T20:15:23.973Z",
-          "LastModifiedDate": "2026-10-14T15:17:00.197Z"
-        },
-        {
-          "VulnerabilityID": "CVE-2023-0215",
-          "PkgID": "libssl1.1@1.1.1n-r0",
-          "PkgName": "libssl1.1",
-          "PkgIdentifier": {
-            "PURL": "pkg:apk/alpine/libssl1.1@1.1.1n-r0?arch=aarch64\u0026distro=3.15.1",
-            "UID": "a651db48932d8e47"
-          },
-          "InstalledVersion": "1.1.1n-r0",
-          "FixedVersion": "1.1.1t-r0",
-          "Status": "fixed",
-          "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
-          },
-          "SeveritySource": "nvd",
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-0215",
-          "DataSource": {
-            "ID": "alpine",
-            "Name": "Alpine Secdb",
-            "URL": "https://secdb.alpinelinux.org/"
-          },
-          "Fingerprint": "sha256:46ab8c162aa375264ebb8bb29f2d34571cea55748d99b7c1de730f6d50a05af3",
-          "Title": "openssl: use-after-free following BIO_new_NDEF",
-          "Description": "The public API function BIO_new_NDEF is a helper function used for streaming\nASN.1 data via a BIO. It is primarily used internally to OpenSSL to support the\nSMIME, CMS and PKCS7 streaming capabilities, but may also be called directly by\nend user applications.\n\nThe function receives a BIO from the caller, prepends a new BIO_f_asn1 filter\nBIO onto the front of it to form a BIO chain, and then returns the new head of\nthe BIO chain to the caller. Under certain conditions, for example if a CMS\nrecipient public key is invalid, the new filter BIO is freed and the function\nreturns a NULL result indicating a failure. However, in this case, the BIO chain\nis not properly cleaned up and the BIO passed by the caller still retains\ninternal pointers to the previously freed filter BIO. If the caller then goes on\nto call BIO_pop() on the BIO then a use-after-free will occur. This will most\nlikely result in a crash.\n\n\n\nThis scenario occurs directly in the internal function B64_write_ASN1() which\nmay cause BIO_new_NDEF() to be called and will subsequently call BIO_pop() on\nthe BIO. This internal function is in turn called by the public API functions\nPEM_write_bio_ASN1_stream, PEM_write_bio_CMS_stream, PEM_write_bio_PKCS7_stream,\nSMIME_write_ASN1, SMIME_write_CMS and SMIME_write_PKCS7.\n\nOther public API functions that may be impacted by this include\ni2d_ASN1_bio_stream, BIO_new_CMS, BIO_new_PKCS7, i2d_CMS_bio_stream and\ni2d_PKCS7_bio_stream.\n\nThe OpenSSL cms and smime command line applications are similarly affected.",
-          "Severity": "HIGH",
-          "CweIDs": [
-            "CWE-416"
-          ],
-          "VendorSeverity": {
-            "alma": 3,
-            "amazon": 3,
-            "azure": 3,
-            "cbl-mariner": 3,
-            "ghsa": 3,
-            "julia": 3,
-            "nvd": 3,
-            "oracle-oval": 3,
-            "photon": 3,
-            "redhat": 2,
-            "rocky": 3,
-            "ubuntu": 2
-          },
-          "CVSS": {
-            "ghsa": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            },
-            "julia": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            },
-            "nvd": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            },
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            }
-          },
-          "References": [
-            "https://access.redhat.com/errata/RHSA-2023:0946",
-            "https://access.redhat.com/errata/RHSA-2023:2165",
-            "https://access.redhat.com/security/cve/CVE-2023-0215",
-            "https://bugzilla.redhat.com/1960321",
-            "https://bugzilla.redhat.com/2164440",
-            "https://bugzilla.redhat.com/2164487",
-            "https://bugzilla.redhat.com/2164492",
-            "https://bugzilla.redhat.com/2164494",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144000",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144003",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144006",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144008",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144010",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144012",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144015",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144017",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144019",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2145170",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2158412",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164440",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164487",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164488",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164492",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164494",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164497",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164499",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164500",
-            "https://cert-portal.siemens.com/productcert/html/ssa-203374.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-337522.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-398330.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-556635.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-561322.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-625862.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-769027.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-794697.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-879734.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-943925.html",
-            "https://creativecommons.org/licenses/by/4.0/",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401",
-            "https://errata.almalinux.org/9/ALSA-2023-2165.html",
-            "https://errata.rockylinux.org/RLSA-2023:0946",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=8818064ce3c3c0f1b740a5aaba2a987e75bfbafd",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=9816136fe31d92ace4037d5da5257f763aeeb4eb",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=c3829dd8825c654652201e16f8a0a0c46ee3f344",
-            "https://github.com/advisories/GHSA-r7jw-wp68-3xch",
-            "https://linux.oracle.com/cve/CVE-2023-0215.html",
-            "https://linux.oracle.com/errata/ELSA-2023-32791.html",
-            "https://nvd.nist.gov/vuln/detail/CVE-2023-0215",
-            "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2023-0003",
-            "https://rustsec.org/advisories/RUSTSEC-2023-0009.html",
-            "https://security.gentoo.org/glsa/202402-08",
-            "https://security.netapp.com/advisory/ntap-20230427-0007",
-            "https://security.netapp.com/advisory/ntap-20230427-0007/",
-            "https://security.netapp.com/advisory/ntap-20230427-0009",
-            "https://security.netapp.com/advisory/ntap-20230427-0009/",
-            "https://security.netapp.com/advisory/ntap-20240621-0006",
-            "https://security.netapp.com/advisory/ntap-20240621-0006/",
-            "https://ubuntu.com/security/notices/USN-5844-1",
-            "https://ubuntu.com/security/notices/USN-5845-1",
-            "https://ubuntu.com/security/notices/USN-5845-2",
-            "https://ubuntu.com/security/notices/USN-6564-1",
-            "https://ubuntu.com/security/notices/USN-7894-1",
-            "https://www.cve.org/CVERecord?id=CVE-2023-0215",
-            "https://www.openssl.org/news/secadv/20230207.txt"
-          ],
-          "PublishedDate": "2023-02-08T20:15:24.107Z",
-          "LastModifiedDate": "2026-10-14T19:16:57.987Z"
-        },
-        {
-          "VulnerabilityID": "CVE-2023-0286",
-          "PkgID": "libssl1.1@1.1.1n-r0",
-          "PkgName": "libssl1.1",
-          "PkgIdentifier": {
-            "PURL": "pkg:apk/alpine/libssl1.1@1.1.1n-r0?arch=aarch64\u0026distro=3.15.1",
-            "UID": "a651db48932d8e47"
-          },
-          "InstalledVersion": "1.1.1n-r0",
-          "FixedVersion": "1.1.1t-r0",
-          "Status": "fixed",
-          "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
-          },
-          "SeveritySource": "nvd",
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-0286",
-          "DataSource": {
-            "ID": "alpine",
-            "Name": "Alpine Secdb",
-            "URL": "https://secdb.alpinelinux.org/"
-          },
-          "Fingerprint": "sha256:a295c5c5a6699948f25b55c5256cab0f1bf80435a4eaf75db0d5b96e4f97d0eb",
-          "Title": "openssl: X.400 address type confusion in X.509 GeneralName",
-          "Description": "There is a type confusion vulnerability relating to X.400 address processing\ninside an X.509 GeneralName. X.400 addresses were parsed as an ASN1_STRING but\nthe public structure definition for GENERAL_NAME incorrectly specified the type\nof the x400Address field as ASN1_TYPE. This field is subsequently interpreted by\nthe OpenSSL function GENERAL_NAME_cmp as an ASN1_TYPE rather than an\nASN1_STRING.\n\nWhen CRL checking is enabled (i.e. the application sets the\nX509_V_FLAG_CRL_CHECK flag), this vulnerability may allow an attacker to pass\narbitrary pointers to a memcmp call, enabling them to read memory contents or\nenact a denial of service. In most cases, the attack requires the attacker to\nprovide both the certificate chain and CRL, neither of which need to have a\nvalid signature. If the attacker only controls one of these inputs, the other\ninput must already contain an X.400 address as a CRL distribution point, which\nis uncommon. As such, this vulnerability is most likely to only affect\napplications which have implemented their own functionality for retrieving CRLs\nover a network.",
-          "Severity": "HIGH",
-          "CweIDs": [
-            "CWE-843"
-          ],
-          "VendorSeverity": {
-            "alma": 3,
-            "amazon": 3,
-            "azure": 3,
-            "cbl-mariner": 3,
-            "ghsa": 3,
-            "julia": 3,
-            "nvd": 3,
-            "oracle-oval": 3,
-            "photon": 3,
-            "redhat": 3,
-            "rocky": 3,
-            "ubuntu": 3
-          },
-          "CVSS": {
-            "ghsa": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:H",
-              "V3Score": 7.4
-            },
-            "julia": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:H",
-              "V3Score": 7.4
-            },
-            "nvd": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:H",
-              "V3Score": 7.4
-            },
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:H",
-              "V3Score": 7.4
-            }
-          },
-          "References": [
-            "https://access.redhat.com/errata/RHSA-2023:0946",
-            "https://access.redhat.com/errata/RHSA-2025:7937",
-            "https://access.redhat.com/security/cve/CVE-2023-0286",
-            "https://access.redhat.com/security/cve/cve-2023-0286",
-            "https://bugzilla.redhat.com/2164440",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144000",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144003",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144006",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144008",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144010",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144012",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144015",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144017",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2144019",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2145170",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2158412",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164440",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164487",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164488",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164492",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164494",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164497",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164499",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2164500",
-            "https://cert-portal.siemens.com/productcert/html/ssa-028723.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-203374.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-264815.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-337522.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-398330.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-455250.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-556635.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-561322.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-625862.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-769027.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-794697.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-879734.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-943925.html",
-            "https://creativecommons.org/licenses/by/4.0/",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401",
-            "https://errata.almalinux.org/9/ALSA-2025-7937.html",
-            "https://errata.rockylinux.org/RLSA-2023:0946",
-            "https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.6.2-relnotes.txt",
-            "https://ftp.openbsd.org/pub/OpenBSD/patches/7.2/common/018_x509.patch.sig",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2c6c9d439b484e1ba9830d8454a34fa4f80fdfe9",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2f7530077e0ef79d98718138716bc51ca0cad658",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=fd2af07dc083a350c959147097003a14a5e8ac4d",
-            "https://github.com/advisories/GHSA-x4qr-2fvf-3mr5",
-            "https://github.com/pyca/cryptography",
-            "https://github.com/pyca/cryptography/security/advisories/GHSA-x4qr-2fvf-3mr5",
-            "https://linux.oracle.com/cve/CVE-2023-0286.html",
-            "https://linux.oracle.com/errata/ELSA-2025-7937.html",
-            "https://nvd.nist.gov/vuln/detail/CVE-2023-0286",
-            "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2023-0003",
-            "https://rustsec.org/advisories/RUSTSEC-2023-0006.html",
-            "https://security.gentoo.org/glsa/202402-08",
-            "https://ubuntu.com/security/notices/USN-5844-1",
-            "https://ubuntu.com/security/notices/USN-5845-1",
-            "https://ubuntu.com/security/notices/USN-5845-2",
-            "https://ubuntu.com/security/notices/USN-6564-1",
-            "https://ubuntu.com/security/notices/USN-7894-1",
-            "https://www.cve.org/CVERecord?id=CVE-2023-0286",
-            "https://www.openssl.org/news/secadv/20230207.txt"
-          ],
-          "PublishedDate": "2023-02-08T20:15:24.267Z",
-          "LastModifiedDate": "2026-10-14T20:17:22.45Z"
-        },
-        {
-          "VulnerabilityID": "CVE-2023-0464",
-          "PkgID": "libssl1.1@1.1.1n-r0",
-          "PkgName": "libssl1.1",
-          "PkgIdentifier": {
-            "PURL": "pkg:apk/alpine/libssl1.1@1.1.1n-r0?arch=aarch64\u0026distro=3.15.1",
-            "UID": "a651db48932d8e47"
-          },
-          "InstalledVersion": "1.1.1n-r0",
-          "FixedVersion": "1.1.1t-r2",
-          "Status": "fixed",
-          "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
-          },
-          "SeveritySource": "nvd",
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-0464",
-          "DataSource": {
-            "ID": "alpine",
-            "Name": "Alpine Secdb",
-            "URL": "https://secdb.alpinelinux.org/"
-          },
-          "Fingerprint": "sha256:ca36b9403fa0a892991e9d30cbe0ccf6e751aab097cad0b56f29f1a73def70a3",
-          "Title": "openssl: Denial of service by excessive resource usage in verifying X509 policy constraints",
-          "Description": "A security vulnerability has been identified in all supported versions\n\nof OpenSSL related to the verification of X.509 certificate chains\nthat include policy constraints.  Attackers may be able to exploit this\nvulnerability by creating a malicious certificate chain that triggers\nexponential use of computational resources, leading to a denial-of-service\n(DoS) attack on affected systems.\n\nPolicy processing is disabled by default but can be enabled by passing\nthe `-policy' argument to the command line utilities or by calling the\n`X509_VERIFY_PARAM_set1_policies()' function.",
-          "Severity": "HIGH",
-          "CweIDs": [
-            "CWE-295"
-          ],
-          "VendorSeverity": {
-            "alma": 2,
-            "amazon": 2,
-            "azure": 3,
-            "cbl-mariner": 3,
-            "julia": 3,
-            "nvd": 3,
-            "oracle-oval": 2,
-            "photon": 3,
-            "redhat": 1,
-            "ubuntu": 1
-          },
-          "CVSS": {
-            "julia": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            },
-            "nvd": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            },
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 5.9
-            }
-          },
-          "References": [
-            "https://access.redhat.com/errata/RHSA-2023:3722",
-            "https://access.redhat.com/security/cve/CVE-2023-0464",
-            "https://bugzilla.redhat.com/2181082",
-            "https://bugzilla.redhat.com/2182561",
-            "https://bugzilla.redhat.com/2182565",
-            "https://bugzilla.redhat.com/2188461",
-            "https://bugzilla.redhat.com/2207947",
-            "https://cert-portal.siemens.com/productcert/html/ssa-028723.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-077170.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-337522.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-341067.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-398330.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-556635.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-625862.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-769027.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-794697.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-879734.html",
-            "https://errata.almalinux.org/9/ALSA-2023-3722.html",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2017771e2db3e2b96f89bbe8766c3209f6a99545",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2dcd4f1e3115f38cefa43e3efbe9b801c27e642e",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=879f7080d7e141f415c79eaa3a8ac4a3dad0348b",
-            "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=959c59c7a0164117e7f8366466a32bb1f8d77ff1",
-            "https://github.com/advisories/GHSA-w2w6-xp88-5cvw",
-            "https://linux.oracle.com/cve/CVE-2023-0464.html",
-            "https://linux.oracle.com/errata/ELSA-2023-3722.html",
-            "https://lists.debian.org/debian-lts-announce/2023/06/msg00011.html",
-            "https://nvd.nist.gov/vuln/detail/CVE-2023-0464",
-            "https://security.gentoo.org/glsa/202402-08",
-            "https://security.netapp.com/advisory/ntap-20230406-0006",
-            "https://security.netapp.com/advisory/ntap-20230406-0006/",
-            "https://security.netapp.com/advisory/ntap-20240621-0006",
-            "https://security.netapp.com/advisory/ntap-20240621-0006/",
-            "https://ubuntu.com/security/notices/USN-6039-1",
-            "https://ubuntu.com/security/notices/USN-7894-1",
-            "https://www.couchbase.com/alerts",
-            "https://www.couchbase.com/alerts/",
-            "https://www.cve.org/CVERecord?id=CVE-2023-0464",
-            "https://www.debian.org/security/2023/dsa-5417",
-            "https://www.openssl.org/news/secadv/20230322.txt"
-          ],
-          "PublishedDate": "2023-03-22T17:15:13.13Z",
-          "LastModifiedDate": "2026-10-14T20:17:23.47Z"
-        },
-        {
-          "VulnerabilityID": "CVE-2022-28391",
-          "PkgID": "ssl_client@1.34.1-r4",
-          "PkgName": "ssl_client",
-          "PkgIdentifier": {
-            "PURL": "pkg:apk/alpine/ssl_client@1.34.1-r4?arch=aarch64\u0026distro=3.15.1",
-            "UID": "abed43f07a926b34"
-          },
-          "InstalledVersion": "1.34.1-r4",
-          "FixedVersion": "1.34.1-r5",
-          "Status": "fixed",
-          "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
-          },
-          "SeveritySource": "nvd",
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-28391",
-          "DataSource": {
-            "ID": "alpine",
-            "Name": "Alpine Secdb",
-            "URL": "https://secdb.alpinelinux.org/"
-          },
-          "Fingerprint": "sha256:9e857a8188890361e0b7cd31e5dff4b3860a407b34d4132db996edb936839675",
-          "Title": "busybox: remote attackers may execute arbitrary code if netstat is used",
-          "Description": "BusyBox through 1.35.0 allows remote attackers to execute arbitrary code if netstat is used to print a DNS PTR record's value to a VT compatible terminal. Alternatively, the attacker could choose to change the terminal's colors.",
-          "Severity": "HIGH",
-          "CweIDs": [
-            "CWE-88"
-          ],
-          "VendorSeverity": {
-            "amazon": 2,
-            "azure": 3,
-            "cbl-mariner": 3,
-            "nvd": 3,
-            "redhat": 2
-          },
-          "CVSS": {
-            "nvd": {
-              "V2Vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P",
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-              "V2Score": 6.8,
-              "V3Score": 8.8
-            },
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N",
-              "V3Score": 6.5
-            }
-          },
-          "References": [
-            "https://access.redhat.com/security/cve/CVE-2022-28391",
-            "https://git.alpinelinux.org/aports/plain/main/busybox/0001-libbb-sockaddr2str-ensure-only-printable-characters-.patch",
-            "https://git.alpinelinux.org/aports/plain/main/busybox/0002-nslookup-sanitize-all-printed-strings-with-printable.patch",
-            "https://gitlab.alpinelinux.org/alpine/aports/-/issues/13661",
-            "https://nvd.nist.gov/vuln/detail/CVE-2022-28391",
-            "https://www.cve.org/CVERecord?id=CVE-2022-28391"
-          ],
-          "PublishedDate": "2022-04-03T21:15:08.207Z",
-          "LastModifiedDate": "2026-06-17T04:38:29.55Z"
-        },
-        {
-          "VulnerabilityID": "CVE-2022-37434",
-          "PkgID": "zlib@1.2.11-r3",
-          "PkgName": "zlib",
-          "PkgIdentifier": {
-            "PURL": "pkg:apk/alpine/zlib@1.2.11-r3?arch=aarch64\u0026distro=3.15.1",
-            "UID": "8f1c293638451a5b"
-          },
-          "InstalledVersion": "1.2.11-r3",
-          "FixedVersion": "1.2.12-r2",
-          "Status": "fixed",
-          "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
-          },
-          "SeveritySource": "nvd",
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-37434",
-          "DataSource": {
-            "ID": "alpine",
-            "Name": "Alpine Secdb",
-            "URL": "https://secdb.alpinelinux.org/"
-          },
-          "Fingerprint": "sha256:4920c0298c3df2edf08ed8d66bc94cc20537df6e5d9dfb9cde6f353a44d3eabc",
-          "Title": "zlib: heap-based buffer over-read and overflow in inflate() in inflate.c via a large gzip header extra field",
-          "Description": "zlib through 1.2.12 has a heap-based buffer over-read or buffer overflow in inflate in inflate.c via a large gzip header extra field. NOTE: only applications that call inflateGetHeader are affected. Some common applications bundle the affected zlib source code but may be unable to call inflateGetHeader (e.g., see the nodejs/node reference).",
-          "Severity": "CRITICAL",
-          "CweIDs": [
-            "CWE-787",
-            "CWE-120"
-          ],
-          "VendorSeverity": {
-            "alma": 2,
-            "amazon": 3,
-            "azure": 4,
-            "bottlerocket": 2,
-            "cbl-mariner": 4,
-            "julia": 4,
-            "nvd": 4,
-            "oracle-oval": 2,
-            "photon": 4,
-            "redhat": 2,
-            "rocky": 2,
-            "ubuntu": 2
-          },
-          "CVSS": {
-            "julia": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-              "V3Score": 9.8
-            },
-            "nvd": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-              "V3Score": 9.8
-            },
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:H",
-              "V3Score": 7
-            }
-          },
-          "References": [
-            "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-37434",
-            "http://seclists.org/fulldisclosure/2022/Oct/37",
-            "http://seclists.org/fulldisclosure/2022/Oct/38",
-            "http://seclists.org/fulldisclosure/2022/Oct/41",
-            "http://seclists.org/fulldisclosure/2022/Oct/42",
-            "http://www.openwall.com/lists/oss-security/2022/08/05/2",
-            "http://www.openwall.com/lists/oss-security/2022/08/09/1",
-            "https://access.redhat.com/errata/RHSA-2022:8291",
-            "https://access.redhat.com/security/cve/CVE-2022-37434",
-            "https://bugzilla.redhat.com/2116639",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2053198",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2077431",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2081296",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2116639",
-            "https://cert-portal.siemens.com/productcert/html/ssa-150063.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-202008.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-398330.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-470355.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-561322.html",
-            "https://creativecommons.org/licenses/by/4.0/",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-37434",
-            "https://errata.almalinux.org/9/ALSA-2022-8291.html",
-            "https://errata.rockylinux.org/RLSA-2022:8291",
-            "https://github.com/bottlerocket-os/bottlerocket/security/advisories/GHSA-w5mr-8397-m99w",
-            "https://github.com/curl/curl/issues/9271",
-            "https://github.com/ivd38/zlib_overflow",
-            "https://github.com/madler/zlib/blob/21767c654d31d2dccdde4330529775c6c5fd5389/zlib.h#L1062-L1063",
-            "https://github.com/madler/zlib/commit/1eb7682f845ac9e9bf9ae35bbfb3bad5dacbd91d",
-            "https://github.com/madler/zlib/commit/eff308af425b67093bab25f80f1ae950166bece1",
-            "https://github.com/nodejs/node/blob/75b68c6e4db515f76df73af476eccf382bbcb00a/deps/zlib/inflate.c#L762-L764",
-            "https://linux.oracle.com/cve/CVE-2022-37434.html",
-            "https://linux.oracle.com/errata/ELSA-2023-1095.html",
-            "https://lists.debian.org/debian-lts-announce/2022/09/msg00012.html",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/JWN4VE3JQR4O2SOUS5TXNLANRPMHWV4I/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/NMBOJ77A7T7PQCARMDUK75TE6LLESZ3O/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/PAVPQNCG3XRLCLNSQRM3KAN5ZFMVXVTY/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/X5U7OTKZSHY2I3ZFJSR2SHFHW72RKGDK/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/YRQAI7H4M4RQZ2IWZUEEXECBE5D56BH2/",
-            "https://nvd.nist.gov/vuln/detail/CVE-2022-37434",
-            "https://security.netapp.com/advisory/ntap-20220901-0005/",
-            "https://security.netapp.com/advisory/ntap-20230427-0007/",
-            "https://support.apple.com/kb/HT213488",
-            "https://support.apple.com/kb/HT213489",
-            "https://support.apple.com/kb/HT213490",
-            "https://support.apple.com/kb/HT213491",
-            "https://support.apple.com/kb/HT213493",
-            "https://support.apple.com/kb/HT213494",
-            "https://ubuntu.com/security/notices/USN-5570-1",
-            "https://ubuntu.com/security/notices/USN-5570-2",
-            "https://ubuntu.com/security/notices/USN-5573-1",
-            "https://ubuntu.com/security/notices/USN-6736-1",
-            "https://ubuntu.com/security/notices/USN-6736-2",
-            "https://www.cve.org/CVERecord?id=CVE-2022-37434",
-            "https://www.debian.org/security/2022/dsa-5218"
-          ],
-          "PublishedDate": "2022-08-05T07:15:07.24Z",
-          "LastModifiedDate": "2026-10-14T18:17:03.63Z"
-        },
-        {
-          "VulnerabilityID": "CVE-2018-25032",
-          "PkgID": "zlib@1.2.11-r3",
-          "PkgName": "zlib",
-          "PkgIdentifier": {
-            "PURL": "pkg:apk/alpine/zlib@1.2.11-r3?arch=aarch64\u0026distro=3.15.1",
-            "UID": "8f1c293638451a5b"
-          },
-          "InstalledVersion": "1.2.11-r3",
-          "FixedVersion": "1.2.12-r0",
-          "Status": "fixed",
-          "Layer": {
-            "Digest": "sha256:148d739a8e6b9342daa1f5b428d3a3c6118f340f21df28c16e06f918ef150147",
-            "DiffID": "sha256:534ef03728853c20d5afa89678af0435e1da066cd0dbf4fcc433ca130a8df87c"
-          },
-          "SeveritySource": "nvd",
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-25032",
-          "DataSource": {
-            "ID": "alpine",
-            "Name": "Alpine Secdb",
-            "URL": "https://secdb.alpinelinux.org/"
-          },
-          "Fingerprint": "sha256:e1cd6a77865608d48c091566d5d632c71bd9239999de3e39c20d8d06aeae4c22",
-          "Title": "zlib: A flaw found in zlib when compressing (not decompressing) certain inputs",
-          "Description": "zlib before 1.2.12 allows memory corruption when deflating (i.e., when compressing) if the input has many distant matches.",
-          "Severity": "HIGH",
-          "CweIDs": [
-            "CWE-787"
-          ],
-          "VendorSeverity": {
-            "alma": 3,
-            "amazon": 3,
-            "azure": 3,
-            "cbl-mariner": 3,
-            "ghsa": 3,
-            "julia": 3,
-            "nvd": 3,
-            "oracle-oval": 3,
-            "photon": 3,
-            "redhat": 3,
-            "ruby-advisory-db": 3,
-            "ubuntu": 2
-          },
-          "CVSS": {
-            "ghsa": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            },
-            "julia": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 7.5
-            },
-            "nvd": {
-              "V2Vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P",
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-              "V2Score": 5,
-              "V3Score": 7.5
-            },
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H",
-              "V3Score": 8.2
-            }
-          },
-          "References": [
-            "http://seclists.org/fulldisclosure/2022/May/33",
-            "http://seclists.org/fulldisclosure/2022/May/35",
-            "http://seclists.org/fulldisclosure/2022/May/38",
-            "http://www.openwall.com/lists/oss-security/2022/03/25/2",
-            "http://www.openwall.com/lists/oss-security/2022/03/26/1",
-            "https://access.redhat.com/errata/RHSA-2022:8420",
-            "https://access.redhat.com/hydra/rest/securitydata/cve/CVE-2018-25032.json",
-            "https://access.redhat.com/security/cve/CVE-2018-25032",
-            "https://bugzilla.redhat.com/2067945",
-            "https://cert-portal.siemens.com/productcert/html/ssa-333517.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-398330.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-419740.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-470355.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-565386.html",
-            "https://cert-portal.siemens.com/productcert/html/ssa-942865.html",
-            "https://cert-portal.siemens.com/productcert/pdf/ssa-333517.pdf",
-            "https://errata.almalinux.org/9/ALSA-2022-8420.html",
-            "https://github.com/advisories/GHSA-jc36-42cf-vqwj",
-            "https://github.com/madler/zlib/commit/5c44459c3b28a9bd3283aaceab7c615f8020c531",
-            "https://github.com/madler/zlib/compare/v1.2.11...v1.2.12",
-            "https://github.com/madler/zlib/issues/605",
-            "https://github.com/rubysec/ruby-advisory-db/blob/master/gems/nokogiri/CVE-2018-25032.yml",
-            "https://github.com/sparklemotion/nokogiri/releases/tag/v1.13.4",
-            "https://github.com/sparklemotion/nokogiri/security/advisories/GHSA-v6gp-9mmm-c6p5",
-            "https://groups.google.com/g/ruby-security-ann/c/vX7qSjsvWis/m/TJWN4oOKBwAJ",
-            "https://linux.oracle.com/cve/CVE-2018-25032.html",
-            "https://linux.oracle.com/errata/ELSA-2022-9565.html",
-            "https://lists.debian.org/debian-lts-announce/2022/04/msg00000.html",
-            "https://lists.debian.org/debian-lts-announce/2022/05/msg00008.html",
-            "https://lists.debian.org/debian-lts-announce/2022/09/msg00023.html",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/DCZFIJBJTZ7CL5QXBFKTQ22Q26VINRUF",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/DCZFIJBJTZ7CL5QXBFKTQ22Q26VINRUF/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/DF62MVMH3QUGMBDCB3DY2ERQ6EBHTADB",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/DF62MVMH3QUGMBDCB3DY2ERQ6EBHTADB/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/JZZPTWRYQULAOL3AW7RZJNVZ2UONXCV4",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/JZZPTWRYQULAOL3AW7RZJNVZ2UONXCV4/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/NS2D2GFPFGOJUL4WQ3DUAY7HF4VWQ77F",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/NS2D2GFPFGOJUL4WQ3DUAY7HF4VWQ77F/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/VOKNP2L734AEL47NRYGVZIKEFOUBQY5Y",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/VOKNP2L734AEL47NRYGVZIKEFOUBQY5Y/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/XOKFMSNQ5D5WGMALBNBXU3GE442V74WU",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/XOKFMSNQ5D5WGMALBNBXU3GE442V74WU/",
-            "https://nvd.nist.gov/vuln/detail/CVE-2018-25032",
-            "https://security.gentoo.org/glsa/202210-42",
-            "https://security.netapp.com/advisory/ntap-20220526-0009",
-            "https://security.netapp.com/advisory/ntap-20220526-0009/",
-            "https://security.netapp.com/advisory/ntap-20220729-0004",
-            "https://security.netapp.com/advisory/ntap-20220729-0004/",
-            "https://support.apple.com/kb/HT213255",
-            "https://support.apple.com/kb/HT213256",
-            "https://support.apple.com/kb/HT213257",
-            "https://ubuntu.com/security/notices/USN-5355-1",
-            "https://ubuntu.com/security/notices/USN-5355-2",
-            "https://ubuntu.com/security/notices/USN-5359-1",
-            "https://ubuntu.com/security/notices/USN-5359-2",
-            "https://ubuntu.com/security/notices/USN-5739-1",
-            "https://ubuntu.com/security/notices/USN-6736-1",
-            "https://ubuntu.com/security/notices/USN-6736-2",
-            "https://www.cve.org/CVERecord?id=CVE-2018-25032",
-            "https://www.debian.org/security/2022/dsa-5111",
-            "https://www.openwall.com/lists/oss-security/2022/03/24/1",
-            "https://www.openwall.com/lists/oss-security/2022/03/28/1",
-            "https://www.openwall.com/lists/oss-security/2022/03/28/3",
-            "https://www.oracle.com/security-alerts/cpujul2022.html"
-          ],
-          "PublishedDate": "2022-03-25T09:15:08.187Z",
-          "LastModifiedDate": "2026-10-14T07:16:44.293Z"
         }
       ]
     }

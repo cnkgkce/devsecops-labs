@@ -1,70 +1,14 @@
 {
   "summary": {
     "app_name": "vulnerable-node-app",
-    "total_findings": 11,
-    "true_positives": 9,
+    "total_findings": 10,
+    "true_positives": 8,
     "false_positives": 2,
-    "false_positive_reduction_rate": "18.2%"
+    "false_positive_reduction_rate": "20.0%"
   },
   "triaged_findings": [
     {
       "finding_id": "finding-1",
-      "check_id": "dockerfile.security.missing-user.missing-user",
-      "path": "sample-app/Dockerfile",
-      "line": 16,
-      "col": 1,
-      "severity": "ERROR",
-      "message": "By not specifying a USER, a program in the container may run as 'root'. This is a security hazard. If an attacker can control a process running as root, they may have control over the container. Ensure that the last USER in a Dockerfile is a USER other than 'root'.",
-      "cwe": [
-        "CWE-250: Execution with Unnecessary Privileges"
-      ],
-      "owasp": [
-        "A04:2021 - Insecure Design",
-        "A06:2025 - Insecure Design"
-      ],
-      "sink_info": {
-        "line": 16,
-        "code": "CMD [\"node\", \"server.js\"]",
-        "type": "AST / Dataflow Sink"
-      },
-      "code_context": "                       12 | COPY . .\n                       13 | \n                       14 | EXPOSE 3000\n                       15 | \n>> [VULNERABLE SINK]   16 | CMD [\"node\", \"server.js\"]",
-      "code_lines": [
-        {
-          "line": 12,
-          "code": "COPY . .",
-          "is_sink": false
-        },
-        {
-          "line": 13,
-          "code": "",
-          "is_sink": false
-        },
-        {
-          "line": 14,
-          "code": "EXPOSE 3000",
-          "is_sink": false
-        },
-        {
-          "line": 15,
-          "code": "",
-          "is_sink": false
-        },
-        {
-          "line": 16,
-          "code": "CMD [\"node\", \"server.js\"]",
-          "is_sink": true
-        }
-      ],
-      "triage": {
-        "is_false_positive": false,
-        "verdict": "TRUE_POSITIVE",
-        "confidence_score": 98,
-        "reasoning": "Kullan\u0131c\u0131 kontrol\u00fcndeki veri filtrelenmeden do\u011frudan tehlikeli fonksiyona (Sink: 'CMD [\"node\", \"server.js\"]...') aktar\u0131lm\u0131\u015ft\u0131r. \u0130stismara a\u00e7\u0131k kritik zafiyet.",
-        "remediation_advice": "Girdileri parameterized queries, argument array ile \u00e7al\u0131\u015fan g\u00fcvenli API'lar veya s\u0131k\u0131 do\u011frulama mekanizmalar\u0131 ile izole edin."
-      }
-    },
-    {
-      "finding_id": "finding-2",
       "check_id": "javascript.express.security.audit.express-check-csurf-middleware-usage.express-check-csurf-middleware-usage",
       "path": "sample-app/server.js",
       "line": 8,
@@ -140,7 +84,7 @@
       }
     },
     {
-      "finding_id": "finding-3",
+      "finding_id": "finding-2",
       "check_id": "javascript.lang.security.detect-child-process.detect-child-process",
       "path": "sample-app/server.js",
       "line": 42,
@@ -217,7 +161,7 @@
       }
     },
     {
-      "finding_id": "finding-4",
+      "finding_id": "finding-3",
       "check_id": "javascript.express.security.audit.xss.direct-response-write.direct-response-write",
       "path": "sample-app/server.js",
       "line": 67,
@@ -294,7 +238,7 @@
       }
     },
     {
-      "finding_id": "finding-5",
+      "finding_id": "finding-4",
       "check_id": "javascript.express.security.injection.raw-html-format.raw-html-format",
       "path": "sample-app/server.js",
       "line": 67,
@@ -371,7 +315,7 @@
       }
     },
     {
-      "finding_id": "finding-6",
+      "finding_id": "finding-5",
       "check_id": "javascript.express.security.audit.express-path-join-resolve-traversal.express-path-join-resolve-traversal",
       "path": "sample-app/server.js",
       "line": 74,
@@ -448,7 +392,7 @@
       }
     },
     {
-      "finding_id": "finding-7",
+      "finding_id": "finding-6",
       "check_id": "javascript.lang.security.audit.path-traversal.path-join-resolve-traversal.path-join-resolve-traversal",
       "path": "sample-app/server.js",
       "line": 74,
@@ -525,7 +469,7 @@
       }
     },
     {
-      "finding_id": "finding-8",
+      "finding_id": "finding-7",
       "check_id": "javascript.express.security.audit.xss.direct-response-write.direct-response-write",
       "path": "sample-app/server.js",
       "line": 77,
@@ -602,7 +546,7 @@
       }
     },
     {
-      "finding_id": "finding-9",
+      "finding_id": "finding-8",
       "check_id": "javascript.express.security.injection.raw-html-format.raw-html-format",
       "path": "sample-app/server.js",
       "line": 77,
@@ -679,7 +623,7 @@
       }
     },
     {
-      "finding_id": "finding-10",
+      "finding_id": "finding-9",
       "check_id": "javascript.express.security.audit.xss.direct-response-write.direct-response-write",
       "path": "sample-app/server.js",
       "line": 131,
@@ -756,7 +700,7 @@
       }
     },
     {
-      "finding_id": "finding-11",
+      "finding_id": "finding-10",
       "check_id": "javascript.express.security.injection.raw-html-format.raw-html-format",
       "path": "sample-app/server.js",
       "line": 131,
