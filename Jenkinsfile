@@ -120,6 +120,7 @@ pipeline {
                     ls -la reports/
                 fi
             """
+            sh 'cp -r "${TARGET_DIR}/reports" ./ || true'
             archiveArtifacts artifacts: 'reports/**/*', allowEmptyArchive: true
         }
         success {
