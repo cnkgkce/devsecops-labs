@@ -30,5 +30,15 @@ services:
       - ./reports:/app/reports:ro
     restart: unless-stopped
 
+  # Standalone Vulnerable Target App (Hedef Zafiyetli Uygulama - AI Pentester Lab)
+  vulnerable-app:
+    build:
+      context: ./sample-app
+      dockerfile: Dockerfile
+    container_name: devsecops-vulnerable-app
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
 volumes:
   jenkins_data:

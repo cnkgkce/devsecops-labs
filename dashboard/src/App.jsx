@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import KpiCards from './components/KpiCards';
+import BuildCompareBanner from './components/BuildCompareBanner';
 import SastAiView from './components/SastAiView';
 import ScaView from './components/ScaView';
 import ContainerView from './components/ContainerView';
 import CodeInspectorModal from './components/CodeInspectorModal';
-import { ShieldCheck, Package, Server, Code2 } from 'lucide-react';
+import { ShieldCheck, Package, Server } from 'lucide-react';
 
 export default function App() {
   const [apps, setApps] = useState([]);
   const [selectedApp, setSelectedApp] = useState('vulnerable-node-app');
+  const [builds, setBuilds] = useState([]);
+  const [selectedBuild, setSelectedBuild] = useState('latest');
   const [reportData, setReportData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('SAST_AI'); // SAST_AI, SCA, CONTAINER
@@ -28,10 +31,25 @@ export default function App() {
       .catch((err) => console.error('Error loading apps:', err));
   }, []);
 
-  // Load report data when selectedApp changes
+  // Load builds list
+  const loadBuilds = () => {
+    fetch('/api/builds')
+      .then((res) => res.json())
+      .then((data) => {
+        setBuilds(data);
+      })
+      .catch((err) => console.error('Error loading builds:', err));
+  };
+
+  useEffect(() => {
+    loadBuilds();
+  }, []);
+
+  // Load report data when selectedApp or selectedBuild changes
   const loadReports = () => {
     setLoading(true);
-    fetch(`/api/reports?app=${selectedApp}`)
+    const buildParam = selectedBuild && selectedBuild !== 'latest' ? `&build=${selectedBuild}` : '';
+    fetch(`/api/reports?app=${selectedApp}${buildParam}`)
       .then((res) => res.json())
       .then((data) => {
         setReportData(data);
@@ -46,8 +64,9 @@ export default function App() {
   useEffect(() => {
     if (selectedApp) {
       loadReports();
+      loadBuilds();
     }
-  }, [selectedApp]);
+  }, [selectedApp, selectedBuild]);
 
   const sastCount = reportData?.sast?.findings?.length || 0;
   const scaCount = reportData?.sca?.total || 0;
@@ -59,11 +78,23 @@ export default function App() {
         apps={apps}
         selectedApp={selectedApp}
         onSelectApp={setSelectedApp}
-        onRefresh={loadReports}
+        builds={builds}
+        selectedBuild={selectedBuild}
+        onSelectBuild={setSelectedBuild}
+        onRefresh={() => {
+          loadBuilds();
+          loadReports();
+        }}
         loading={loading}
       />
 
       <main className="main-content">
+        {/* Active Build & Comparison Banner */}
+        <BuildCompareBanner
+          currentBuildInfo={reportData?.build}
+          builds={builds}
+        />
+
         {/* KPI Metric Overview */}
         <KpiCards data={reportData} />
 

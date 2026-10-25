@@ -1,0 +1,3600 @@
+{
+  "SchemaVersion": 2,
+  "Trivy": {
+    "Version": "0.76.1"
+  },
+  "ReportID": "01a17296-5d8b-77ff-b47f-0b341eff746d",
+  "CreatedAt": "2026-10-25T10:23:39.403524553Z",
+  "ArtifactName": "sample-app",
+  "ArtifactType": "filesystem",
+  "Results": [
+    {
+      "Target": "package-lock.json",
+      "Class": "lang-pkgs",
+      "Type": "npm",
+      "Packages": [
+        {
+          "ID": "axios@0.21.1",
+          "Name": "axios",
+          "Identifier": {
+            "PURL": "pkg:npm/axios@0.21.1",
+            "UID": "f7a82091717c2a71"
+          },
+          "Version": "0.21.1",
+          "Relationship": "direct",
+          "DependsOn": [
+            "follow-redirects@1.16.1"
+          ],
+          "Locations": [
+            {
+              "StartLine": 41,
+              "EndLine": 48
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "ejs@3.1.6",
+          "Name": "ejs",
+          "Identifier": {
+            "PURL": "pkg:npm/ejs@3.1.6",
+            "UID": "50232f024652eb8c"
+          },
+          "Version": "3.1.6",
+          "Relationship": "direct",
+          "DependsOn": [
+            "jake@10.9.4"
+          ],
+          "Locations": [
+            {
+              "StartLine": 161,
+              "EndLine": 174
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "express@4.17.1",
+          "Name": "express",
+          "Identifier": {
+            "PURL": "pkg:npm/express@4.17.1",
+            "UID": "1c340870fa105bc6"
+          },
+          "Version": "4.17.1",
+          "Relationship": "direct",
+          "DependsOn": [
+            "accepts@1.3.8",
+            "array-flatten@1.1.1",
+            "body-parser@1.19.0",
+            "content-disposition@0.5.3",
+            "content-type@1.0.5",
+            "cookie-signature@1.0.6",
+            "cookie@0.4.0",
+            "debug@2.6.9",
+            "depd@1.1.2",
+            "encodeurl@1.0.2",
+            "escape-html@1.0.3",
+            "etag@1.8.1",
+            "finalhandler@1.1.2",
+            "fresh@0.5.2",
+            "merge-descriptors@1.0.1",
+            "methods@1.1.2",
+            "on-finished@2.3.0",
+            "parseurl@1.3.3",
+            "path-to-regexp@0.1.7",
+            "proxy-addr@2.0.8",
+            "qs@6.7.0",
+            "range-parser@1.2.1",
+            "safe-buffer@5.1.2",
+            "send@0.17.1",
+            "serve-static@1.14.1",
+            "setprototypeof@1.1.1",
+            "statuses@1.5.0",
+            "type-is@1.6.18",
+            "utils-merge@1.0.1",
+            "vary@1.1.2"
+          ],
+          "Locations": [
+            {
+              "StartLine": 196,
+              "EndLine": 235
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "jsonwebtoken@8.5.1",
+          "Name": "jsonwebtoken",
+          "Identifier": {
+            "PURL": "pkg:npm/jsonwebtoken@8.5.1",
+            "UID": "6b566f64c2329346"
+          },
+          "Version": "8.5.1",
+          "Relationship": "direct",
+          "DependsOn": [
+            "jws@3.2.3",
+            "lodash.includes@4.3.0",
+            "lodash.isboolean@3.0.3",
+            "lodash.isinteger@4.0.4",
+            "lodash.isnumber@3.0.3",
+            "lodash.isplainobject@4.0.6",
+            "lodash.isstring@4.0.1",
+            "lodash.once@4.1.1",
+            "ms@2.1.3",
+            "semver@5.7.2"
+          ],
+          "Locations": [
+            {
+              "StartLine": 351,
+              "EndLine": 371
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "lodash@4.17.15",
+          "Name": "lodash",
+          "Identifier": {
+            "PURL": "pkg:npm/lodash@4.17.15",
+            "UID": "e3c1f598522c0eb"
+          },
+          "Version": "4.17.15",
+          "Relationship": "direct",
+          "Locations": [
+            {
+              "StartLine": 396,
+              "EndLine": 400
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "moment@2.29.1",
+          "Name": "moment",
+          "Identifier": {
+            "PURL": "pkg:npm/moment@2.29.1",
+            "UID": "ddf515a37e14dbee"
+          },
+          "Version": "2.29.1",
+          "Relationship": "direct",
+          "Locations": [
+            {
+              "StartLine": 498,
+              "EndLine": 505
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "accepts@1.3.8",
+          "Name": "accepts",
+          "Identifier": {
+            "PURL": "pkg:npm/accepts@1.3.8",
+            "UID": "3271181a7a8b25ee"
+          },
+          "Version": "1.3.8",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "mime-types@2.1.35",
+            "negotiator@0.6.3"
+          ],
+          "Locations": [
+            {
+              "StartLine": 19,
+              "EndLine": 30
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "array-flatten@1.1.1",
+          "Name": "array-flatten",
+          "Identifier": {
+            "PURL": "pkg:npm/array-flatten@1.1.1",
+            "UID": "1419e5849155cc5"
+          },
+          "Version": "1.1.1",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 31,
+              "EndLine": 35
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "async@3.2.6",
+          "Name": "async",
+          "Identifier": {
+            "PURL": "pkg:npm/async@3.2.6",
+            "UID": "13b5197fcaf8d706"
+          },
+          "Version": "3.2.6",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 36,
+              "EndLine": 40
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "balanced-match@1.0.2",
+          "Name": "balanced-match",
+          "Identifier": {
+            "PURL": "pkg:npm/balanced-match@1.0.2",
+            "UID": "ce30c7941a9d3284"
+          },
+          "Version": "1.0.2",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 49,
+              "EndLine": 53
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "body-parser@1.19.0",
+          "Name": "body-parser",
+          "Identifier": {
+            "PURL": "pkg:npm/body-parser@1.19.0",
+            "UID": "e9cbbfc516f29bc0"
+          },
+          "Version": "1.19.0",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "bytes@3.1.0",
+            "content-type@1.0.5",
+            "debug@2.6.9",
+            "depd@1.1.2",
+            "http-errors@1.7.2",
+            "iconv-lite@0.4.24",
+            "on-finished@2.3.0",
+            "qs@6.7.0",
+            "raw-body@2.4.0",
+            "type-is@1.6.18"
+          ],
+          "Locations": [
+            {
+              "StartLine": 54,
+              "EndLine": 73
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "brace-expansion@2.1.7",
+          "Name": "brace-expansion",
+          "Identifier": {
+            "PURL": "pkg:npm/brace-expansion@2.1.7",
+            "UID": "ae2bce6e161af45b"
+          },
+          "Version": "2.1.7",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "balanced-match@1.0.2"
+          ],
+          "Locations": [
+            {
+              "StartLine": 74,
+              "EndLine": 81
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "buffer-equal-constant-time@1.0.1",
+          "Name": "buffer-equal-constant-time",
+          "Identifier": {
+            "PURL": "pkg:npm/buffer-equal-constant-time@1.0.1",
+            "UID": "7840aa8f54635470"
+          },
+          "Version": "1.0.1",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 82,
+              "EndLine": 86
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "bytes@3.1.0",
+          "Name": "bytes",
+          "Identifier": {
+            "PURL": "pkg:npm/bytes@3.1.0",
+            "UID": "3218e3604ee9104e"
+          },
+          "Version": "3.1.0",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 87,
+              "EndLine": 94
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "content-disposition@0.5.3",
+          "Name": "content-disposition",
+          "Identifier": {
+            "PURL": "pkg:npm/content-disposition@0.5.3",
+            "UID": "dac59c1ca47ec777"
+          },
+          "Version": "0.5.3",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "safe-buffer@5.1.2"
+          ],
+          "Locations": [
+            {
+              "StartLine": 95,
+              "EndLine": 105
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "content-type@1.0.5",
+          "Name": "content-type",
+          "Identifier": {
+            "PURL": "pkg:npm/content-type@1.0.5",
+            "UID": "b318657ed20741e"
+          },
+          "Version": "1.0.5",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 106,
+              "EndLine": 113
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "cookie@0.4.0",
+          "Name": "cookie",
+          "Identifier": {
+            "PURL": "pkg:npm/cookie@0.4.0",
+            "UID": "9fb2b14448962bd7"
+          },
+          "Version": "0.4.0",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 114,
+              "EndLine": 121
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "cookie-signature@1.0.6",
+          "Name": "cookie-signature",
+          "Identifier": {
+            "PURL": "pkg:npm/cookie-signature@1.0.6",
+            "UID": "e05f4a9122338d70"
+          },
+          "Version": "1.0.6",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 122,
+              "EndLine": 126
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "debug@2.6.9",
+          "Name": "debug",
+          "Identifier": {
+            "PURL": "pkg:npm/debug@2.6.9",
+            "UID": "b129f935a86d4e05"
+          },
+          "Version": "2.6.9",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "ms@2.0.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 127,
+              "EndLine": 134
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "depd@1.1.2",
+          "Name": "depd",
+          "Identifier": {
+            "PURL": "pkg:npm/depd@1.1.2",
+            "UID": "c1ad150a0f661507"
+          },
+          "Version": "1.1.2",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 135,
+              "EndLine": 142
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "destroy@1.0.4",
+          "Name": "destroy",
+          "Identifier": {
+            "PURL": "pkg:npm/destroy@1.0.4",
+            "UID": "1f06e8bf4d11b4e8"
+          },
+          "Version": "1.0.4",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 143,
+              "EndLine": 147
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "ecdsa-sig-formatter@1.0.11",
+          "Name": "ecdsa-sig-formatter",
+          "Identifier": {
+            "PURL": "pkg:npm/ecdsa-sig-formatter@1.0.11",
+            "UID": "789d1dee7de52f74"
+          },
+          "Version": "1.0.11",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "safe-buffer@5.1.2"
+          ],
+          "Locations": [
+            {
+              "StartLine": 148,
+              "EndLine": 155
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "ee-first@1.1.1",
+          "Name": "ee-first",
+          "Identifier": {
+            "PURL": "pkg:npm/ee-first@1.1.1",
+            "UID": "8e6ec087846b87a"
+          },
+          "Version": "1.1.1",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 156,
+              "EndLine": 160
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "encodeurl@1.0.2",
+          "Name": "encodeurl",
+          "Identifier": {
+            "PURL": "pkg:npm/encodeurl@1.0.2",
+            "UID": "2a61fd3977e1a49d"
+          },
+          "Version": "1.0.2",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 175,
+              "EndLine": 182
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "escape-html@1.0.3",
+          "Name": "escape-html",
+          "Identifier": {
+            "PURL": "pkg:npm/escape-html@1.0.3",
+            "UID": "e371e85613d10ffd"
+          },
+          "Version": "1.0.3",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 183,
+              "EndLine": 187
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "etag@1.8.1",
+          "Name": "etag",
+          "Identifier": {
+            "PURL": "pkg:npm/etag@1.8.1",
+            "UID": "16cb1cf186c4f8fd"
+          },
+          "Version": "1.8.1",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 188,
+              "EndLine": 195
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "filelist@1.0.6",
+          "Name": "filelist",
+          "Identifier": {
+            "PURL": "pkg:npm/filelist@1.0.6",
+            "UID": "48a04cbbb3324268"
+          },
+          "Version": "1.0.6",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "minimatch@5.1.9"
+          ],
+          "Locations": [
+            {
+              "StartLine": 236,
+              "EndLine": 243
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "finalhandler@1.1.2",
+          "Name": "finalhandler",
+          "Identifier": {
+            "PURL": "pkg:npm/finalhandler@1.1.2",
+            "UID": "b959a7cfcb968f82"
+          },
+          "Version": "1.1.2",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "debug@2.6.9",
+            "encodeurl@1.0.2",
+            "escape-html@1.0.3",
+            "on-finished@2.3.0",
+            "parseurl@1.3.3",
+            "statuses@1.5.0",
+            "unpipe@1.0.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 244,
+              "EndLine": 260
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "follow-redirects@1.16.1",
+          "Name": "follow-redirects",
+          "Identifier": {
+            "PURL": "pkg:npm/follow-redirects@1.16.1",
+            "UID": "777970cc917bc5f6"
+          },
+          "Version": "1.16.1",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 261,
+              "EndLine": 279
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "forwarded@0.2.0",
+          "Name": "forwarded",
+          "Identifier": {
+            "PURL": "pkg:npm/forwarded@0.2.0",
+            "UID": "acfada9863466ae"
+          },
+          "Version": "0.2.0",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 280,
+              "EndLine": 287
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "fresh@0.5.2",
+          "Name": "fresh",
+          "Identifier": {
+            "PURL": "pkg:npm/fresh@0.5.2",
+            "UID": "36f83df2fa5d652c"
+          },
+          "Version": "0.5.2",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 288,
+              "EndLine": 295
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "http-errors@1.7.2",
+          "Name": "http-errors",
+          "Identifier": {
+            "PURL": "pkg:npm/http-errors@1.7.2",
+            "UID": "633288a73b87019c"
+          },
+          "Version": "1.7.2",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "depd@1.1.2",
+            "inherits@2.0.3",
+            "setprototypeof@1.1.1",
+            "statuses@1.5.0",
+            "toidentifier@1.0.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 296,
+              "EndLine": 310
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "iconv-lite@0.4.24",
+          "Name": "iconv-lite",
+          "Identifier": {
+            "PURL": "pkg:npm/iconv-lite@0.4.24",
+            "UID": "a7a35a02b88ccef3"
+          },
+          "Version": "0.4.24",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "safer-buffer@2.1.2"
+          ],
+          "Locations": [
+            {
+              "StartLine": 311,
+              "EndLine": 321
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "inherits@2.0.3",
+          "Name": "inherits",
+          "Identifier": {
+            "PURL": "pkg:npm/inherits@2.0.3",
+            "UID": "a7df9d1d02e1317d"
+          },
+          "Version": "2.0.3",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 322,
+              "EndLine": 326
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "ipaddr.js@1.9.1",
+          "Name": "ipaddr.js",
+          "Identifier": {
+            "PURL": "pkg:npm/ipaddr.js@1.9.1",
+            "UID": "c36326a43b9130be"
+          },
+          "Version": "1.9.1",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 327,
+              "EndLine": 334
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "jake@10.9.4",
+          "Name": "jake",
+          "Identifier": {
+            "PURL": "pkg:npm/jake@10.9.4",
+            "UID": "8de0aa495ce1aa59"
+          },
+          "Version": "10.9.4",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "async@3.2.6",
+            "filelist@1.0.6",
+            "picocolors@1.1.1"
+          ],
+          "Locations": [
+            {
+              "StartLine": 335,
+              "EndLine": 350
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "jwa@1.4.2",
+          "Name": "jwa",
+          "Identifier": {
+            "PURL": "pkg:npm/jwa@1.4.2",
+            "UID": "dc2f986a3379e0b2"
+          },
+          "Version": "1.4.2",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "buffer-equal-constant-time@1.0.1",
+            "ecdsa-sig-formatter@1.0.11",
+            "safe-buffer@5.1.2"
+          ],
+          "Locations": [
+            {
+              "StartLine": 377,
+              "EndLine": 386
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "jws@3.2.3",
+          "Name": "jws",
+          "Identifier": {
+            "PURL": "pkg:npm/jws@3.2.3",
+            "UID": "1588358309a94cd6"
+          },
+          "Version": "3.2.3",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "jwa@1.4.2",
+            "safe-buffer@5.1.2"
+          ],
+          "Locations": [
+            {
+              "StartLine": 387,
+              "EndLine": 395
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "lodash.includes@4.3.0",
+          "Name": "lodash.includes",
+          "Identifier": {
+            "PURL": "pkg:npm/lodash.includes@4.3.0",
+            "UID": "ffa38217e2007406"
+          },
+          "Version": "4.3.0",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 401,
+              "EndLine": 405
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "lodash.isboolean@3.0.3",
+          "Name": "lodash.isboolean",
+          "Identifier": {
+            "PURL": "pkg:npm/lodash.isboolean@3.0.3",
+            "UID": "c340ecb742a640b1"
+          },
+          "Version": "3.0.3",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 406,
+              "EndLine": 410
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "lodash.isinteger@4.0.4",
+          "Name": "lodash.isinteger",
+          "Identifier": {
+            "PURL": "pkg:npm/lodash.isinteger@4.0.4",
+            "UID": "3d43c5f270fefbcb"
+          },
+          "Version": "4.0.4",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 411,
+              "EndLine": 415
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "lodash.isnumber@3.0.3",
+          "Name": "lodash.isnumber",
+          "Identifier": {
+            "PURL": "pkg:npm/lodash.isnumber@3.0.3",
+            "UID": "17a4f5a487130887"
+          },
+          "Version": "3.0.3",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 416,
+              "EndLine": 420
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "lodash.isplainobject@4.0.6",
+          "Name": "lodash.isplainobject",
+          "Identifier": {
+            "PURL": "pkg:npm/lodash.isplainobject@4.0.6",
+            "UID": "8b3900f9d07bfc64"
+          },
+          "Version": "4.0.6",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 421,
+              "EndLine": 425
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "lodash.isstring@4.0.1",
+          "Name": "lodash.isstring",
+          "Identifier": {
+            "PURL": "pkg:npm/lodash.isstring@4.0.1",
+            "UID": "b4770ed01f60b3c2"
+          },
+          "Version": "4.0.1",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 426,
+              "EndLine": 430
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "lodash.once@4.1.1",
+          "Name": "lodash.once",
+          "Identifier": {
+            "PURL": "pkg:npm/lodash.once@4.1.1",
+            "UID": "7ffd2a4f708b5295"
+          },
+          "Version": "4.1.1",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 431,
+              "EndLine": 435
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "media-typer@0.3.0",
+          "Name": "media-typer",
+          "Identifier": {
+            "PURL": "pkg:npm/media-typer@0.3.0",
+            "UID": "5e3332ceab7543ff"
+          },
+          "Version": "0.3.0",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 436,
+              "EndLine": 443
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "merge-descriptors@1.0.1",
+          "Name": "merge-descriptors",
+          "Identifier": {
+            "PURL": "pkg:npm/merge-descriptors@1.0.1",
+            "UID": "45088c1c1a3fca98"
+          },
+          "Version": "1.0.1",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 444,
+              "EndLine": 448
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "methods@1.1.2",
+          "Name": "methods",
+          "Identifier": {
+            "PURL": "pkg:npm/methods@1.1.2",
+            "UID": "829d97c48deae6c1"
+          },
+          "Version": "1.1.2",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 449,
+              "EndLine": 456
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "mime@1.6.0",
+          "Name": "mime",
+          "Identifier": {
+            "PURL": "pkg:npm/mime@1.6.0",
+            "UID": "d06a8aecf80d8458"
+          },
+          "Version": "1.6.0",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 457,
+              "EndLine": 467
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "mime-db@1.52.0",
+          "Name": "mime-db",
+          "Identifier": {
+            "PURL": "pkg:npm/mime-db@1.52.0",
+            "UID": "c1d78cf4be70bc26"
+          },
+          "Version": "1.52.0",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 468,
+              "EndLine": 475
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "mime-types@2.1.35",
+          "Name": "mime-types",
+          "Identifier": {
+            "PURL": "pkg:npm/mime-types@2.1.35",
+            "UID": "b32e918db70ccd14"
+          },
+          "Version": "2.1.35",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "mime-db@1.52.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 476,
+              "EndLine": 486
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "minimatch@5.1.9",
+          "Name": "minimatch",
+          "Identifier": {
+            "PURL": "pkg:npm/minimatch@5.1.9",
+            "UID": "8a8378aec641a2d6"
+          },
+          "Version": "5.1.9",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "brace-expansion@2.1.7"
+          ],
+          "Locations": [
+            {
+              "StartLine": 487,
+              "EndLine": 497
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "ms@2.0.0",
+          "Name": "ms",
+          "Identifier": {
+            "PURL": "pkg:npm/ms@2.0.0",
+            "UID": "e50cb8ae30b16b62"
+          },
+          "Version": "2.0.0",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 506,
+              "EndLine": 510
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "ms@2.1.1",
+          "Name": "ms",
+          "Identifier": {
+            "PURL": "pkg:npm/ms@2.1.1",
+            "UID": "d6f3414e92ed0401"
+          },
+          "Version": "2.1.1",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 635,
+              "EndLine": 639
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "ms@2.1.3",
+          "Name": "ms",
+          "Identifier": {
+            "PURL": "pkg:npm/ms@2.1.3",
+            "UID": "21f64ab0833500ff"
+          },
+          "Version": "2.1.3",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 372,
+              "EndLine": 376
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "negotiator@0.6.3",
+          "Name": "negotiator",
+          "Identifier": {
+            "PURL": "pkg:npm/negotiator@0.6.3",
+            "UID": "15ef4d7bcd3ca492"
+          },
+          "Version": "0.6.3",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 511,
+              "EndLine": 518
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "on-finished@2.3.0",
+          "Name": "on-finished",
+          "Identifier": {
+            "PURL": "pkg:npm/on-finished@2.3.0",
+            "UID": "ddff145fae260621"
+          },
+          "Version": "2.3.0",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "ee-first@1.1.1"
+          ],
+          "Locations": [
+            {
+              "StartLine": 519,
+              "EndLine": 529
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "parseurl@1.3.3",
+          "Name": "parseurl",
+          "Identifier": {
+            "PURL": "pkg:npm/parseurl@1.3.3",
+            "UID": "80020827032fa1b8"
+          },
+          "Version": "1.3.3",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 530,
+              "EndLine": 537
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "path-to-regexp@0.1.7",
+          "Name": "path-to-regexp",
+          "Identifier": {
+            "PURL": "pkg:npm/path-to-regexp@0.1.7",
+            "UID": "253fd5ef46866d95"
+          },
+          "Version": "0.1.7",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 538,
+              "EndLine": 542
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "picocolors@1.1.1",
+          "Name": "picocolors",
+          "Identifier": {
+            "PURL": "pkg:npm/picocolors@1.1.1",
+            "UID": "a1caf80e6e481600"
+          },
+          "Version": "1.1.1",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 543,
+              "EndLine": 547
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "proxy-addr@2.0.8",
+          "Name": "proxy-addr",
+          "Identifier": {
+            "PURL": "pkg:npm/proxy-addr@2.0.8",
+            "UID": "6899d5d1d0ef44b7"
+          },
+          "Version": "2.0.8",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "forwarded@0.2.0",
+            "ipaddr.js@1.9.1"
+          ],
+          "Locations": [
+            {
+              "StartLine": 548,
+              "EndLine": 563
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "qs@6.7.0",
+          "Name": "qs",
+          "Identifier": {
+            "PURL": "pkg:npm/qs@6.7.0",
+            "UID": "fc31d77165f33542"
+          },
+          "Version": "6.7.0",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 564,
+              "EndLine": 571
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "range-parser@1.2.1",
+          "Name": "range-parser",
+          "Identifier": {
+            "PURL": "pkg:npm/range-parser@1.2.1",
+            "UID": "202bf836b8fd5e5d"
+          },
+          "Version": "1.2.1",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 572,
+              "EndLine": 579
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "raw-body@2.4.0",
+          "Name": "raw-body",
+          "Identifier": {
+            "PURL": "pkg:npm/raw-body@2.4.0",
+            "UID": "314b5cc7418bf2dc"
+          },
+          "Version": "2.4.0",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "bytes@3.1.0",
+            "http-errors@1.7.2",
+            "iconv-lite@0.4.24",
+            "unpipe@1.0.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 580,
+              "EndLine": 593
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "safe-buffer@5.1.2",
+          "Name": "safe-buffer",
+          "Identifier": {
+            "PURL": "pkg:npm/safe-buffer@5.1.2",
+            "UID": "50eff92338c1ad75"
+          },
+          "Version": "5.1.2",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 594,
+              "EndLine": 598
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "safer-buffer@2.1.2",
+          "Name": "safer-buffer",
+          "Identifier": {
+            "PURL": "pkg:npm/safer-buffer@2.1.2",
+            "UID": "6ac681d7d8de9e7e"
+          },
+          "Version": "2.1.2",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 599,
+              "EndLine": 603
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "semver@5.7.2",
+          "Name": "semver",
+          "Identifier": {
+            "PURL": "pkg:npm/semver@5.7.2",
+            "UID": "c588890d83659fa5"
+          },
+          "Version": "5.7.2",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 604,
+              "EndLine": 611
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "send@0.17.1",
+          "Name": "send",
+          "Identifier": {
+            "PURL": "pkg:npm/send@0.17.1",
+            "UID": "ae6ff4fe1debd484"
+          },
+          "Version": "0.17.1",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "debug@2.6.9",
+            "depd@1.1.2",
+            "destroy@1.0.4",
+            "encodeurl@1.0.2",
+            "escape-html@1.0.3",
+            "etag@1.8.1",
+            "fresh@0.5.2",
+            "http-errors@1.7.2",
+            "mime@1.6.0",
+            "ms@2.1.1",
+            "on-finished@2.3.0",
+            "range-parser@1.2.1",
+            "statuses@1.5.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 612,
+              "EndLine": 634
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "serve-static@1.14.1",
+          "Name": "serve-static",
+          "Identifier": {
+            "PURL": "pkg:npm/serve-static@1.14.1",
+            "UID": "e3240ce820759976"
+          },
+          "Version": "1.14.1",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "encodeurl@1.0.2",
+            "escape-html@1.0.3",
+            "parseurl@1.3.3",
+            "send@0.17.1"
+          ],
+          "Locations": [
+            {
+              "StartLine": 640,
+              "EndLine": 653
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "setprototypeof@1.1.1",
+          "Name": "setprototypeof",
+          "Identifier": {
+            "PURL": "pkg:npm/setprototypeof@1.1.1",
+            "UID": "b8785d24e5b8abd9"
+          },
+          "Version": "1.1.1",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 654,
+              "EndLine": 658
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "statuses@1.5.0",
+          "Name": "statuses",
+          "Identifier": {
+            "PURL": "pkg:npm/statuses@1.5.0",
+            "UID": "9cea9f9e70f9575"
+          },
+          "Version": "1.5.0",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 659,
+              "EndLine": 666
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "toidentifier@1.0.0",
+          "Name": "toidentifier",
+          "Identifier": {
+            "PURL": "pkg:npm/toidentifier@1.0.0",
+            "UID": "d13184287b3877ae"
+          },
+          "Version": "1.0.0",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 667,
+              "EndLine": 674
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "type-is@1.6.18",
+          "Name": "type-is",
+          "Identifier": {
+            "PURL": "pkg:npm/type-is@1.6.18",
+            "UID": "44a8845289dc4a3e"
+          },
+          "Version": "1.6.18",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "media-typer@0.3.0",
+            "mime-types@2.1.35"
+          ],
+          "Locations": [
+            {
+              "StartLine": 675,
+              "EndLine": 686
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "unpipe@1.0.0",
+          "Name": "unpipe",
+          "Identifier": {
+            "PURL": "pkg:npm/unpipe@1.0.0",
+            "UID": "c293963ec967f45"
+          },
+          "Version": "1.0.0",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 687,
+              "EndLine": 694
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "utils-merge@1.0.1",
+          "Name": "utils-merge",
+          "Identifier": {
+            "PURL": "pkg:npm/utils-merge@1.0.1",
+            "UID": "b0cfdc5ed41f9230"
+          },
+          "Version": "1.0.1",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 695,
+              "EndLine": 702
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "vary@1.1.2",
+          "Name": "vary",
+          "Identifier": {
+            "PURL": "pkg:npm/vary@1.1.2",
+            "UID": "65953e397d25823"
+          },
+          "Version": "1.1.2",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 703,
+              "EndLine": 710
+            }
+          ],
+          "AnalyzedBy": "npm"
+        }
+      ],
+      "Vulnerabilities": [
+        {
+          "VulnerabilityID": "CVE-2021-3749",
+          "VendorIDs": [
+            "GHSA-cph5-m8f7-6c5x"
+          ],
+          "PkgID": "axios@0.21.1",
+          "PkgName": "axios",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/axios@0.21.1",
+            "UID": "f7a82091717c2a71"
+          },
+          "InstalledVersion": "0.21.1",
+          "FixedVersion": "0.21.2",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2021-3749",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:a2f5f498778763a2036cc9ebe0cb98efd0a72e367869162a4c01665bf8f95b07",
+          "Title": "nodejs-axios: Regular expression denial of service in trim function",
+          "Description": "axios is vulnerable to Inefficient Regular Expression Complexity",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-1333",
+            "CWE-400"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "nvd": 3,
+            "redhat": 2,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "nvd": {
+              "V2Vector": "AV:N/AC:L/Au:N/C:N/I:N/A:C",
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V2Score": 7.8,
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2021-3749",
+            "https://cert-portal.siemens.com/productcert/pdf/ssa-637483.pdf",
+            "https://github.com/axios/axios",
+            "https://github.com/axios/axios/commit/5b457116e31db0e88fede6c428e969e87f290929",
+            "https://github.com/axios/axios/pull/3980",
+            "https://huntr.dev/bounties/1e8f07fc-c384-4ff9-8498-0690de2e8c31",
+            "https://huntr.dev/bounties/1e8f07fc-c384-4ff9-8498-0690de2e8c31/",
+            "https://lists.apache.org/thread.html/r075d464dce95cd13c03ff9384658edcccd5ab2983b82bfc72b62bb10@%3Ccommits.druid.apache.org%3E",
+            "https://lists.apache.org/thread.html/r216f0fd0a3833856d6a6a1fada488cadba45f447d87010024328ccf2@%3Ccommits.druid.apache.org%3E",
+            "https://lists.apache.org/thread.html/r3ae6d2654f92c5851bdb73b35e96b0e4e3da39f28ac7a1b15ae3aab8@%3Ccommits.druid.apache.org%3E",
+            "https://lists.apache.org/thread.html/r4bf1b32983f50be00f9752214c1b53738b621be1c2b0dbd68c7f2391@%3Ccommits.druid.apache.org%3E",
+            "https://lists.apache.org/thread.html/r7324ecc35b8027a51cb6ed629490fcd3b2d7cf01c424746ed5744bf1@%3Ccommits.druid.apache.org%3E",
+            "https://lists.apache.org/thread.html/r74d0b359408fff31f87445261f0ee13bdfcac7d66f6b8e846face321@%3Ccommits.druid.apache.org%3E",
+            "https://lists.apache.org/thread.html/ra15d63c54dc6474b29f72ae4324bcb03038758545b3ab800845de7a1@%3Ccommits.druid.apache.org%3E",
+            "https://lists.apache.org/thread.html/rc263bfc5b53afcb7e849605478d73f5556eb0c00d1f912084e407289@%3Ccommits.druid.apache.org%3E",
+            "https://lists.apache.org/thread.html/rfa094029c959da0f7c8cd7dc9c4e59d21b03457bf0cedf6c93e1bb0a@%3Cdev.druid.apache.org%3E",
+            "https://lists.apache.org/thread.html/rfc5c478053ff808671aef170f3d9fc9d05cc1fab8fb64431edc66103@%3Ccommits.druid.apache.org%3E",
+            "https://nvd.nist.gov/vuln/detail/CVE-2021-3749",
+            "https://www.cve.org/CVERecord?id=CVE-2021-3749",
+            "https://www.npmjs.com/package/axios",
+            "https://www.oracle.com/security-alerts/cpujul2022.html"
+          ],
+          "PublishedDate": "2021-08-31T11:15:07.89Z",
+          "LastModifiedDate": "2026-06-17T04:05:41.55Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-27152",
+          "VendorIDs": [
+            "GHSA-jr5f-v2jv-69x6"
+          ],
+          "PkgID": "axios@0.21.1",
+          "PkgName": "axios",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/axios@0.21.1",
+            "UID": "f7a82091717c2a71"
+          },
+          "InstalledVersion": "0.21.1",
+          "FixedVersion": "1.8.2, 0.30.0",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-27152",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:980c2e836a95b84e9704d84bde6c2e7599fbd37d343bbfe654a19f7649e40211",
+          "Title": "axios: Possible SSRF and Credential Leakage via Absolute URL in axios Requests",
+          "Description": "axios is a promise based HTTP client for the browser and node.js. The issue occurs when passing absolute URLs rather than protocol-relative URLs to axios. Even if ⁠baseURL is set, axios sends the request to the specified absolute URL, potentially causing SSRF and credential leakage. This issue impacts both server-side and client-side usage of axios. This issue is fixed in 1.8.2.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-918"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "nvd": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:P",
+              "V40Score": 7.7
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+              "V3Score": 5.3
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2025-27152",
+            "https://advisory.echohq.com/cve/CVE-2025-27152",
+            "https://github.com/advisories/GHSA-jr5f-v2jv-69x6",
+            "https://github.com/axios/axios",
+            "https://github.com/axios/axios/commit/02c3c69ced0f8fd86407c23203835892313d7fde",
+            "https://github.com/axios/axios/commit/fb8eec214ce7744b5ca787f2c3b8339b2f54b00f",
+            "https://github.com/axios/axios/issues/6463",
+            "https://github.com/axios/axios/pull/6829",
+            "https://github.com/axios/axios/releases/tag/v1.8.2",
+            "https://github.com/axios/axios/security/advisories/GHSA-jr5f-v2jv-69x6",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-27152",
+            "https://www.cve.org/CVERecord?id=CVE-2025-27152"
+          ],
+          "PublishedDate": "2025-03-07T16:15:38.773Z",
+          "LastModifiedDate": "2026-06-17T09:03:06.57Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-25639",
+          "VendorIDs": [
+            "GHSA-43fc-jf86-j433"
+          ],
+          "PkgID": "axios@0.21.1",
+          "PkgName": "axios",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/axios@0.21.1",
+            "UID": "f7a82091717c2a71"
+          },
+          "InstalledVersion": "0.21.1",
+          "FixedVersion": "1.13.5, 0.30.3",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-25639",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:d2421f68a0be0e908e6bf9e3d0c1660092c5d9319bff5b519c434fd2b1d71538",
+          "Title": "axios: Axios affected by Denial of Service via __proto__ Key in mergeConfig",
+          "Description": "Axios is a promise based HTTP client for the browser and Node.js. Prior to versions 0.30.3 and 1.13.5, the mergeConfig function in axios crashes with a TypeError when processing configuration objects containing __proto__ as an own property. An attacker can trigger this by providing a malicious configuration object created via JSON.parse(), causing complete denial of service. This vulnerability is fixed in versions 0.30.3 and 1.13.5.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-754",
+            "CWE-1287"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2026:10184",
+            "https://access.redhat.com/errata/RHSA-2026:11414",
+            "https://access.redhat.com/errata/RHSA-2026:13542",
+            "https://access.redhat.com/errata/RHSA-2026:13548",
+            "https://access.redhat.com/errata/RHSA-2026:19712",
+            "https://access.redhat.com/errata/RHSA-2026:25041",
+            "https://access.redhat.com/errata/RHSA-2026:2694",
+            "https://access.redhat.com/errata/RHSA-2026:3087",
+            "https://access.redhat.com/errata/RHSA-2026:3105",
+            "https://access.redhat.com/errata/RHSA-2026:3106",
+            "https://access.redhat.com/errata/RHSA-2026:3107",
+            "https://access.redhat.com/errata/RHSA-2026:3109",
+            "https://access.redhat.com/errata/RHSA-2026:36882",
+            "https://access.redhat.com/errata/RHSA-2026:41064",
+            "https://access.redhat.com/errata/RHSA-2026:4942",
+            "https://access.redhat.com/errata/RHSA-2026:5142",
+            "https://access.redhat.com/errata/RHSA-2026:5168",
+            "https://access.redhat.com/errata/RHSA-2026:5174",
+            "https://access.redhat.com/errata/RHSA-2026:5633",
+            "https://access.redhat.com/errata/RHSA-2026:5636",
+            "https://access.redhat.com/errata/RHSA-2026:5665",
+            "https://access.redhat.com/errata/RHSA-2026:5807",
+            "https://access.redhat.com/errata/RHSA-2026:6170",
+            "https://access.redhat.com/errata/RHSA-2026:6174",
+            "https://access.redhat.com/errata/RHSA-2026:6192",
+            "https://access.redhat.com/errata/RHSA-2026:6277",
+            "https://access.redhat.com/errata/RHSA-2026:6308",
+            "https://access.redhat.com/errata/RHSA-2026:6309",
+            "https://access.redhat.com/errata/RHSA-2026:6428",
+            "https://access.redhat.com/errata/RHSA-2026:6497",
+            "https://access.redhat.com/errata/RHSA-2026:6567",
+            "https://access.redhat.com/errata/RHSA-2026:6568",
+            "https://access.redhat.com/errata/RHSA-2026:6802",
+            "https://access.redhat.com/errata/RHSA-2026:7249",
+            "https://access.redhat.com/errata/RHSA-2026:8218",
+            "https://access.redhat.com/errata/RHSA-2026:8229",
+            "https://access.redhat.com/errata/RHSA-2026:8499",
+            "https://access.redhat.com/errata/RHSA-2026:8500",
+            "https://access.redhat.com/errata/RHSA-2026:8501",
+            "https://access.redhat.com/errata/RHSA-2026:9848",
+            "https://access.redhat.com/security/cve/CVE-2026-25639",
+            "https://advisory.echohq.com/cve/CVE-2026-25639",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2438237",
+            "https://github.com/advisories/GHSA-43fc-jf86-j433",
+            "https://github.com/axios/axios",
+            "https://github.com/axios/axios/commit/28c721588c7a77e7503d0a434e016f852c597b57",
+            "https://github.com/axios/axios/commit/d7ff1409c68168d3057fc3891f911b2b92616f9e",
+            "https://github.com/axios/axios/pull/7369",
+            "https://github.com/axios/axios/pull/7388",
+            "https://github.com/axios/axios/releases/tag/v0.30.3",
+            "https://github.com/axios/axios/releases/tag/v1.13.5",
+            "https://github.com/axios/axios/security/advisories/GHSA-43fc-jf86-j433",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-25639",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-25639.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-25639"
+          ],
+          "PublishedDate": "2026-02-09T21:15:49.01Z",
+          "LastModifiedDate": "2026-09-10T13:17:46Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-42033",
+          "VendorIDs": [
+            "GHSA-pf86-5x62-jrwf"
+          ],
+          "PkgID": "axios@0.21.1",
+          "PkgName": "axios",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/axios@0.21.1",
+            "UID": "f7a82091717c2a71"
+          },
+          "InstalledVersion": "0.21.1",
+          "FixedVersion": "1.15.1, 0.31.1",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-42033",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:a5d3979def639f4d8f397d0de64f19ddf2867a0bdd44ef8d9e4846767bced67f",
+          "Title": "axios: Axios: HTTP Transport Hijacking via Prototype Pollution",
+          "Description": "Axios is a promise based HTTP client for the browser and Node.js. Prior to 1.15.1 and 0.31.1, when Object.prototype has been polluted by any co-dependency with keys that axios reads without a hasOwnProperty guard, an attacker can (a) silently intercept and modify every JSON response before the application sees it, or (b) fully hijack the underlying HTTP transport, gaining access to request credentials, headers, and body. The precondition is prototype pollution from a separate source in the same process. This vulnerability is fixed in 1.15.1 and 0.31.1.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-1321",
+            "CWE-915"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+              "V3Score": 7.4
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+              "V3Score": 7.4
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2026:14937",
+            "https://access.redhat.com/errata/RHSA-2026:16476",
+            "https://access.redhat.com/errata/RHSA-2026:16532",
+            "https://access.redhat.com/errata/RHSA-2026:16534",
+            "https://access.redhat.com/errata/RHSA-2026:16535",
+            "https://access.redhat.com/errata/RHSA-2026:16542",
+            "https://access.redhat.com/errata/RHSA-2026:16874",
+            "https://access.redhat.com/errata/RHSA-2026:17468",
+            "https://access.redhat.com/errata/RHSA-2026:17474",
+            "https://access.redhat.com/errata/RHSA-2026:17657",
+            "https://access.redhat.com/errata/RHSA-2026:17699",
+            "https://access.redhat.com/errata/RHSA-2026:19109",
+            "https://access.redhat.com/errata/RHSA-2026:19375",
+            "https://access.redhat.com/errata/RHSA-2026:20889",
+            "https://access.redhat.com/errata/RHSA-2026:20938",
+            "https://access.redhat.com/errata/RHSA-2026:21017",
+            "https://access.redhat.com/errata/RHSA-2026:21338",
+            "https://access.redhat.com/errata/RHSA-2026:21772",
+            "https://access.redhat.com/errata/RHSA-2026:22465",
+            "https://access.redhat.com/errata/RHSA-2026:22619",
+            "https://access.redhat.com/errata/RHSA-2026:22629",
+            "https://access.redhat.com/errata/RHSA-2026:22840",
+            "https://access.redhat.com/errata/RHSA-2026:23361",
+            "https://access.redhat.com/errata/RHSA-2026:24536",
+            "https://access.redhat.com/errata/RHSA-2026:24539",
+            "https://access.redhat.com/errata/RHSA-2026:24853",
+            "https://access.redhat.com/errata/RHSA-2026:24977",
+            "https://access.redhat.com/errata/RHSA-2026:25041",
+            "https://access.redhat.com/errata/RHSA-2026:25089",
+            "https://access.redhat.com/errata/RHSA-2026:25271",
+            "https://access.redhat.com/errata/RHSA-2026:25273",
+            "https://access.redhat.com/errata/RHSA-2026:26214",
+            "https://access.redhat.com/errata/RHSA-2026:26225",
+            "https://access.redhat.com/errata/RHSA-2026:26232",
+            "https://access.redhat.com/errata/RHSA-2026:33574",
+            "https://access.redhat.com/errata/RHSA-2026:36882",
+            "https://access.redhat.com/errata/RHSA-2026:48670",
+            "https://access.redhat.com/security/cve/CVE-2026-42033",
+            "https://advisory.echohq.com/cve/CVE-2026-42033",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2461607",
+            "https://github.com/advisories/GHSA-pf86-5x62-jrwf",
+            "https://github.com/axios/axios",
+            "https://github.com/axios/axios/security/advisories/GHSA-pf86-5x62-jrwf",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-42033",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-42033.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-42033"
+          ],
+          "PublishedDate": "2026-04-24T18:16:29.993Z",
+          "LastModifiedDate": "2026-09-10T13:20:03.087Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-42035",
+          "VendorIDs": [
+            "GHSA-6chq-wfr3-2hj9"
+          ],
+          "PkgID": "axios@0.21.1",
+          "PkgName": "axios",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/axios@0.21.1",
+            "UID": "f7a82091717c2a71"
+          },
+          "InstalledVersion": "0.21.1",
+          "FixedVersion": "1.15.1, 0.31.1",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-42035",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:2b8ef5e10a41bceeca1ad31ae393c6e5444ffc2dbc886aa6d6cff3497db59501",
+          "Title": "axios: Axios: Arbitrary HTTP header injection via prototype pollution",
+          "Description": "Axios is a promise based HTTP client for the browser and Node.js. Prior to 1.15.1 and 0.31.1, a prototype pollution gadget exists in the Axios HTTP adapter (lib/adapters/http.js) that allows an attacker to inject arbitrary HTTP headers into outgoing requests. The vulnerability exploits duck-type checking of the data payload, where if Object.prototype is polluted with getHeaders, append, pipe, on, once, and Symbol.toStringTag, Axios misidentifies any plain object payload as a FormData instance and calls the attacker-controlled getHeaders() function, merging the returned headers into the outgoing request. The vulnerable code resides exclusively in lib/adapters/http.js. The prototype pollution source does not need to originate from Axios itself — any prototype pollution primitive in any dependency in the application's dependency tree is sufficient to trigger this gadget. This vulnerability is fixed in 1.15.1 and 0.31.1.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-113",
+            "CWE-1321"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+              "V3Score": 7.4
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+              "V3Score": 7.4
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-42035",
+            "https://advisory.echohq.com/cve/CVE-2026-42035",
+            "https://github.com/advisories/GHSA-6chq-wfr3-2hj9",
+            "https://github.com/axios/axios",
+            "https://github.com/axios/axios/security/advisories/GHSA-6chq-wfr3-2hj9",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-42035",
+            "https://www.cve.org/CVERecord?id=CVE-2026-42035"
+          ],
+          "PublishedDate": "2026-04-24T18:16:30.273Z",
+          "LastModifiedDate": "2026-06-17T10:47:20.66Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-42043",
+          "VendorIDs": [
+            "GHSA-pmwg-cvhr-8vh7"
+          ],
+          "PkgID": "axios@0.21.1",
+          "PkgName": "axios",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/axios@0.21.1",
+            "UID": "f7a82091717c2a71"
+          },
+          "InstalledVersion": "0.21.1",
+          "FixedVersion": "1.15.1, 0.31.1",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-42043",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:9d40cb882220e2b10d832deec5f0cdae0376f71df4f2a655a24b327312eb6a8f",
+          "Title": "axios: Axios: NO_PROXY bypass via crafted URL",
+          "Description": "Axios is a promise based HTTP client for the browser and Node.js. Prior to 1.15.1 and 0.31.1, an attacker who can influence the target URL of an Axios request can use any address in the 127.0.0.0/8 range (other than 127.0.0.1) to completely bypass the NO_PROXY protection. This vulnerability is due to an incomplete for CVE-2025-62718, This vulnerability is fixed in 1.15.1 and 0.31.1.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-183",
+            "CWE-441",
+            "CWE-918"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "nvd": 4,
+            "redhat": 3,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+              "V3Score": 7.2
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N",
+              "V3Score": 10
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+              "V3Score": 7.2
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2026:14937",
+            "https://access.redhat.com/errata/RHSA-2026:16476",
+            "https://access.redhat.com/errata/RHSA-2026:16532",
+            "https://access.redhat.com/errata/RHSA-2026:16534",
+            "https://access.redhat.com/errata/RHSA-2026:16535",
+            "https://access.redhat.com/errata/RHSA-2026:16542",
+            "https://access.redhat.com/errata/RHSA-2026:16874",
+            "https://access.redhat.com/errata/RHSA-2026:17468",
+            "https://access.redhat.com/errata/RHSA-2026:17474",
+            "https://access.redhat.com/errata/RHSA-2026:17657",
+            "https://access.redhat.com/errata/RHSA-2026:17699",
+            "https://access.redhat.com/errata/RHSA-2026:19109",
+            "https://access.redhat.com/errata/RHSA-2026:19375",
+            "https://access.redhat.com/errata/RHSA-2026:20889",
+            "https://access.redhat.com/errata/RHSA-2026:20938",
+            "https://access.redhat.com/errata/RHSA-2026:21017",
+            "https://access.redhat.com/errata/RHSA-2026:21338",
+            "https://access.redhat.com/errata/RHSA-2026:21772",
+            "https://access.redhat.com/errata/RHSA-2026:22465",
+            "https://access.redhat.com/errata/RHSA-2026:22619",
+            "https://access.redhat.com/errata/RHSA-2026:22629",
+            "https://access.redhat.com/errata/RHSA-2026:22840",
+            "https://access.redhat.com/errata/RHSA-2026:23361",
+            "https://access.redhat.com/errata/RHSA-2026:24536",
+            "https://access.redhat.com/errata/RHSA-2026:24539",
+            "https://access.redhat.com/errata/RHSA-2026:24853",
+            "https://access.redhat.com/errata/RHSA-2026:24977",
+            "https://access.redhat.com/errata/RHSA-2026:25041",
+            "https://access.redhat.com/errata/RHSA-2026:25089",
+            "https://access.redhat.com/errata/RHSA-2026:25271",
+            "https://access.redhat.com/errata/RHSA-2026:25273",
+            "https://access.redhat.com/errata/RHSA-2026:26214",
+            "https://access.redhat.com/errata/RHSA-2026:26225",
+            "https://access.redhat.com/errata/RHSA-2026:26232",
+            "https://access.redhat.com/errata/RHSA-2026:33574",
+            "https://access.redhat.com/errata/RHSA-2026:36882",
+            "https://access.redhat.com/errata/RHSA-2026:48670",
+            "https://access.redhat.com/security/cve/CVE-2026-42043",
+            "https://advisory.echohq.com/cve/CVE-2026-42043",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2461626",
+            "https://github.com/advisories/GHSA-pmwg-cvhr-8vh7",
+            "https://github.com/axios/axios",
+            "https://github.com/axios/axios/security/advisories/GHSA-pmwg-cvhr-8vh7",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-42043",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-42043.json",
+            "https://ubuntu.com/security/notices/USN-8638-1",
+            "https://www.cve.org/CVERecord?id=CVE-2026-42043"
+          ],
+          "PublishedDate": "2026-04-24T18:16:31.457Z",
+          "LastModifiedDate": "2026-09-10T13:20:04.973Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-44486",
+          "VendorIDs": [
+            "GHSA-j5f8-grm9-p9fc"
+          ],
+          "PkgID": "axios@0.21.1",
+          "PkgName": "axios",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/axios@0.21.1",
+            "UID": "f7a82091717c2a71"
+          },
+          "InstalledVersion": "0.21.1",
+          "FixedVersion": "1.16.0, 0.32.0",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-44486",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:35223a7d4dacfdcf8e5436fc7379b372e8bbd3a4c0ac9a192f20707ef2e8b21d",
+          "Title": "axios: Axios: Information disclosure of proxy credentials via HTTP redirects",
+          "Description": "Axios is a promise based HTTP client for the browser and Node.js. Prior to 0.32.0 and 1.16.0, Axios’ Node.js HTTP adapter can leak proxy credentials to a redirect target in affected versions. When a request is sent through an authenticated proxy, Axios may add a Proxy-Authorization header. If Axios then follows a redirect and the redirected request is no longer sent through that proxy, the stale Proxy-Authorization header can remain on the redirected request and be sent to the redirect target. This affects Node.js's use of Axios with automatic redirects enabled and an authenticated proxy configuration. Browser adapters are not affected. This vulnerability is fixed in 0.32.0 and 1.16.0.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-200",
+            "CWE-201"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2026:20889",
+            "https://access.redhat.com/errata/RHSA-2026:20938",
+            "https://access.redhat.com/errata/RHSA-2026:27044",
+            "https://access.redhat.com/errata/RHSA-2026:27063",
+            "https://access.redhat.com/errata/RHSA-2026:28964",
+            "https://access.redhat.com/errata/RHSA-2026:29082",
+            "https://access.redhat.com/errata/RHSA-2026:29197",
+            "https://access.redhat.com/errata/RHSA-2026:30650",
+            "https://access.redhat.com/errata/RHSA-2026:30651",
+            "https://access.redhat.com/errata/RHSA-2026:33155",
+            "https://access.redhat.com/errata/RHSA-2026:33160",
+            "https://access.redhat.com/errata/RHSA-2026:33163",
+            "https://access.redhat.com/errata/RHSA-2026:33173",
+            "https://access.redhat.com/errata/RHSA-2026:33183",
+            "https://access.redhat.com/errata/RHSA-2026:33574",
+            "https://access.redhat.com/errata/RHSA-2026:34766",
+            "https://access.redhat.com/errata/RHSA-2026:36611",
+            "https://access.redhat.com/errata/RHSA-2026:36754",
+            "https://access.redhat.com/errata/RHSA-2026:36820",
+            "https://access.redhat.com/errata/RHSA-2026:36882",
+            "https://access.redhat.com/errata/RHSA-2026:36883",
+            "https://access.redhat.com/errata/RHSA-2026:40262",
+            "https://access.redhat.com/errata/RHSA-2026:41031",
+            "https://access.redhat.com/errata/RHSA-2026:41055",
+            "https://access.redhat.com/errata/RHSA-2026:41064",
+            "https://access.redhat.com/errata/RHSA-2026:41066",
+            "https://access.redhat.com/errata/RHSA-2026:41928",
+            "https://access.redhat.com/errata/RHSA-2026:41951",
+            "https://access.redhat.com/errata/RHSA-2026:42078",
+            "https://access.redhat.com/errata/RHSA-2026:42085",
+            "https://access.redhat.com/errata/RHSA-2026:42142",
+            "https://access.redhat.com/errata/RHSA-2026:42146",
+            "https://access.redhat.com/errata/RHSA-2026:42796",
+            "https://access.redhat.com/errata/RHSA-2026:43052",
+            "https://access.redhat.com/errata/RHSA-2026:46885",
+            "https://access.redhat.com/errata/RHSA-2026:46903",
+            "https://access.redhat.com/errata/RHSA-2026:50300",
+            "https://access.redhat.com/errata/RHSA-2026:50681",
+            "https://access.redhat.com/errata/RHSA-2026:54188",
+            "https://access.redhat.com/errata/RHSA-2026:54206",
+            "https://access.redhat.com/errata/RHSA-2026:57191",
+            "https://access.redhat.com/errata/RHSA-2026:60520",
+            "https://access.redhat.com/errata/RHSA-2026:66488",
+            "https://access.redhat.com/errata/RHSA-2026:66545",
+            "https://access.redhat.com/security/cve/CVE-2026-44486",
+            "https://advisory.echohq.com/cve/CVE-2026-44486",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2487947",
+            "https://github.com/advisories/GHSA-j5f8-grm9-p9fc",
+            "https://github.com/axios/axios",
+            "https://github.com/axios/axios/commit/afca61a070728e717203c2bc21e7b589b59b858b",
+            "https://github.com/axios/axios/pull/10794",
+            "https://github.com/axios/axios/releases/tag/v0.32.0",
+            "https://github.com/axios/axios/releases/tag/v1.16.0",
+            "https://github.com/axios/axios/security/advisories/GHSA-j5f8-grm9-p9fc",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-44486",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-44486.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-44486"
+          ],
+          "PublishedDate": "2026-06-11T17:16:32.45Z",
+          "LastModifiedDate": "2026-09-11T13:18:05.413Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-44487",
+          "VendorIDs": [
+            "GHSA-p92q-9vqr-4j8v"
+          ],
+          "PkgID": "axios@0.21.1",
+          "PkgName": "axios",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/axios@0.21.1",
+            "UID": "f7a82091717c2a71"
+          },
+          "InstalledVersion": "0.21.1",
+          "FixedVersion": "1.16.0, 0.32.0",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-44487",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:9a2f126b25c5996124c84cbfa04a80ce4244adf8b84294ef58d0bef9f2b0d4c3",
+          "Title": "axios: Axios: Information disclosure of proxy credentials via redirect flows",
+          "Description": "Axios is a promise based HTTP client for the browser and Node.js. Prior to 0.32.0 and 1.16.0, Axios’s Node.js HTTP adapter may forward a Proxy-Authorization header to a redirected origin during specific proxy-to-direct redirect flows. This affects Node.js usage, where an initial HTTP request is sent through an authenticated HTTP proxy, redirects are followed, and the redirected URL is no longer proxied. Under affected redirect shapes, the final origin can receive the proxy credential that was intended only for the outbound proxy. This vulnerability is fixed in 0.32.0 and 1.16.0.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-201"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "nvd": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
+              "V40Score": 8.2
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2026:20889",
+            "https://access.redhat.com/errata/RHSA-2026:20938",
+            "https://access.redhat.com/errata/RHSA-2026:27044",
+            "https://access.redhat.com/errata/RHSA-2026:27063",
+            "https://access.redhat.com/errata/RHSA-2026:28964",
+            "https://access.redhat.com/errata/RHSA-2026:29082",
+            "https://access.redhat.com/errata/RHSA-2026:29197",
+            "https://access.redhat.com/errata/RHSA-2026:29864",
+            "https://access.redhat.com/errata/RHSA-2026:30650",
+            "https://access.redhat.com/errata/RHSA-2026:30651",
+            "https://access.redhat.com/errata/RHSA-2026:33155",
+            "https://access.redhat.com/errata/RHSA-2026:33160",
+            "https://access.redhat.com/errata/RHSA-2026:33163",
+            "https://access.redhat.com/errata/RHSA-2026:33173",
+            "https://access.redhat.com/errata/RHSA-2026:33183",
+            "https://access.redhat.com/errata/RHSA-2026:33574",
+            "https://access.redhat.com/errata/RHSA-2026:34374",
+            "https://access.redhat.com/errata/RHSA-2026:34525",
+            "https://access.redhat.com/errata/RHSA-2026:34527",
+            "https://access.redhat.com/errata/RHSA-2026:34530",
+            "https://access.redhat.com/errata/RHSA-2026:36611",
+            "https://access.redhat.com/errata/RHSA-2026:36754",
+            "https://access.redhat.com/errata/RHSA-2026:36820",
+            "https://access.redhat.com/errata/RHSA-2026:36882",
+            "https://access.redhat.com/errata/RHSA-2026:36883",
+            "https://access.redhat.com/errata/RHSA-2026:40262",
+            "https://access.redhat.com/errata/RHSA-2026:40768",
+            "https://access.redhat.com/errata/RHSA-2026:40792",
+            "https://access.redhat.com/errata/RHSA-2026:40795",
+            "https://access.redhat.com/errata/RHSA-2026:41031",
+            "https://access.redhat.com/errata/RHSA-2026:41055",
+            "https://access.redhat.com/errata/RHSA-2026:41064",
+            "https://access.redhat.com/errata/RHSA-2026:41066",
+            "https://access.redhat.com/errata/RHSA-2026:41928",
+            "https://access.redhat.com/errata/RHSA-2026:41951",
+            "https://access.redhat.com/errata/RHSA-2026:42078",
+            "https://access.redhat.com/errata/RHSA-2026:42085",
+            "https://access.redhat.com/errata/RHSA-2026:42142",
+            "https://access.redhat.com/errata/RHSA-2026:42146",
+            "https://access.redhat.com/errata/RHSA-2026:42796",
+            "https://access.redhat.com/errata/RHSA-2026:43052",
+            "https://access.redhat.com/errata/RHSA-2026:46885",
+            "https://access.redhat.com/errata/RHSA-2026:46903",
+            "https://access.redhat.com/errata/RHSA-2026:50300",
+            "https://access.redhat.com/errata/RHSA-2026:54188",
+            "https://access.redhat.com/errata/RHSA-2026:54206",
+            "https://access.redhat.com/errata/RHSA-2026:57191",
+            "https://access.redhat.com/errata/RHSA-2026:60520",
+            "https://access.redhat.com/errata/RHSA-2026:66488",
+            "https://access.redhat.com/errata/RHSA-2026:66545",
+            "https://access.redhat.com/security/cve/CVE-2026-44487",
+            "https://advisory.echohq.com/cve/CVE-2026-44487",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2487948",
+            "https://github.com/advisories/GHSA-p92q-9vqr-4j8v",
+            "https://github.com/axios/axios",
+            "https://github.com/axios/axios/releases/tag/v0.32.0",
+            "https://github.com/axios/axios/releases/tag/v1.16.0",
+            "https://github.com/axios/axios/security/advisories/GHSA-p92q-9vqr-4j8v",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-44487",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-44487.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-44487"
+          ],
+          "PublishedDate": "2026-06-11T17:16:32.607Z",
+          "LastModifiedDate": "2026-09-11T13:18:06.053Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-44492",
+          "VendorIDs": [
+            "GHSA-pjwm-pj3p-43mv"
+          ],
+          "PkgID": "axios@0.21.1",
+          "PkgName": "axios",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/axios@0.21.1",
+            "UID": "f7a82091717c2a71"
+          },
+          "InstalledVersion": "0.21.1",
+          "FixedVersion": "1.16.0, 0.32.0",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-44492",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:2624cd980ae00f20bf36eda42a5fb26d31217965c084caad0bc5b8dda6cc3e73",
+          "Title": "axios: Axios: Proxy bypass via IPv4-mapped IPv6 address non-normalization",
+          "Description": "Axios is a promise based HTTP client for the browser and Node.js. Prior to 0.32.0 and 1.16.0, Axios does not normalise IPv4-mapped IPv6 addresses. When NO_PROXY lists an IPv4 address such as 127.0.0.1 or 169.254.169.254, a request URL using the IPv4-mapped IPv6 form (::ffff:7f00:1, ::ffff:a9fe:a9fe) still routes through the configured proxy. Node.js resolves these addresses to the underlying IPv4 host, so the request reaches the internal service via the proxy rather than being blocked. This vulnerability is fixed in 0.32.0 and 1.16.0.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-918",
+            "CWE-289"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N",
+              "V3Score": 8.6
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N",
+              "V3Score": 8.6
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2026:20889",
+            "https://access.redhat.com/errata/RHSA-2026:20938",
+            "https://access.redhat.com/errata/RHSA-2026:26234",
+            "https://access.redhat.com/errata/RHSA-2026:27044",
+            "https://access.redhat.com/errata/RHSA-2026:27063",
+            "https://access.redhat.com/errata/RHSA-2026:28964",
+            "https://access.redhat.com/errata/RHSA-2026:29082",
+            "https://access.redhat.com/errata/RHSA-2026:29197",
+            "https://access.redhat.com/errata/RHSA-2026:30650",
+            "https://access.redhat.com/errata/RHSA-2026:30651",
+            "https://access.redhat.com/errata/RHSA-2026:33005",
+            "https://access.redhat.com/errata/RHSA-2026:33155",
+            "https://access.redhat.com/errata/RHSA-2026:33160",
+            "https://access.redhat.com/errata/RHSA-2026:33163",
+            "https://access.redhat.com/errata/RHSA-2026:33173",
+            "https://access.redhat.com/errata/RHSA-2026:33183",
+            "https://access.redhat.com/errata/RHSA-2026:33574",
+            "https://access.redhat.com/errata/RHSA-2026:34766",
+            "https://access.redhat.com/errata/RHSA-2026:36108",
+            "https://access.redhat.com/errata/RHSA-2026:36611",
+            "https://access.redhat.com/errata/RHSA-2026:36754",
+            "https://access.redhat.com/errata/RHSA-2026:36820",
+            "https://access.redhat.com/errata/RHSA-2026:36882",
+            "https://access.redhat.com/errata/RHSA-2026:36883",
+            "https://access.redhat.com/errata/RHSA-2026:40119",
+            "https://access.redhat.com/errata/RHSA-2026:40138",
+            "https://access.redhat.com/errata/RHSA-2026:40262",
+            "https://access.redhat.com/errata/RHSA-2026:41031",
+            "https://access.redhat.com/errata/RHSA-2026:41055",
+            "https://access.redhat.com/errata/RHSA-2026:41064",
+            "https://access.redhat.com/errata/RHSA-2026:41066",
+            "https://access.redhat.com/errata/RHSA-2026:41928",
+            "https://access.redhat.com/errata/RHSA-2026:41951",
+            "https://access.redhat.com/errata/RHSA-2026:42078",
+            "https://access.redhat.com/errata/RHSA-2026:42085",
+            "https://access.redhat.com/errata/RHSA-2026:42142",
+            "https://access.redhat.com/errata/RHSA-2026:42146",
+            "https://access.redhat.com/errata/RHSA-2026:42796",
+            "https://access.redhat.com/errata/RHSA-2026:43052",
+            "https://access.redhat.com/errata/RHSA-2026:46885",
+            "https://access.redhat.com/errata/RHSA-2026:46903",
+            "https://access.redhat.com/errata/RHSA-2026:50300",
+            "https://access.redhat.com/errata/RHSA-2026:54188",
+            "https://access.redhat.com/errata/RHSA-2026:57191",
+            "https://access.redhat.com/errata/RHSA-2026:59833",
+            "https://access.redhat.com/errata/RHSA-2026:60520",
+            "https://access.redhat.com/errata/RHSA-2026:66488",
+            "https://access.redhat.com/errata/RHSA-2026:66545",
+            "https://access.redhat.com/security/cve/CVE-2026-44492",
+            "https://advisory.echohq.com/cve/CVE-2026-44492",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2487938",
+            "https://github.com/advisories/GHSA-pjwm-pj3p-43mv",
+            "https://github.com/axios/axios",
+            "https://github.com/axios/axios/security/advisories/GHSA-pjwm-pj3p-43mv",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-62718",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-44492",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-44492.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-44492"
+          ],
+          "PublishedDate": "2026-06-11T17:16:33.167Z",
+          "LastModifiedDate": "2026-09-11T13:18:07.357Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-44495",
+          "VendorIDs": [
+            "GHSA-3g43-6gmg-66jw"
+          ],
+          "PkgID": "axios@0.21.1",
+          "PkgName": "axios",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/axios@0.21.1",
+            "UID": "f7a82091717c2a71"
+          },
+          "InstalledVersion": "0.21.1",
+          "FixedVersion": "1.15.2, 0.31.1",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-44495",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:72a926d164405cc0405c0a91bc42276d50846d07b420b71afa8e063adedbd645",
+          "Title": "axios: Axios: Information disclosure due to prototype pollution vulnerability",
+          "Description": "Axios is a promise based HTTP client for the browser and Node.js. From 0.19.0 to before 0.31.1 and 1.15.2, Axios contains prototype-pollution gadgets in request config processing. If another vulnerability in the same JavaScript process has already polluted Object.prototype.transformResponse, affected Axios versions may treat that inherited value as request configuration or as an option validator. Axios does not itself create the prototype pollution. Exploitability requires a separate prototype-pollution vulnerability or equivalent attacker control over Object.prototype before Axios creates a request. This vulnerability is fixed in 0.31.1 and 1.15.2.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-94",
+            "CWE-1321",
+            "CWE-915"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "nvd": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:L",
+              "V3Score": 7
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:H",
+              "V3Score": 7.7
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:L",
+              "V3Score": 7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2026:20889",
+            "https://access.redhat.com/errata/RHSA-2026:20938",
+            "https://access.redhat.com/errata/RHSA-2026:27044",
+            "https://access.redhat.com/errata/RHSA-2026:27063",
+            "https://access.redhat.com/errata/RHSA-2026:27944",
+            "https://access.redhat.com/errata/RHSA-2026:28964",
+            "https://access.redhat.com/errata/RHSA-2026:29082",
+            "https://access.redhat.com/errata/RHSA-2026:29197",
+            "https://access.redhat.com/errata/RHSA-2026:30650",
+            "https://access.redhat.com/errata/RHSA-2026:30651",
+            "https://access.redhat.com/errata/RHSA-2026:33155",
+            "https://access.redhat.com/errata/RHSA-2026:33160",
+            "https://access.redhat.com/errata/RHSA-2026:33163",
+            "https://access.redhat.com/errata/RHSA-2026:33173",
+            "https://access.redhat.com/errata/RHSA-2026:33183",
+            "https://access.redhat.com/errata/RHSA-2026:33574",
+            "https://access.redhat.com/errata/RHSA-2026:34160",
+            "https://access.redhat.com/errata/RHSA-2026:34374",
+            "https://access.redhat.com/errata/RHSA-2026:36108",
+            "https://access.redhat.com/errata/RHSA-2026:36611",
+            "https://access.redhat.com/errata/RHSA-2026:36754",
+            "https://access.redhat.com/errata/RHSA-2026:36820",
+            "https://access.redhat.com/errata/RHSA-2026:36882",
+            "https://access.redhat.com/errata/RHSA-2026:36883",
+            "https://access.redhat.com/errata/RHSA-2026:40262",
+            "https://access.redhat.com/errata/RHSA-2026:40768",
+            "https://access.redhat.com/errata/RHSA-2026:40792",
+            "https://access.redhat.com/errata/RHSA-2026:40795",
+            "https://access.redhat.com/errata/RHSA-2026:41031",
+            "https://access.redhat.com/errata/RHSA-2026:41055",
+            "https://access.redhat.com/errata/RHSA-2026:41064",
+            "https://access.redhat.com/errata/RHSA-2026:41066",
+            "https://access.redhat.com/errata/RHSA-2026:41928",
+            "https://access.redhat.com/errata/RHSA-2026:41951",
+            "https://access.redhat.com/errata/RHSA-2026:42078",
+            "https://access.redhat.com/errata/RHSA-2026:42142",
+            "https://access.redhat.com/errata/RHSA-2026:42146",
+            "https://access.redhat.com/errata/RHSA-2026:42796",
+            "https://access.redhat.com/errata/RHSA-2026:43052",
+            "https://access.redhat.com/errata/RHSA-2026:46885",
+            "https://access.redhat.com/errata/RHSA-2026:46903",
+            "https://access.redhat.com/errata/RHSA-2026:50300",
+            "https://access.redhat.com/errata/RHSA-2026:53840",
+            "https://access.redhat.com/errata/RHSA-2026:54188",
+            "https://access.redhat.com/errata/RHSA-2026:54555",
+            "https://access.redhat.com/errata/RHSA-2026:57191",
+            "https://access.redhat.com/errata/RHSA-2026:59833",
+            "https://access.redhat.com/errata/RHSA-2026:60520",
+            "https://access.redhat.com/errata/RHSA-2026:66545",
+            "https://access.redhat.com/security/cve/CVE-2026-44495",
+            "https://advisory.echohq.com/cve/CVE-2026-44495",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2487937",
+            "https://github.com/advisories/GHSA-3g43-6gmg-66jw",
+            "https://github.com/axios/axios",
+            "https://github.com/axios/axios/security/advisories/GHSA-3g43-6gmg-66jw",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-44495",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-44495.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-44495"
+          ],
+          "PublishedDate": "2026-06-11T17:16:33.45Z",
+          "LastModifiedDate": "2026-09-11T13:18:08.61Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-44496",
+          "VendorIDs": [
+            "GHSA-hfxv-24rg-xrqf"
+          ],
+          "PkgID": "axios@0.21.1",
+          "PkgName": "axios",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/axios@0.21.1",
+            "UID": "f7a82091717c2a71"
+          },
+          "InstalledVersion": "0.21.1",
+          "FixedVersion": "1.16.0, 0.32.0",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-44496",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:d6686c41eb9b8061075f96072004be8d44de66e7ee1f8cc21617b12377e7612d",
+          "Title": "axios: Axios: Client-side Denial of Service via unescaped regex metacharacters in XSRF cookie name",
+          "Description": "Axios is a promise based HTTP client for the browser and Node.js. Axios versions before 0.32.0 on the 0.x line and before 1.16.0 on the 1.x line build a regular expression from the configured XSRF cookie name without escaping regex metacharacters. In standard browser environments, an attacker who can influence the cookie name passed to axios can cause expensive regex backtracking while axios reads document.cookie. The practical impact is client-side availability degradation, such as freezing the affected browser tab while axios prepares a request. The issue does not affect ordinary Node.js HTTP adapter usage, React Native, or web workers, where axios does not read document.cookie. This vulnerability is fixed in 0.32.0 and 1.16.0.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-400",
+            "CWE-1333"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2026:20889",
+            "https://access.redhat.com/errata/RHSA-2026:20938",
+            "https://access.redhat.com/errata/RHSA-2026:27044",
+            "https://access.redhat.com/errata/RHSA-2026:27063",
+            "https://access.redhat.com/errata/RHSA-2026:28571",
+            "https://access.redhat.com/errata/RHSA-2026:28964",
+            "https://access.redhat.com/errata/RHSA-2026:29082",
+            "https://access.redhat.com/errata/RHSA-2026:29197",
+            "https://access.redhat.com/errata/RHSA-2026:30076",
+            "https://access.redhat.com/errata/RHSA-2026:30650",
+            "https://access.redhat.com/errata/RHSA-2026:30651",
+            "https://access.redhat.com/errata/RHSA-2026:33155",
+            "https://access.redhat.com/errata/RHSA-2026:33160",
+            "https://access.redhat.com/errata/RHSA-2026:33163",
+            "https://access.redhat.com/errata/RHSA-2026:33173",
+            "https://access.redhat.com/errata/RHSA-2026:33183",
+            "https://access.redhat.com/errata/RHSA-2026:33574",
+            "https://access.redhat.com/errata/RHSA-2026:33683",
+            "https://access.redhat.com/errata/RHSA-2026:34766",
+            "https://access.redhat.com/errata/RHSA-2026:36611",
+            "https://access.redhat.com/errata/RHSA-2026:36754",
+            "https://access.redhat.com/errata/RHSA-2026:36820",
+            "https://access.redhat.com/errata/RHSA-2026:36882",
+            "https://access.redhat.com/errata/RHSA-2026:36883",
+            "https://access.redhat.com/errata/RHSA-2026:41055",
+            "https://access.redhat.com/errata/RHSA-2026:41064",
+            "https://access.redhat.com/errata/RHSA-2026:41066",
+            "https://access.redhat.com/errata/RHSA-2026:41928",
+            "https://access.redhat.com/errata/RHSA-2026:41951",
+            "https://access.redhat.com/errata/RHSA-2026:42078",
+            "https://access.redhat.com/errata/RHSA-2026:42085",
+            "https://access.redhat.com/errata/RHSA-2026:42142",
+            "https://access.redhat.com/errata/RHSA-2026:42796",
+            "https://access.redhat.com/errata/RHSA-2026:46885",
+            "https://access.redhat.com/errata/RHSA-2026:46903",
+            "https://access.redhat.com/errata/RHSA-2026:50300",
+            "https://access.redhat.com/errata/RHSA-2026:56789",
+            "https://access.redhat.com/errata/RHSA-2026:57191",
+            "https://access.redhat.com/errata/RHSA-2026:59360",
+            "https://access.redhat.com/errata/RHSA-2026:59833",
+            "https://access.redhat.com/errata/RHSA-2026:60520",
+            "https://access.redhat.com/errata/RHSA-2026:66488",
+            "https://access.redhat.com/errata/RHSA-2026:66545",
+            "https://access.redhat.com/security/cve/CVE-2026-44496",
+            "https://advisory.echohq.com/cve/CVE-2026-44496",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2487943",
+            "https://github.com/advisories/GHSA-hfxv-24rg-xrqf",
+            "https://github.com/axios/axios",
+            "https://github.com/axios/axios/releases/tag/v0.32.0",
+            "https://github.com/axios/axios/releases/tag/v1.16.0",
+            "https://github.com/axios/axios/security/advisories/GHSA-hfxv-24rg-xrqf",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-44496",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-44496.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-44496"
+          ],
+          "PublishedDate": "2026-06-11T17:16:33.59Z",
+          "LastModifiedDate": "2026-09-11T13:18:09.287Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-45590",
+          "VendorIDs": [
+            "GHSA-qwcr-r2fm-qrc7"
+          ],
+          "PkgID": "body-parser@1.19.0",
+          "PkgName": "body-parser",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/body-parser@1.19.0",
+            "UID": "e9cbbfc516f29bc0"
+          },
+          "InstalledVersion": "1.19.0",
+          "FixedVersion": "1.20.3",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-45590",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:8115317ddbc51671c8fc521d425dfe5d9a775836dc780455ebf8217f6c9c9d1c",
+          "Title": "body-parser: Denial of Service Vulnerability in body-parser",
+          "Description": "body-parser is Node.js body parsing middleware. body-parser \u003c1.20.3 is vulnerable to denial of service when url encoding is enabled. A malicious actor using a specially crafted payload could flood the server with a large number of requests, resulting in denial of service. This issue is patched in 1.20.3.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-405"
+          ],
+          "VendorSeverity": {
+            "azure": 3,
+            "cbl-mariner": 3,
+            "ghsa": 3,
+            "nvd": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+              "V3Score": 7.5,
+              "V40Score": 8.7
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2024-45590",
+            "https://github.com/expressjs/body-parser",
+            "https://github.com/expressjs/body-parser/commit/b2695c4450f06ba3b0ccf48d872a229bb41c9bce",
+            "https://github.com/expressjs/body-parser/security/advisories/GHSA-qwcr-r2fm-qrc7",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-45590",
+            "https://www.cve.org/CVERecord?id=CVE-2024-45590"
+          ],
+          "PublishedDate": "2024-09-10T16:15:21.083Z",
+          "LastModifiedDate": "2026-06-17T07:54:31.697Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-111181",
+          "VendorIDs": [
+            "GHSA-27r3-jxmh-p828"
+          ],
+          "PkgID": "body-parser@1.19.0",
+          "PkgName": "body-parser",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/body-parser@1.19.0",
+            "UID": "e9cbbfc516f29bc0"
+          },
+          "InstalledVersion": "1.19.0",
+          "FixedVersion": "2.4.0, 1.20.9",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-111181",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:070fa16d79142cb16eef565867678e4938866a6a525c6e52a81271820488e7d7",
+          "Title": "body-parser: body-parser: Denial of Service via unhandled decompression stream error",
+          "Description": "body-parser is body parsing middleware for Node.js and Express. In versions before 1.20.9 and in versions from 2.0.0 before 2.4.0, a single request can crash any application using body-parser with default options. When a request carries a Content-Encoding such as gzip, body-parser pipes it into a decompression stream and, after reading the body, leaves that stream with no error listener. A payload of one valid compressed frame followed by trailing bytes decodes and the application responds normally, but the trailing bytes then reach the already-finished decoder, which emits an error that is re-thrown as an uncaught exception and terminates the process. No matching route is required because body parsing runs before routing, so any endpoint that parses a body is affected. The issue is fixed in body-parser 2.4.0 and 1.20.9, and users should upgrade to one of those versions or later. As a workaround, disable request-body inflation (set the body-parser inflate option to false) so encoded requests are rejected before any decompression stream is created.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-248"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-111181",
+            "https://advisory.echohq.com/cve/CVE-2026-111181",
+            "https://cna.openjsf.org/security-advisories.html",
+            "https://github.com/expressjs/body-parser",
+            "https://github.com/expressjs/body-parser/commit/1260c3845f54502a05a87594f09a334786bb34d7",
+            "https://github.com/expressjs/body-parser/commit/f7075eae3a84c3473ab4bf0a777da28db208e916",
+            "https://github.com/expressjs/body-parser/releases/tag/1.20.9",
+            "https://github.com/expressjs/body-parser/releases/tag/v2.4.0",
+            "https://github.com/expressjs/body-parser/security/advisories/GHSA-27r3-jxmh-p828",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-111181",
+            "https://www.cve.org/CVERecord?id=CVE-2026-111181"
+          ],
+          "PublishedDate": "2026-10-22T15:17:04.763Z",
+          "LastModifiedDate": "2026-10-22T19:17:35.797Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2022-29078",
+          "VendorIDs": [
+            "GHSA-phwq-j96m-2c2q"
+          ],
+          "PkgID": "ejs@3.1.6",
+          "PkgName": "ejs",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/ejs@3.1.6",
+            "UID": "50232f024652eb8c"
+          },
+          "InstalledVersion": "3.1.6",
+          "FixedVersion": "3.1.7",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-29078",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:2502b4d5ffed5a4147584e619fd2868f4f48ba5907d99578c25dd34d428e65d3",
+          "Title": "ejs: server-side template injection in outputFunctionName",
+          "Description": "The ejs (aka Embedded JavaScript templates) package 3.1.6 for Node.js allows server-side template injection in settings[view options][outputFunctionName]. This is parsed as an internal option, and overwrites the outputFunctionName option with an arbitrary OS command (which is executed upon template compilation).",
+          "Severity": "CRITICAL",
+          "CweIDs": [
+            "CWE-94"
+          ],
+          "VendorSeverity": {
+            "ghsa": 4,
+            "nvd": 4,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            },
+            "nvd": {
+              "V2Vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P",
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V2Score": 7.5,
+              "V3Score": 9.8
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2022-29078",
+            "https://eslam.io/posts/ejs-server-side-template-injection-rce",
+            "https://eslam.io/posts/ejs-server-side-template-injection-rce/",
+            "https://github.com/mde/ejs",
+            "https://github.com/mde/ejs/commit/15ee698583c98dadc456639d6245580d17a24baf",
+            "https://github.com/mde/ejs/releases",
+            "https://nvd.nist.gov/vuln/detail/CVE-2022-29078",
+            "https://security.netapp.com/advisory/ntap-20220804-0001",
+            "https://security.netapp.com/advisory/ntap-20220804-0001/",
+            "https://www.cve.org/CVERecord?id=CVE-2022-29078"
+          ],
+          "PublishedDate": "2022-04-25T15:15:49.887Z",
+          "LastModifiedDate": "2026-06-17T04:39:32.44Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2022-23539",
+          "VendorIDs": [
+            "GHSA-8cf7-32gw-wr33"
+          ],
+          "PkgID": "jsonwebtoken@8.5.1",
+          "PkgName": "jsonwebtoken",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/jsonwebtoken@8.5.1",
+            "UID": "6b566f64c2329346"
+          },
+          "InstalledVersion": "8.5.1",
+          "FixedVersion": "9.0.0",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-23539",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:ffdbc19e3b081ed81d21515f207e08c8786556aadfb633fcd324a09698643a7c",
+          "Title": "jsonwebtoken: Unrestricted key type could lead to legacy keys usagen",
+          "Description": "Versions `\u003c=8.5.1` of `jsonwebtoken` library could be misconfigured so that legacy, insecure key types are used for signature verification. For example, DSA keys could be used with the RS256 algorithm. You are affected if you are using an algorithm and a key type other than a combination listed in the GitHub Security Advisory as unaffected. This issue has been fixed, please update to version 9.0.0. This version validates for asymmetric key type and algorithm combinations. Please refer to the above mentioned algorithm / key type combinations for the valid secure configuration. After updating to version 9.0.0, if you still intend to continue with signing or verifying tokens using invalid key type/algorithm value combinations, you’ll need to set the `allowInvalidAsymmetricKeyTypes` option  to `true` in the `sign()` and/or `verify()` functions.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-327"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "nvd": 3,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
+              "V3Score": 8.1
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
+              "V3Score": 8.1
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
+              "V3Score": 8.1
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2022-23539",
+            "https://github.com/auth0/node-jsonwebtoken",
+            "https://github.com/auth0/node-jsonwebtoken/commit/e1fa9dcc12054a8681db4e6373da1b30cf7016e3",
+            "https://github.com/auth0/node-jsonwebtoken/security/advisories/GHSA-8cf7-32gw-wr33",
+            "https://nvd.nist.gov/vuln/detail/CVE-2022-23539",
+            "https://security.netapp.com/advisory/ntap-20240621-0007",
+            "https://security.netapp.com/advisory/ntap-20240621-0007/",
+            "https://www.cve.org/CVERecord?id=CVE-2022-23539"
+          ],
+          "PublishedDate": "2022-12-23T00:15:12.347Z",
+          "LastModifiedDate": "2026-06-17T04:30:19.143Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2020-8203",
+          "VendorIDs": [
+            "GHSA-p6mc-m468-83gw"
+          ],
+          "PkgID": "lodash@4.17.15",
+          "PkgName": "lodash",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/lodash@4.17.15",
+            "UID": "e3c1f598522c0eb"
+          },
+          "InstalledVersion": "4.17.15",
+          "FixedVersion": "4.17.19",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2020-8203",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:03711e0c466b260cd55911dc8a435d99cd895459400538b586ddb31056c205e7",
+          "Title": "nodejs-lodash: prototype pollution in zipObjectDeep function",
+          "Description": "Prototype pollution attack when using _.zipObjectDeep in lodash before 4.17.20.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-770",
+            "CWE-1321"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "nvd": 3,
+            "redhat": 2,
+            "ruby-advisory-db": 3,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H",
+              "V3Score": 7.4
+            },
+            "nvd": {
+              "V2Vector": "AV:N/AC:M/Au:N/C:N/I:P/A:P",
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H",
+              "V2Score": 5.8,
+              "V3Score": 7.4
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H",
+              "V3Score": 7.4
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2020-8203",
+            "https://github.com/advisories/GHSA-p6mc-m468-83gw",
+            "https://github.com/github/advisory-database/pull/2884",
+            "https://github.com/lodash/lodash",
+            "https://github.com/lodash/lodash/commit/c84fe82760fb2d3e03a63379b297a1cc1a2fce12",
+            "https://github.com/lodash/lodash/issues/4744",
+            "https://github.com/lodash/lodash/issues/4874",
+            "https://github.com/lodash/lodash/wiki/Changelog#v41719",
+            "https://github.com/rubysec/ruby-advisory-db/blob/master/gems/lodash-rails/CVE-2020-8203.yml",
+            "https://hackerone.com/reports/712065",
+            "https://hackerone.com/reports/864701",
+            "https://nvd.nist.gov/vuln/detail/CVE-2020-8203",
+            "https://security.netapp.com/advisory/ntap-20200724-0006",
+            "https://security.netapp.com/advisory/ntap-20200724-0006/",
+            "https://ubuntu.com/security/notices/USN-8411-1",
+            "https://web.archive.org/web/20210914001339/https://github.com/lodash/lodash/issues/4744",
+            "https://www.cve.org/CVERecord?id=CVE-2020-8203",
+            "https://www.npmjs.com/advisories/1523",
+            "https://www.oracle.com//security-alerts/cpujul2021.html",
+            "https://www.oracle.com/security-alerts/cpuApr2021.html",
+            "https://www.oracle.com/security-alerts/cpuapr2022.html",
+            "https://www.oracle.com/security-alerts/cpujan2022.html",
+            "https://www.oracle.com/security-alerts/cpuoct2021.html"
+          ],
+          "PublishedDate": "2020-07-15T17:15:11.797Z",
+          "LastModifiedDate": "2026-06-17T03:26:02.917Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2021-23337",
+          "VendorIDs": [
+            "GHSA-35jh-r3h4-6jhm"
+          ],
+          "PkgID": "lodash@4.17.15",
+          "PkgName": "lodash",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/lodash@4.17.15",
+            "UID": "e3c1f598522c0eb"
+          },
+          "InstalledVersion": "4.17.15",
+          "FixedVersion": "4.17.21",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2021-23337",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:9d4ffe9613502b3854efcf2fe22ba8cc38374c50048171f4ac17d96b2f0cf8e7",
+          "Title": "nodejs-lodash: command injection via template",
+          "Description": "Lodash versions prior to 4.17.21 are vulnerable to Command Injection via the template function.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-94"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "nvd": 3,
+            "redhat": 2,
+            "ruby-advisory-db": 3,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 7.2
+            },
+            "nvd": {
+              "V2Vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P",
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+              "V2Score": 6.5,
+              "V3Score": 7.2
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 7.2
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2021-23337",
+            "https://cert-portal.siemens.com/productcert/pdf/ssa-637483.pdf",
+            "https://github.com/advisories/GHSA-35jh-r3h4-6jhm",
+            "https://github.com/lodash/lodash",
+            "https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js",
+            "https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js#L14851",
+            "https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js%23L14851",
+            "https://github.com/lodash/lodash/commit/3469357cff396a26c363f8c1b5a91dde28ba4b1c",
+            "https://github.com/rubysec/ruby-advisory-db/blob/master/gems/lodash-rails/CVE-2021-23337.yml",
+            "https://nvd.nist.gov/vuln/detail/CVE-2021-23337",
+            "https://security.netapp.com/advisory/ntap-20210312-0006",
+            "https://security.netapp.com/advisory/ntap-20210312-0006/",
+            "https://snyk.io/vuln/SNYK-JAVA-ORGFUJIONWEBJARS-1074932",
+            "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARS-1074930",
+            "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWER-1074928",
+            "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074931",
+            "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-1074929",
+            "https://snyk.io/vuln/SNYK-JS-LODASH-1040724",
+            "https://ubuntu.com/security/notices/USN-8411-1",
+            "https://www.cve.org/CVERecord?id=CVE-2021-23337",
+            "https://www.oracle.com//security-alerts/cpujul2021.html",
+            "https://www.oracle.com/security-alerts/cpujan2022.html",
+            "https://www.oracle.com/security-alerts/cpujul2022.html",
+            "https://www.oracle.com/security-alerts/cpuoct2021.html"
+          ],
+          "PublishedDate": "2021-02-15T13:15:12.56Z",
+          "LastModifiedDate": "2026-10-08T22:17:07.363Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-4800",
+          "VendorIDs": [
+            "GHSA-r5fr-rjxr-66jc"
+          ],
+          "PkgID": "lodash@4.17.15",
+          "PkgName": "lodash",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/lodash@4.17.15",
+            "UID": "e3c1f598522c0eb"
+          },
+          "InstalledVersion": "4.17.15",
+          "FixedVersion": "4.18.0",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-4800",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:9abbeff6bf224fc2997addfb3f7d48bfdce46b0de25ebc2c1850618330f4411a",
+          "Title": "lodash: lodash: Arbitrary code execution via untrusted input in template imports",
+          "Description": "The fix for CVE-2021-23337 added validation for the variable option in _.template but did not apply the same validation to options.imports key names, and both paths flow into the same Function() constructor sink. When an application passes untrusted input as options.imports key names, an attacker can inject default-parameter expressions that execute arbitrary code at template compilation time. Additionally, _.template uses assignInWith to merge imports, which enumerates inherited properties via for..in, so if Object.prototype has been polluted by another vector the polluted keys are copied into the imports object and passed to Function(). The issue is fixed in 4.18.1 for lodash, lodash-es, lodash-amd, and lodash.template. As a workaround, do not pass untrusted input as key names in options.imports; use only developer-controlled, static key names.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-94"
+          ],
+          "VendorSeverity": {
+            "alma": 3,
+            "ghsa": 3,
+            "nvd": 4,
+            "oracle-oval": 3,
+            "redhat": 3,
+            "rocky": 3,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 8.1
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 8.1
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHBA-2026:21387",
+            "https://access.redhat.com/errata/RHSA-2026:10131",
+            "https://access.redhat.com/errata/RHSA-2026:10175",
+            "https://access.redhat.com/errata/RHSA-2026:10710",
+            "https://access.redhat.com/errata/RHSA-2026:10713",
+            "https://access.redhat.com/errata/RHSA-2026:11454",
+            "https://access.redhat.com/errata/RHSA-2026:11469",
+            "https://access.redhat.com/errata/RHSA-2026:11470",
+            "https://access.redhat.com/errata/RHSA-2026:11471",
+            "https://access.redhat.com/errata/RHSA-2026:11493",
+            "https://access.redhat.com/errata/RHSA-2026:11494",
+            "https://access.redhat.com/errata/RHSA-2026:11495",
+            "https://access.redhat.com/errata/RHSA-2026:11516",
+            "https://access.redhat.com/errata/RHSA-2026:12277",
+            "https://access.redhat.com/errata/RHSA-2026:12279",
+            "https://access.redhat.com/errata/RHSA-2026:13545",
+            "https://access.redhat.com/errata/RHSA-2026:13553",
+            "https://access.redhat.com/errata/RHSA-2026:13571",
+            "https://access.redhat.com/errata/RHSA-2026:13826",
+            "https://access.redhat.com/errata/RHSA-2026:14870",
+            "https://access.redhat.com/errata/RHSA-2026:14871",
+            "https://access.redhat.com/errata/RHSA-2026:16874",
+            "https://access.redhat.com/errata/RHSA-2026:17448",
+            "https://access.redhat.com/errata/RHSA-2026:17468",
+            "https://access.redhat.com/errata/RHSA-2026:17469",
+            "https://access.redhat.com/errata/RHSA-2026:17547",
+            "https://access.redhat.com/errata/RHSA-2026:17549",
+            "https://access.redhat.com/errata/RHSA-2026:17550",
+            "https://access.redhat.com/errata/RHSA-2026:17598",
+            "https://access.redhat.com/errata/RHSA-2026:17789",
+            "https://access.redhat.com/errata/RHSA-2026:19008",
+            "https://access.redhat.com/errata/RHSA-2026:19167",
+            "https://access.redhat.com/errata/RHSA-2026:19409",
+            "https://access.redhat.com/errata/RHSA-2026:19410",
+            "https://access.redhat.com/errata/RHSA-2026:19712",
+            "https://access.redhat.com/errata/RHSA-2026:20041",
+            "https://access.redhat.com/errata/RHSA-2026:20042",
+            "https://access.redhat.com/errata/RHSA-2026:20943",
+            "https://access.redhat.com/errata/RHSA-2026:20946",
+            "https://access.redhat.com/errata/RHSA-2026:21658",
+            "https://access.redhat.com/errata/RHSA-2026:22619",
+            "https://access.redhat.com/errata/RHSA-2026:24331",
+            "https://access.redhat.com/errata/RHSA-2026:24762",
+            "https://access.redhat.com/errata/RHSA-2026:24977",
+            "https://access.redhat.com/errata/RHSA-2026:29795",
+            "https://access.redhat.com/errata/RHSA-2026:34100",
+            "https://access.redhat.com/errata/RHSA-2026:34342",
+            "https://access.redhat.com/errata/RHSA-2026:34608",
+            "https://access.redhat.com/errata/RHSA-2026:36621",
+            "https://access.redhat.com/errata/RHSA-2026:36651",
+            "https://access.redhat.com/errata/RHSA-2026:37186",
+            "https://access.redhat.com/errata/RHSA-2026:40118",
+            "https://access.redhat.com/errata/RHSA-2026:40795",
+            "https://access.redhat.com/errata/RHSA-2026:40945",
+            "https://access.redhat.com/errata/RHSA-2026:40984",
+            "https://access.redhat.com/errata/RHSA-2026:41928",
+            "https://access.redhat.com/errata/RHSA-2026:41941",
+            "https://access.redhat.com/errata/RHSA-2026:41944",
+            "https://access.redhat.com/errata/RHSA-2026:42078",
+            "https://access.redhat.com/errata/RHSA-2026:44235",
+            "https://access.redhat.com/errata/RHSA-2026:48699",
+            "https://access.redhat.com/errata/RHSA-2026:54188",
+            "https://access.redhat.com/errata/RHSA-2026:56789",
+            "https://access.redhat.com/errata/RHSA-2026:56854",
+            "https://access.redhat.com/errata/RHSA-2026:56912",
+            "https://access.redhat.com/errata/RHSA-2026:59833",
+            "https://access.redhat.com/errata/RHSA-2026:60023",
+            "https://access.redhat.com/errata/RHSA-2026:8483",
+            "https://access.redhat.com/errata/RHSA-2026:8484",
+            "https://access.redhat.com/errata/RHSA-2026:8490",
+            "https://access.redhat.com/errata/RHSA-2026:8491",
+            "https://access.redhat.com/errata/RHSA-2026:8493",
+            "https://access.redhat.com/errata/RHSA-2026:8498",
+            "https://access.redhat.com/errata/RHSA-2026:9385",
+            "https://access.redhat.com/errata/RHSA-2026:9742",
+            "https://access.redhat.com/security/cve/CVE-2026-4800",
+            "https://advisory.echohq.com/cve/CVE-2026-4800",
+            "https://bugzilla.redhat.com/2453496",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2431740",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2453496",
+            "https://cna.openjsf.org/security-advisories.html",
+            "https://creativecommons.org/licenses/by/4.0/",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-13465",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-4800",
+            "https://errata.almalinux.org/9/ALSA-2026-19167.html",
+            "https://errata.rockylinux.org/RLSA-2026:24331",
+            "https://github.com/advisories/GHSA-35jh-r3h4-6jhm",
+            "https://github.com/advisories/GHSA-r5fr-rjxr-66jc",
+            "https://github.com/lodash/lodash",
+            "https://github.com/lodash/lodash/commit/3469357cff396a26c363f8c1b5a91dde28ba4b1c",
+            "https://github.com/lodash/lodash/security/advisories/GHSA-r5fr-rjxr-66jc",
+            "https://linux.oracle.com/cve/CVE-2026-4800.html",
+            "https://linux.oracle.com/errata/ELSA-2026-24331.html",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-4800",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-4800.json",
+            "https://ubuntu.com/security/notices/USN-8411-1",
+            "https://www.cve.org/CVERecord?id=CVE-2026-4800"
+          ],
+          "PublishedDate": "2026-03-31T20:16:29.66Z",
+          "LastModifiedDate": "2026-10-15T07:18:00.61Z"
+        },
+        {
+          "VulnerabilityID": "NSWG-ECO-516",
+          "PkgID": "lodash@4.17.15",
+          "PkgName": "lodash",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/lodash@4.17.15",
+            "UID": "e3c1f598522c0eb"
+          },
+          "InstalledVersion": "4.17.15",
+          "FixedVersion": "\u003e=4.17.19",
+          "Status": "fixed",
+          "SeveritySource": "nodejs-security-wg",
+          "PrimaryURL": "https://www.npmjs.com/advisories/1523",
+          "DataSource": {
+            "ID": "nodejs-security-wg",
+            "Name": "Node.js Ecosystem Security Working Group",
+            "URL": "https://github.com/nodejs/security-wg"
+          },
+          "Fingerprint": "sha256:e598a33ada2dcd801c6214c310a9430d296e925d52da1aadfc970d9a1a85ce57",
+          "Title": "Allocation of Resources Without Limits or Throttling",
+          "Description": "Prototype pollution attack (lodash)",
+          "Severity": "HIGH",
+          "VendorSeverity": {
+            "nodejs-security-wg": 3
+          },
+          "References": [
+            "https://github.com/lodash/lodash/pull/4759",
+            "https://hackerone.com/reports/712065",
+            "https://www.npmjs.com/advisories/1523"
+          ]
+        },
+        {
+          "VulnerabilityID": "CVE-2022-24785",
+          "VendorIDs": [
+            "GHSA-8hfj-j24r-96c4"
+          ],
+          "PkgID": "moment@2.29.1",
+          "PkgName": "moment",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/moment@2.29.1",
+            "UID": "ddf515a37e14dbee"
+          },
+          "InstalledVersion": "2.29.1",
+          "FixedVersion": "2.29.2",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-24785",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:a74408ab31d6c90ba339230d6cc91f3f04d74b87461ee57c51d9c2dbea47287f",
+          "Title": "Moment.js: Path traversal  in moment.locale",
+          "Description": "Moment.js is a JavaScript date library for parsing, validating, manipulating, and formatting dates. A path traversal vulnerability impacts npm (server) users of Moment.js between versions 1.0.1 and 2.29.1, especially if a user-provided locale string is directly used to switch moment locale. This problem is patched in 2.29.2, and the patch can be applied to all affected versions. As a workaround, sanitize the user-provided locale name before passing it to Moment.js.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-22",
+            "CWE-27"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "nvd": 3,
+            "redhat": 2,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 7.5
+            },
+            "nvd": {
+              "V2Vector": "AV:N/AC:L/Au:N/C:N/I:P/A:N",
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+              "V2Score": 5,
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2022-24785",
+            "https://github.com/moment/moment",
+            "https://github.com/moment/moment/commit/4211bfc8f15746be4019bba557e29a7ba83d54c5",
+            "https://github.com/moment/moment/security/advisories/GHSA-8hfj-j24r-96c4",
+            "https://lists.debian.org/debian-lts-announce/2023/01/msg00035.html",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/6QIO6YNLTK2T7SPKDS4JEL45FANLNC2Q",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/6QIO6YNLTK2T7SPKDS4JEL45FANLNC2Q/",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/ORJX2LF6KMPIHP6B2P6KZIVKMLE3LVJ5",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/ORJX2LF6KMPIHP6B2P6KZIVKMLE3LVJ5/",
+            "https://nvd.nist.gov/vuln/detail/CVE-2022-24785",
+            "https://security.netapp.com/advisory/ntap-20220513-0006",
+            "https://security.netapp.com/advisory/ntap-20220513-0006/",
+            "https://security.netapp.com/advisory/ntap-20241108-0002",
+            "https://security.netapp.com/advisory/ntap-20241108-0002/",
+            "https://ubuntu.com/security/notices/USN-5559-1",
+            "https://www.cve.org/CVERecord?id=CVE-2022-24785",
+            "https://www.tenable.com/security/tns-2022-09"
+          ],
+          "PublishedDate": "2022-04-04T17:15:07.583Z",
+          "LastModifiedDate": "2026-06-17T04:32:30.85Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2022-31129",
+          "VendorIDs": [
+            "GHSA-wc69-rhjr-hc9g"
+          ],
+          "PkgID": "moment@2.29.1",
+          "PkgName": "moment",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/moment@2.29.1",
+            "UID": "ddf515a37e14dbee"
+          },
+          "InstalledVersion": "2.29.1",
+          "FixedVersion": "2.29.4",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-31129",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:ba404f07db1fd6fc7f6b0498c5b20bf8069117a19cf57cf8cad1c196d3079cb3",
+          "Title": "moment: inefficient parsing algorithm resulting in DoS",
+          "Description": "moment is a JavaScript date library for parsing, validating, manipulating, and formatting dates. Affected versions of moment were found to use an inefficient parsing algorithm. Specifically using string-to-date parsing in moment (more specifically rfc2822 parsing, which is tried by default) has quadratic (N^2) complexity on specific inputs. Users may notice a noticeable slowdown is observed with inputs above 10k characters. Users who pass user-provided strings without sanity length checks to moment constructor are vulnerable to (Re)DoS attacks. The problem is patched in 2.29.4, the patch can be applied to all affected versions with minimal tweaking. Users are advised to upgrade. Users unable to upgrade should consider limiting date lengths accepted from user input.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-400",
+            "CWE-1333"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "nvd": 3,
+            "redhat": 3,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "nvd": {
+              "V2Vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P",
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V2Score": 5,
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2022-31129",
+            "https://github.com/moment/moment",
+            "https://github.com/moment/moment/commit/9a3b5894f3d5d602948ac8a02e4ee528a49ca3a3",
+            "https://github.com/moment/moment/pull/6015#issuecomment-1152961973",
+            "https://github.com/moment/moment/pull/6015/commits/4bbb9f3ccbe231de40207503f344fe5ce97584f4",
+            "https://github.com/moment/moment/pull/6015/commits/bfd4f2375d5c1a2106246721d693a9611dddfbfe",
+            "https://github.com/moment/moment/pull/6015/commits/dc0d180e90d8a84f7ff13572363330a22b3ea504",
+            "https://github.com/moment/moment/security/advisories/GHSA-wc69-rhjr-hc9g",
+            "https://huntr.dev/bounties/f0952b67-f2ff-44a9-a9cd-99e0a87cb633",
+            "https://huntr.dev/bounties/f0952b67-f2ff-44a9-a9cd-99e0a87cb633/",
+            "https://lists.debian.org/debian-lts-announce/2023/01/msg00035.html",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/6QIO6YNLTK2T7SPKDS4JEL45FANLNC2Q",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/6QIO6YNLTK2T7SPKDS4JEL45FANLNC2Q/",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/IWY24RJA3SBJGA5N4CU4VBPHJPPPJL5O",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/IWY24RJA3SBJGA5N4CU4VBPHJPPPJL5O/",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/ORJX2LF6KMPIHP6B2P6KZIVKMLE3LVJ5",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/ORJX2LF6KMPIHP6B2P6KZIVKMLE3LVJ5/",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/ZMX5YHELQVCGKKQVFXIYOTBMN23YYSRO",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/ZMX5YHELQVCGKKQVFXIYOTBMN23YYSRO/",
+            "https://nvd.nist.gov/vuln/detail/CVE-2022-31129",
+            "https://security.netapp.com/advisory/ntap-20221014-0003",
+            "https://security.netapp.com/advisory/ntap-20221014-0003/",
+            "https://security.netapp.com/advisory/ntap-20241108-0002",
+            "https://security.netapp.com/advisory/ntap-20241108-0002/",
+            "https://ubuntu.com/security/notices/USN-5559-1",
+            "https://ubuntu.com/security/notices/USN-6550-1",
+            "https://www.cve.org/CVERecord?id=CVE-2022-31129"
+          ],
+          "PublishedDate": "2022-07-06T18:15:19.57Z",
+          "LastModifiedDate": "2026-06-17T04:44:51.93Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-45296",
+          "VendorIDs": [
+            "GHSA-9wv6-86v2-598j"
+          ],
+          "PkgID": "path-to-regexp@0.1.7",
+          "PkgName": "path-to-regexp",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/path-to-regexp@0.1.7",
+            "UID": "253fd5ef46866d95"
+          },
+          "InstalledVersion": "0.1.7",
+          "FixedVersion": "1.9.0, 0.1.10, 8.0.0, 3.3.0, 6.3.0",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-45296",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:d0472e29e5f1f62f7c3f198691c3fca191a1b59525441c92aac5b52be9a1d44d",
+          "Title": "path-to-regexp: Backtracking regular expressions cause ReDoS",
+          "Description": "path-to-regexp turns path strings into a regular expressions. In certain cases, path-to-regexp will output a regular expression that can be exploited to cause poor performance. Because JavaScript is single threaded and regex matching runs on the main thread, poor performance will block the event loop and lead to a DoS. The bad regular expression is generated any time you have two parameters within a single segment, separated by something that is not a period (.). For users of 0.1, upgrade to 0.1.10. All other users should upgrade to 8.0.0.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-1333"
+          ],
+          "VendorSeverity": {
+            "cbl-mariner": 3,
+            "ghsa": 3,
+            "redhat": 2,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:P",
+              "V3Score": 7.5,
+              "V40Score": 7.7
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2024-45296",
+            "https://advisory.echohq.com/cve/CVE-2024-45296",
+            "https://github.com/advisories/GHSA-9wv6-86v2-598j",
+            "https://github.com/pillarjs/path-to-regexp",
+            "https://github.com/pillarjs/path-to-regexp/commit/29b96b4a1de52824e1ca0f49a701183cc4ed476f",
+            "https://github.com/pillarjs/path-to-regexp/commit/60f2121e9b66b7b622cc01080df0aabda9eedee6",
+            "https://github.com/pillarjs/path-to-regexp/commit/925ac8e3c5780b02f58cbd4e52f95da8ad2ac485",
+            "https://github.com/pillarjs/path-to-regexp/commit/d31670ae8f6e69cbfd56e835742195b7d10942ef",
+            "https://github.com/pillarjs/path-to-regexp/commit/f1253b47b347dcb909e3e80b0eb2649109e59894",
+            "https://github.com/pillarjs/path-to-regexp/releases/tag/v6.3.0",
+            "https://github.com/pillarjs/path-to-regexp/security/advisories/GHSA-9wv6-86v2-598j",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-45296",
+            "https://security.netapp.com/advisory/ntap-20250124-0001",
+            "https://security.netapp.com/advisory/ntap-20250124-0001/",
+            "https://www.cve.org/CVERecord?id=CVE-2024-45296"
+          ],
+          "PublishedDate": "2024-09-09T19:15:13.33Z",
+          "LastModifiedDate": "2026-06-17T07:53:58.263Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-52798",
+          "VendorIDs": [
+            "GHSA-rhx6-c78j-4q9w"
+          ],
+          "PkgID": "path-to-regexp@0.1.7",
+          "PkgName": "path-to-regexp",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/path-to-regexp@0.1.7",
+            "UID": "253fd5ef46866d95"
+          },
+          "InstalledVersion": "0.1.7",
+          "FixedVersion": "0.1.12",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-52798",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:15834ae777a2860d9f6a5c4b8fa822fd91197980aeae73a60a01939029f1da72",
+          "Title": "path-to-regexp: path-to-regexp Unpatched `path-to-regexp` ReDoS in 0.1.x",
+          "Description": "path-to-regexp turns path strings into a regular expressions. In certain cases, path-to-regexp will output a regular expression that can be exploited to cause poor performance. The regular expression that is vulnerable to backtracking can be generated in the 0.1.x release of path-to-regexp. Upgrade to 0.1.12. This vulnerability exists because of an incomplete fix for CVE-2024-45296.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-1333"
+          ],
+          "VendorSeverity": {
+            "cbl-mariner": 2,
+            "ghsa": 3,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:P",
+              "V3Score": 7.5,
+              "V40Score": 7.7
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2024-52798",
+            "https://advisory.echohq.com/cve/CVE-2024-52798",
+            "https://blakeembrey.com/posts/2024-09-web-redos",
+            "https://github.com/advisories/GHSA-rhx6-c78j-4q9w",
+            "https://github.com/pillarjs/path-to-regexp",
+            "https://github.com/pillarjs/path-to-regexp/commit/f01c26a013b1889f0c217c643964513acf17f6a4",
+            "https://github.com/pillarjs/path-to-regexp/security/advisories/GHSA-rhx6-c78j-4q9w",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-52798",
+            "https://security.netapp.com/advisory/ntap-20250124-0002",
+            "https://security.netapp.com/advisory/ntap-20250124-0002/",
+            "https://www.cve.org/CVERecord?id=CVE-2024-52798"
+          ],
+          "PublishedDate": "2024-12-05T23:15:06.31Z",
+          "LastModifiedDate": "2026-06-17T08:07:38.863Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-4867",
+          "VendorIDs": [
+            "GHSA-37ch-88jc-xwx2"
+          ],
+          "PkgID": "path-to-regexp@0.1.7",
+          "PkgName": "path-to-regexp",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/path-to-regexp@0.1.7",
+            "UID": "253fd5ef46866d95"
+          },
+          "InstalledVersion": "0.1.7",
+          "FixedVersion": "0.1.13",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-4867",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:af21ec055df450d806af78f2a67375a546b1d01fdb7812884401b5b49e8dba0a",
+          "Title": "path-to-regexp: path-to-regexp: Denial of Service via catastrophic backtracking from malformed URL parameters",
+          "Description": "Impact:\n\nA bad regular expression is generated any time you have three or more parameters within a single segment, separated by something that is not a period (.). For example, /:a-:b-:c or /:a-:b-:c-:d. The backtrack protection added in path-to-regexp@0.1.12 only prevents ambiguity for two parameters. With three or more, the generated lookahead does not block single separator characters, so capture groups overlap and cause catastrophic backtracking.\n\nPatches:\n\nUpgrade to path-to-regexp@0.1.13\n\nCustom regex patterns in route definitions (e.g., /:a-:b([^-/]+)-:c([^-/]+)) are not affected because they override the default capture group.\n\nWorkarounds:\n\nAll versions can be patched by providing a custom regular expression for parameters after the first in a single segment. As long as the custom regular expression does not match the text before the parameter, you will be safe. For example, change /:a-:b-:c to /:a-:b([^-/]+)-:c([^-/]+).\n\nIf paths cannot be rewritten and versions cannot be upgraded, another alternative is to limit the URL length.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-1333"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-4867",
+            "https://advisory.echohq.com/cve/CVE-2026-4867",
+            "https://blakeembrey.com/posts/2024-09-web-redos",
+            "https://cna.openjsf.org/security-advisories.html",
+            "https://github.com/advisories/GHSA-37ch-88jc-xwx2",
+            "https://github.com/advisories/GHSA-9wv6-86v2-598j",
+            "https://github.com/pillarjs/path-to-regexp",
+            "https://github.com/pillarjs/path-to-regexp/releases/tag/v.0.1.13",
+            "https://github.com/pillarjs/path-to-regexp/security/advisories/GHSA-37ch-88jc-xwx2",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-4867",
+            "https://www.cve.org/CVERecord?id=CVE-2026-4867"
+          ],
+          "PublishedDate": "2026-03-26T17:16:42.983Z",
+          "LastModifiedDate": "2026-06-17T10:57:21.827Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2022-24999",
+          "VendorIDs": [
+            "GHSA-hrpp-h998-j3pp"
+          ],
+          "PkgID": "qs@6.7.0",
+          "PkgName": "qs",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/qs@6.7.0",
+            "UID": "fc31d77165f33542"
+          },
+          "InstalledVersion": "6.7.0",
+          "FixedVersion": "6.10.3, 6.9.7, 6.8.3, 6.7.3, 6.6.1, 6.5.3, 6.4.1, 6.3.3, 6.2.4",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-24999",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:6556c7f71ef6fffe31b1ac2a66ee179aae1afbfc02a368a82cc4ca1b1794aa2b",
+          "Title": "express: \"qs\" prototype poisoning causes the hang of the node process",
+          "Description": "qs before 6.10.3, as used in Express before 4.17.3 and other products, allows attackers to cause a Node process hang for an Express application because an __ proto__ key can be used. In many typical Express use cases, an unauthenticated remote attacker can place the attack payload in the query string of the URL that is used to visit the application, such as a[__proto__]=b\u0026a[__proto__]\u0026a[length]=100000000. The fix was backported to qs 6.9.7, 6.8.3, 6.7.3, 6.6.1, 6.5.3, 6.4.1, 6.3.3, and 6.2.4 (and therefore Express 4.17.3, which has \"deps: qs@6.9.7\" in its release description, is not vulnerable).",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-1321"
+          ],
+          "VendorSeverity": {
+            "alma": 2,
+            "ghsa": 3,
+            "nvd": 3,
+            "oracle-oval": 2,
+            "redhat": 2,
+            "rocky": 2,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2023:0050",
+            "https://access.redhat.com/security/cve/CVE-2022-24999",
+            "https://bugzilla.redhat.com/2044591",
+            "https://bugzilla.redhat.com/2066009",
+            "https://bugzilla.redhat.com/2134609",
+            "https://bugzilla.redhat.com/2140911",
+            "https://bugzilla.redhat.com/2150323",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2044591",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2066009",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2134609",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2140911",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2142821",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2150323",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44906",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-0235",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-24999",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-3517",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-43548",
+            "https://errata.almalinux.org/8/ALSA-2023-0050.html",
+            "https://errata.rockylinux.org/RLSA-2023:0050",
+            "https://github.com/expressjs/express/releases/tag/4.17.3",
+            "https://github.com/ljharb/qs",
+            "https://github.com/ljharb/qs/commit/4310742efbd8c03f6495f07906b45213da0a32ec",
+            "https://github.com/ljharb/qs/commit/727ef5d34605108acb3513f72d5435972ed15b68",
+            "https://github.com/ljharb/qs/commit/73205259936317b40f447c5cdb71c5b341848e1b",
+            "https://github.com/ljharb/qs/commit/8b4cc14cda94a5c89341b77e5fe435ec6c41be2d",
+            "https://github.com/ljharb/qs/commit/ba24e74dd17931f825adb52f5633e48293b584e1",
+            "https://github.com/ljharb/qs/commit/e799ba57e573a30c14b67c1889c7c04d508b9105",
+            "https://github.com/ljharb/qs/commit/ed0f5dcbef4b168a8ae299d78b1e4a2e9b1baf1f",
+            "https://github.com/ljharb/qs/commit/f945393cfe442fe8c6e62b4156fd35452c0686ee",
+            "https://github.com/ljharb/qs/commit/fc3682776670524a42e19709ec4a8138d0d7afda",
+            "https://github.com/ljharb/qs/pull/428",
+            "https://github.com/n8tz/CVE-2022-24999",
+            "https://linux.oracle.com/cve/CVE-2022-24999.html",
+            "https://linux.oracle.com/errata/ELSA-2023-0050.html",
+            "https://lists.debian.org/debian-lts-announce/2023/01/msg00039.html",
+            "https://nvd.nist.gov/vuln/detail/CVE-2022-24999",
+            "https://security.netapp.com/advisory/ntap-20230908-0005",
+            "https://security.netapp.com/advisory/ntap-20230908-0005/",
+            "https://ubuntu.com/security/notices/USN-7693-1",
+            "https://www.cve.org/CVERecord?id=CVE-2022-24999"
+          ],
+          "PublishedDate": "2022-11-26T22:15:10.153Z",
+          "LastModifiedDate": "2026-06-17T04:32:55.2Z"
+        }
+      ]
+    }
+  ]
+}

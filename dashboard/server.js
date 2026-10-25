@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 3001;
 
 // Path to mounted reports directory
 const REPORTS_DIR = process.env.REPORTS_DIR || path.join(__dirname, 'reports');
+const BUILDS_DIR = path.join(REPORTS_DIR, 'builds');
 
 app.use(cors());
 app.use(express.json());
@@ -44,19 +45,101 @@ app.get('/api/apps', (req, res) => {
   res.json(apps);
 });
 
-// API: Aggregated reports for selected app
+// API: List available builds for history & comparison
+app.get('/api/builds', (req, res) => {
+  const builds = [];
+
+  if (fs.existsSync(BUILDS_DIR)) {
+    try {
+      const entries = fs.readdirSync(BUILDS_DIR, { withFileTypes: true });
+      for (const entry of entries) {
+        if (entry.isDirectory()) {
+          const buildDir = path.join(BUILDS_DIR, entry.name);
+          const meta = readJsonFile(path.join(buildDir, 'meta.json'), {});
+          const sca = readJsonFile(path.join(buildDir, 'trivy-sca-results.json'), {});
+          const sast = readJsonFile(path.join(buildDir, 'semgrep-ai-triaged.json'), {});
+          const container = readJsonFile(path.join(buildDir, 'trivy-container-results.json'), {});
+
+          // Quick counts
+          let scaCount = 0;
+          if (sca?.Results) {
+            sca.Results.forEach(r => scaCount += (r.Vulnerabilities || []).length);
+          }
+
+          let containerCount = 0;
+          if (container?.Results) {
+            container.Results.filter(r => r.Class === 'os-pkgs' || r.Type !== 'node-pkg')
+              .forEach(r => containerCount += (r.Vulnerabilities || []).length);
+          }
+
+          const sastSummary = sast?.summary || {};
+
+          builds.push({
+            buildNumber: entry.name,
+            timestamp: meta.timestamp || fs.statSync(buildDir).mtime.toISOString(),
+            commit: meta.commit || 'unknown',
+            notes: meta.notes || '',
+            sast_total: sastSummary.total_findings || 0,
+            sast_tp: sastSummary.true_positives || 0,
+            sast_fp: sastSummary.false_positives || 0,
+            sca_total: scaCount,
+            container_total: containerCount
+          });
+        }
+      }
+    } catch (err) {
+      console.error('Error scanning builds directory:', err);
+    }
+  }
+
+  // Sort by buildNumber (numeric if possible) descending
+  builds.sort((a, b) => {
+    const numA = parseInt(a.buildNumber, 10);
+    const numB = parseInt(b.buildNumber, 10);
+    if (!isNaN(numA) && !isNaN(numB)) {
+      return numB - numA;
+    }
+    return b.buildNumber.localeCompare(a.buildNumber);
+  });
+
+  if (builds.length > 0) {
+    builds[0].isLatest = true;
+  }
+
+  res.json(builds);
+});
+
+// Helper to resolve directory for a requested build
+function getTargetReportDir(buildNumber) {
+  if (buildNumber && buildNumber !== 'latest') {
+    const specificDir = path.join(BUILDS_DIR, String(buildNumber));
+    if (fs.existsSync(specificDir)) {
+      return specificDir;
+    }
+  }
+  return REPORTS_DIR;
+}
+
+// API: Aggregated reports for selected app & build
 app.get('/api/reports', (req, res) => {
   const appId = req.query.app || 'vulnerable-node-app';
+  const buildQuery = req.query.build || 'latest';
 
-  const semgrepAiPath = path.join(REPORTS_DIR, 'semgrep-ai-triaged.json');
-  const semgrepRawPath = path.join(REPORTS_DIR, 'semgrep-results.json');
-  const trivyScaPath = path.join(REPORTS_DIR, 'trivy-sca-results.json');
-  const trivyContainerPath = path.join(REPORTS_DIR, 'trivy-container-results.json');
+  const targetDir = getTargetReportDir(buildQuery);
+
+  const semgrepAiPath = path.join(targetDir, 'semgrep-ai-triaged.json');
+  const semgrepRawPath = path.join(targetDir, 'semgrep-results.json');
+  const trivyScaPath = path.join(targetDir, 'trivy-sca-results.json');
+  const trivyContainerPath = path.join(targetDir, 'trivy-container-results.json');
+  const remediationPrPath = path.join(targetDir, 'remediation-pr.json');
+  const metaPath = path.join(targetDir, 'meta.json');
 
   const sastAi = readJsonFile(semgrepAiPath, { summary: {}, triaged_findings: [] });
   const sastRaw = readJsonFile(semgrepRawPath, { results: [] });
   const trivySca = readJsonFile(trivyScaPath, {});
   const trivyContainer = readJsonFile(trivyContainerPath, {});
+  const remediationPr = readJsonFile(remediationPrPath, null);
+  const meta = readJsonFile(metaPath, { build_number: buildQuery });
 
   // Parse Trivy SCA (npm packages)
   let scaVulnerabilities = [];
@@ -78,11 +161,10 @@ app.get('/api/reports', (req, res) => {
     }
   }
 
-  // Parse Trivy Container OS vulnerabilities (Strictly OS packages to eliminate duplicates with SCA)
+  // Parse Trivy Container OS vulnerabilities (Strictly OS packages)
   let containerVulnerabilities = [];
   if (trivyContainer && Array.isArray(trivyContainer.Results)) {
     for (const target of trivyContainer.Results) {
-      // Exclude language-specific packages (lang-pkgs / node-pkg) which are already handled by SCA
       if (target.Class === 'os-pkgs' || (target.Type && target.Type !== 'node-pkg')) {
         if (Array.isArray(target.Vulnerabilities)) {
           for (const v of target.Vulnerabilities) {
@@ -102,12 +184,13 @@ app.get('/api/reports', (req, res) => {
     }
   }
 
-  const remediationPrPath = path.join(REPORTS_DIR, 'remediation-pr.json');
-  const remediationPr = readJsonFile(remediationPrPath, null);
-
   const payload = {
     appId,
-    timestamp: new Date().toISOString(),
+    build: {
+      buildNumber: meta.build_number || buildQuery,
+      timestamp: meta.timestamp || new Date().toISOString(),
+      commit: meta.commit || 'unknown'
+    },
     sast: {
       summary: sastAi.summary || {},
       findings: sastAi.triaged_findings || []

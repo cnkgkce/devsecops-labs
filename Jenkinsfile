@@ -129,12 +129,20 @@ pipeline {
 
     post {
         always {
-            echo '==== [DevSecOps Lab] Raporlar Arşivleniyor ===='
+            echo '==== [DevSecOps Lab] Raporlar Arşivleniyor & Build Geçmişi Saklanıyor ===='
             sh """
                 cd "${TARGET_DIR}"
                 if [ -d reports ]; then
-                    echo "Generated reports in ${TARGET_DIR}/reports:"
-                    ls -la reports/
+                    BUILD_ID="\${BUILD_NUMBER:-latest}"
+                    echo "Archiving reports for Build #\${BUILD_ID}..."
+                    mkdir -p "reports/builds/\${BUILD_ID}"
+                    cp reports/*.json "reports/builds/\${BUILD_ID}/" || true
+                    
+                    # Create build metadata
+                    echo "{\\"build_number\\": \\"\${BUILD_ID}\\", \\"timestamp\\": \\"\$(date -u +'%Y-%m-%dT%H:%M:%SZ')\\", \\"commit\\": \\"\$(git rev-parse --short HEAD 2>/dev/null || echo 'unknown')\\"}" > "reports/builds/\${BUILD_ID}/meta.json"
+                    
+                    echo "Build history in \${TARGET_DIR}/reports/builds:"
+                    ls -la reports/builds/
                 fi
             """
             sh 'cp -r "${TARGET_DIR}/reports" ./ || true'

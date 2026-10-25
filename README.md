@@ -2,47 +2,47 @@
 
 Bu repo, tamamen **ücretsiz ve açık kaynaklı** araçlardan oluşan, tek bir bundle (`docker compose`) halinde çalışan uçtan uca bir DevSecOps lab ortamıdır.
 
-Pipeline boyunca **SAST**, **SCA** ve **Container Security** adımları işletilir ve üretilen bulgular üzerinden **AI Destekli False Positive (FP) Eliminasyonu** gerçekleştirilir.
+Pipeline boyunca **SAST**, **SCA** ve **Container Security** adımları işletilir, üretilen bulgular üzerinden **AI Destekli False Positive (FP) Eliminasyonu** gerçekleştirilir, tespit edilen bağımlılık açıkları için **Otomatik Düzeltme PR'ı (Fixed PR)** açılır ve tüm süreç **React Dashboard** üzerinden build bazlı olarak takip edilir.
 
 ---
 
 ## 🏗️ Mimari & Kullanılan Teknolojiler
 
-```
+```text
 devsecops-labs/
-├── docker-compose.yml          # Jenkins & Dashboard servisleri
+├── docker-compose.yml          # Jenkins, Dashboard & Zafiyetli Hedef Uygulama
 ├── jenkins/
 │   ├── Dockerfile              # Docker CLI, Trivy, Semgrep, Python3 hazır imaj
 │   ├── casc.yaml               # Zero-touch Jenkins kurulumu (admin:admin + hazır pipeline)
 │   └── plugins.txt             # Gerekli Jenkins pluginleri
-├── dashboard/                  # [Yeni] React + Express DevSecOps Dashboard (Port 3001)
-│   ├── src/                    # App, KPI Cards, SAST & AI, SCA, Container sekmeleri
+├── dashboard/                  # [React + Express] DevSecOps Dashboard (Port 3001)
+│   ├── src/                    # KPI Cards, Build Selector, SAST & AI, SCA, Container sekmeleri
 │   ├── components/             # CodeInspectorModal (Zafiyetli Pattern & Sink Denetçisi)
-│   ├── server.js               # Dinamik rapor API'si
+│   ├── server.js               # Dinamik rapor & Build geçmişi API'si
 │   └── Dockerfile              # Çok aşamalı Vite build + Express runtime
-├── sample-app/                 # Kasıtlı zafiyetler içeren Node.js uygulaması
+├── sample-app/                 # Hedef Zafiyetli Node.js Uygulaması (Port 3000)
 │   ├── server.js               # SQLi, Cmd Injection, XSS, Path Traversal + Bilinçli FP'ler
 │   ├── package.json            # Zafiyetli npm bağımlılıkları (Lodash, Axios, JWT, EJS vb.)
 │   ├── package-lock.json       # Trivy SCA için bağımlılık kilit dosyası
-│   └── Dockerfile              # Güvenlik açıkları olan konteyner imajı
+│   └── Dockerfile              # Güvenlik açıkları olan Alpine taban imajı
+├── scripts/
+│   └── remediation_bot.py      # [Yeni] Otomatik Fixed PR Oluşturucu Bot
 ├── Jenkinsfile                 # Uçtan uca DevSecOps Pipeline kodu
 ├── ai-engine/                  # [Faz 2] AI Tabanlı FP Eliminasyon Motoru
-│   ├── analyzer.py             # Semgrep JSON çıktısını ayrıştıran ve AI ile filtreleyen script
+│   ├── analyzer.py             # Semgrep JSON çıktısını kod bağlamıyla analiz eden motor
 │   ├── prompts.py              # AppSec odaklı LLM Prompt şablonları
 │   └── requirements.txt
 └── reports/                    # Pipeline tarama çıktılarının (JSON) üretildiği dizin
+    └── builds/                 # Build bazlı geçmiş raporlar (Build #5, #6...)
 ```
 
-### Güvenlik Araçları & Arayüz Matrisi
+### 🌐 Canlı Servisler ve Port Haritası
 
-| Kategori | Araç | Erişim URL / Çıktı | Kullanım Amacı |
+| Servis | URL / Port | Kimlik Bilgileri | Açıklama |
 | :--- | :--- | :--- | :--- |
-| **Dashboard** | **React + Express SPA** | **http://localhost:3001** | Tüm zafiyetlerin, KPI'ların ve AI Triage sonuçlarının görsel takibi |
-| **CI/CD** | **Jenkins LTS (Docker)** | **http://localhost:8080** | Pipeline orkestrasyonu (admin:admin) |
-| **SAST** | **Semgrep (Free/OSS)** | `reports/semgrep-results.json` | Kaynak kod statik analizi ve taint tespiti |
-| **SCA** | **Trivy `fs` (Open Source)** | `reports/trivy-sca-results.json` | `package-lock.json` kütüphane zafiyetleri |
-| **Container** | **Trivy `image`** | `reports/trivy-container-results.json` | Docker imajı işletim sistemi paket zafiyetleri |
-| **AI Triage** | **AI FP Eliminator** | `reports/semgrep-ai-triaged.json` | SAST bulgularını analiz edip yanlış alarmları eleme |
+| **DevSecOps Dashboard** | **[http://localhost:3001](http://localhost:3001)** | - | Zafiyetler, Build geçmişi & AI Triage paneli |
+| **Jenkins CI/CD** | **[http://localhost:8080](http://localhost:8080)** | `admin` / `admin` | Güvenlik pipeline orkestrasyonu |
+| **Vulnerable Target App** | **[http://localhost:3000](http://localhost:3000)** | - | Zafiyetli hedef mikro servis (AI Pentester hedefi) |
 
 ---
 
@@ -60,59 +60,78 @@ docker compose up -d --build
 
 Bu komut:
 1. Docker CLI, Trivy ve Semgrep araçlarını içeren özel Jenkins imajını derler.
-2. Gerekli eklentileri (Pipeline, Stage View, JCasC, ANSIColor vb.) otomatik yükler.
-3. Jenkins Configuration as Code (JCasC) ile `admin:admin` kullanıcısını ve **`DevSecOps-Security-Pipeline`** işini hazır olarak oluşturur.
-
-### 3. Jenkins Arayüzüne Giriş Yapın
-Tarayıcınızdan açın:
-- **URL:** [http://localhost:8080](http://localhost:8080)
-- **Kullanıcı Adı:** `admin`
-- **Şifre:** `admin`
+2. React tabanlı güvenlik dashboard'unu (`port 3001`) derler ve ayağa kaldırır.
+3. Zafiyetli hedef uygulamayı (`port 3000`) bağımsız bir konteyner olarak başlatır.
+4. Jenkins Configuration as Code (JCasC) ile `admin:admin` kullanıcısını ve **`DevSecOps-Security-Pipeline`** işini hazır olarak oluşturur.
 
 ---
 
-## 🧪 Pipeline'ı Çalıştırma & İnceleme
+## 🧪 Pipeline Aşamaları
 
-1. Jenkins ana sayfasında **`DevSecOps-Security-Pipeline`** projesine tıklayın.
-2. Sol menüden **"Build Now"** (Şimdi Yapılandır) butonuna basın.
-3. Pipeline aşağıdaki adımları sırayla işletecektir:
-   - **Stage 0 - Setup:** Ortamdaki araçların (`semgrep`, `trivy`, `docker`, `python3`) doğrulanması.
-   - **Stage 1 - SAST (Semgrep):** `sample-app/server.js` taranır; SQLi, Command Injection, XSS, Secret bulguları tespit edilir.
-   - **Stage 2 - SCA (Trivy fs):** `sample-app/package.json` taranır; Lodash Prototype Pollution, Axios SSRF vb. zafiyetler raporlanır.
-   - **Stage 3 - Build:** Zafiyetli Node.js uygulamasının Docker imajı derlenir.
-   - **Stage 4 - Container Security (Trivy image):** Derlenen `vulnerable-node-app:latest` imajındaki OS CVE'leri taranır.
-   - **Stage 5 - AI Triage (Faz 2 Hazırlığı):** Semgrep bulguları `ai-engine/analyzer.py` tarafından taranarak True Positive vs False Positive olarak etiketlenir.
-   - **Post - Artifacts:** Bütün JSON raporları Jenkins'te arşivlenir ve projenin `reports/` klasörüne yazılır.
+Pipeline çalıştığında sırasıyla şu adımlar işletilir:
+
+```mermaid
+flowchart TD
+    A[Stage 0: Setup & Tools Check] --> B[Stage 1: SAST - Semgrep]
+    B --> C[Stage 2: SCA - Trivy fs]
+    C --> D[Stage 3: Docker Build]
+    D --> E[Stage 4: Container Security - Trivy Image OS Only]
+    E --> F[Stage 5: AI FP Elimination]
+    F --> G[Stage 6: Auto-Remediation PR Bot]
+    G --> H[Post: Build Archive & Host Sync]
+```
+
+1. **SAST (Semgrep):** Kaynak kod analizi yapar, zafiyetin patladığı kesin satırı (`Sink`) ve kod bağlamını yakalar.
+2. **SCA (Trivy `fs`):** `package-lock.json` üzerinden kütüphane CVE'lerini tespit eder.
+3. **Build:** Zafiyetli uygulamanın Docker imajını derler.
+4. **Container Security (Trivy `image`):** `--pkg-types os` filtresiyle SCA ile duplicate oluşturmadan **sadece Alpine Linux işletim sistemi açıklarını** (`busybox`, `libcrypto`, `zlib`) tarar.
+5. **AI Triage (FP Eliminator):** Semgrep bulgularını analiz ederek sanitizasyondan geçmiş (XSS korumalı, whitelist korumalı, mock token) yanlış alarmları eler.
+6. **Auto-Remediation PR Bot:** Zafiyetli paketlerin sürümlerini `package.json` içinde günceller, `fix/security-remediation-sca` dalını açar ve GitHub'a **Pull Request** gönderir.
+7. **Post Actions:** Raporları `reports/builds/${BUILD_NUMBER}/` altında kalıcı olarak arşivler.
 
 ---
 
-## 🧠 Faz 2: AI Destekli FP Eliminasyonu Detayı
+## 🤖 Otomatik İyileştirme Botu (Remediation PR Bot)
 
-Statik analiz araçları kuralları gereği desensel eşleşme yapar ve sıkça **False Positive (Yanlış Alarm)** üretir.
+Geliştiricilerin zafiyetleri tek tek elle düzeltmek zorunda kalmaması için `scripts/remediation_bot.py` modülü geliştirilmiştir:
 
-`sample-app/server.js` dosyasında bilinçli olarak hem gerçek açıklar hem de yanıltıcı senaryolar kurgulanmıştır:
+* **Çalışma Prensibi:**
+  1. `reports/trivy-sca-results.json` çıktısını okur.
+  2. Zafiyet tespit edilen paketlerin (`axios`, `lodash`, `moment`, `jsonwebtoken`, `ejs`) güvenli hedef sürümlerini hesaplar.
+  3. `package.json` dosyasındaki sürümleri otomatik yükseltir.
+  4. Yeni bir git dalı oluşturur: `fix/security-remediation-sca`.
+  5. `package-lock.json` dosyasını günceller ve commit atar.
+  6. Dalı GitHub'a (`origin`) push eder ve PR açar:
+     * `GITHUB_TOKEN` tanımlıysa doğrudan GitHub API üzerinden PR'ı otomatik açar.
+     * Token tanımlı değilse tek tıkla açılabilecek [Compare & PR Linki](https://github.com/cnkgkce/devsecops-labs/compare/main...fix/security-remediation-sca?expand=1) üretir.
+* **Geliştirici Deneyimi:** Geliştirici sadece tek bir PR'ı onaylayıp `Merge` ederek tek seferde onlarca CVE'yi kapatabilir.
 
-### Gerçek Açıklar (True Positives):
-- **Command Injection:** `exec("ping -c 1 " + host)` (Doğrudan kullanıcı girdisi)
-- **SQL Injection:** `SELECT * FROM users WHERE username = '${username}'`
-- **Reflected XSS:** `res.send("<h1>Hello " + name + "</h1>")`
-- **Path Traversal:** `fs.readFileSync(path.join(__dirname, 'logs', filename))`
-- **Hardcoded Secret:** Gerçek formatta AWS Key ve JWT Secret
+---
 
-### Yanıltıcı / Güvenli Senaryolar (False Positives):
-- **Mock Token:** `const MOCK_API_TEST_TOKEN = "test_environment_mock_token_xyz123";`
-  - *SAST Neden Yanılır:* Regex anahtar kelimeleri yakalar.
-  - *AI Neden Eler:* Değişken adı ve içeriğin bir test sabiti olduğunu anlar.
-- **Whitelist Korumalı Komut:** `if (ALLOWED_SERVICES.includes(service)) { exec('uptime') }`
-  - *SAST Neden Yanılır:* `exec()` fonksiyonunu kullanıcı parametresine yakın gördüğü için uyarır.
-  - *AI Neden Eler:* Girdinin strict bir whitelist'ten geçtiğini ve çalıştırılan komutun statik (`uptime`) olduğunu tespit eder.
-- **Sanitize Edilmiş HTML:** `res.send("<h2>Welcome back, " + safeEscapeHtml(user) + "</h2>")`
-  - *SAST Neden Yanılır:* String concatenation ve `res.send` kalıbı.
-  - *AI Neden Eler:* Çıktının `safeEscapeHtml` filtresinden geçtiğini görür.
+## 📊 Build Bazlı Raporlama ve Trend Karşılaştırması
 
-### AI Engine Çalışma Prensibi:
-`ai-engine/analyzer.py` modülü:
-1. `reports/semgrep-results.json` dosyasını okur.
-2. Her bulgu için kuralı, etkilenen kod bloğunu ve CWE bilgisini prompt haline getirir.
-3. LLM (Ollama yerel modeli veya Gemini / OpenAI API) üzerinden analiz ettirip JSON verdict alır.
-4. Gürültüyü (noise) elimine ederek sadece gerçek zafiyetleri geliştiriciye raporlar.
+Dashboard üzerinde build geçmişi takip edilebilir:
+
+* **Build Seçici:** Dashboard üst menüsünden `Build #5`, `Build #6` gibi geçmiş veya en son çalışan build seçilebilir.
+* **Build Karşılaştırma Bandı (Diff Banner):**
+  * Önceki build ile aktif build arasındaki farkı hesaplar.
+  * Örneğin Remediation PR'ı merge edildikten sonra tetiklenen yeni build'de:  
+    `🎉 19 Zafiyet Giderildi! (25 ➔ 6)` şeklinde yeşil başarı göstergesi sunulur.
+* **Drill-down Aksiyon Listesi:** Kütüphane bazında gruplanmış aksiyon kartları üzerinden tek bir paket güncellemesinin kaç CVE'yi çözeceği görüntülenebilir.
+
+---
+
+## 🎯 Bağımsız Zafiyetli Hedef Uygulama (`http://localhost:3000`)
+
+Kasıtlı olarak zafiyet barındıran mikro servis, bağımsız bir servis olarak ayağa kalkar:
+
+* **Endpoint'ler:**
+  * `GET /api/ping?host=127.0.0.1` ➔ **Command Injection**
+  * `GET /api/users?username=admin` ➔ **SQL Injection**
+  * `GET /api/greet?name=Team` ➔ **Reflected XSS**
+  * `GET /api/view-log?file=app.log` ➔ **Path Traversal**
+  * `GET /api/system-status?service=nginx` ➔ **Güvenli Whitelist (False Positive Hedefi)**
+  * `GET /api/safe-greet?user=Alice` ➔ **Sanitize Edilmiş HTML (False Positive Hedefi)**
+
+### 🔮 Gelecek Faz: AI Pentester Entegrasyonu
+Bu uygulama ilerleyen aşamada bir **AI Pentester (Otonom Sızma Testi Ajanı)** için hedef teşkil edecektir. AI Pentester'a pipeline'ın ürettiği SAST, SCA ve Container raporları önden verilerek bir **Whitebox AI Saldırı Laboratuvarı** kurgulanacaktır.
