@@ -71,6 +71,67 @@ export default function ScaView({ scaData = { vulnerabilities: [] } }) {
         </div>
       </div>
 
+      {/* Auto-Remediation PR Banner */}
+      {scaData.remediation_pr && (
+        <div style={{
+          background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(6, 182, 212, 0.12))',
+          border: '1px solid rgba(16, 185, 129, 0.35)',
+          borderRadius: '10px',
+          padding: '16px 20px',
+          marginBottom: '20px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '12px'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <div style={{
+              background: 'rgba(16, 185, 129, 0.2)',
+              color: '#34d399',
+              padding: '10px',
+              borderRadius: '10px',
+              display: 'flex'
+            }}>
+              <Zap size={22} />
+            </div>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <strong style={{ fontSize: '15px', color: '#fff' }}>
+                  Otomatik İyileştirme (Fixed PR) Hazırlandı!
+                </strong>
+                <span className="badge badge-fp">
+                  {scaData.remediation_pr.total_cves_resolved || 19} CVE Giderildi
+                </span>
+              </div>
+              <p style={{ fontSize: '13px', color: '#cbd5e1', marginTop: '3px' }}>
+                Pipeline, <code>package.json</code> içindeki zafiyetli paketleri güncel sürümlerine çekerek GitHub'a <code>{scaData.remediation_pr.branch}</code> dalını gönderdi.
+              </p>
+            </div>
+          </div>
+
+          <a
+            href={scaData.remediation_pr.pr_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-inspect"
+            style={{
+              background: '#10b981',
+              color: '#fff',
+              borderColor: '#059669',
+              padding: '8px 16px',
+              fontSize: '13px',
+              fontWeight: 700,
+              textDecoration: 'none',
+              boxShadow: '0 0 15px rgba(16, 185, 129, 0.3)'
+            }}
+          >
+            <span>GitHub Pull Request'ini Aç / İncele</span>
+            <ExternalLink size={14} />
+          </a>
+        </div>
+      )}
+
       {/* Mode 1: Consolidated Action Items (Recommended) */}
       {viewMode === 'ACTIONS' && (
         <ActionItemsList vulnerabilities={vulns} type="npm" />

@@ -77,18 +77,18 @@ pipeline {
             }
         }
 
-        stage('4. Container Security - Trivy Image Scan') {
+        stage('4. Container Security - Trivy Image Scan (OS Only)') {
             steps {
-                echo '==== [Container Security] Trivy ile İmaj Zafiyet Taraması Başlatılıyor ===='
+                echo '==== [Container Security] Trivy ile İşletim Sistemi Zafiyet Taraması Başlatılıyor ===='
                 sh """
                     cd "${TARGET_DIR}"
-                    echo "Scanning container image vulnerable-node-app:latest..."
+                    echo "Scanning container image vulnerable-node-app:latest (OS packages only)..."
                     
-                    # 1. JSON formatında kaydet
-                    trivy image --severity HIGH,CRITICAL --format json -o reports/trivy-container-results.json vulnerable-node-app:latest || true
+                    # 1. JSON formatında kaydet (--pkg-types os ile sadece işletim sistemi seviyesi taranır)
+                    trivy image --pkg-types os --severity HIGH,CRITICAL --format json -o reports/trivy-container-results.json vulnerable-node-app:latest || true
 
                     # 2. Konsol tablo çıktısı
-                    trivy image --severity HIGH,CRITICAL vulnerable-node-app:latest || true
+                    trivy image --pkg-types os --severity HIGH,CRITICAL vulnerable-node-app:latest || true
                 """
             }
         }
@@ -104,6 +104,23 @@ pipeline {
                             --output reports/semgrep-ai-triaged.json || true
                     else
                         echo "AI Engine scripti bulunamadı, bu adım atlanıyor."
+                    fi
+                """
+            }
+        }
+
+        stage('6. Auto-Remediation - Fixed PR Generator') {
+            steps {
+                echo '==== [Remediation Bot] SCA Zafiyetleri İçin Otomatik Fixed PR Hazırlanıyor ===='
+                sh """
+                    cd "${TARGET_DIR}"
+                    if [ -f scripts/remediation_bot.py ]; then
+                        python3 scripts/remediation_bot.py \
+                            --sca-report reports/trivy-sca-results.json \
+                            --package-json sample-app/package.json \
+                            --output reports/remediation-pr.json || true
+                    else
+                        echo "Remediation bot scripti bulunamadı, bu adım atlanıyor."
                     fi
                 """
             }

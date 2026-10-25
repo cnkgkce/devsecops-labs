@@ -78,25 +78,32 @@ app.get('/api/reports', (req, res) => {
     }
   }
 
-  // Parse Trivy Container OS vulnerabilities
+  // Parse Trivy Container OS vulnerabilities (Strictly OS packages to eliminate duplicates with SCA)
   let containerVulnerabilities = [];
   if (trivyContainer && Array.isArray(trivyContainer.Results)) {
     for (const target of trivyContainer.Results) {
-      if (Array.isArray(target.Vulnerabilities)) {
-        for (const v of target.Vulnerabilities) {
-          containerVulnerabilities.push({
-            cve: v.VulnerabilityID,
-            pkgName: v.PkgName,
-            installedVersion: v.InstalledVersion,
-            fixedVersion: v.FixedVersion || 'None',
-            severity: v.Severity,
-            title: v.Title || v.Description || 'OS package vulnerability',
-            target: target.Target
-          });
+      // Exclude language-specific packages (lang-pkgs / node-pkg) which are already handled by SCA
+      if (target.Class === 'os-pkgs' || (target.Type && target.Type !== 'node-pkg')) {
+        if (Array.isArray(target.Vulnerabilities)) {
+          for (const v of target.Vulnerabilities) {
+            containerVulnerabilities.push({
+              cve: v.VulnerabilityID,
+              pkgName: v.PkgName,
+              installedVersion: v.InstalledVersion,
+              fixedVersion: v.FixedVersion || 'None',
+              severity: v.Severity,
+              title: v.Title || v.Description || 'OS package vulnerability',
+              target: target.Target,
+              class: target.Class || 'os-pkgs'
+            });
+          }
         }
       }
     }
   }
+
+  const remediationPrPath = path.join(REPORTS_DIR, 'remediation-pr.json');
+  const remediationPr = readJsonFile(remediationPrPath, null);
 
   const payload = {
     appId,
@@ -107,7 +114,8 @@ app.get('/api/reports', (req, res) => {
     },
     sca: {
       total: scaVulnerabilities.length,
-      vulnerabilities: scaVulnerabilities
+      vulnerabilities: scaVulnerabilities,
+      remediation_pr: remediationPr
     },
     container: {
       total: containerVulnerabilities.length,
