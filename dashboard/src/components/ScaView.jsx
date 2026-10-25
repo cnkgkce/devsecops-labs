@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Package, ExternalLink, Search, Zap, ListFilter } from 'lucide-react';
+import { Package, ExternalLink, Search, Zap, ListFilter, GitPullRequest } from 'lucide-react';
 import ActionItemsList, { groupVulnerabilitiesIntoActions } from './ActionItemsList';
 
-export default function ScaView({ scaData = { vulnerabilities: [] } }) {
+export default function ScaView({ scaData = { vulnerabilities: [] }, onOpenRemediation }) {
   const [viewMode, setViewMode] = useState('ACTIONS'); // 'ACTIONS' or 'RAW'
   const [search, setSearch] = useState('');
   const vulns = scaData.vulnerabilities || [];
@@ -41,33 +41,52 @@ export default function ScaView({ scaData = { vulnerabilities: [] } }) {
           </p>
         </div>
 
-        {/* View Mode Switcher */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', background: '#090d16', padding: '4px', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
-          <button
-            className="btn-inspect"
-            onClick={() => setViewMode('ACTIONS')}
-            style={{
-              background: viewMode === 'ACTIONS' ? 'var(--accent-indigo)' : 'transparent',
-              color: viewMode === 'ACTIONS' ? '#fff' : '#94a3b8',
-              border: 'none'
-            }}
-          >
-            <Zap size={14} />
-            <span>Toplu Aksiyon Listesi ({actions.length})</span>
-          </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+          {onOpenRemediation && (
+            <button
+              className="btn-inspect"
+              onClick={() => onOpenRemediation('sca')}
+              style={{
+                background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+                color: '#fff',
+                border: 'none',
+                fontWeight: 600,
+                boxShadow: '0 2px 10px rgba(245, 158, 11, 0.3)'
+              }}
+            >
+              <GitPullRequest size={14} />
+              <span>SCA Paket Fix PR Aç</span>
+            </button>
+          )}
 
-          <button
-            className="btn-inspect"
-            onClick={() => setViewMode('RAW')}
-            style={{
-              background: viewMode === 'RAW' ? 'var(--accent-indigo)' : 'transparent',
-              color: viewMode === 'RAW' ? '#fff' : '#94a3b8',
-              border: 'none'
-            }}
-          >
-            <ListFilter size={14} />
-            <span>Tüm CVE'ler ({vulns.length})</span>
-          </button>
+          {/* View Mode Switcher */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', background: '#090d16', padding: '4px', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
+            <button
+              className="btn-inspect"
+              onClick={() => setViewMode('ACTIONS')}
+              style={{
+                background: viewMode === 'ACTIONS' ? 'var(--accent-indigo)' : 'transparent',
+                color: viewMode === 'ACTIONS' ? '#fff' : '#94a3b8',
+                border: 'none'
+              }}
+            >
+              <Zap size={14} />
+              <span>Toplu Aksiyon Listesi ({actions.length})</span>
+            </button>
+
+            <button
+              className="btn-inspect"
+              onClick={() => setViewMode('RAW')}
+              style={{
+                background: viewMode === 'RAW' ? 'var(--accent-indigo)' : 'transparent',
+                color: viewMode === 'RAW' ? '#fff' : '#94a3b8',
+                border: 'none'
+              }}
+            >
+              <ListFilter size={14} />
+              <span>Tüm CVE'ler ({vulns.length})</span>
+            </button>
+          </div>
         </div>
       </div>
 

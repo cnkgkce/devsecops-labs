@@ -1,7 +1,7 @@
 import React from 'react';
-import { History, GitCommit, Clock, TrendingDown, CheckCircle, ArrowRight, ShieldCheck } from 'lucide-react';
+import { History, GitCommit, Clock, TrendingDown, CheckCircle, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
 
-export default function BuildCompareBanner({ currentBuildInfo, builds = [] }) {
+export default function BuildCompareBanner({ currentBuildInfo, builds = [], onOpenRemediation }) {
   if (!currentBuildInfo) return null;
 
   const currentNum = currentBuildInfo.buildNumber;
@@ -111,6 +111,32 @@ export default function BuildCompareBanner({ currentBuildInfo, builds = [] }) {
             </span>
           )}
         </div>
+      )}
+
+      {/* 1-Click Remediation Button */}
+      {onOpenRemediation && (
+        <button
+          type="button"
+          onClick={() => onOpenRemediation('all')}
+          style={{
+            background: 'linear-gradient(135deg, #6366f1 0%, #a855f7 100%)',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '8px',
+            padding: '7px 14px',
+            fontSize: '12px',
+            fontWeight: 700,
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '7px',
+            boxShadow: '0 2px 10px rgba(99, 102, 241, 0.35)',
+            transition: 'all 0.2s'
+          }}
+        >
+          <Sparkles size={14} color="#fcd34d" />
+          <span>1-Click Otomatik PR Aç (SCA & Container)</span>
+        </button>
       )}
     </div>
   );

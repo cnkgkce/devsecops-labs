@@ -26,8 +26,13 @@ services:
     container_name: devsecops-dashboard
     ports:
       - "3001:3001"
+    environment:
+      - WORKSPACE=/workspace
+      - REPORTS_DIR=/workspace/reports
     volumes:
-      - ./reports:/app/reports:ro
+      - ./:/workspace
+      - ~/.ssh:/root/.ssh:ro
+      - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
 
   # Standalone Vulnerable Target App (Hedef Zafiyetli Uygulama - AI Pentester Lab)

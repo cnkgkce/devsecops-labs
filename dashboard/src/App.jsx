@@ -6,6 +6,7 @@ import SastAiView from './components/SastAiView';
 import ScaView from './components/ScaView';
 import ContainerView from './components/ContainerView';
 import CodeInspectorModal from './components/CodeInspectorModal';
+import RemediationModal from './components/RemediationModal';
 import { ShieldCheck, Package, Server } from 'lucide-react';
 
 export default function App() {
@@ -17,6 +18,13 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('SAST_AI'); // SAST_AI, SCA, CONTAINER
   const [inspectedFinding, setInspectedFinding] = useState(null);
+  const [remediationModalOpen, setRemediationModalOpen] = useState(false);
+  const [remediationTargetMode, setRemediationTargetMode] = useState('all');
+
+  const handleOpenRemediation = (mode = 'all') => {
+    setRemediationTargetMode(mode);
+    setRemediationModalOpen(true);
+  };
 
   // Load apps list
   useEffect(() => {
@@ -93,6 +101,7 @@ export default function App() {
         <BuildCompareBanner
           currentBuildInfo={reportData?.build}
           builds={builds}
+          onOpenRemediation={handleOpenRemediation}
         />
 
         {/* KPI Metric Overview */}
@@ -146,11 +155,17 @@ export default function App() {
             )}
 
             {activeTab === 'SCA' && (
-              <ScaView scaData={reportData?.sca || {}} />
+              <ScaView
+                scaData={reportData?.sca || {}}
+                onOpenRemediation={handleOpenRemediation}
+              />
             )}
 
             {activeTab === 'CONTAINER' && (
-              <ContainerView containerData={reportData?.container || {}} />
+              <ContainerView
+                containerData={reportData?.container || {}}
+                onOpenRemediation={handleOpenRemediation}
+              />
             )}
           </>
         )}
@@ -163,6 +178,17 @@ export default function App() {
           onClose={() => setInspectedFinding(null)}
         />
       )}
+
+      {/* 1-Click Automated Remediation Modal */}
+      <RemediationModal
+        isOpen={remediationModalOpen}
+        onClose={() => setRemediationModalOpen(false)}
+        initialMode={remediationTargetMode}
+        onRemediationComplete={() => {
+          loadBuilds();
+          loadReports();
+        }}
+      />
     </div>
   );
 }

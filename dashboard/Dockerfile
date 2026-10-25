@@ -14,6 +14,8 @@ FROM node:20-alpine
 
 WORKDIR /app
 
+RUN apk add --no-cache git python3 py3-pip openssh-client docker-cli
+
 COPY package*.json ./
 RUN npm install --only=production
 

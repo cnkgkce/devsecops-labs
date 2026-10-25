@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Server, ExternalLink, Search, Zap, ListFilter } from 'lucide-react';
+import { Server, ExternalLink, Search, Zap, ListFilter, GitPullRequest } from 'lucide-react';
 import ActionItemsList, { groupVulnerabilitiesIntoActions } from './ActionItemsList';
 
-export default function ContainerView({ containerData = { vulnerabilities: [] } }) {
+export default function ContainerView({ containerData = { vulnerabilities: [] }, onOpenRemediation }) {
   const [viewMode, setViewMode] = useState('ACTIONS'); // 'ACTIONS' or 'RAW'
   const [search, setSearch] = useState('');
   const vulns = containerData.vulnerabilities || [];
@@ -41,33 +41,52 @@ export default function ContainerView({ containerData = { vulnerabilities: [] } 
           </p>
         </div>
 
-        {/* View Mode Switcher */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', background: '#090d16', padding: '4px', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
-          <button
-            className="btn-inspect"
-            onClick={() => setViewMode('ACTIONS')}
-            style={{
-              background: viewMode === 'ACTIONS' ? 'var(--accent-indigo)' : 'transparent',
-              color: viewMode === 'ACTIONS' ? '#fff' : '#94a3b8',
-              border: 'none'
-            }}
-          >
-            <Zap size={14} />
-            <span>Toplu Aksiyon Listesi ({actions.length})</span>
-          </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+          {onOpenRemediation && (
+            <button
+              className="btn-inspect"
+              onClick={() => onOpenRemediation('container')}
+              style={{
+                background: 'linear-gradient(135deg, #a855f7 0%, #7c3aed 100%)',
+                color: '#fff',
+                border: 'none',
+                fontWeight: 600,
+                boxShadow: '0 2px 10px rgba(168, 85, 247, 0.3)'
+              }}
+            >
+              <GitPullRequest size={14} />
+              <span>Dockerfile Fix PR Aç</span>
+            </button>
+          )}
 
-          <button
-            className="btn-inspect"
-            onClick={() => setViewMode('RAW')}
-            style={{
-              background: viewMode === 'RAW' ? 'var(--accent-indigo)' : 'transparent',
-              color: viewMode === 'RAW' ? '#fff' : '#94a3b8',
-              border: 'none'
-            }}
-          >
-            <ListFilter size={14} />
-            <span>Tüm CVE'ler ({vulns.length})</span>
-          </button>
+          {/* View Mode Switcher */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', background: '#090d16', padding: '4px', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
+            <button
+              className="btn-inspect"
+              onClick={() => setViewMode('ACTIONS')}
+              style={{
+                background: viewMode === 'ACTIONS' ? 'var(--accent-indigo)' : 'transparent',
+                color: viewMode === 'ACTIONS' ? '#fff' : '#94a3b8',
+                border: 'none'
+              }}
+            >
+              <Zap size={14} />
+              <span>Toplu Aksiyon Listesi ({actions.length})</span>
+            </button>
+
+            <button
+              className="btn-inspect"
+              onClick={() => setViewMode('RAW')}
+              style={{
+                background: viewMode === 'RAW' ? 'var(--accent-indigo)' : 'transparent',
+                color: viewMode === 'RAW' ? '#fff' : '#94a3b8',
+                border: 'none'
+              }}
+            >
+              <ListFilter size={14} />
+              <span>Tüm CVE'ler ({vulns.length})</span>
+            </button>
+          </div>
         </div>
       </div>
 

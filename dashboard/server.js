@@ -3,6 +3,10 @@ import cors from 'cors';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { exec } from 'child_process';
+import util from 'util';
+
+const execPromise = util.promisify(exec);
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -207,6 +211,46 @@ app.get('/api/reports', (req, res) => {
   };
 
   res.json(payload);
+});
+
+// API: 1-Click Automated Remediation PR Generator
+app.post('/api/remediate', async (req, res) => {
+  const { mode = 'all' } = req.body;
+  const remMode = ['sca', 'container', 'all'].includes(mode) ? mode : 'all';
+
+  console.log(`[Remediation API] Triggered 1-click PR for target mode: ${remMode}`);
+
+  const workspaceDir = process.env.WORKSPACE || path.resolve(__dirname, '..');
+  const botScript = path.join(workspaceDir, 'scripts', 'remediation_bot.py');
+  const reportsDir = process.env.REPORTS_DIR || path.join(workspaceDir, 'reports');
+  const sampleAppDir = path.join(workspaceDir, 'sample-app');
+
+  // Command to execute
+  const cmd = `python3 "${botScript}" --mode "${remMode}" --sca-report "${path.join(reportsDir, 'trivy-sca-results.json')}" --container-report "${path.join(reportsDir, 'trivy-container-results.json')}" --package-json "${path.join(sampleAppDir, 'package.json')}" --dockerfile "${path.join(sampleAppDir, 'Dockerfile')}" --output "${path.join(reportsDir, 'remediation-pr.json')}"`;
+
+  try {
+    const { stdout, stderr } = await execPromise(cmd, { cwd: workspaceDir });
+    console.log('[Remediation Bot Output]:\n', stdout);
+
+    const prResultFile = path.join(reportsDir, 'remediation-pr.json');
+    const resultData = readJsonFile(prResultFile, {
+      status: 'SUCCESS',
+      message: 'Remediation completed successfully',
+      rawOutput: stdout
+    });
+
+    res.json({
+      success: true,
+      ...resultData
+    });
+  } catch (error) {
+    console.error('[Remediation Error]:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      stderr: error.stderr
+    });
+  }
 });
 
 // Serve frontend build static files in production

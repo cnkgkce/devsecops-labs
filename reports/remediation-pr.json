@@ -1,71 +1,33 @@
 {
-  "status": "READY",
-  "branch": "fix/security-remediation-sca",
+  "status": "SUCCESS",
+  "branch": "fix/container-security-remediation",
   "base": "main",
   "repo": "cnkgkce/devsecops-labs",
-  "pr_url": "https://github.com/cnkgkce/devsecops-labs/compare/main...fix/security-remediation-sca?expand=1",
+  "pr_url": "https://github.com/cnkgkce/devsecops-labs/compare/main...fix/container-security-remediation?expand=1",
   "pr_number": null,
-  "changes_count": 5,
-  "total_cves_resolved": 19,
-  "changes": [
-    {
-      "package": "axios",
-      "old_version": "0.21.1",
-      "new_version": "^0.21.2",
-      "cve_count": 11,
-      "cves": [
-        "CVE-2021-3749",
-        "CVE-2025-27152",
-        "CVE-2026-25639",
-        "CVE-2026-42033",
-        "CVE-2026-42035",
-        "CVE-2026-42043",
-        "CVE-2026-44486",
-        "CVE-2026-44487",
-        "CVE-2026-44492",
-        "CVE-2026-44495",
-        "CVE-2026-44496"
-      ]
-    },
-    {
-      "package": "ejs",
-      "old_version": "3.1.6",
-      "new_version": "^3.1.7",
-      "cve_count": 1,
-      "cves": [
-        "CVE-2022-29078"
-      ]
-    },
-    {
-      "package": "jsonwebtoken",
-      "old_version": "8.5.1",
-      "new_version": "^9.0.0",
-      "cve_count": 1,
-      "cves": [
-        "CVE-2022-23539"
-      ]
-    },
-    {
-      "package": "lodash",
-      "old_version": "4.17.15",
-      "new_version": "^4.17.19",
-      "cve_count": 4,
-      "cves": [
-        "CVE-2020-8203",
-        "CVE-2021-23337",
-        "CVE-2026-4800",
-        "NSWG-ECO-516"
-      ]
-    },
-    {
-      "package": "moment",
-      "old_version": "2.29.1",
-      "new_version": "^2.29.2",
-      "cve_count": 2,
-      "cves": [
-        "CVE-2022-24785",
-        "CVE-2022-31129"
-      ]
-    }
-  ]
+  "total_cves_resolved": 13,
+  "sca_changes": [],
+  "container_change": {
+    "file": "sample-app/Dockerfile",
+    "old_base": "node:16.14.0-alpine",
+    "new_base": "node:20-alpine",
+    "hardened": "Non-root (USER node) configured",
+    "cve_count": 13,
+    "cves": [
+      "CVE-2022-28391",
+      "CVE-2022-4450",
+      "CVE-2023-0215",
+      "CVE-2023-0286",
+      "CVE-2023-0464",
+      "CVE-2022-0778",
+      "CVE-2022-4450",
+      "CVE-2023-0215",
+      "CVE-2023-0286",
+      "CVE-2023-0464",
+      "CVE-2022-28391",
+      "CVE-2022-37434",
+      "CVE-2018-25032"
+    ]
+  },
+  "title": "\ud83d\udee1\ufe0f [DevSecOps Auto-Remediation] Fix 13 Vulnerabilities (SCA & Container)"
 }
