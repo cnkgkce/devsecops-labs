@@ -3,8 +3,8 @@
   "Trivy": {
     "Version": "0.76.1"
   },
-  "ReportID": "01a17293-700c-7b2b-a5a9-7ea369f4eab8",
-  "CreatedAt": "2026-10-25T10:20:27.532733506Z",
+  "ReportID": "01a17296-5fe2-7abf-a0f1-8ad8fe86637a",
+  "CreatedAt": "2026-10-25T10:23:40.002705053Z",
   "ArtifactID": "sha256:90afcc55f1ee086f79b5047cf10890728798d3eadb4edd980f5af1780242f201",
   "ArtifactName": "vulnerable-node-app:latest",
   "ArtifactType": "container_image",
