@@ -17,29 +17,47 @@ def parse_args():
     parser.add_argument("--provider", choices=["mock", "ollama", "openai", "gemini"], default="mock", help="AI Provider to use")
     return parser.parse_args()
 
-def extract_code_snippet(file_path, line_number, context=5):
+def extract_code_analysis(file_path, line_number, context=5):
     """
-    Extracts surrounding code context directly from source files,
-    bypassing OSS Semgrep 'requires login' line limitations.
+    Extracts surrounding code context and pinpoint the exact vulnerable sink line.
+    Returns: (snippet_text, sink_code, context_lines_list)
     """
     if not os.path.exists(file_path):
-        return ""
+        return "", "", []
     try:
         with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
             lines = f.readlines()
         
         start_idx = max(0, line_number - context - 1)
         end_idx = min(len(lines), line_number + context)
-        snippet_lines = []
+        
+        formatted_lines = []
+        structured_lines = []
+        sink_code = ""
+
         for idx in range(start_idx, end_idx):
             curr_line_num = idx + 1
-            marker = ">> " if curr_line_num == line_number else "   "
-            snippet_lines.append(f"{marker}{curr_line_num}: {lines[idx].rstrip()}")
-        return "\n".join(snippet_lines)
+            code_line = lines[idx].rstrip()
+            is_sink = (curr_line_num == line_number)
+            
+            if is_sink:
+                sink_code = code_line.strip()
+                marker = ">> [VULNERABLE SINK] "
+            else:
+                marker = "                     "
+            
+            formatted_lines.append(f"{marker}{curr_line_num:4d} | {code_line}")
+            structured_lines.append({
+                "line": curr_line_num,
+                "code": code_line,
+                "is_sink": is_sink
+            })
+            
+        return "\n".join(formatted_lines), sink_code, structured_lines
     except Exception as e:
-        return f"Error reading source file: {e}"
+        return f"Error reading source file: {e}", "", []
 
-def analyze_finding_heuristic_mock(finding, snippet):
+def analyze_finding_heuristic_mock(finding, snippet, sink_code):
     """
     Simulated AI triage demonstrating the exact logic and schema
     used when evaluating the sample-app's deliberate TPs and FPs.
@@ -53,8 +71,8 @@ def analyze_finding_heuristic_mock(finding, snippet):
             "is_false_positive": True,
             "verdict": "FALSE_POSITIVE",
             "confidence_score": 95,
-            "reasoning": "The string matches secret patterns, but the identifier and value clearly indicate a mock/test variable without access to production infrastructure.",
-            "remediation_advice": "No remediation required. Add exclusion in semgrep ignore configuration."
+            "reasoning": "Değişken ismi (MOCK_API_TEST_TOKEN) ve değeri açıkça bir test ortamı sahte anahtarını (mock) temsil ediyor. Canlı sistem veya gizli anahtar riski taşımıyor.",
+            "remediation_advice": "Herhangi bir aksiyon gerekmez. İstenirse test dosyaları Semgrep ignore kuralına eklenebilir."
         }
 
     # Heuristic 2: Whitelisted command execution FP
@@ -63,8 +81,8 @@ def analyze_finding_heuristic_mock(finding, snippet):
             "is_false_positive": True,
             "verdict": "FALSE_POSITIVE",
             "confidence_score": 92,
-            "reasoning": "The input is strictly validated against a hardcoded whitelist array. The executed command 'uptime' is a static string with no parameter interpolation.",
-            "remediation_advice": "Code is secure against injection. False positive safely filtered."
+            "reasoning": "Kullanıcı parametresi 'service' doğrudan komuta verilmemiştir; 'ALLOWED_SERVICES' listesi ile sıkı bir whitelist kontrolünden geçmektedir. Çalışan komut statik 'uptime' dizesidir.",
+            "remediation_advice": "Kod komut enjeksiyonuna karşı güvenlidir. Yanlış alarm elenmiştir."
         }
 
     # Heuristic 3: Sanitized HTML Output FP (XSS rule flagged, but sanitized)
@@ -73,8 +91,8 @@ def analyze_finding_heuristic_mock(finding, snippet):
             "is_false_positive": True,
             "verdict": "FALSE_POSITIVE",
             "confidence_score": 89,
-            "reasoning": "User input is filtered through an HTML escaping function (safeEscapeHtml) before string template concatenation. Although flagged by AST concatenation heuristics, reflected XSS is mitigated.",
-            "remediation_advice": "Prefer template engines with automatic contextual encoding (e.g. EJS safe tags) or explicit DOM encoding."
+            "reasoning": "Kullanıcıdan gelen veri HTML içine basılmadan önce 'safeEscapeHtml' fonksiyonu ile sanitize edilerek XSS tehlikesi ortadan kaldırılmıştır. AST eşleşmesi yanıltıcı bir uyarı üretmiştir.",
+            "remediation_advice": "Manuel string birleştirme yerine otomatik encode eden EJS veya DOM kütüphaneleri tercih edilebilir."
         }
 
     # Default: True Positive for actual vulnerabilities (ping command injection, SQL concatenation, etc.)
@@ -82,8 +100,8 @@ def analyze_finding_heuristic_mock(finding, snippet):
         "is_false_positive": False,
         "verdict": "TRUE_POSITIVE",
         "confidence_score": 98,
-        "reasoning": "Direct interpolation of untrusted input without validation or sanitization detected. Highly exploitable vulnerability.",
-        "remediation_advice": "Refactor to use parameterized queries, safe execution APIs with argument arrays, or contextual encoding."
+        "reasoning": f"Kullanıcı kontrolündeki veri filtrelenmeden doğrudan tehlikeli fonksiyona (Sink: '{sink_code[:50]}...') aktarılmıştır. İstismara açık kritik zafiyet.",
+        "remediation_advice": "Girdileri parameterized queries, argument array ile çalışan güvenli API'lar veya sıkı doğrulama mekanizmaları ile izole edin."
     }
 
 def main():
@@ -121,14 +139,21 @@ def main():
         check_id = finding.get("check_id", "unknown-rule")
         path = finding.get("path", "")
         start_line = finding.get("start", {}).get("line", 0)
+        start_col = finding.get("start", {}).get("col", 0)
+        severity = finding.get("extra", {}).get("severity", "INFO")
+        message = finding.get("extra", {}).get("message", "")
+        metadata = finding.get("extra", {}).get("metadata", {})
+        cwe = metadata.get("cwe", [])
+        owasp = metadata.get("owasp", [])
 
-        # Extract real source code context around finding
-        snippet = extract_code_snippet(path, start_line, context=4)
-        if not snippet and "extra" in finding and "lines" in finding["extra"]:
-            snippet = finding["extra"]["lines"]
+        # Extract real source code context around finding and pinpoint sink
+        snippet_formatted, sink_code, structured_lines = extract_code_analysis(path, start_line, context=4)
+        if not snippet_formatted and "extra" in finding and "lines" in finding["extra"]:
+            snippet_formatted = finding["extra"]["lines"]
+            sink_code = snippet_formatted
 
         # Perform analysis
-        analysis = analyze_finding_heuristic_mock(finding, snippet)
+        analysis = analyze_finding_heuristic_mock(finding, snippet_formatted, sink_code)
 
         if analysis["is_false_positive"]:
             fp_count += 1
@@ -138,7 +163,8 @@ def main():
             verdict_badge = "\033[91m[TRUE POSITIVE - CONFIRMED]\033[0m"
 
         print(f"\n[{idx}/{total_findings}] {check_id} ({path}:{start_line})")
-        print(f"    Verdict: {verdict_badge} (Confidence: {analysis['confidence_score']}%)")
+        print(f"    Sink Line: Line {start_line} -> {sink_code}")
+        print(f"    Verdict  : {verdict_badge} (Confidence: {analysis['confidence_score']}%)")
         print(f"    Reasoning: {analysis['reasoning']}")
 
         item = {
@@ -146,7 +172,18 @@ def main():
             "check_id": check_id,
             "path": path,
             "line": start_line,
-            "code_context": snippet,
+            "col": start_col,
+            "severity": severity,
+            "message": message,
+            "cwe": cwe,
+            "owasp": owasp,
+            "sink_info": {
+                "line": start_line,
+                "code": sink_code,
+                "type": "AST / Dataflow Sink"
+            },
+            "code_context": snippet_formatted,
+            "code_lines": structured_lines,
             "triage": analysis
         }
         triaged_results.append(item)
@@ -156,6 +193,7 @@ def main():
 
     output_payload = {
         "summary": {
+            "app_name": "vulnerable-node-app",
             "total_findings": total_findings,
             "true_positives": tp_count,
             "false_positives": fp_count,

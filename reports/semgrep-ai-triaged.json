@@ -1,5 +1,6 @@
 {
   "summary": {
+    "app_name": "vulnerable-node-app",
     "total_findings": 11,
     "true_positives": 9,
     "false_positives": 2,
@@ -11,13 +12,55 @@
       "check_id": "dockerfile.security.missing-user.missing-user",
       "path": "sample-app/Dockerfile",
       "line": 16,
-      "code_context": "   12: COPY . .\n   13: \n   14: EXPOSE 3000\n   15: \n>> 16: CMD [\"node\", \"server.js\"]",
+      "col": 1,
+      "severity": "ERROR",
+      "message": "By not specifying a USER, a program in the container may run as 'root'. This is a security hazard. If an attacker can control a process running as root, they may have control over the container. Ensure that the last USER in a Dockerfile is a USER other than 'root'.",
+      "cwe": [
+        "CWE-250: Execution with Unnecessary Privileges"
+      ],
+      "owasp": [
+        "A04:2021 - Insecure Design",
+        "A06:2025 - Insecure Design"
+      ],
+      "sink_info": {
+        "line": 16,
+        "code": "CMD [\"node\", \"server.js\"]",
+        "type": "AST / Dataflow Sink"
+      },
+      "code_context": "                       12 | COPY . .\n                       13 | \n                       14 | EXPOSE 3000\n                       15 | \n>> [VULNERABLE SINK]   16 | CMD [\"node\", \"server.js\"]",
+      "code_lines": [
+        {
+          "line": 12,
+          "code": "COPY . .",
+          "is_sink": false
+        },
+        {
+          "line": 13,
+          "code": "",
+          "is_sink": false
+        },
+        {
+          "line": 14,
+          "code": "EXPOSE 3000",
+          "is_sink": false
+        },
+        {
+          "line": 15,
+          "code": "",
+          "is_sink": false
+        },
+        {
+          "line": 16,
+          "code": "CMD [\"node\", \"server.js\"]",
+          "is_sink": true
+        }
+      ],
       "triage": {
         "is_false_positive": false,
         "verdict": "TRUE_POSITIVE",
         "confidence_score": 98,
-        "reasoning": "Direct interpolation of untrusted input without validation or sanitization detected. Highly exploitable vulnerability.",
-        "remediation_advice": "Refactor to use parameterized queries, safe execution APIs with argument arrays, or contextual encoding."
+        "reasoning": "Kullan\u0131c\u0131 kontrol\u00fcndeki veri filtrelenmeden do\u011frudan tehlikeli fonksiyona (Sink: 'CMD [\"node\", \"server.js\"]...') aktar\u0131lm\u0131\u015ft\u0131r. \u0130stismara a\u00e7\u0131k kritik zafiyet.",
+        "remediation_advice": "Girdileri parameterized queries, argument array ile \u00e7al\u0131\u015fan g\u00fcvenli API'lar veya s\u0131k\u0131 do\u011frulama mekanizmalar\u0131 ile izole edin."
       }
     },
     {
@@ -25,13 +68,75 @@
       "check_id": "javascript.express.security.audit.express-check-csurf-middleware-usage.express-check-csurf-middleware-usage",
       "path": "sample-app/server.js",
       "line": 8,
-      "code_context": "   4: const path = require('path');\n   5: const _ = require('lodash');\n   6: const jwt = require('jsonwebtoken');\n   7: \n>> 8: const app = express();\n   9: const port = 3000;\n   10: \n   11: app.use(express.json());\n   12: app.use(express.urlencoded({ extended: true }));",
+      "col": 7,
+      "severity": "INFO",
+      "message": "A CSRF middleware was not detected in your express application. Ensure you are either using one such as `csurf` or `csrf` (see rule references) and/or you are properly doing CSRF validation in your routes with a token or cookies.",
+      "cwe": [
+        "CWE-352: Cross-Site Request Forgery (CSRF)"
+      ],
+      "owasp": [
+        "A01:2021 - Broken Access Control",
+        "A01:2025 - Broken Access Control"
+      ],
+      "sink_info": {
+        "line": 8,
+        "code": "const app = express();",
+        "type": "AST / Dataflow Sink"
+      },
+      "code_context": "                        4 | const path = require('path');\n                        5 | const _ = require('lodash');\n                        6 | const jwt = require('jsonwebtoken');\n                        7 | \n>> [VULNERABLE SINK]    8 | const app = express();\n                        9 | const port = 3000;\n                       10 | \n                       11 | app.use(express.json());\n                       12 | app.use(express.urlencoded({ extended: true }));",
+      "code_lines": [
+        {
+          "line": 4,
+          "code": "const path = require('path');",
+          "is_sink": false
+        },
+        {
+          "line": 5,
+          "code": "const _ = require('lodash');",
+          "is_sink": false
+        },
+        {
+          "line": 6,
+          "code": "const jwt = require('jsonwebtoken');",
+          "is_sink": false
+        },
+        {
+          "line": 7,
+          "code": "",
+          "is_sink": false
+        },
+        {
+          "line": 8,
+          "code": "const app = express();",
+          "is_sink": true
+        },
+        {
+          "line": 9,
+          "code": "const port = 3000;",
+          "is_sink": false
+        },
+        {
+          "line": 10,
+          "code": "",
+          "is_sink": false
+        },
+        {
+          "line": 11,
+          "code": "app.use(express.json());",
+          "is_sink": false
+        },
+        {
+          "line": 12,
+          "code": "app.use(express.urlencoded({ extended: true }));",
+          "is_sink": false
+        }
+      ],
       "triage": {
         "is_false_positive": false,
         "verdict": "TRUE_POSITIVE",
         "confidence_score": 98,
-        "reasoning": "Direct interpolation of untrusted input without validation or sanitization detected. Highly exploitable vulnerability.",
-        "remediation_advice": "Refactor to use parameterized queries, safe execution APIs with argument arrays, or contextual encoding."
+        "reasoning": "Kullan\u0131c\u0131 kontrol\u00fcndeki veri filtrelenmeden do\u011frudan tehlikeli fonksiyona (Sink: 'const app = express();...') aktar\u0131lm\u0131\u015ft\u0131r. \u0130stismara a\u00e7\u0131k kritik zafiyet.",
+        "remediation_advice": "Girdileri parameterized queries, argument array ile \u00e7al\u0131\u015fan g\u00fcvenli API'lar veya s\u0131k\u0131 do\u011frulama mekanizmalar\u0131 ile izole edin."
       }
     },
     {
@@ -39,13 +144,76 @@
       "check_id": "javascript.lang.security.detect-child-process.detect-child-process",
       "path": "sample-app/server.js",
       "line": 42,
-      "code_context": "   38: // 2. Command Injection (True Positive)\n   39: app.get('/api/ping', (req, res) => {\n   40:   const host = req.query.host;\n   41:   // VULNERABLE: Direct string interpolation into shell command\n>> 42:   exec(`ping -c 1 ${host}`, (error, stdout, stderr) => {\n   43:     if (error) {\n   44:       return res.status(500).send(`Error: ${stderr}`);\n   45:     }\n   46:     res.send(`<pre>${stdout}</pre>`);",
+      "col": 8,
+      "severity": "ERROR",
+      "message": "Detected calls to child_process from a function argument `req`. This could lead to a command injection if the input is user controllable. Try to avoid calls to child_process, and if it is needed ensure user input is correctly sanitized or sandboxed. ",
+      "cwe": [
+        "CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')"
+      ],
+      "owasp": [
+        "A01:2017 - Injection",
+        "A03:2021 - Injection",
+        "A05:2025 - Injection"
+      ],
+      "sink_info": {
+        "line": 42,
+        "code": "exec(`ping -c 1 ${host}`, (error, stdout, stderr) => {",
+        "type": "AST / Dataflow Sink"
+      },
+      "code_context": "                       38 | // 2. Command Injection (True Positive)\n                       39 | app.get('/api/ping', (req, res) => {\n                       40 |   const host = req.query.host;\n                       41 |   // VULNERABLE: Direct string interpolation into shell command\n>> [VULNERABLE SINK]   42 |   exec(`ping -c 1 ${host}`, (error, stdout, stderr) => {\n                       43 |     if (error) {\n                       44 |       return res.status(500).send(`Error: ${stderr}`);\n                       45 |     }\n                       46 |     res.send(`<pre>${stdout}</pre>`);",
+      "code_lines": [
+        {
+          "line": 38,
+          "code": "// 2. Command Injection (True Positive)",
+          "is_sink": false
+        },
+        {
+          "line": 39,
+          "code": "app.get('/api/ping', (req, res) => {",
+          "is_sink": false
+        },
+        {
+          "line": 40,
+          "code": "  const host = req.query.host;",
+          "is_sink": false
+        },
+        {
+          "line": 41,
+          "code": "  // VULNERABLE: Direct string interpolation into shell command",
+          "is_sink": false
+        },
+        {
+          "line": 42,
+          "code": "  exec(`ping -c 1 ${host}`, (error, stdout, stderr) => {",
+          "is_sink": true
+        },
+        {
+          "line": 43,
+          "code": "    if (error) {",
+          "is_sink": false
+        },
+        {
+          "line": 44,
+          "code": "      return res.status(500).send(`Error: ${stderr}`);",
+          "is_sink": false
+        },
+        {
+          "line": 45,
+          "code": "    }",
+          "is_sink": false
+        },
+        {
+          "line": 46,
+          "code": "    res.send(`<pre>${stdout}</pre>`);",
+          "is_sink": false
+        }
+      ],
       "triage": {
         "is_false_positive": false,
         "verdict": "TRUE_POSITIVE",
         "confidence_score": 98,
-        "reasoning": "Direct interpolation of untrusted input without validation or sanitization detected. Highly exploitable vulnerability.",
-        "remediation_advice": "Refactor to use parameterized queries, safe execution APIs with argument arrays, or contextual encoding."
+        "reasoning": "Kullan\u0131c\u0131 kontrol\u00fcndeki veri filtrelenmeden do\u011frudan tehlikeli fonksiyona (Sink: 'exec(`ping -c 1 ${host}`, (error, stdout, stderr) ...') aktar\u0131lm\u0131\u015ft\u0131r. \u0130stismara a\u00e7\u0131k kritik zafiyet.",
+        "remediation_advice": "Girdileri parameterized queries, argument array ile \u00e7al\u0131\u015fan g\u00fcvenli API'lar veya s\u0131k\u0131 do\u011frulama mekanizmalar\u0131 ile izole edin."
       }
     },
     {
@@ -53,13 +221,76 @@
       "check_id": "javascript.express.security.audit.xss.direct-response-write.direct-response-write",
       "path": "sample-app/server.js",
       "line": 67,
-      "code_context": "   63: // 4. Reflected XSS (True Positive)\n   64: app.get('/api/greet', (req, res) => {\n   65:   const name = req.query.name || 'Guest';\n   66:   // VULNERABLE: Direct reflection without encoding or template engine\n>> 67:   res.send(`<h1>Hello, ${name}!</h1>`);\n   68: });\n   69: \n   70: // 5. Path Traversal (True Positive)\n   71: app.get('/api/view-log', (req, res) => {",
+      "col": 12,
+      "severity": "WARNING",
+      "message": "Detected directly writing to a Response object from user-defined input. This bypasses any HTML escaping and may expose your application to a Cross-Site-scripting (XSS) vulnerability. Instead, use 'resp.render()' to render safely escaped HTML.",
+      "cwe": [
+        "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      ],
+      "owasp": [
+        "A07:2017 - Cross-Site Scripting (XSS)",
+        "A03:2021 - Injection",
+        "A05:2025 - Injection"
+      ],
+      "sink_info": {
+        "line": 67,
+        "code": "res.send(`<h1>Hello, ${name}!</h1>`);",
+        "type": "AST / Dataflow Sink"
+      },
+      "code_context": "                       63 | // 4. Reflected XSS (True Positive)\n                       64 | app.get('/api/greet', (req, res) => {\n                       65 |   const name = req.query.name || 'Guest';\n                       66 |   // VULNERABLE: Direct reflection without encoding or template engine\n>> [VULNERABLE SINK]   67 |   res.send(`<h1>Hello, ${name}!</h1>`);\n                       68 | });\n                       69 | \n                       70 | // 5. Path Traversal (True Positive)\n                       71 | app.get('/api/view-log', (req, res) => {",
+      "code_lines": [
+        {
+          "line": 63,
+          "code": "// 4. Reflected XSS (True Positive)",
+          "is_sink": false
+        },
+        {
+          "line": 64,
+          "code": "app.get('/api/greet', (req, res) => {",
+          "is_sink": false
+        },
+        {
+          "line": 65,
+          "code": "  const name = req.query.name || 'Guest';",
+          "is_sink": false
+        },
+        {
+          "line": 66,
+          "code": "  // VULNERABLE: Direct reflection without encoding or template engine",
+          "is_sink": false
+        },
+        {
+          "line": 67,
+          "code": "  res.send(`<h1>Hello, ${name}!</h1>`);",
+          "is_sink": true
+        },
+        {
+          "line": 68,
+          "code": "});",
+          "is_sink": false
+        },
+        {
+          "line": 69,
+          "code": "",
+          "is_sink": false
+        },
+        {
+          "line": 70,
+          "code": "// 5. Path Traversal (True Positive)",
+          "is_sink": false
+        },
+        {
+          "line": 71,
+          "code": "app.get('/api/view-log', (req, res) => {",
+          "is_sink": false
+        }
+      ],
       "triage": {
         "is_false_positive": false,
         "verdict": "TRUE_POSITIVE",
         "confidence_score": 98,
-        "reasoning": "Direct interpolation of untrusted input without validation or sanitization detected. Highly exploitable vulnerability.",
-        "remediation_advice": "Refactor to use parameterized queries, safe execution APIs with argument arrays, or contextual encoding."
+        "reasoning": "Kullan\u0131c\u0131 kontrol\u00fcndeki veri filtrelenmeden do\u011frudan tehlikeli fonksiyona (Sink: 'res.send(`<h1>Hello, ${name}!</h1>`);...') aktar\u0131lm\u0131\u015ft\u0131r. \u0130stismara a\u00e7\u0131k kritik zafiyet.",
+        "remediation_advice": "Girdileri parameterized queries, argument array ile \u00e7al\u0131\u015fan g\u00fcvenli API'lar veya s\u0131k\u0131 do\u011frulama mekanizmalar\u0131 ile izole edin."
       }
     },
     {
@@ -67,13 +298,76 @@
       "check_id": "javascript.express.security.injection.raw-html-format.raw-html-format",
       "path": "sample-app/server.js",
       "line": 67,
-      "code_context": "   63: // 4. Reflected XSS (True Positive)\n   64: app.get('/api/greet', (req, res) => {\n   65:   const name = req.query.name || 'Guest';\n   66:   // VULNERABLE: Direct reflection without encoding or template engine\n>> 67:   res.send(`<h1>Hello, ${name}!</h1>`);\n   68: });\n   69: \n   70: // 5. Path Traversal (True Positive)\n   71: app.get('/api/view-log', (req, res) => {",
+      "col": 12,
+      "severity": "WARNING",
+      "message": "User data flows into the host portion of this manually-constructed HTML. This can introduce a Cross-Site-Scripting (XSS) vulnerability if this comes from user-provided input. Consider using a sanitization library such as DOMPurify to sanitize the HTML within.",
+      "cwe": [
+        "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      ],
+      "owasp": [
+        "A07:2017 - Cross-Site Scripting (XSS)",
+        "A03:2021 - Injection",
+        "A05:2025 - Injection"
+      ],
+      "sink_info": {
+        "line": 67,
+        "code": "res.send(`<h1>Hello, ${name}!</h1>`);",
+        "type": "AST / Dataflow Sink"
+      },
+      "code_context": "                       63 | // 4. Reflected XSS (True Positive)\n                       64 | app.get('/api/greet', (req, res) => {\n                       65 |   const name = req.query.name || 'Guest';\n                       66 |   // VULNERABLE: Direct reflection without encoding or template engine\n>> [VULNERABLE SINK]   67 |   res.send(`<h1>Hello, ${name}!</h1>`);\n                       68 | });\n                       69 | \n                       70 | // 5. Path Traversal (True Positive)\n                       71 | app.get('/api/view-log', (req, res) => {",
+      "code_lines": [
+        {
+          "line": 63,
+          "code": "// 4. Reflected XSS (True Positive)",
+          "is_sink": false
+        },
+        {
+          "line": 64,
+          "code": "app.get('/api/greet', (req, res) => {",
+          "is_sink": false
+        },
+        {
+          "line": 65,
+          "code": "  const name = req.query.name || 'Guest';",
+          "is_sink": false
+        },
+        {
+          "line": 66,
+          "code": "  // VULNERABLE: Direct reflection without encoding or template engine",
+          "is_sink": false
+        },
+        {
+          "line": 67,
+          "code": "  res.send(`<h1>Hello, ${name}!</h1>`);",
+          "is_sink": true
+        },
+        {
+          "line": 68,
+          "code": "});",
+          "is_sink": false
+        },
+        {
+          "line": 69,
+          "code": "",
+          "is_sink": false
+        },
+        {
+          "line": 70,
+          "code": "// 5. Path Traversal (True Positive)",
+          "is_sink": false
+        },
+        {
+          "line": 71,
+          "code": "app.get('/api/view-log', (req, res) => {",
+          "is_sink": false
+        }
+      ],
       "triage": {
         "is_false_positive": false,
         "verdict": "TRUE_POSITIVE",
         "confidence_score": 98,
-        "reasoning": "Direct interpolation of untrusted input without validation or sanitization detected. Highly exploitable vulnerability.",
-        "remediation_advice": "Refactor to use parameterized queries, safe execution APIs with argument arrays, or contextual encoding."
+        "reasoning": "Kullan\u0131c\u0131 kontrol\u00fcndeki veri filtrelenmeden do\u011frudan tehlikeli fonksiyona (Sink: 'res.send(`<h1>Hello, ${name}!</h1>`);...') aktar\u0131lm\u0131\u015ft\u0131r. \u0130stismara a\u00e7\u0131k kritik zafiyet.",
+        "remediation_advice": "Girdileri parameterized queries, argument array ile \u00e7al\u0131\u015fan g\u00fcvenli API'lar veya s\u0131k\u0131 do\u011frulama mekanizmalar\u0131 ile izole edin."
       }
     },
     {
@@ -81,13 +375,76 @@
       "check_id": "javascript.express.security.audit.express-path-join-resolve-traversal.express-path-join-resolve-traversal",
       "path": "sample-app/server.js",
       "line": 74,
-      "code_context": "   70: // 5. Path Traversal (True Positive)\n   71: app.get('/api/view-log', (req, res) => {\n   72:   const filename = req.query.file;\n   73:   // VULNERABLE: Attacker can supply ../../etc/passwd\n>> 74:   const filePath = path.join(__dirname, 'logs', filename);\n   75:   try {\n   76:     const data = fs.readFileSync(filePath, 'utf8');\n   77:     res.send(`<pre>${data}</pre>`);\n   78:   } catch (err) {",
+      "col": 49,
+      "severity": "WARNING",
+      "message": "Possible writing outside of the destination, make sure that the target path is nested in the intended destination",
+      "cwe": [
+        "CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      ],
+      "owasp": [
+        "A05:2017 - Broken Access Control",
+        "A01:2021 - Broken Access Control",
+        "A01:2025 - Broken Access Control"
+      ],
+      "sink_info": {
+        "line": 74,
+        "code": "const filePath = path.join(__dirname, 'logs', filename);",
+        "type": "AST / Dataflow Sink"
+      },
+      "code_context": "                       70 | // 5. Path Traversal (True Positive)\n                       71 | app.get('/api/view-log', (req, res) => {\n                       72 |   const filename = req.query.file;\n                       73 |   // VULNERABLE: Attacker can supply ../../etc/passwd\n>> [VULNERABLE SINK]   74 |   const filePath = path.join(__dirname, 'logs', filename);\n                       75 |   try {\n                       76 |     const data = fs.readFileSync(filePath, 'utf8');\n                       77 |     res.send(`<pre>${data}</pre>`);\n                       78 |   } catch (err) {",
+      "code_lines": [
+        {
+          "line": 70,
+          "code": "// 5. Path Traversal (True Positive)",
+          "is_sink": false
+        },
+        {
+          "line": 71,
+          "code": "app.get('/api/view-log', (req, res) => {",
+          "is_sink": false
+        },
+        {
+          "line": 72,
+          "code": "  const filename = req.query.file;",
+          "is_sink": false
+        },
+        {
+          "line": 73,
+          "code": "  // VULNERABLE: Attacker can supply ../../etc/passwd",
+          "is_sink": false
+        },
+        {
+          "line": 74,
+          "code": "  const filePath = path.join(__dirname, 'logs', filename);",
+          "is_sink": true
+        },
+        {
+          "line": 75,
+          "code": "  try {",
+          "is_sink": false
+        },
+        {
+          "line": 76,
+          "code": "    const data = fs.readFileSync(filePath, 'utf8');",
+          "is_sink": false
+        },
+        {
+          "line": 77,
+          "code": "    res.send(`<pre>${data}</pre>`);",
+          "is_sink": false
+        },
+        {
+          "line": 78,
+          "code": "  } catch (err) {",
+          "is_sink": false
+        }
+      ],
       "triage": {
         "is_false_positive": false,
         "verdict": "TRUE_POSITIVE",
         "confidence_score": 98,
-        "reasoning": "Direct interpolation of untrusted input without validation or sanitization detected. Highly exploitable vulnerability.",
-        "remediation_advice": "Refactor to use parameterized queries, safe execution APIs with argument arrays, or contextual encoding."
+        "reasoning": "Kullan\u0131c\u0131 kontrol\u00fcndeki veri filtrelenmeden do\u011frudan tehlikeli fonksiyona (Sink: 'const filePath = path.join(__dirname, 'logs', file...') aktar\u0131lm\u0131\u015ft\u0131r. \u0130stismara a\u00e7\u0131k kritik zafiyet.",
+        "remediation_advice": "Girdileri parameterized queries, argument array ile \u00e7al\u0131\u015fan g\u00fcvenli API'lar veya s\u0131k\u0131 do\u011frulama mekanizmalar\u0131 ile izole edin."
       }
     },
     {
@@ -95,13 +452,76 @@
       "check_id": "javascript.lang.security.audit.path-traversal.path-join-resolve-traversal.path-join-resolve-traversal",
       "path": "sample-app/server.js",
       "line": 74,
-      "code_context": "   70: // 5. Path Traversal (True Positive)\n   71: app.get('/api/view-log', (req, res) => {\n   72:   const filename = req.query.file;\n   73:   // VULNERABLE: Attacker can supply ../../etc/passwd\n>> 74:   const filePath = path.join(__dirname, 'logs', filename);\n   75:   try {\n   76:     const data = fs.readFileSync(filePath, 'utf8');\n   77:     res.send(`<pre>${data}</pre>`);\n   78:   } catch (err) {",
+      "col": 49,
+      "severity": "WARNING",
+      "message": "Detected possible user input going into a `path.join` or `path.resolve` function. This could possibly lead to a path traversal vulnerability,  where the attacker can access arbitrary files stored in the file system. Instead, be sure to sanitize or validate user input first.",
+      "cwe": [
+        "CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      ],
+      "owasp": [
+        "A05:2017 - Broken Access Control",
+        "A01:2021 - Broken Access Control",
+        "A01:2025 - Broken Access Control"
+      ],
+      "sink_info": {
+        "line": 74,
+        "code": "const filePath = path.join(__dirname, 'logs', filename);",
+        "type": "AST / Dataflow Sink"
+      },
+      "code_context": "                       70 | // 5. Path Traversal (True Positive)\n                       71 | app.get('/api/view-log', (req, res) => {\n                       72 |   const filename = req.query.file;\n                       73 |   // VULNERABLE: Attacker can supply ../../etc/passwd\n>> [VULNERABLE SINK]   74 |   const filePath = path.join(__dirname, 'logs', filename);\n                       75 |   try {\n                       76 |     const data = fs.readFileSync(filePath, 'utf8');\n                       77 |     res.send(`<pre>${data}</pre>`);\n                       78 |   } catch (err) {",
+      "code_lines": [
+        {
+          "line": 70,
+          "code": "// 5. Path Traversal (True Positive)",
+          "is_sink": false
+        },
+        {
+          "line": 71,
+          "code": "app.get('/api/view-log', (req, res) => {",
+          "is_sink": false
+        },
+        {
+          "line": 72,
+          "code": "  const filename = req.query.file;",
+          "is_sink": false
+        },
+        {
+          "line": 73,
+          "code": "  // VULNERABLE: Attacker can supply ../../etc/passwd",
+          "is_sink": false
+        },
+        {
+          "line": 74,
+          "code": "  const filePath = path.join(__dirname, 'logs', filename);",
+          "is_sink": true
+        },
+        {
+          "line": 75,
+          "code": "  try {",
+          "is_sink": false
+        },
+        {
+          "line": 76,
+          "code": "    const data = fs.readFileSync(filePath, 'utf8');",
+          "is_sink": false
+        },
+        {
+          "line": 77,
+          "code": "    res.send(`<pre>${data}</pre>`);",
+          "is_sink": false
+        },
+        {
+          "line": 78,
+          "code": "  } catch (err) {",
+          "is_sink": false
+        }
+      ],
       "triage": {
         "is_false_positive": false,
         "verdict": "TRUE_POSITIVE",
         "confidence_score": 98,
-        "reasoning": "Direct interpolation of untrusted input without validation or sanitization detected. Highly exploitable vulnerability.",
-        "remediation_advice": "Refactor to use parameterized queries, safe execution APIs with argument arrays, or contextual encoding."
+        "reasoning": "Kullan\u0131c\u0131 kontrol\u00fcndeki veri filtrelenmeden do\u011frudan tehlikeli fonksiyona (Sink: 'const filePath = path.join(__dirname, 'logs', file...') aktar\u0131lm\u0131\u015ft\u0131r. \u0130stismara a\u00e7\u0131k kritik zafiyet.",
+        "remediation_advice": "Girdileri parameterized queries, argument array ile \u00e7al\u0131\u015fan g\u00fcvenli API'lar veya s\u0131k\u0131 do\u011frulama mekanizmalar\u0131 ile izole edin."
       }
     },
     {
@@ -109,13 +529,76 @@
       "check_id": "javascript.express.security.audit.xss.direct-response-write.direct-response-write",
       "path": "sample-app/server.js",
       "line": 77,
-      "code_context": "   73:   // VULNERABLE: Attacker can supply ../../etc/passwd\n   74:   const filePath = path.join(__dirname, 'logs', filename);\n   75:   try {\n   76:     const data = fs.readFileSync(filePath, 'utf8');\n>> 77:     res.send(`<pre>${data}</pre>`);\n   78:   } catch (err) {\n   79:     res.status(404).send('File not found');\n   80:   }\n   81: });",
+      "col": 14,
+      "severity": "WARNING",
+      "message": "Detected directly writing to a Response object from user-defined input. This bypasses any HTML escaping and may expose your application to a Cross-Site-scripting (XSS) vulnerability. Instead, use 'resp.render()' to render safely escaped HTML.",
+      "cwe": [
+        "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      ],
+      "owasp": [
+        "A07:2017 - Cross-Site Scripting (XSS)",
+        "A03:2021 - Injection",
+        "A05:2025 - Injection"
+      ],
+      "sink_info": {
+        "line": 77,
+        "code": "res.send(`<pre>${data}</pre>`);",
+        "type": "AST / Dataflow Sink"
+      },
+      "code_context": "                       73 |   // VULNERABLE: Attacker can supply ../../etc/passwd\n                       74 |   const filePath = path.join(__dirname, 'logs', filename);\n                       75 |   try {\n                       76 |     const data = fs.readFileSync(filePath, 'utf8');\n>> [VULNERABLE SINK]   77 |     res.send(`<pre>${data}</pre>`);\n                       78 |   } catch (err) {\n                       79 |     res.status(404).send('File not found');\n                       80 |   }\n                       81 | });",
+      "code_lines": [
+        {
+          "line": 73,
+          "code": "  // VULNERABLE: Attacker can supply ../../etc/passwd",
+          "is_sink": false
+        },
+        {
+          "line": 74,
+          "code": "  const filePath = path.join(__dirname, 'logs', filename);",
+          "is_sink": false
+        },
+        {
+          "line": 75,
+          "code": "  try {",
+          "is_sink": false
+        },
+        {
+          "line": 76,
+          "code": "    const data = fs.readFileSync(filePath, 'utf8');",
+          "is_sink": false
+        },
+        {
+          "line": 77,
+          "code": "    res.send(`<pre>${data}</pre>`);",
+          "is_sink": true
+        },
+        {
+          "line": 78,
+          "code": "  } catch (err) {",
+          "is_sink": false
+        },
+        {
+          "line": 79,
+          "code": "    res.status(404).send('File not found');",
+          "is_sink": false
+        },
+        {
+          "line": 80,
+          "code": "  }",
+          "is_sink": false
+        },
+        {
+          "line": 81,
+          "code": "});",
+          "is_sink": false
+        }
+      ],
       "triage": {
         "is_false_positive": false,
         "verdict": "TRUE_POSITIVE",
         "confidence_score": 98,
-        "reasoning": "Direct interpolation of untrusted input without validation or sanitization detected. Highly exploitable vulnerability.",
-        "remediation_advice": "Refactor to use parameterized queries, safe execution APIs with argument arrays, or contextual encoding."
+        "reasoning": "Kullan\u0131c\u0131 kontrol\u00fcndeki veri filtrelenmeden do\u011frudan tehlikeli fonksiyona (Sink: 'res.send(`<pre>${data}</pre>`);...') aktar\u0131lm\u0131\u015ft\u0131r. \u0130stismara a\u00e7\u0131k kritik zafiyet.",
+        "remediation_advice": "Girdileri parameterized queries, argument array ile \u00e7al\u0131\u015fan g\u00fcvenli API'lar veya s\u0131k\u0131 do\u011frulama mekanizmalar\u0131 ile izole edin."
       }
     },
     {
@@ -123,13 +606,76 @@
       "check_id": "javascript.express.security.injection.raw-html-format.raw-html-format",
       "path": "sample-app/server.js",
       "line": 77,
-      "code_context": "   73:   // VULNERABLE: Attacker can supply ../../etc/passwd\n   74:   const filePath = path.join(__dirname, 'logs', filename);\n   75:   try {\n   76:     const data = fs.readFileSync(filePath, 'utf8');\n>> 77:     res.send(`<pre>${data}</pre>`);\n   78:   } catch (err) {\n   79:     res.status(404).send('File not found');\n   80:   }\n   81: });",
+      "col": 14,
+      "severity": "WARNING",
+      "message": "User data flows into the host portion of this manually-constructed HTML. This can introduce a Cross-Site-Scripting (XSS) vulnerability if this comes from user-provided input. Consider using a sanitization library such as DOMPurify to sanitize the HTML within.",
+      "cwe": [
+        "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      ],
+      "owasp": [
+        "A07:2017 - Cross-Site Scripting (XSS)",
+        "A03:2021 - Injection",
+        "A05:2025 - Injection"
+      ],
+      "sink_info": {
+        "line": 77,
+        "code": "res.send(`<pre>${data}</pre>`);",
+        "type": "AST / Dataflow Sink"
+      },
+      "code_context": "                       73 |   // VULNERABLE: Attacker can supply ../../etc/passwd\n                       74 |   const filePath = path.join(__dirname, 'logs', filename);\n                       75 |   try {\n                       76 |     const data = fs.readFileSync(filePath, 'utf8');\n>> [VULNERABLE SINK]   77 |     res.send(`<pre>${data}</pre>`);\n                       78 |   } catch (err) {\n                       79 |     res.status(404).send('File not found');\n                       80 |   }\n                       81 | });",
+      "code_lines": [
+        {
+          "line": 73,
+          "code": "  // VULNERABLE: Attacker can supply ../../etc/passwd",
+          "is_sink": false
+        },
+        {
+          "line": 74,
+          "code": "  const filePath = path.join(__dirname, 'logs', filename);",
+          "is_sink": false
+        },
+        {
+          "line": 75,
+          "code": "  try {",
+          "is_sink": false
+        },
+        {
+          "line": 76,
+          "code": "    const data = fs.readFileSync(filePath, 'utf8');",
+          "is_sink": false
+        },
+        {
+          "line": 77,
+          "code": "    res.send(`<pre>${data}</pre>`);",
+          "is_sink": true
+        },
+        {
+          "line": 78,
+          "code": "  } catch (err) {",
+          "is_sink": false
+        },
+        {
+          "line": 79,
+          "code": "    res.status(404).send('File not found');",
+          "is_sink": false
+        },
+        {
+          "line": 80,
+          "code": "  }",
+          "is_sink": false
+        },
+        {
+          "line": 81,
+          "code": "});",
+          "is_sink": false
+        }
+      ],
       "triage": {
         "is_false_positive": false,
         "verdict": "TRUE_POSITIVE",
         "confidence_score": 98,
-        "reasoning": "Direct interpolation of untrusted input without validation or sanitization detected. Highly exploitable vulnerability.",
-        "remediation_advice": "Refactor to use parameterized queries, safe execution APIs with argument arrays, or contextual encoding."
+        "reasoning": "Kullan\u0131c\u0131 kontrol\u00fcndeki veri filtrelenmeden do\u011frudan tehlikeli fonksiyona (Sink: 'res.send(`<pre>${data}</pre>`);...') aktar\u0131lm\u0131\u015ft\u0131r. \u0130stismara a\u00e7\u0131k kritik zafiyet.",
+        "remediation_advice": "Girdileri parameterized queries, argument array ile \u00e7al\u0131\u015fan g\u00fcvenli API'lar veya s\u0131k\u0131 do\u011frulama mekanizmalar\u0131 ile izole edin."
       }
     },
     {
@@ -137,13 +683,76 @@
       "check_id": "javascript.express.security.audit.xss.direct-response-write.direct-response-write",
       "path": "sample-app/server.js",
       "line": 131,
-      "code_context": "   127: app.get('/api/safe-greet', (req, res) => {\n   128:   const user = req.query.user || 'Guest';\n   129:   // SAFE: Input is properly sanitized before HTML concatenation, but regex SAST rules may flag res.send + concatenation\n   130:   const cleanUser = safeEscapeHtml(user);\n>> 131:   res.send(`<h2>Welcome back, ${cleanUser}</h2>`);\n   132: });\n   133: \n   134: // Root endpoint\n   135: app.get('/', (req, res) => {",
+      "col": 12,
+      "severity": "WARNING",
+      "message": "Detected directly writing to a Response object from user-defined input. This bypasses any HTML escaping and may expose your application to a Cross-Site-scripting (XSS) vulnerability. Instead, use 'resp.render()' to render safely escaped HTML.",
+      "cwe": [
+        "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      ],
+      "owasp": [
+        "A07:2017 - Cross-Site Scripting (XSS)",
+        "A03:2021 - Injection",
+        "A05:2025 - Injection"
+      ],
+      "sink_info": {
+        "line": 131,
+        "code": "res.send(`<h2>Welcome back, ${cleanUser}</h2>`);",
+        "type": "AST / Dataflow Sink"
+      },
+      "code_context": "                      127 | app.get('/api/safe-greet', (req, res) => {\n                      128 |   const user = req.query.user || 'Guest';\n                      129 |   // SAFE: Input is properly sanitized before HTML concatenation, but regex SAST rules may flag res.send + concatenation\n                      130 |   const cleanUser = safeEscapeHtml(user);\n>> [VULNERABLE SINK]  131 |   res.send(`<h2>Welcome back, ${cleanUser}</h2>`);\n                      132 | });\n                      133 | \n                      134 | // Root endpoint\n                      135 | app.get('/', (req, res) => {",
+      "code_lines": [
+        {
+          "line": 127,
+          "code": "app.get('/api/safe-greet', (req, res) => {",
+          "is_sink": false
+        },
+        {
+          "line": 128,
+          "code": "  const user = req.query.user || 'Guest';",
+          "is_sink": false
+        },
+        {
+          "line": 129,
+          "code": "  // SAFE: Input is properly sanitized before HTML concatenation, but regex SAST rules may flag res.send + concatenation",
+          "is_sink": false
+        },
+        {
+          "line": 130,
+          "code": "  const cleanUser = safeEscapeHtml(user);",
+          "is_sink": false
+        },
+        {
+          "line": 131,
+          "code": "  res.send(`<h2>Welcome back, ${cleanUser}</h2>`);",
+          "is_sink": true
+        },
+        {
+          "line": 132,
+          "code": "});",
+          "is_sink": false
+        },
+        {
+          "line": 133,
+          "code": "",
+          "is_sink": false
+        },
+        {
+          "line": 134,
+          "code": "// Root endpoint",
+          "is_sink": false
+        },
+        {
+          "line": 135,
+          "code": "app.get('/', (req, res) => {",
+          "is_sink": false
+        }
+      ],
       "triage": {
         "is_false_positive": true,
         "verdict": "FALSE_POSITIVE",
         "confidence_score": 89,
-        "reasoning": "User input is filtered through an HTML escaping function (safeEscapeHtml) before string template concatenation. Although flagged by AST concatenation heuristics, reflected XSS is mitigated.",
-        "remediation_advice": "Prefer template engines with automatic contextual encoding (e.g. EJS safe tags) or explicit DOM encoding."
+        "reasoning": "Kullan\u0131c\u0131dan gelen veri HTML i\u00e7ine bas\u0131lmadan \u00f6nce 'safeEscapeHtml' fonksiyonu ile sanitize edilerek XSS tehlikesi ortadan kald\u0131r\u0131lm\u0131\u015ft\u0131r. AST e\u015fle\u015fmesi yan\u0131lt\u0131c\u0131 bir uyar\u0131 \u00fcretmi\u015ftir.",
+        "remediation_advice": "Manuel string birle\u015ftirme yerine otomatik encode eden EJS veya DOM k\u00fct\u00fcphaneleri tercih edilebilir."
       }
     },
     {
@@ -151,13 +760,76 @@
       "check_id": "javascript.express.security.injection.raw-html-format.raw-html-format",
       "path": "sample-app/server.js",
       "line": 131,
-      "code_context": "   127: app.get('/api/safe-greet', (req, res) => {\n   128:   const user = req.query.user || 'Guest';\n   129:   // SAFE: Input is properly sanitized before HTML concatenation, but regex SAST rules may flag res.send + concatenation\n   130:   const cleanUser = safeEscapeHtml(user);\n>> 131:   res.send(`<h2>Welcome back, ${cleanUser}</h2>`);\n   132: });\n   133: \n   134: // Root endpoint\n   135: app.get('/', (req, res) => {",
+      "col": 12,
+      "severity": "WARNING",
+      "message": "User data flows into the host portion of this manually-constructed HTML. This can introduce a Cross-Site-Scripting (XSS) vulnerability if this comes from user-provided input. Consider using a sanitization library such as DOMPurify to sanitize the HTML within.",
+      "cwe": [
+        "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      ],
+      "owasp": [
+        "A07:2017 - Cross-Site Scripting (XSS)",
+        "A03:2021 - Injection",
+        "A05:2025 - Injection"
+      ],
+      "sink_info": {
+        "line": 131,
+        "code": "res.send(`<h2>Welcome back, ${cleanUser}</h2>`);",
+        "type": "AST / Dataflow Sink"
+      },
+      "code_context": "                      127 | app.get('/api/safe-greet', (req, res) => {\n                      128 |   const user = req.query.user || 'Guest';\n                      129 |   // SAFE: Input is properly sanitized before HTML concatenation, but regex SAST rules may flag res.send + concatenation\n                      130 |   const cleanUser = safeEscapeHtml(user);\n>> [VULNERABLE SINK]  131 |   res.send(`<h2>Welcome back, ${cleanUser}</h2>`);\n                      132 | });\n                      133 | \n                      134 | // Root endpoint\n                      135 | app.get('/', (req, res) => {",
+      "code_lines": [
+        {
+          "line": 127,
+          "code": "app.get('/api/safe-greet', (req, res) => {",
+          "is_sink": false
+        },
+        {
+          "line": 128,
+          "code": "  const user = req.query.user || 'Guest';",
+          "is_sink": false
+        },
+        {
+          "line": 129,
+          "code": "  // SAFE: Input is properly sanitized before HTML concatenation, but regex SAST rules may flag res.send + concatenation",
+          "is_sink": false
+        },
+        {
+          "line": 130,
+          "code": "  const cleanUser = safeEscapeHtml(user);",
+          "is_sink": false
+        },
+        {
+          "line": 131,
+          "code": "  res.send(`<h2>Welcome back, ${cleanUser}</h2>`);",
+          "is_sink": true
+        },
+        {
+          "line": 132,
+          "code": "});",
+          "is_sink": false
+        },
+        {
+          "line": 133,
+          "code": "",
+          "is_sink": false
+        },
+        {
+          "line": 134,
+          "code": "// Root endpoint",
+          "is_sink": false
+        },
+        {
+          "line": 135,
+          "code": "app.get('/', (req, res) => {",
+          "is_sink": false
+        }
+      ],
       "triage": {
         "is_false_positive": true,
         "verdict": "FALSE_POSITIVE",
         "confidence_score": 89,
-        "reasoning": "User input is filtered through an HTML escaping function (safeEscapeHtml) before string template concatenation. Although flagged by AST concatenation heuristics, reflected XSS is mitigated.",
-        "remediation_advice": "Prefer template engines with automatic contextual encoding (e.g. EJS safe tags) or explicit DOM encoding."
+        "reasoning": "Kullan\u0131c\u0131dan gelen veri HTML i\u00e7ine bas\u0131lmadan \u00f6nce 'safeEscapeHtml' fonksiyonu ile sanitize edilerek XSS tehlikesi ortadan kald\u0131r\u0131lm\u0131\u015ft\u0131r. AST e\u015fle\u015fmesi yan\u0131lt\u0131c\u0131 bir uyar\u0131 \u00fcretmi\u015ftir.",
+        "remediation_advice": "Manuel string birle\u015ftirme yerine otomatik encode eden EJS veya DOM k\u00fct\u00fcphaneleri tercih edilebilir."
       }
     }
   ]

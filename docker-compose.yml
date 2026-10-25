@@ -19,5 +19,16 @@ services:
       - ./:/workspace
     restart: unless-stopped
 
+  dashboard:
+    build:
+      context: ./dashboard
+      dockerfile: Dockerfile
+    container_name: devsecops-dashboard
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./reports:/app/reports:ro
+    restart: unless-stopped
+
 volumes:
   jenkins_data:

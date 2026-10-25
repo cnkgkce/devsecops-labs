@@ -10,17 +10,22 @@ Pipeline boyunca **SAST**, **SCA** ve **Container Security** adımları işletil
 
 ```
 devsecops-labs/
-├── docker-compose.yml          # Jenkins servisi & volume bağlamaları
+├── docker-compose.yml          # Jenkins & Dashboard servisleri
 ├── jenkins/
 │   ├── Dockerfile              # Docker CLI, Trivy, Semgrep, Python3 hazır imaj
 │   ├── casc.yaml               # Zero-touch Jenkins kurulumu (admin:admin + hazır pipeline)
 │   └── plugins.txt             # Gerekli Jenkins pluginleri
+├── dashboard/                  # [Yeni] React + Express DevSecOps Dashboard (Port 3001)
+│   ├── src/                    # App, KPI Cards, SAST & AI, SCA, Container sekmeleri
+│   ├── components/             # CodeInspectorModal (Zafiyetli Pattern & Sink Denetçisi)
+│   ├── server.js               # Dinamik rapor API'si
+│   └── Dockerfile              # Çok aşamalı Vite build + Express runtime
 ├── sample-app/                 # Kasıtlı zafiyetler içeren Node.js uygulaması
 │   ├── server.js               # SQLi, Cmd Injection, XSS, Path Traversal + Bilinçli FP'ler
 │   ├── package.json            # Zafiyetli npm bağımlılıkları (Lodash, Axios, JWT, EJS vb.)
+│   ├── package-lock.json       # Trivy SCA için bağımlılık kilit dosyası
 │   └── Dockerfile              # Güvenlik açıkları olan konteyner imajı
-├── pipeline/
-│   └── Jenkinsfile             # Uçtan uca DevSecOps Pipeline kodu
+├── Jenkinsfile                 # Uçtan uca DevSecOps Pipeline kodu
 ├── ai-engine/                  # [Faz 2] AI Tabanlı FP Eliminasyon Motoru
 │   ├── analyzer.py             # Semgrep JSON çıktısını ayrıştıran ve AI ile filtreleyen script
 │   ├── prompts.py              # AppSec odaklı LLM Prompt şablonları
@@ -28,15 +33,16 @@ devsecops-labs/
 └── reports/                    # Pipeline tarama çıktılarının (JSON) üretildiği dizin
 ```
 
-### Güvenlik Araçları Matrisi
+### Güvenlik Araçları & Arayüz Matrisi
 
-| Kategori | Araç | Kullanım Amacı | Çıktı Formatı |
+| Kategori | Araç | Erişim URL / Çıktı | Kullanım Amacı |
 | :--- | :--- | :--- | :--- |
-| **CI/CD** | **Jenkins LTS (Docker)** | Pipeline orkestrasyonu | Konsol & Dashboard |
-| **SAST** | **Semgrep (Free/OSS)** | Kaynak kod statik analizi | `reports/semgrep-results.json` |
-| **SCA** | **Trivy `fs` (Open Source)** | `package.json` ve kütüphane zafiyetleri | `reports/trivy-sca-results.json` |
-| **Container** | **Trivy `image`** | Docker imajı işletim sistemi paket zafiyetleri | `reports/trivy-container-results.json` |
-| **AI Triage** | **AI FP Eliminator** | SAST bulgularını analiz edip yanlış alarmları eleme | `reports/semgrep-ai-triaged.json` |
+| **Dashboard** | **React + Express SPA** | **http://localhost:3001** | Tüm zafiyetlerin, KPI'ların ve AI Triage sonuçlarının görsel takibi |
+| **CI/CD** | **Jenkins LTS (Docker)** | **http://localhost:8080** | Pipeline orkestrasyonu (admin:admin) |
+| **SAST** | **Semgrep (Free/OSS)** | `reports/semgrep-results.json` | Kaynak kod statik analizi ve taint tespiti |
+| **SCA** | **Trivy `fs` (Open Source)** | `reports/trivy-sca-results.json` | `package-lock.json` kütüphane zafiyetleri |
+| **Container** | **Trivy `image`** | `reports/trivy-container-results.json` | Docker imajı işletim sistemi paket zafiyetleri |
+| **AI Triage** | **AI FP Eliminator** | `reports/semgrep-ai-triaged.json` | SAST bulgularını analiz edip yanlış alarmları eleme |
 
 ---
 
