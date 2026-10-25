@@ -26,6 +26,10 @@ def run_cmd(cmd, cwd=None):
     result = subprocess.run(cmd, shell=True, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     return result.returncode, result.stdout.strip(), result.stderr.strip()
 
+def semver_key(v):
+    nums = [int(n) for n in re.findall(r'\d+', v)]
+    return nums if nums else [0]
+
 def extract_target_version(fixes_list):
     """
     Selects the highest/cleanest version from Trivy fixedVersion strings.
@@ -41,8 +45,9 @@ def extract_target_version(fixes_list):
                 candidates.append(cleaned)
     if not candidates:
         return None
-    # Sort or return latest candidate
-    return candidates[0]
+    # Sort candidates by semver ascending and pick the highest version
+    candidates.sort(key=semver_key)
+    return candidates[-1]
 
 def main():
     args = parse_args()
@@ -139,7 +144,7 @@ def main():
 
     # Regenerate package-lock.json using docker node
     print("[*] Regenerating package-lock.json with updated dependencies...")
-    run_cmd(f"docker run --rm -v $(pwd)/sample-app:/app -w /app node:16-alpine npm i --package-lock-only")
+    run_cmd(f"docker run --rm -v $(pwd)/sample-app:/app -w /app node:18-alpine npm i --package-lock-only")
 
     # Commit changes
     commit_msg = f"fix(security): auto-remediate {len(changes)} vulnerable dependencies\n\n"

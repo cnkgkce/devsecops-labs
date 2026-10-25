@@ -24,6 +24,13 @@ pipeline {
                     semgrep --version
                     trivy --version
                     docker --version
+                    
+                    # Git Workspace senkronizasyonu: GitHub merge işlemlerini otomatik çek
+                    if [ -d .git ]; then
+                        echo "Git workspace güncelleniyor (git pull)..."
+                        git config --global --add safe.directory "${TARGET_DIR}" || true
+                        git pull origin main || true
+                    fi
                 """
             }
         }
