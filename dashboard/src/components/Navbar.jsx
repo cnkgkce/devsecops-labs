@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, RefreshCw, Layers, History, GitCommit } from 'lucide-react';
+import { Shield, RefreshCw, Layers, History, GitCommit, GitPullRequest, Sparkles } from 'lucide-react';
 
 export default function Navbar({
   apps = [],
@@ -9,7 +9,8 @@ export default function Navbar({
   selectedBuild,
   onSelectBuild,
   onRefresh,
-  loading
+  loading,
+  onOpenRemediation
 }) {
   return (
     <header className="navbar">
@@ -24,6 +25,34 @@ export default function Navbar({
       </div>
 
       <div className="app-switcher-container">
+        {/* 1-Click Remediation Button in Navbar - Always Visible! */}
+        {onOpenRemediation && (
+          <button
+            type="button"
+            onClick={() => onOpenRemediation('all')}
+            style={{
+              background: 'linear-gradient(135deg, #6366f1 0%, #a855f7 100%)',
+              color: '#fff',
+              border: '1px solid rgba(255, 255, 255, 0.25)',
+              borderRadius: '8px',
+              padding: '7px 15px',
+              fontSize: '13px',
+              fontWeight: 700,
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '7px',
+              boxShadow: '0 4px 14px rgba(99, 102, 241, 0.45)',
+              marginRight: '10px',
+              transition: 'all 0.2s'
+            }}
+            title="SCA ve Konteyner zafiyetleri için otomatik GitHub PR oluştur"
+          >
+            <Sparkles size={15} color="#fcd34d" />
+            <span>🚀 Otomatik PR Aç</span>
+          </button>
+        )}
+
         {/* App Switcher */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#94a3b8', fontSize: '13px' }}>
           <Layers size={15} />

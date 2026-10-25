@@ -1,7 +1,7 @@
 import React from 'react';
-import { ShieldAlert, ShieldCheck, Filter, Package, Server, Sparkles } from 'lucide-react';
+import { ShieldAlert, ShieldCheck, Filter, Package, Server, Sparkles, GitPullRequest } from 'lucide-react';
 
-export default function KpiCards({ data }) {
+export default function KpiCards({ data, onOpenRemediation }) {
   const sastSummary = data?.sast?.summary || {};
   const totalFindings = sastSummary.total_findings || 0;
   const truePositives = sastSummary.true_positives || 0;
@@ -62,24 +62,74 @@ export default function KpiCards({ data }) {
       </div>
 
       {/* 5. SCA Vulnerabilities */}
-      <div className="glass-panel kpi-card">
+      <div className="glass-panel kpi-card" style={{ position: 'relative' }}>
         <div className="kpi-title">
           <span>SCA Paket Açıkları</span>
           <Package size={18} color="#f59e0b" />
         </div>
-        <div className="kpi-value" style={{ color: '#f59e0b' }}>{scaTotal}</div>
+        <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
+          <div className="kpi-value" style={{ color: '#f59e0b' }}>{scaTotal}</div>
+          {onOpenRemediation && (
+            <button
+              type="button"
+              onClick={() => onOpenRemediation('sca')}
+              style={{
+                background: 'rgba(245, 158, 11, 0.18)',
+                color: '#fbbf24',
+                border: '1px solid rgba(245, 158, 11, 0.4)',
+                borderRadius: '6px',
+                padding: '4px 8px',
+                fontSize: '11px',
+                fontWeight: 700,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4px',
+                transition: 'all 0.2s'
+              }}
+              title="SCA paketleri için otomatik fix PR oluştur"
+            >
+              <span>⚡ Fix PR</span>
+            </button>
+          )}
+        </div>
         <span style={{ fontSize: '12px', color: '#64748b', marginTop: '6px' }}>
           Trivy fs (npm kütüphaneleri)
         </span>
       </div>
 
       {/* 6. Container Image CVEs */}
-      <div className="glass-panel kpi-card">
+      <div className="glass-panel kpi-card" style={{ position: 'relative' }}>
         <div className="kpi-title">
           <span>Container OS Açıkları</span>
           <Server size={18} color="#a855f7" />
         </div>
-        <div className="kpi-value" style={{ color: '#a855f7' }}>{containerTotal}</div>
+        <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
+          <div className="kpi-value" style={{ color: '#a855f7' }}>{containerTotal}</div>
+          {onOpenRemediation && (
+            <button
+              type="button"
+              onClick={() => onOpenRemediation('container')}
+              style={{
+                background: 'rgba(168, 85, 247, 0.18)',
+                color: '#c084fc',
+                border: '1px solid rgba(168, 85, 247, 0.4)',
+                borderRadius: '6px',
+                padding: '4px 8px',
+                fontSize: '11px',
+                fontWeight: 700,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4px',
+                transition: 'all 0.2s'
+              }}
+              title="Dockerfile base image için otomatik fix PR oluştur"
+            >
+              <span>⚡ Fix PR</span>
+            </button>
+          )}
+        </div>
         <span style={{ fontSize: '12px', color: '#64748b', marginTop: '6px' }}>
           Trivy image (Docker CVE'leri)
         </span>

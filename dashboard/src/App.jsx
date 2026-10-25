@@ -94,6 +94,7 @@ export default function App() {
           loadReports();
         }}
         loading={loading}
+        onOpenRemediation={handleOpenRemediation}
       />
 
       <main className="main-content">
@@ -105,7 +106,10 @@ export default function App() {
         />
 
         {/* KPI Metric Overview */}
-        <KpiCards data={reportData} />
+        <KpiCards
+          data={reportData}
+          onOpenRemediation={handleOpenRemediation}
+        />
 
         {/* Navigation Tabs */}
         <div className="tabs-nav">

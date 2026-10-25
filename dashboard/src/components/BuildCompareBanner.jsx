@@ -4,16 +4,19 @@ import { History, GitCommit, Clock, TrendingDown, CheckCircle, ArrowRight, Shiel
 export default function BuildCompareBanner({ currentBuildInfo, builds = [], onOpenRemediation }) {
   if (!currentBuildInfo) return null;
 
-  const currentNum = currentBuildInfo.buildNumber;
-  const currentMeta = builds.find(b => b.buildNumber === String(currentNum)) || {};
+  const effectiveBuildNumber = (currentBuildInfo.buildNumber === 'latest' && builds.length > 0)
+    ? builds[0].buildNumber
+    : currentBuildInfo.buildNumber;
+
+  const currentMeta = builds.find(b => b.buildNumber === String(effectiveBuildNumber)) || {};
 
   // Find previous build if available
-  const currentIndex = builds.findIndex(b => b.buildNumber === String(currentNum));
+  const currentIndex = builds.findIndex(b => b.buildNumber === String(effectiveBuildNumber));
   const previousBuild = currentIndex >= 0 && currentIndex + 1 < builds.length ? builds[currentIndex + 1] : null;
 
   let scaDiff = 0;
   let hasComparison = false;
-  if (previousBuild && currentMeta.sca_total !== undefined) {
+  if (previousBuild && currentMeta.sca_total !== undefined && previousBuild.sca_total !== undefined) {
     scaDiff = currentMeta.sca_total - previousBuild.sca_total;
     hasComparison = true;
   }
@@ -43,7 +46,7 @@ export default function BuildCompareBanner({ currentBuildInfo, builds = [], onOp
             borderRadius: '6px',
             fontSize: '12px'
           }}>
-            #{currentNum}
+            #{effectiveBuildNumber}
           </span>
         </div>
 
