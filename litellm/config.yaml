@@ -1,0 +1,66 @@
+model_list:
+  # High RPM pool across 5 verified 15-RPM Gemini models
+  - model_name: gpt-4o
+    litellm_params:
+      model: gemini/gemini-flash-lite-latest
+      api_key: os.environ/GEMINI_API_KEY
+      rpm: 14
+
+  - model_name: gpt-4o
+    litellm_params:
+      model: gemini/gemini-3.5-flash
+      api_key: os.environ/GEMINI_API_KEY
+      rpm: 14
+
+  - model_name: gpt-4o
+    litellm_params:
+      model: gemini/gemini-3.5-flash-lite
+      api_key: os.environ/GEMINI_API_KEY
+      rpm: 14
+
+  - model_name: gpt-4o
+    litellm_params:
+      model: gemini/gemini-3.1-flash-lite
+      api_key: os.environ/GEMINI_API_KEY
+      rpm: 14
+
+  - model_name: gpt-4o
+    litellm_params:
+      model: gemini/gemini-3.1-flash-lite-preview
+      api_key: os.environ/GEMINI_API_KEY
+      rpm: 14
+
+  # Claude Aliases
+  - model_name: claude-3-5-sonnet-20241022
+    litellm_params:
+      model: gemini/gemini-flash-lite-latest
+      api_key: os.environ/GEMINI_API_KEY
+      rpm: 14
+
+  - model_name: claude-3-5-sonnet-20241022
+    litellm_params:
+      model: gemini/gemini-3.5-flash
+      api_key: os.environ/GEMINI_API_KEY
+      rpm: 14
+
+  - model_name: claude-sonnet-4-6
+    litellm_params:
+      model: gemini/gemini-flash-lite-latest
+      api_key: os.environ/GEMINI_API_KEY
+      rpm: 14
+
+litellm_settings:
+  drop_params: true
+  num_retries: 15
+  retry_after: 5
+  request_timeout: 120
+
+router_settings:
+  routing_strategy: "usage-based-routing"
+  cooldown_time: 20
+  enable_pre_call_checks: true
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY
+
+

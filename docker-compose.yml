@@ -44,7 +44,31 @@ services:
     container_name: devsecops-vulnerable-app
     ports:
       - "3000:3000"
+    volumes:
+      - ./sample-app:/usr/src/app
+      - /usr/src/app/node_modules
+    restart: unless-stopped
+
+
+
+  # LiteLLM Proxy Gateway (Gemini API'yi OpenAI & Claude standartlarına çevirir)
+  litellm:
+    image: ghcr.io/berriai/litellm:main-stable
+    container_name: devsecops-litellm
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./litellm/config.yaml:/app/config.yaml:ro
+    command:
+      - "--config=/app/config.yaml"
+      - "--port=4000"
+    environment:
+      - LITELLM_MASTER_KEY=sk-devsecops-litellm-123456
+    env_file:
+      - path: .env
+        required: false
     restart: unless-stopped
 
 volumes:
   jenkins_data:
+

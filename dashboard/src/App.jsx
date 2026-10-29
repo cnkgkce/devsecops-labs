@@ -5,9 +5,11 @@ import BuildCompareBanner from './components/BuildCompareBanner';
 import SastAiView from './components/SastAiView';
 import ScaView from './components/ScaView';
 import ContainerView from './components/ContainerView';
+import AiPentestView from './components/AiPentestView';
 import CodeInspectorModal from './components/CodeInspectorModal';
 import RemediationModal from './components/RemediationModal';
-import { ShieldCheck, Package, Server } from 'lucide-react';
+import { ShieldCheck, Package, Server, Bot } from 'lucide-react';
+
 
 export default function App() {
   const [apps, setApps] = useState([]);
@@ -139,6 +141,16 @@ export default function App() {
             <span>Konteyner Güvenliği (Trivy image)</span>
             <span className="tab-badge">{containerCount}</span>
           </button>
+
+          <button
+            className={`tab-btn ${activeTab === 'AI_PENTEST' ? 'active' : ''}`}
+            onClick={() => setActiveTab('AI_PENTEST')}
+            style={activeTab === 'AI_PENTEST' ? { borderColor: '#38bdf8', color: '#38bdf8' } : {}}
+          >
+            <Bot size={16} />
+            <span>AI Pentest (Shannon)</span>
+            <span className="tab-badge" style={{ background: 'rgba(56, 189, 248, 0.2)', color: '#38bdf8' }}>6</span>
+          </button>
         </div>
 
         {/* Tab Content */}
@@ -171,8 +183,13 @@ export default function App() {
                 onOpenRemediation={handleOpenRemediation}
               />
             )}
+
+            {activeTab === 'AI_PENTEST' && (
+              <AiPentestView />
+            )}
           </>
         )}
+
       </main>
 
       {/* Code & Sink Inspector Modal */}

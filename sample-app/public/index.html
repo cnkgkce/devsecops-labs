@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevSec Insights - Mühendislik ve Güvenlik Blogu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0f1d;
+      --bg-secondary: #0f172a;
+      --bg-card: rgba(30, 41, 59, 0.7);
+      --bg-card-hover: rgba(51, 65, 85, 0.7);
+      --border-color: rgba(148, 163, 184, 0.15);
+      --border-accent: rgba(56, 189, 248, 0.3);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent-cyan: #38bdf8;
+      --accent-indigo: #818cf8;
+      --accent-emerald: #34d399;
+      --accent-rose: #fb7185;
+      --accent-amber: #fbbf24;
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(129, 140, 248, 0.08) 0%, transparent 40%);
+      background-attachment: fixed;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Top Banner / Security Lab Notice */
+    .lab-banner {
+      background: linear-gradient(90deg, rgba(239, 68, 68, 0.2), rgba(249, 115, 22, 0.2));
+      border-bottom: 1px solid rgba(239, 68, 68, 0.3);
+      padding: 6px 0;
+      font-size: 0.82rem;
+      text-align: center;
+      color: #fca5a5;
+      font-weight: 500;
+    }
+    .lab-banner span {
+      background: rgba(239, 68, 68, 0.3);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-right: 8px;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* Header & Navigation */
+    header {
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #0284c7, #6366f1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+    }
+    .brand-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+    .brand-title span {
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-indigo));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--text-main);
+    }
+
+    .auth-btn-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid transparent;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0284c7, #4f46e5);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #0369a1, #4338ca);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--border-color);
+      color: var(--text-main);
+    }
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--accent-cyan);
+    }
+
+    .user-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-color);
+      padding: 4px 12px 4px 6px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+    }
+    .user-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.75rem;
+      color: #0f172a;
+    }
+    .user-role-badge {
+      font-size: 0.68rem;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-cyan);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 48px 0 32px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: var(--accent-cyan);
+      padding: 4px 12px;
+      border-radius: 16px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      width: fit-content;
+    }
+    .hero-title {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      line-height: 1.2;
+    }
+    .hero-subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 680px;
+    }
+
+    /* Welcome / Greet Widget (Reflected XSS Entry) */
+    .greet-widget {
+      margin-top: 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 18px 22px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .greet-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .greet-icon {
+      font-size: 1.5rem;
+    }
+    .greet-text h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .greet-text p {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+    .greet-form {
+      display: flex;
+      gap: 8px;
+    }
+    .input-text {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 8px 12px;
+      color: var(--text-main);
+      font-size: 0.88rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .input-text:focus {
+      border-color: var(--accent-cyan);
+    }
+    .greet-output {
+      width: 100%;
+      margin-top: 8px;
+      padding: 10px 14px;
+      background: rgba(56, 189, 248, 0.08);
+      border-left: 3px solid var(--accent-cyan);
+      border-radius: 4px;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    /* Main Grid Layout */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 32px;
+      margin-top: 36px;
+      margin-bottom: 60px;
+    }
+
+    /* Blog Posts Feed */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .posts-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .post-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 24px;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .post-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
+      transform: translateY(-2px);
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      margin-bottom: 10px;
+    }
+    .post-tag {
+      background: rgba(99, 102, 241, 0.15);
+      color: var(--accent-indigo);
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+    }
+
+    .post-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+    .post-excerpt {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+
+    .post-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.82rem;
+      color: var(--text-dim);
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Sidebar Widgets */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .widget-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 20px;
+    }
+    .widget-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Author Search (SQL Injection Entry) */
+    .search-box {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .search-box input {
+      flex: 1;
+    }
+    .search-results {
+      max-height: 200px;
+      overflow-y: auto;
+      font-size: 0.82rem;
+      border-radius: 6px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-color);
+      display: none;
+    }
+    .search-item {
+      padding: 8px 12px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+      display: flex;
+      justify-content: space-between;
+    }
+    .search-sql-preview {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-amber);
+      padding: 6px 10px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 4px;
+      margin-top: 8px;
+      word-break: break-all;
+    }
+
+    /* Diagnostics Quick Drawer */
+    .diag-item {
+      padding: 12px;
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      margin-bottom: 10px;
+      font-size: 0.85rem;
+    }
+    .diag-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    .diag-vuln-tag {
+      font-size: 0.68rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--accent-rose);
+      font-weight: 700;
+    }
+    .diag-output {
+      margin-top: 8px;
+      padding: 8px;
+      background: #020617;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: #38bdf8;
+      max-height: 120px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      display: none;
+    }
+
+    /* Modal Overlay */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.75);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 20px;
+    }
+    .modal-card {
+      background: #0f172a;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 440px;
+      padding: 28px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .modal-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .modal-desc {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--text-muted);
+    }
+    .form-group input {
+      width: 100%;
+    }
+    .hint-box {
+      margin-top: 16px;
+      padding: 10px 12px;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px dashed rgba(56, 189, 248, 0.25);
+      border-radius: 8px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border-color);
+      background: rgba(10, 15, 29, 0.8);
+      padding: 24px 0;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      text-align: center;
+    }
+
+    @media (max-width: 860px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        order: 2;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Lab Warning Banner -->
+  <div class="lab-banner">
+    <div class="container">
+      <span>DEVSECOPS LAB ORTAMI</span> Bu uygulama eğitim ve AI pentest simülasyonları için kasten zafiyetli tasarlanmıştır. (Port: 3000)
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="/" class="brand">
+        <div class="brand-icon">🛡️</div>
+        <div class="brand-title">DevSec <span>Insights</span></div>
+      </a>
+
+      <nav>
+        <a href="#blog" class="nav-link active">Blog Yazıları</a>
+        <a href="#diagnostics" class="nav-link">Sistem Araçları</a>
+        <a href="http://localhost:3001" target="_blank" class="nav-link" style="color: var(--accent-cyan);">📊 Güvenlik Dashboard</a>
+      </nav>
+
+      <div class="auth-btn-group" id="authSection">
+        <button class="btn btn-outline" onclick="openLoginModal()">Giriş Yap</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">⚡ Mühendislik, Bulut ve DevSecOps Blogu</div>
+        <h1 class="hero-title">Modern Yazılım Mimarisi ve<br>Güvenli Geliştirme Pratikleri</h1>
+        <p class="hero-subtitle">
+          DevSecOps pipeline'ları, mikroservis dayanıklılığı ve yapay zeka destekli siber güvenlik analizleri üzerine teknik makaleler.
+        </p>
+
+        <!-- Reflected XSS Demo Widget -->
+        <div class="greet-widget">
+          <div class="greet-left">
+            <div class="greet-icon">👋</div>
+            <div class="greet-text">
+              <h4>Kişiselleştirilmiş Karşılama</h4>
+              <p>Ziyaretçi adınızı girerek sisteme merhaba deyin (/api/greet)</p>
+            </div>
+          </div>
+          <form class="greet-form" onsubmit="handleGreet(event)">
+            <input type="text" id="greetInput" class="input-text" placeholder="Adınız (Örn: Ali)" value="DevSecOps Öğrencisi" required>
+            <button type="submit" class="btn btn-primary">Selamla</button>
+          </form>
+          <div id="greetOutput" class="greet-output"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container content-grid">
+    <!-- Posts Feed -->
+    <div class="posts-feed" id="blog">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span>📰</span> Son Teknik Makaleler
+        </h2>
+        <span style="font-size: 0.85rem; color: var(--text-dim);">Toplam 3 Yazı</span>
+      </div>
+
+      <div class="posts-list" id="postsContainer">
+        <!-- Articles injected by JavaScript -->
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      
+      <!-- SQL Injection / Author Search Widget -->
+      <div class="widget-card">
+        <h3 class="widget-title">
+          <span>🔍 Yazar Arama</span>
+          <span class="user-role-badge">SQLi Lab</span>
+        </h3>
+        <p style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 10px;">
+          Yazar adına göre filtreleyin. (Örn: <code>admin</code> veya <code>' OR '1'='1</code>)
+        </p>
+        <div class="search-box">
+          <input type="text" id="authorSearchInput" class="input-text" placeholder="Yazar adı..." value="admin">
+          <button class="btn btn-primary" onclick="searchAuthor()">Ara</button>
+        </div>
+        <div id="searchResults" class="search-results"></div>
+        <div id="sqlQueryPreview" class="search-sql-preview" style="display:none;"></div>
+      </div>
+
+      <!-- Server Diagnostics & Tools (Admin & Command Injection / Path Traversal) -->
+      <div class="widget-card" id="diagnostics">
+        <h3 class="widget-title">
+          <span>🛠️ Sistem Tanılama Paneli</span>
+          <span style="font-size: 0.72rem; color: var(--accent-emerald);">CANLI</span>
+        </h3>
+
+        <!-- Ping Utility (Command Injection) -->
+        <div class="diag-item">
+          <div class="diag-header">
+            <span>Ping Servisi</span>
+            <span class="diag-vuln-tag">Command Inj.</span>
+          </div>
+          <div style="display: flex; gap: 6px; margin-top: 6px;">
+            <input type="text" id="pingInput" class="input-text" value="127.0.0.1" style="flex:1; font-size:0.8rem;">
+            <button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.78rem;" onclick="runPing()">Test Et</button>
+          </div>
+          <div id="pingOutput" class="diag-output"></div>
+        </div>
+
+        <!-- Log Viewer (Path Traversal) -->
+        <div class="diag-item">
+          <div class="diag-header">
+            <span>Sunucu Log Görüntüleyici</span>
+            <span class="diag-vuln-tag">Path Traversal</span>
+          </div>
+          <div style="display: flex; gap: 6px; margin-top: 6px;">
+            <input type="text" id="logFileInput" class="input-text" value="app.log" style="flex:1; font-size:0.8rem;">
+            <button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.78rem;" onclick="viewLog()">Oku</button>
+          </div>
+          <div id="logOutput" class="diag-output"></div>
+        </div>
+
+        <!-- System Status (Guarded Whitelist) -->
+        <div class="diag-item">
+          <div class="diag-header">
+            <span>Uptime Durumu</span>
+            <span style="font-size: 0.68rem; padding: 2px 6px; border-radius: 4px; background: rgba(52, 211, 153, 0.15); color: var(--accent-emerald); font-weight: 700;">Guarded Safe</span>
+          </div>
+          <div style="display: flex; gap: 6px; margin-top: 6px;">
+            <select id="serviceSelect" class="input-text" style="flex:1; font-size:0.8rem;">
+              <option value="nginx">nginx</option>
+              <option value="redis">redis</option>
+              <option value="postgres">postgres</option>
+            </select>
+            <button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.78rem;" onclick="checkStatus()">Kontrol</button>
+          </div>
+          <div id="statusOutput" class="diag-output"></div>
+        </div>
+
+      </div>
+
+    </aside>
+  </main>
+
+  <!-- Login Modal -->
+  <div class="modal-overlay" id="loginModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeLoginModal()">✕</button>
+      <h3 class="modal-title">Hesabınıza Giriş Yapın</h3>
+      <p class="modal-desc">DevSec Insights blog yazarları ve yöneticileri için kimlik doğrulama ekranı.</p>
+
+      <form onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label>Kullanıcı Adı</label>
+          <input type="text" id="loginUsername" class="input-text" value="admin" required>
+        </div>
+        <div class="form-group">
+          <label>Şifre</label>
+          <input type="password" id="loginPassword" class="input-text" value="admin123" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 8px;">Giriş Yap</button>
+      </form>
+
+      <div class="hint-box">
+        💡 <strong>Test Hesapları:</strong><br>
+        • Yönetici: <code>admin</code> / <code>admin123</code><br>
+        • Standart Kullanıcı: <code>john_doe</code> / <code>user123</code>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>🛡️ DevSecOps Laboratuvarı — Yapay Zeka Pentest ve Güvenlik Otomasyonu Deneyim Alanı</p>
+    </div>
+  </footer>
+
+  <script>
+    // Blog Posts Data
+    const samplePosts = [
+      {
+        id: 1,
+        title: "Mikroservis Mimarilerinde Zero-Trust Güvenlik Modeli",
+        tag: "DevSecOps",
+        author: "admin",
+        date: "28 Ekim 2026",
+        readTime: "5 dk okuma",
+        excerpt: "Geleneksel çevre güvenliği (perimeter-based security) günümüz bulut yerel altyapılarında yetersiz kalıyor. Servisler arası mTLS kimlik doğrulama ve en az yetki prensipleri nasıl kurgulanmalı?",
+        likes: 42
+      },
+      {
+        id: 2,
+        title: "Node.js Event Loop Performans İpuçları ve Bellek Sızıntısı Analizi",
+        tag: "Node.js",
+        author: "john_doe",
+        date: "26 Ekim 2026",
+        readTime: "7 dk okuma",
+        excerpt: "Yüksek trafikli API servislerinde Node.js event loop bloklanmalarını tespit etme yöntemleri. V8 heap dump analizi ve asenkron operasyon optimizasyonu rehberi.",
+        likes: 29
+      },
+      {
+        id: 3,
+        title: "CI/CD Süreçlerine Trivy ve Semgrep ile Otomatik Güvenlik Kapıları Eklemek",
+        tag: "CI/CD Pipeline",
+        author: "admin",
+        date: "24 Ekim 2026",
+        readTime: "4 dk okuma",
+        excerpt: "Güvenlik taramalarını geliştirici akışını bozmadan Jenkins pipeline'larına entegre etmenin incelikleri. Yapay zeka ile yanlış pozitiflerin (FP) elenmesi.",
+        likes: 67
+      }
+    ];
+
+    // Render Posts
+    function renderPosts() {
+      const container = document.getElementById('postsContainer');
+      container.innerHTML = samplePosts.map(post => `
+        <article class="post-card">
+          <div class="post-meta">
+            <span class="post-tag">${post.tag}</span>
+            <span>•</span>
+            <span>${post.date}</span>
+            <span>•</span>
+            <span>${post.readTime}</span>
+          </div>
+          <h3 class="post-title">${post.title}</h3>
+          <p class="post-excerpt">${post.excerpt}</p>
+          <div class="post-footer">
+            <div class="author-info">
+              <span style="font-size: 1.1rem;">👤</span>
+              <span>Yazar: <strong>${post.author}</strong></span>
+            </div>
+            <div>
+              <span>❤️ ${post.likes} Beğeni</span>
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    // Auth State Management
+    function checkAuth() {
+      const token = localStorage.getItem('devsec_token');
+      const userStr = localStorage.getItem('devsec_user');
+      const authSection = document.getElementById('authSection');
+
+      if (token && userStr) {
+        try {
+          const user = JSON.parse(userStr);
+          authSection.innerHTML = `
+            <div class="user-pill">
+              <div class="user-avatar">${user.username.charAt(0).toUpperCase()}</div>
+              <div>
+                <strong>${user.username}</strong>
+                <span class="user-role-badge">${user.role}</span>
+              </div>
+            </div>
+            <button class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem;" onclick="handleLogout()">Çıkış</button>
+          `;
+          return;
+        } catch (e) {}
+      }
+
+      authSection.innerHTML = `
+        <button class="btn btn-outline" onclick="openLoginModal()">Giriş Yap</button>
+      `;
+    }
+
+    function openLoginModal() {
+      document.getElementById('loginModal').style.display = 'flex';
+    }
+    function closeLoginModal() {
+      document.getElementById('loginModal').style.display = 'none';
+    }
+
+    async function handleLogin(e) {
+      e.preventDefault();
+      const username = document.getElementById('loginUsername').value;
+      const password = document.getElementById('loginPassword').value;
+
+      try {
+        const res = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        const data = await res.json();
+        if (data.success) {
+          localStorage.setItem('devsec_token', data.token);
+          localStorage.setItem('devsec_user', JSON.stringify(data.user));
+          closeLoginModal();
+          checkAuth();
+          alert(`Hoş geldiniz, ${data.user.username}! JWT token üretildi.`);
+        } else {
+          alert('Giriş başarısız: ' + (data.error || 'Hatalı kullanıcı adı veya şifre'));
+        }
+      } catch (err) {
+        alert('Giriş hatası: ' + err.message);
+      }
+    }
+
+    function handleLogout() {
+      localStorage.removeItem('devsec_token');
+      localStorage.removeItem('devsec_user');
+      checkAuth();
+    }
+
+    // Reflected XSS Demo
+    async function handleGreet(e) {
+      e.preventDefault();
+      const name = document.getElementById('greetInput').value;
+      const output = document.getElementById('greetOutput');
+      output.style.display = 'block';
+      output.innerHTML = 'İstek gönderiliyor...';
+
+      try {
+        const res = await fetch(`/api/greet?name=${encodeURIComponent(name)}`);
+        const text = await res.text();
+        // VULNERABLE: Direct innerHTML injection for reflected XSS testing
+        output.innerHTML = text;
+      } catch (err) {
+        output.innerHTML = 'Hata: ' + err.message;
+      }
+    }
+
+    // SQL Injection / Author Search Demo
+    async function searchAuthor() {
+      const username = document.getElementById('authorSearchInput').value;
+      const resultsDiv = document.getElementById('searchResults');
+      const sqlDiv = document.getElementById('sqlQueryPreview');
+
+      resultsDiv.style.display = 'block';
+      resultsDiv.innerHTML = '<div style="padding:10px;">Aranıyor...</div>';
+      sqlDiv.style.display = 'none';
+
+      try {
+        const res = await fetch(`/api/users?username=${encodeURIComponent(username)}`);
+        const data = await res.json();
+
+        if (data.executed_sql) {
+          sqlDiv.style.display = 'block';
+          sqlDiv.innerHTML = `<strong>Çalıştırılan SQL:</strong><br>${data.executed_sql}`;
+        }
+
+        if (data.results && data.results.length > 0) {
+          resultsDiv.innerHTML = data.results.map(u => `
+            <div class="search-item">
+              <span>👤 <strong>${u.username}</strong> (ID: ${u.id})</span>
+              <span class="user-role-badge">${u.role}</span>
+            </div>
+          `).join('');
+        } else {
+          resultsDiv.innerHTML = '<div style="padding:10px; color:#94a3b8;">Kayıt bulunamadı.</div>';
+        }
+      } catch (err) {
+        resultsDiv.innerHTML = `<div style="padding:10px; color:#fb7185;">Hata: ${err.message}</div>`;
+      }
+    }
+
+    // Ping Utility (Command Injection)
+    async function runPing() {
+      const host = document.getElementById('pingInput').value;
+      const output = document.getElementById('pingOutput');
+      output.style.display = 'block';
+      output.innerHTML = 'Ping çalıştırılıyor...';
+
+      try {
+        const res = await fetch(`/api/ping?host=${encodeURIComponent(host)}`);
+        const html = await res.text();
+        output.innerHTML = html;
+      } catch (err) {
+        output.innerHTML = 'Hata: ' + err.message;
+      }
+    }
+
+    // Log Viewer (Path Traversal)
+    async function viewLog() {
+      const file = document.getElementById('logFileInput').value;
+      const output = document.getElementById('logOutput');
+      output.style.display = 'block';
+      output.innerHTML = 'Log dosyası okunuyor...';
+
+      try {
+        const res = await fetch(`/api/view-log?file=${encodeURIComponent(file)}`);
+        const text = await res.text();
+        output.innerHTML = text;
+      } catch (err) {
+        output.innerHTML = 'Hata: ' + err.message;
+      }
+    }
+
+    // System Status Check (Guarded)
+    async function checkStatus() {
+      const service = document.getElementById('serviceSelect').value;
+      const output = document.getElementById('statusOutput');
+      output.style.display = 'block';
+      output.innerHTML = 'Uptime sorgulanıyor...';
+
+      try {
+        const res = await fetch(`/api/system-status?service=${encodeURIComponent(service)}`);
+        const text = await res.text();
+        output.innerHTML = text;
+      } catch (err) {
+        output.innerHTML = 'Hata: ' + err.message;
+      }
+    }
+
+    // Initialize
+    window.addEventListener('DOMContentLoaded', () => {
+      renderPosts();
+      checkAuth();
+      // Auto-trigger a default search to display initial data
+      searchAuthor();
+    });
+  </script>
+</body>
+</html>

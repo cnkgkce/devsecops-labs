@@ -1,0 +1,11 @@
+description: "DevSecOps Lab Vulnerable Node.js Express sample application running locally on port 3000."
+
+rules_of_engagement: |
+  - Throttle all requests to avoid rate limits (under 2 requests per second).
+  - Target endpoints:
+      /api/ping (Command Injection)
+      /api/users (SQL Injection)
+      /api/greet (Reflected XSS)
+      /api/view-log (Path Traversal)
+      /api/merge (Prototype Pollution)
+  - When encountering 429 rate limit errors, back off 15 seconds.

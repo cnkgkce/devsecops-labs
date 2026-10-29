@@ -19,3 +19,16 @@ dist/
 # Scratch & temp files
 tmp/
 temp/
+
+# Environment Variables & Secrets (CRITICAL: Do NOT commit to git)
+.env
+.env.*
+!.env.example
+*.env
+
+# Shannon Pentester & Playwright artifacts
+.shannon/
+.playwright/
+**/sample-app/.shannon/
+**/sample-app/.playwright/
+reports/shannon/

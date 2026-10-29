@@ -10,6 +10,7 @@ const port = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // In-memory mock database for testing
 const mockDatabase = {
@@ -131,8 +132,27 @@ app.get('/api/safe-greet', (req, res) => {
   res.send(`<h2>Welcome back, ${cleanUser}</h2>`);
 });
 
-// Root endpoint
+// Auth: Simple login endpoint for Blog App
+app.post('/api/login', (req, res) => {
+  const { username, password } = req.body;
+  const user = mockDatabase.users.find(u => u.username === username);
+  if (user && (password === 'admin123' || password === 'user123' || password === 'password')) {
+    const token = jwt.sign(
+      { id: user.id, username: user.username, role: user.role },
+      JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+    return res.json({ success: true, token, user });
+  }
+  res.status(401).json({ success: false, error: 'Invalid username or password' });
+});
+
+// Root endpoint - serves UI for browsers and JSON for API clients
 app.get('/', (req, res) => {
+  const accept = req.headers.accept || '';
+  if (accept.includes('text/html') && !req.query.format) {
+    return res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  }
   res.json({
     status: "online",
     message: "DevSecOps Lab Vulnerable Sample Node.js App",
@@ -142,7 +162,8 @@ app.get('/', (req, res) => {
       "/api/greet?name=SecurityTeam",
       "/api/view-log?file=app.log",
       "/api/system-status?service=nginx",
-      "/api/safe-greet?user=Alice"
+      "/api/safe-greet?user=Alice",
+      "/api/login"
     ]
   });
 });
@@ -150,3 +171,4 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`Vulnerable Node.js sample app listening at http://localhost:${port}`);
 });
+
